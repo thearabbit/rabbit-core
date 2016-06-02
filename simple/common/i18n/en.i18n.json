@@ -1,0 +1,10 @@
+{
+  "simple": {
+    "sidebarMenu": {
+      "home": "Home",
+      "item": "Item",
+      "customer": "Customer",
+      "order": "Order"
+    }
+  }
+}

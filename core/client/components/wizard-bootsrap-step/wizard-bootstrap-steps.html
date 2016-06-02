@@ -1,0 +1,34 @@
+<template name="steps_bootstrap3">
+    <ul class="nav nav-wizard">
+        {{#each wizard.steps}}
+            <li class="{{activeStepClass id}}">
+                {{#if pathForStep id}}
+                    <a href="{{pathForStep id}}">{{title}}</a>
+                {{else}}
+                    <span>{{title}}</span>
+                {{/if}}
+            </li>
+        {{/each}}
+    </ul>
+</template>
+
+<template name="wizardButtons2">
+    {{#with wizard}}
+        <nav class="wizard-nav">
+            {{#if showBackButton}}
+                <button type="button" class="wizard-back-button btn btn-default">
+                    <i class="fa fa-chevron-left"></i> Back
+                </button>
+            {{/if}}
+            {{#if isLastStep}}
+                <button type="submit" class="wizard-submit-button btn btn-primary">
+                    <i class="fa fa-floppy-o"></i> Save
+                </button>
+            {{else}}
+                <button type="submit" class="wizard-next-button btn btn-default">
+                    Next <i class="fa fa-chevron-right"></i>
+                </button>
+            {{/if}}
+        </nav>
+    {{/with}}
+</template>

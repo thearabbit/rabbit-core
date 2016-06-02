@@ -1,0 +1,91 @@
+<!--Index-->
+<template name="Core_user">
+    <p>
+        <button type="button" class="btn btn-primary js-new"><i class="fa fa-plus"></i> {{_ "action.addNew"}}</button>
+    </p>
+
+    {{> tabular table=tabularTable selector=tabularSelector class="table table-striped table-bordered table-condensed"}}
+</template>
+
+<!--Action-->
+<template name="Core_userAction">
+    {{#tabularAction}}
+        <li><a href="#" class="js-update"><i class="fa fa-pencil"></i> {{_ "action.edit"}}</a></li>
+        <li><a href="#" class="js-destroy"><i class="fa fa-remove"></i> {{_ "action.delete"}}</a></li>
+        <li><a href="#" class="js-display"><i class="fa fa-eye"></i> {{_ "action.show"}}</a></li>
+    {{/tabularAction}}
+</template>
+
+<!--New-->
+<template name="Core_userNew">
+    {{#if Template.subscriptionsReady}}
+        {{#autoForm schema=schema id="Core_userNew" type="method" meteormethod="core.insertUser"}}
+            <div class="row">
+                <div class="col-xs-6">
+                    {{> afQuickField name='profile.name'}}
+                    {{> afQuickField name='username'}}
+                    {{> afQuickField name='email'}}
+                    {{> afQuickField name='password' type="password"}}
+                    {{> afQuickField name='confirmPassword' type="password"}}
+                </div>
+                <div class="col-xs-6">
+                    {{> afQuickField name='roles' size=7}}
+                    {{> afQuickField name='rolesBranch' size=6}}
+                </div>
+            </div>
+
+            {{> formFooterWithButton}}
+        {{/autoForm}}
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>
+
+<!--Edit-->
+<template name="Core_userEdit">
+    {{#if Template.subscriptionsReady}}
+        {{#autoForm schema=schema id="Core_userEdit" doc=data type="method-update" meteormethod="core.updateUser" singleMethodArgument=true}}
+            <div class="row">
+                <div class="col-xs-6">
+                    {{> afQuickField name='profile.name'}}
+                    {{> afQuickField name='username'}}
+                    {{> afQuickField name='email'}}
+                    {{> afQuickField name='password' type="password"}}
+                    {{> afQuickField name='confirmPassword' type="password"}}
+                </div>
+                <div class="col-xs-6">
+                    {{> afQuickField name='roles' size=7}}
+                    {{> afQuickField name='rolesBranch' size=6}}
+                </div>
+            </div>
+
+            {{> formFooterWithButton}}
+        {{/autoForm}}
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>
+
+<!--Show-->
+<template name="Core_userShow">
+    {{#if Template.subscriptionsReady}}
+        {{#with data}}
+            <dl class="dl-horizontal">
+                <!--<dt>Id</dt>-->
+                <!--<dd>{{_id}}</dd>-->
+                <dt>{{_ "core.fullNameLbl"}}</dt>
+                <dd>{{profile.name}}</dd>
+                <dt>{{_ "core.usernameLbl"}}</dt>
+                <dd>{{username}}</dd>
+                <dt>{{_ "core.emailLbl"}}</dt>
+                <dd>{{email}}</dd>
+                <dt>{{_ "core.rolesLbl"}}</dt>
+                <dd>{{roles}}</dd>
+                <dt>{{_ "core.rolesBranchLbl"}}</dt>
+                <dd>{{rolesBranch}}</dd>
+            </dl>
+        {{/with}}
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>

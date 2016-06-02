@@ -1,0 +1,26 @@
+<template name="Core_sidebarMenuTool">
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-wrench"></i> <span>Tool</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{isActiveRoute name='cpanel.backup'}}">
+                <a href="{{pathFor 'cpanel.backup'}}"><i class="fa fa-circle-o"></i> Backup</a>
+            </li>
+
+            <!--Check restore role-->
+            {{#if restore}}
+                <li class="{{isActiveRoute name='cpanel.restore'}}">
+                    <a href="{{pathFor 'cpanel.restore'}}"><i class="fa fa-circle-o"></i> Restore</a>
+                </li>
+            {{/if}}
+
+            <li class="{{pathFor 'cpanel.help'}}">
+                <a href="{{pathFor 'cpanel.help'}}" target="_blank"><i class="fa fa-circle-o"></i> Help</a>
+            </li>
+            <li class="{{isActiveRoute name='cpanel.about'}}">
+                <a href="{{pathFor 'cpanel.about'}}"><i class="fa fa-circle-o"></i> About</a>
+            </li>
+        </ul>
+    </li>
+</template>

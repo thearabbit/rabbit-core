@@ -1,0 +1,65 @@
+<template name="LoginLayout">
+    {{#AdminLTE skin="login-page"}}
+
+        <!-- particles.js container -->
+        <div id="particles-js"></div>
+
+        <div class="login-box particles-js-content">
+            <div class="login-logo">
+                <a href="{{pathFor 'core.welcome'}}"
+                   class="text-gray"><b style="font-family: 'Khmer OS Muol'">{{_ "app.firstName"}}</b> {{_ "app.lastName"}}</a>
+            </div>
+            <!-- /.login-logo -->
+
+            <div class="login-box-body">
+                <!--Server date time-->
+                <h2 class="page-header text-center">
+                    <!--<span class="badge bg-{{cssColor}}">-->
+                    <!--<i class="fa fa-calendar"></i>-->
+                    <!--</span>-->
+                    <span class="text-{{currentDate.cssColor}}">
+                        {{#if currentDate.value}}
+                            {{currentDate.value}}
+                        {{else}}
+                            {{> iconLoading}}
+                        {{/if}}
+                    </span>
+
+                </h2>
+
+
+                <h4 class="login-box-msg">
+                    {{#if currentUser}}
+                        {{_ "core.welcome.hi"}} <b>{{currentUser.profile.name}}!</b>
+                    {{else}}
+                        {{_ "core.welcome.info"}}
+                    {{/if}}
+
+                </h4>
+
+                {{> Template.dynamic template=content}}
+
+                <!-- Alert -->
+                <!--{{> sAlert}}-->
+
+                <!-- Connection Status -->
+                {{> meteorStatus}}
+
+
+            </div>
+
+            <h5 class="text-center text-gray">
+                &copy; {{currentYear}}
+                <a href="http://{{_ "app.website"}}">{{_ "app.fullName"}}.</a>
+                &#9990; {{_ "app.tel"}}
+
+                <!--Language-->
+                {{> i18n_ui}}
+            </h5>
+            <!-- /.login-box-body -->
+
+        </div>
+        <!-- /.login-box -->
+
+    {{/AdminLTE}}
+</template>

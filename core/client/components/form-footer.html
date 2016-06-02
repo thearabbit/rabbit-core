@@ -1,0 +1,13 @@
+<!--Default-->
+<template name="formFooter">
+    <div class="form-footer">
+        {{> Template.contentBlock}}
+    </div>
+</template>
+
+<template name="formFooterWithButton">
+    <div class="form-footer">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> {{_ "form.btnSave"}}</button>
+        <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> {{_ "form.btnReset"}}</button>
+    </div>
+</template>

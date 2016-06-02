@@ -1,0 +1,10 @@
+{
+  "simple": {
+    "sidebarMenu": {
+      "home": "ទំព័រដើម",
+      "item": "ទំនិញ",
+      "customer": "អតិថិជន",
+      "order": "បញ្ជាទិញ"
+    }
+  }
+}

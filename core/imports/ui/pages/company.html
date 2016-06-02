@@ -1,0 +1,57 @@
+<!--List-->
+<template name="Core_company">
+    {{#if subsReady "core.company"}}
+        {{#with data}}
+            <dl class="dl-horizontal">
+                <dt>{{_ "core.company.khNameLbl"}}</dt>
+                <dd>{{khName}}</dd>
+                <dt>{{_ "core.company.khShortNameLbl"}}</dt>
+                <dd>{{khShortName}}</dd>
+                <dt>{{_ "core.company.enNameLbl"}}</dt>
+                <dd>{{enName}}</dd>
+                <dt>{{_ "core.company.enShortNameLbl"}}</dt>
+                <dd>{{enShortName}}</dd>
+                <dt>{{_ "core.company.khAddressLbl"}}</dt>
+                <dd>{{khAddress}}</dd>
+                <dt>{{_ "core.company.enAddressLbl"}}</dt>
+                <dd>{{enAddress}}</dd>
+                <dt>{{_ "core.company.telephoneLbl"}}</dt>
+                <dd>{{telephone}}</dd>
+                <dt>{{_ "core.company.emailLbl"}}</dt>
+                <dd>{{email}}</dd>
+                <dt>{{_ "core.company.websiteLbl"}}</dt>
+                <dd>{{website}}</dd>
+            </dl>
+
+            {{#formFooter}}
+                <button type="button" class="btn btn-primary js-update"><i class="fa fa-pencil"></i> {{_ "form.btnEdit"}}
+                </button>
+            {{/formFooter}}
+        {{/with}}
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>
+
+<!--Update-->
+<template name="Core_companyEdit">
+    {{#autoForm collection=collection id="Core_companyEdit" doc=data type="update"}}
+        <div class="row">
+            <div class="col-md-6">
+                {{> afQuickField name='khName'}}
+                {{> afQuickField name='khShortName'}}
+                {{> afQuickField name='enName'}}
+                {{> afQuickField name='enShortName'}}
+                {{> afQuickField name='khAddress' row=3}}
+            </div>
+            <div class="col-md-6">
+                {{> afQuickField name='enAddress' row=3}}
+                {{> afQuickField name='telephone'}}
+                {{> afQuickField name='email'}}
+                {{> afQuickField name='website'}}
+            </div>
+        </div>
+
+        {{> formFooterWithButton}}
+    {{/autoForm}}
+</template>

@@ -1,0 +1,11 @@
+<template name="i18n_ui">
+    {{#if i18n_enabled}}
+        {{#each i18n_sortedLanguages}}
+            {{#unless i18n_isCurrentLanguage tag}}
+                <a href="#" class="js-i18n-ui"><span class="badge">{{name}}</span></a>
+            {{/unless}}
+        {{/each}}
+    {{else}}
+        <span class="i18n-not-found">No i18n files found</span>
+    {{/if}}
+</template>

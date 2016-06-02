@@ -1,0 +1,134 @@
+/* Report styles
+-------------------------------------------------- */
+.report-body-bg {
+    font-family: Arial, Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    color: #000000
+}
+
+.report-body {
+    font-family: Arial, Verdana, Geneva, sans-serif;
+    font-size: 10px;
+    color: #000000
+}
+
+/* A4 */
+.paper-a4-portrait {
+    margin: 0px auto;
+    width: 720px;
+    padding: 0px;
+}
+
+.paper-a4-landscape {
+    margin: 0px auto;
+    width: 1020px;
+    padding: 0px;
+}
+
+/* A5 */
+.paper-a5-portrait {
+    margin: 0px auto;
+    width: 510px;
+    padding: 0px;
+}
+
+.paper-a5-landscape {
+    margin: 0px auto;
+    width: 720px;
+    padding: 0px;
+}
+
+/* Mini */
+.paper-mini-portrait {
+    margin: 0px auto;
+    width: 260px;
+    padding: 0px;
+}
+
+.paper-mini-landscape {
+    margin: 0px auto;
+    width: 260px;
+    padding: 0px;
+}
+
+.report-body-bg .title {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 10px
+}
+
+.report-body .title {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 10px
+}
+
+.report-body-bg .title .title-1x {
+    font-size: 16px;
+}
+
+.report-body .title .title-1x {
+    font-size: 14px;
+}
+
+.report-body-bg .title .title-1x-kh-muol {
+    font-size: 16px;
+    font-family: 'Khmer OS Muol';
+    font-weight: normal;
+}
+
+.report-body .title .title-1x-kh-muol {
+    font-size: 14px;
+    font-family: 'Khmer OS Muol';
+    font-weight: normal;
+}
+
+.report-body-bg .title .title-2x {
+    font-size: 12px;
+}
+
+.report-body .title .title-2x {
+    font-size: 10px;
+}
+
+.report-content {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #000000;
+    margin-top: 30px;
+}
+
+.report-content .content-header th {
+    background-color: #d0d2d0;
+    padding: 3px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #555555;
+}
+
+.report-content .content-body td {
+    padding: 3px;
+    border: 1px solid #555555;
+}
+
+.report-content .content-footer td {
+    font-weight: bold;
+    padding: 3px;
+    border: 1px solid #555555;
+}
+
+.report-page-header-footer {
+    border-collapse: collapse;
+    width: 100%;
+    padding: 5px;
+}
+
+.report-sign {
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+}

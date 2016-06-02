@@ -1,0 +1,16 @@
+<template name="_FooterLayout">
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> {{moduleVersion}}
+        </div>
+        <strong>
+            &copy; {{currentYear}}
+            <a href="http://{{_ "app.website"}}">{{_ "app.fullName"}}.</a>
+            &#9990; {{_ "app.tel"}}
+        </strong>
+
+        <!--Language-->
+        {{> i18n_ui}}
+    </footer>
+</template>
+

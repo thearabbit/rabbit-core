@@ -1,0 +1,44 @@
+/*Date*/
+.dtp > .dtp-content > .dtp-date-view > header.dtp-header {
+    /*background: #689F38;*/
+    background: #009688;
+}
+.dtp div.dtp-date, .dtp div.dtp-time {
+    /*background: #8BC34A;*/
+    background: #00aa9a;
+}
+.dtp .p10 > a {
+    /*color: #689F38;*/
+    color: #009688;
+}
+.dtp table.dtp-picker-days tr > td > a.selected {
+    /*background: #8BC34A;*/
+    background: #00aa9a;
+}
+/*Time*/
+.dtp .dtp-actual-meridien a.selected {
+    /*background: #689F38;*/
+    background: #009688;
+}
+.dtp .dtp-picker-time > a.dtp-select-hour.selected {
+    /*background: #689F38;*/
+    background: #009688;
+}
+.dtp .dtp-hand.on {
+    /*background: #8BC34A;*/
+    background: #00aa9a;
+}
+
+.dtp .dtp-picker-time > a.dtp-select-minute.selected {
+    /*background: #8BC34A;*/
+    background: #00aa9a;
+}
+.dtp .dtp-hand.on {
+    /*background: #8BC34A;*/
+    background: #00aa9a;
+}
+
+/*Button*/
+.dtp .dtp-buttons {
+    text-align: center;
+}

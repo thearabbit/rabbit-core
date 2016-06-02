@@ -1,0 +1,12 @@
+{
+  "name": "test-blaze1.3",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "meteor-node-stubs": "~0.2.0",
+    "moment": "^2.13.0"
+  }
+}

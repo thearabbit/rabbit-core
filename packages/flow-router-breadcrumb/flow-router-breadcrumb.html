@@ -1,0 +1,15 @@
+<template name="breadcrumb">
+    <ol class="breadcrumb">
+        {{#each bc in breadcrumb}}
+            {{#if bc.isActive}}
+                <li class="{{bc.isActive}}">
+                    {{#if bc.icon}}<i class="fa fa-{{bc.icon}}"></i> {{/if}}{{bc.title}}
+                </li>
+            {{else}}
+                <li>
+                    <a href="{{bc.url}}">{{#if bc.icon}}<i class="fa fa-{{bc.icon}}"></i> {{/if}}{{bc.title}}</a>
+                </li>
+            {{/if}}
+        {{/each}}
+    </ol>
+</template>

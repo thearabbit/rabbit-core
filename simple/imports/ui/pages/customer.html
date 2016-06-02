@@ -1,0 +1,89 @@
+<!--Index-->
+<template name="Simple_customer">
+    <p>
+        <button type="button" class="btn btn-primary js-create"><i class="fa fa-plus"></i> Add New</button>
+    </p>
+
+    {{> tabular table=tabularTable selector=selector class="table table-striped table-bordered table-condensed"}}
+</template>
+
+<!--Action-->
+<template name="Simple_customerAction">
+    {{#tabularAction}}
+        <li><a href="#" class="js-update"><i class="fa fa-pencil"></i> Edit</a></li>
+        <li><a href="#" class="js-destroy"><i class="fa fa-remove"></i> Delete</a></li>
+        <li><a href="#" class="js-display"><i class="fa fa-eye"></i> Show</a></li>
+    {{/tabularAction}}
+</template>
+
+<!--Insert-->
+<template name="Simple_customerNew">
+    {{#autoForm collection=collection id="Simple_customerNew" type="insert"}}
+        <div class="row">
+            <div class="col-md-6">
+                {{> afQuickField name='name'}}
+                {{> afQuickField name='gender'}}
+                {{> afQuickField name='dob'}}
+                {{> afQuickField name='address' rows=3}}
+            </div>
+            <div class="col-md-6">
+                {{> afQuickField name='telephone'}}
+                {{> afQuickField name='email'}}
+                {{> afQuickField type="hidden" name='branchId' value=currentBranch}}
+            </div>
+        </div>
+
+        {{> formFooterWithButton}}
+    {{/autoForm}}
+</template>
+
+<!--Update-->
+<template name="Simple_customerEdit">
+    {{#if Template.subscriptionsReady}}
+        {{#autoForm collection=collection id="Simple_customerEdit" doc=data type="update"}}
+            <div class="row">
+                <div class="col-md-6">
+                    {{> afQuickField name='name'}}
+                    {{> afQuickField name='gender'}}
+                    {{> afQuickField name='dob'}}
+                    {{> afQuickField name='address' rows=3}}
+                </div>
+                <div class="col-md-6">
+                    {{> afQuickField name='telephone'}}
+                    {{> afQuickField name='email'}}
+                    {{> afQuickField type="hidden" name='branchId' value=currentBranch}}
+                </div>
+            </div>
+
+            {{> formFooterWithButton}}
+        {{/autoForm}}
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>
+
+<!--Show-->
+<template name="Simple_customerShow">
+    {{#if Template.subscriptionsReady}}
+        {{#with data}}
+            <dl class="dl-horizontal">
+                <dt>Id</dt>
+                <dd>{{_id}}</dd>
+                <dt>Name</dt>
+                <dd>{{name}}</dd>
+                <dt>Gender</dt>
+                <dd>{{gender}}</dd>
+                <dt>Date of Birth</dt>
+                <dd>{{moFormat dob "DD/MM/YYYY"}}</dd>
+                <dt>Address</dt>
+                <dd>{{address}}</dd>
+                <dt>telephone</dt>
+                <dd>{{telephone}}</dd>
+                <dt>email</dt>
+                <dd>{{email}}</dd>
+            </dl>
+        {{/with}}
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>

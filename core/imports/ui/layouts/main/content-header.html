@@ -1,0 +1,24 @@
+<template name="_ContentHeaderLayout">
+    <section class="content-header">
+        <h1 class="page-header">
+            {{pageHeader}}
+            <!--<small>it all starts here</small>-->
+        </h1>
+
+        {{> breadcrumb}}
+        <!--<ol class="breadcrumb">-->
+            <!--{{#each bc in breadcrumb}}-->
+                <!--{{#if bc.isActive}}-->
+                    <!--<li class="{{bc.isActive}}">-->
+                        <!--{{#if bc.icon}}<i class="fa fa-{{bc.icon}}"></i> {{/if}}{{bc.title}}-->
+                    <!--</li>-->
+                <!--{{else}}-->
+                    <!--<li>-->
+                        <!--<a href="{{bc.url}}">{{#if bc.icon}}<i class="fa fa-{{bc.icon}}"></i> {{/if}}{{bc.title}}</a>-->
+                    <!--</li>-->
+                <!--{{/if}}-->
+            <!--{{/each}}-->
+        <!--</ol>-->
+    </section>
+</template>
+

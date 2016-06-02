@@ -1,0 +1,93 @@
+<!--Item Temporary-->
+<template name="Simple_orderItems">
+    {{#autoForm schema=schema id="Simple_orderItems"}}
+        <div class="row">
+            <div class="col-sm-4">
+                {{> afQuickField name="tmpId" label=false}}
+            </div>
+            <div class="col-sm-2">
+                {{> afQuickField name="tmpQty" label=false}}
+            </div>
+            <div class="col-sm-2">
+                {{> afQuickField name="tmpPrice" label=false}}
+            </div>
+            <div class="col-sm-3">
+                {{> afQuickField name="tmpAmount" value=tmpAmount label=false readonly=true}}
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-primary js-add-item" {{disabledAddItemBtn}}>+</button>
+            </div>
+        </div>
+    {{/autoForm}}
+    <!--<hr>-->
+
+    <div class="row">
+        <div class="col-sm-4">
+            Name
+        </div>
+        <div class="col-sm-2">
+            Qty
+        </div>
+        <div class="col-sm-2">
+            Price
+        </div>
+        <div class="col-sm-3">
+            Amount
+        </div>
+        <div class="col-sm-1">
+            Action
+        </div>
+    </div>
+    {{#each item in itemsList}}
+
+        <!--<tr class="item-list">-->
+        <!--<th scope="row">{{@index}}</th>-->
+        <!--<td class="js-name">{{item.name}}</td>-->
+        <!--<td class="js-qty-in">{{item.qtyIn}}</td>-->
+        <!--<td class="js-qty-out">{{item.qtyOut}}</td>-->
+        <!--<td class="js-qty">{{item.qty}}</td>-->
+        <!--<td class="js-price">{{item.price}}</td>-->
+        <!--<td class="js-amount">{{item.amount}}</td>-->
+        <!--<td>-->
+        <!--<ul class="list-inline">-->
+        <!--<li><a href="#" class="js-minus-item"><i class="fa fa-minus text-gray"></i></a></li>-->
+        <!--<li><a href="#" class="js-plus-item"><i class="fa fa-plus text-green"></i></a></li>-->
+        <!--<li><a href="#" class="js-update-item"><i class="fa fa-pencil text-blue"></i></a></li>-->
+        <!--<li><a href="#" class="js-destroy-item"><i class="fa fa-remove text-red"></i></a></li>-->
+        <!--</ul>-->
+        <!--</td>-->
+        <!--</tr>-->
+
+        <div class="row item">
+            <div class="col-sm-4">
+                {{> afQuickField name=(keyArgs @index "itemId") value=item.itemId class="input-sm js-itemId" readonly="true" label=false}}
+            </div>
+            <div class="col-sm-2">
+                {{> afQuickField name=(keyArgs @index "qty") value=item.qty class="input-sm js-qty" label=false}}
+            </div>
+            <div class="col-sm-2">
+                {{> afQuickField name=(keyArgs @index "price") value=item.price class="input-sm js-price" label=false}}
+            </div>
+            <div class="col-sm-3">
+                {{> afQuickField name=(keyArgs @index "amount") value=item.amount class="input-sm js-amount" readonly="true" label=false}}
+            </div>
+            <div class="col-sm-1">
+                <ul class="list-inline">
+                    <!--<li><a href="#" class="js-update-item"><i class="fa fa-pencil"></i></a></li>-->
+                    <li><a href="#" class="js-destroy-item"><i class="fa fa-remove text-red"></i></a></li>
+                </ul>
+                <!--<button type="button" class="btn btn-danger js-destroy-item">-</button>-->
+            </div>
+        </div>
+    {{/each}}
+
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="pull-right">Total:</div>
+        </div>
+        <div class="col-sm-3">{{amount}}
+            {{> afQuickField name="total" value=total label=false readonly="true"}}
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</template>

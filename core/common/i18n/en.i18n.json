@@ -1,0 +1,108 @@
+{
+  "app": {
+    "firstName": "Rabbit",
+    "lastName": "Technology",
+    "fullName": "Rabbit Technology",
+    "copyright": "Copyright",
+    "tel": "053 50 66 777",
+    "email": "info@rabbittech.com",
+    "website": "www.rabbittech.com"
+  },
+  "form": {
+    "btnLogin": "Login",
+    "btnLogout": "Logout",
+    "btnGo": "Go",
+    "btnProfile": "Profile",
+    "btnSave": "Save",
+    "btnReset": "Reset",
+    "btnAddNew": "Add New",
+    "btnEdit": "Edit",
+    "btnDelete": "Delete"
+  },
+  "alert": {
+    "success": "Success",
+    "error": "Error",
+    "deleteConfirm": "Are you sure to delete <span class='text-red text-bold'>[__itemId__]</span>?"
+  },
+  "action": {
+    "addNew": "Add New",
+    "edit": "Edit",
+    "delete": "Delete",
+    "show": "Show"
+  },
+  "core": {
+    "welcome": {
+      "title": "Welcome",
+      "info": "Please login to start . . .",
+      "hi": "Hi",
+      "username": "Username",
+      "password": "Password",
+      "login": "Login",
+      "module": "Module",
+      "branch": "Branch"
+    },
+    "sidebarMenu": {
+      "home": "Home",
+      "exchange": "Exchange",
+      "branch": "Branch",
+      "company": "Company",
+      "setting": "Setting",
+      "user": "User"
+    },
+    "home": {
+      "title": "Home",
+      "info": "Welcome to Core Module!"
+    },
+    "branch": {
+      "title": "Branch",
+      "idLbl": "ID",
+      "khNameLbl": "Kh name",
+      "khShortNameLbl": "Kh short name",
+      "enNameLbl": "En Name",
+      "enShortNameLbl": "En short name",
+      "khAddressLbl": "Kh address",
+      "enAddressLbl": "En address",
+      "telephoneLbl": "Telephone",
+      "emailLbl": "Email"
+    },
+    "exchange": {
+      "title": "Exchange",
+      "dateLbl": "Date",
+      "baseCurrencyLbl": "Base currency",
+      "ratesLbl": "Rates",
+      "khrLbl": "KHR",
+      "usdLbl": "USD",
+      "thbLbl": "THB"
+    },
+    "company": {
+      "title": "Company",
+      "khNameLbl": "Kh name",
+      "khShortNameLbl": "Kh short name",
+      "enNameLbl": "En Name",
+      "enShortNameLbl": "En short name",
+      "khAddressLbl": "Kh address",
+      "enAddressLbl": "En address",
+      "telephoneLbl": "Telephone",
+      "emailLbl": "Email",
+      "websiteLbl": "Website"
+    },
+    "setting": {
+      "title": "Setting",
+      "headOfficeLbl": "Head office",
+      "baseCurrencyLbl": "Base currency",
+      "languageLbl": "Language"
+    },
+    "user": {
+      "title": "User",
+      "profileLbl": "Profile",
+      "fullNameLbl": "Full name",
+      "usernameLbl": "Username",
+      "emailLbl": "Email",
+      "passwordLbl": "Password",
+      "confirmPasswordLbl": "Confirm password",
+      "rolesLbl": "Roles",
+      "rolesBranchLbl": "Roles branch",
+      "passwordMismatchMsg": "[label] don't match"
+    }
+  }
+}

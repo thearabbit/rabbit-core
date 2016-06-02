@@ -1,0 +1,8 @@
+<!--Template-->
+<template name="ReportContent">
+    <div class="report-body{{#if fontSize}}-{{fontSize}}{{/if}}">
+        <div class="paper-{{paper}}-{{orientation}}">
+            {{> Template.contentBlock}}
+        </div>
+    </div>
+</template>

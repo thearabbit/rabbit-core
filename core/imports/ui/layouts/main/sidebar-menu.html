@@ -1,0 +1,32 @@
+<template name="Core_sidebarMenu">
+    <li class="{{isActiveRoute name='core.home'}}">
+        <a href="{{pathFor 'core.home'}}">
+            <i class="fa fa-home"></i> <span>Home</span>
+        </a>
+    </li>
+    <li class="{{isActiveRoute name='core.exchange'}}">
+        <a href="{{pathFor 'core.exchange'}}">
+            <i class="fa fa-exchange"></i> <span>Exchange</span>
+        </a>
+    </li>
+    <li class="{{isActiveRoute name='core.branch'}}">
+        <a href="{{pathFor 'core.branch'}}">
+            <i class="fa fa-sitemap"></i> <span>Branch</span>
+        </a>
+    </li>
+    <li class="{{isActiveRoute name='core.company'}}">
+        <a href="{{pathFor 'core.company'}}">
+            <i class="fa fa-building"></i> <span>Company</span>
+        </a>
+    </li>
+    <li class="{{isActiveRoute name='core.setting'}}">
+        <a href="{{pathFor 'core.setting'}}">
+            <i class="fa fa-cogs"></i> <span>Setting</span>
+        </a>
+    </li>
+    <li class="{{isActiveRoute name='core.user'}}">
+        <a href="{{pathFor 'core.user'}}">
+            <i class="fa fa-user"></i> <span>User</span>
+        </a>
+    </li>
+</template>

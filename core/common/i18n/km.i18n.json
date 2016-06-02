@@ -1,0 +1,108 @@
+{
+  "app": {
+    "firstName": "រ៉ាប៊ីត",
+    "lastName": "តិចណូឡូជី",
+    "fullName": "រ៉ាប៊ីត តិចណូឡូជី",
+    "copyright": "រក្សាសិទ្ធ",
+    "tel": "053 50 66 777",
+    "email":"info@rabbittech.com",
+    "website": "www.rabbit-tec.com"
+  },
+  "form": {
+	"btnLogin": "ចូល",
+	"btnLogout": "ចេញ",
+	"btnGo": "ទៅ",
+	"btnProfile": "ព័ត៌មាន",
+	"btnSave": "រក្សាទុក",
+	"btnReset": "កំណត់ឡើងវិញ",
+    "btnAddNew": "បង្កើតថ្មី",
+    "btnEdit": "កែ",
+    "btnDelete": "លុប"
+  },
+  "alert": {
+    "success": "ជោគជ័យ",
+    "error": "កំហុស",
+    "deleteConfirm": "តើលោកអ្នកពិតជាចង់លុប <span class='text-red text-bold'>[__itemId__]</span>?"
+  },
+  "action": {
+    "addNew": "បង្កើតថ្មី",
+    "edit": "កែ",
+    "delete": "លុប",
+    "show": "បង្ហាញ"
+  },
+  "core": {
+    "welcome": {
+      "title": "ស្វាគមន៍",
+      "info": "សូមបញ្ចូលឈ្មោះលេខសំងាត់ . . .",
+      "hi": "សួស្តី",
+      "username": "ឈ្មោះ",
+      "password": "លេខសំងាត់",
+      "login": "ចូល",
+      "module": "ផ្នែក",
+      "branch": "សាខា"
+    },
+    "sidebarMenu": {
+      "home": "ទំព័រដើម",
+      "exchange": "អត្រាប្តូរប្រាក់",
+      "branch": "សាខា",
+      "company": "ក្រុមហ៊ុន",
+      "setting": "កំណត់",
+      "user": "អ្នកប្រើប្រាស់"
+    },
+    "home": {
+      "title": "ទំព័រដើម",
+      "info": "Core Module សូមស្វាគមន៍!"
+    },
+    "branch": {
+      "title": "សាខា",
+      "idLbl": "លេខកូដ",
+      "khNameLbl": "ឈ្មោះខ្មែរ",
+      "khShortNameLbl": "ឈ្មោះកាត់ខ្មែរ",
+      "enNameLbl": "ឈ្មោះអង់គ្លេស",
+      "enShortNameLbl": "ឈ្មោះកាត់អង់គ្លេស",
+      "khAddressLbl": "អាសយដ្ឋានខ្មែរ",
+      "enAddressLbl": "អាសយដ្ឋានអង់គ្លេស",
+      "telephoneLbl": "ទូរស័ព្ទ",
+      "emailLbl": "អ៊ីម៉ែល"
+    },
+    "exchange": {
+      "title": "ប្តុរប្រាក់",
+      "dateLbl": "កាលបរិច្ឆេទ",
+      "baseCurrencyLbl": "រូបិយប័ណណគោល",
+      "ratesLbl": "អត្រា",
+      "khrLbl": "ខ្មែររៀល",
+      "usdLbl": "ដុល្លារអាមេរិក",
+      "thbLbl": "ថៃបាត"
+    },
+    "company": {
+      "title": "ក្រុមហ៊ុន",
+      "khNameLbl": "ឈ្មោះខ្មែរ",
+      "khShortNameLbl": "ឈ្មោះកាត់ខ្មែរ",
+      "enNameLbl": "ឈ្មោះអង់គ្លេស",
+      "enShortNameLbl": "ឈ្មោះកាត់អង់គ្លេស",
+      "khAddressLbl": "អាសយដ្ឋានខ្មែរ",
+      "enAddressLbl": "អាសយដ្ឋានអង់គ្លេស",
+      "telephoneLbl": "ទូរស័ព្ទ",
+      "emailLbl": "អ៊ីម៉ែល",
+      "websiteLbl": "គេហទំព័រ"
+    },
+    "setting": {
+      "title": "កំណត់",
+      "headOfficeLbl": "ការិយាល័យកណ្តាល",
+      "baseCurrencyLbl": "រូបិយប័ណ្ណគោល",
+      "languageLbl": "ភាសា"
+    },
+    "user": {
+      "title": "អ្នកប្រើប្រាស់",
+      "profileLbl": "ឈ្មោះពេញ",
+      "fullNameLbl": "ឈ្មោះពេញ",
+      "usernameLbl": "ឈ្មោះគណនី",
+      "emailLbl": "អ៊ីម៉ែល",
+      "passwordLbl": "លេខសំងាត់",
+      "confirmPasswordLbl": "បញ្ជាក់លេខសំងាត់",
+      "rolesLbl": "តួនាទី",
+      "rolesBranchLbl": "សិទ្ធិសាខា",
+      "passwordMismatchMsg": "[label] មិនផ្ទៀងផ្ទាត់"
+    }
+  }
+}

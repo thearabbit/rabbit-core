@@ -1,0 +1,213 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-base             # Packages every Meteor app needs to have
+mobile-experience       # Packages for a great mobile UX
+mongo                   # The database Meteor supports right now
+blaze-html-templates    # Compile .html files into Meteor Blaze views
+reactive-var            # Reactive variable for tracker
+jquery                  # Helpful client-side library
+tracker                 # Meteor's client-side reactive programming library
+
+standard-minifier-css   # CSS minifier run for production mode
+standard-minifier-js    # JS minifier run for production mode
+es5-shim                # ECMAScript 5 compatibility for older browsers.
+ecmascript              # Enable ECMAScript2015+ syntax in app code
+
+
+# Core
+accounts-base
+accounts-password
+underscore
+coffeescript
+markdown
+reactive-dict
+random
+ejson
+less
+check
+
+# Layout
+fourseven:scss
+twbs:bootstrap
+fortawesome:fontawesome
+#fezvrasta:bootstrap-material-design
+theara:admin-lte
+
+# Security
+#ian:accounts-ui-bootstrap-3
+ongoworks:security
+alanning:roles
+#mizzao:user-status
+255kb:meteor-status
+
+# Session
+session
+u2622:persistent-session
+
+# Router
+meteorhacks:picker
+kadira:flow-router
+kadira:blaze-layout
+cottz:flow-router-auth
+arillo:flow-router-helpers
+zimme:active-route
+ostrio:flow-router-title
+#tomwasd:flow-router-autoscroll
+meteorhacks:fast-render
+#philippspo:momentum-flow-router
+theara:flow-router-breadcrumb
+
+# Collection
+matb33:collection-hooks
+dburles:collection-helpers
+aldeed:collection2
+meteorhacks:aggregate
+aldeed:simple-schema
+#zimme:collection-softremovable
+percolate:migrations
+moonco:fixtures
+dburles:mongo-collection-instances
+
+# Pub, Sub
+meteorhacks:subs-manager
+ccorcos:subs-cache
+reywood:publish-composite
+tmeasday:publish-counts
+meteorhacks:unblock
+
+# Loading
+sacha:spin
+
+# Method
+mdg:validated-method
+tunifight:loggedin-mixin
+didericis:permissions-mixin
+didericis:callpromise-mixin
+simple:reactive-method
+okgrow:promise
+#msavin:fetcher
+theara:fetcher
+
+# Factory, Faker
+digilord:faker
+anti:fake
+
+# Template
+space:template-controller
+#peerlibrary:blaze-components
+aldeed:autoform
+#natestrauser:select2
+#zimme:select2-bootstrap3-css
+aldeed:autoform-select2
+#jeremy:selectize # For default theme
+#chhib:selectize-bootstrap-3 # For bs3 theme
+#comerc:autoform-selectize
+#tuul:autoform-selectize
+vazco:universe-autoform-select
+rajit:bootstrap3-datepicker
+aldeed:autoform-bs-datepicker
+tsega:bootstrap3-datetimepicker@=3.1.3_3
+aldeed:autoform-bs-datetimepicker
+#baysao:autoform-bs-daterangepicker
+dburles:spacebars-tohtml
+raix:handlebar-helpers
+#ostrio:templatehelpers
+mpowaga:autoform-summernote
+#netanelgilad:bootstrap-material-datepicker
+comerc:bs-typeahead
+comerc:autoform-typeahead
+trsdln:flyouts
+forwarder:autoform-wizard
+
+# Date
+momentjs:moment
+risul:moment-timezone
+lbee:moment-helpers
+
+# List View
+aslagle:reactive-table
+aldeed:tabular
+#loredanacirstea:meteor-tabular-filter
+miro:json2html
+theara:jsonview
+
+# Language
+tap:i18n
+tap:i18n-ui
+gwendall:simple-schema-i18n
+gwendall:autoform-i18n
+
+# Alert
+#theara:alertifyjs
+ovcharik:alertifyjs
+czbaker:lightbox2
+themeteorchef:bert
+juliancwirko:s-alert
+juliancwirko:s-alert-scale
+juliancwirko:s-alert-slide
+juliancwirko:s-alert-genie
+juliancwirko:s-alert-jelly
+juliancwirko:s-alert-flip
+juliancwirko:s-alert-bouncyflip
+juliancwirko:s-alert-stackslide
+
+# File
+cfs:standard-packages
+cfs:gridfs
+yogiben:autoform-file
+peerlibrary:fs
+ostrio:meteor-root
+
+# Reactive
+xamfoo:reactive-obj
+manuel:reactivearray
+frozeman:template-var
+#peerlibrary:reactive-field
+theara:template-states
+
+# Excel
+#netanelgilad:node-uuid
+#netanelgilad:mkdirp
+#vsivsi:file-collection
+
+### Others ###
+erasaur:meteor-lodash
+underscorestring:underscore.string
+#digilord:sugarjs
+ecwyne:mathjs
+lepozepo:accounting
+numeral:numeral
+natestrauser:animate-css
+rzymek:fullcalendar
+#meteorhacks:kadira
+#matteodem:easy-search
+simple:markdown-templating
+
+### Local ###
+#theara:select2
+theara:collection-cache
+theara:id-generator
+theara:relation-exist
+theara:moneyjs
+theara:fa-helpers
+theara:events
+theara:round-khr
+theara:lightbox-helpers
+theara:call-async
+theara:autoprint
+theara:reactive-list
+theara:numeral-helpers
+theara:factory
+theara:app-dump
+#theara:autoform-file
+#theara:scrollup
+#theara:autoform-bs-md-datetimepicker
+theara:inputmask
+theara:autoform-inputmask
+#theara:autoform-bs-datetimepicker
+theara:autoform-bs-daterangepicker
+#theara:particles

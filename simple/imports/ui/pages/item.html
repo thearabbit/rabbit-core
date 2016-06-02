@@ -1,0 +1,71 @@
+<!--Index-->
+<template name="Simple_item">
+    <p>
+        <button type="button" class="btn btn-primary js-create"><i class="fa fa-plus"></i> Add New</button>
+    </p>
+
+    {{> tabular table=tabularTable class="table table-striped table-bordered table-condensed"}}
+</template>
+
+<!--Action-->
+<template name="Simple_itemAction">
+    {{#tabularAction}}
+        <li><a href="#" class="js-update"><i class="fa fa-pencil"></i> Edit</a></li>
+        <li><a href="#" class="js-destroy"><i class="fa fa-remove"></i> Delete</a></li>
+        <li><a href="#" class="js-display"><i class="fa fa-eye"></i> Show</a></li>
+    {{/tabularAction}}
+</template>
+
+<!--Insert-->
+<template name="Simple_itemNew">
+    {{#autoForm collection=collection id="Simple_itemNew" type="insert"}}
+        <div class="row">
+            <div class="col-md-12">
+                {{> afQuickField name='name'}}
+                {{> afQuickField name='price'}}
+                {{> afQuickField name='photo'}}
+            </div>
+        </div>
+
+        {{> formFooterWithButton}}
+    {{/autoForm}}
+</template>
+
+<!--Update-->
+<template name="Simple_itemEdit">
+    {{#if Template.subscriptionsReady}}
+        {{#autoForm collection=collection id="Simple_itemEdit" doc=data type="update"}}
+            <div class="row">
+                <div class="col-md-12">
+                    {{> afQuickField name='name'}}
+                    {{> afQuickField name='price'}}
+                    {{> afQuickField name='photo'}}
+                </div>
+            </div>
+
+            {{> formFooterWithButton}}
+        {{/autoForm}}
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>
+
+<!--Show-->
+<template name="Simple_itemShow">
+    {{#if Template.subscriptionsReady}}
+        {{#with data}}
+            <dl class="dl-horizontal">
+                <dt>Id</dt>
+                <dd>{{_id}}</dd>
+                <dt>Name</dt>
+                <dd>{{name}}</dd>
+                <dt>Price</dt>
+                <dd>{{price}}</dd>
+                <dt>Photo</dt>
+                <dd>{{lightbox url=photoUrl title=name}}</dd>
+            </dl>
+        {{/with}}
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>

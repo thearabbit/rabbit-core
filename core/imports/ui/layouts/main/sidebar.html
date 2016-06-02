@@ -1,0 +1,30 @@
+<template name="_SidebarLayout">
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- search form -->
+            {{> _SidebarForm}}
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                {{> Template.dynamic template=sidebarMenu}}
+
+                <!--{{> Core_sidebarMenuTool}}-->
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+</template>
+
+<!--Sidebar for branch office-->
+<template name="_SidebarForm">
+    {{#if Template.subscriptionsReady}}
+        {{#autoForm schema=schema id="_SidebarForm" class="sidebar-form"}}
+            {{> afFieldInput name="branch"}}
+        {{/autoForm}}
+    {{else}}
+        <div class="text-center text-gray">
+            {{> iconLoading}}
+        </div>
+    {{/if}}
+</template>

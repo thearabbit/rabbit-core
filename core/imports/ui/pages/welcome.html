@@ -1,0 +1,90 @@
+<!--Index-->
+<template name="Core_welcome">
+    {{#if currentUser}}
+        {{#if role}}
+            {{> Core_welcomeConfig}}
+        {{else}}
+            {{> Core_welcomeAccessDenied}}
+        {{/if}}
+    {{else}}
+        {{> Core_welcomeLogin}}
+    {{/if}}
+</template>
+
+<!--Login-->
+<template name="Core_welcomeLogin">
+    {{#autoForm schema=schema id="Core_welcomeLogin"}}
+        <div class="form-group has-feedback{{#if afFieldIsInvalid name="username"}} has-error{{/if}}">
+            {{> afFieldInput name="username" placeholder=(_ "core.welcome.username")}}
+
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            {{#if afFieldIsInvalid name="username"}}
+                <span class="help-block">{{afFieldMessage name="username"}}</span>
+            {{/if}}
+        </div>
+
+        <div class="form-group has-feedback{{#if afFieldIsInvalid name="password"}} has-error{{/if}}">
+            {{> afFieldInput  type="password" name="password" placeholder=(_ "core.welcome.password")}}
+
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            {{#if afFieldIsInvalid name="password"}}
+                <span class="help-block">{{afFieldMessage name="password"}}</span>
+            {{/if}}
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">
+                    <span class="glyphicon glyphicon-log-in"></span> {{_ "core.welcome.login"}}
+                </button>
+            </div>
+        </div>
+    {{/autoForm}}
+</template>
+
+<!--Config-->
+<template name="Core_welcomeConfig">
+    {{#if Template.subscriptionsReady}}
+        {{#autoForm schema=schema id="Core_welcomeConfig"}}
+            <div class="row">
+                <div class="col-xs-12">
+                    {{> afQuickField name="module"}}
+                    {{> afQuickField name="branch"}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">
+                        <i class="fa fa-angle-double-right"></i> {{_ "form.btnGo"}}
+                    </button>
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-danger btn-block btn-flat js-sign-out">
+                        <span class="glyphicon glyphicon-log-out"></span> {{_ "form.btnLogout"}}
+                    </button>
+                </div>
+            </div>
+        {{/autoForm}}
+
+    {{else}}
+        <div class="text-center">
+            {{> iconLoading}}
+        </div>
+    {{/if}}
+</template>
+
+<!--Access Denied-->
+<template name="Core_welcomeAccessDenied">
+    <div class="alert alert-danger" role="alert">
+        <h2>[403]</h2>
+
+        <h4>
+            Sorry, you couldn't access this application.
+            Please contact administrator.
+        </h4>
+    </div>
+    <button type="button" class="btn btn-danger btn-block btn-flat js-sign-out">
+        <span class="glyphicon glyphicon-log-out"></span> {{_ "form.btnLogout"}}
+    </button>
+</template>

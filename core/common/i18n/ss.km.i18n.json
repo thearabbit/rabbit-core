@@ -1,0 +1,71 @@
+{
+  "simpleschema": {
+    "messages": {
+      "required": "[label] ត្រូវបានទាមទារ",
+      "minString": "[label] ត្រូវតែមានយ៉ាងហោចណាស់ [min] តួអក្សរ",
+      "maxString": "[label] មិនអាចលើសពី [max] តួអក្សរ",
+      "minNumber": "[label] ត្រូវតែមានយ៉ាងហោចណាស់ [min]",
+      "maxNumber": "[label] មិនអាចលើសពី [max]",
+      "minNumberExclusive": "[label] ត្រូវតែធំជាង [min]",
+      "maxNumberExclusive": "[label] ត្រូវតែតិចជាង [max]",
+      "minDate": "[label] ត្រូវតែមាននៅលើ ឬបន្ទាប់ពី [min]",
+      "maxDate": "[label] មិនអាចត្រូវបានបន្ទាប់ពី [max]",
+      "badDate": "[label] គឺមិនមែនជាកាលបរិច្ឆេទត្រឹមត្រូវ",
+      "minCount": "អ្នកត្រូវតែបញ្ជាក់តម្លៃយ៉ាងហោចណាស់ [minCount]",
+      "maxCount": "អ្នកមិនអាចបញ្ជាក់តម្លៃច្រើនជាង [maxCount]",
+      "noDecimal": "[label] ត្រូវតែជាចំនួនគត់",
+      "notAllowed": "[value] គឺមិនមែនជាតម្លៃដែលត្រូវបានអនុញ្ញាត",
+      "expectedString": "[label] ត្រូវតែជាខ្សែអក្សរ",
+      "expectedNumber": "[label] ត្រូវតែជាលេខ",
+      "expectedBoolean": "[label] ត្រូវតែជាចំនួនពិត ឬមិនពិត",
+      "expectedArray": "[label] ត្រូវតែជា Array",
+      "expectedObject": "[label] ត្រូវតែជា object",
+      "expectedConstructor": "[label] ត្រូវតែជា [type]",
+      "keyNotInSchema": "[key] មិនត្រូវបានអនុញ្ញាតដោយ Schema",
+      "notUnique": "[label] ត្រូវតែមានតែមួយគត់",
+      "regEx": {
+        "0": {
+          "msg": "[label] បរាជ័យសុពលភាព regular expression"
+        },
+        "1": {
+          "exp": "SimpleSchema.RegEx.Email",
+          "msg": "[label] ត្រូវតែជាអាសយដ្ឋានអ៊ីមែល"
+        },
+        "2": {
+          "exp": "SimpleSchema.RegEx.WeakEmail",
+          "msg": "[label] ត្រូវតែជាអាសយដ្ឋានអ៊ីមែល"
+        },
+        "3": {
+          "exp": "SimpleSchema.RegEx.Domain",
+          "msg": "[label] ត្រូវតែជាអាសយដ្ឋានគេហទំព័រ"
+        },
+        "4": {
+          "exp": "SimpleSchema.RegEx.WeakDomain",
+          "msg": "[label] ត្រូវតែជាអាសយដ្ឋានគេហទំព័រ"
+        },
+        "5": {
+          "exp": "SimpleSchema.RegEx.IP",
+          "msg": "[label] ត្រូវតែជាអាសយដ្ឋាន IPv4 ឬ IPv6"
+        },
+        "6": {
+          "exp": "SimpleSchema.RegEx.IPv4",
+          "msg": "[label] ត្រូវតែជាអាសយដ្ឋាន IPv4"
+        },
+        "7": {
+          "exp": "SimpleSchema.RegEx.IPv6",
+          "msg": "[label] ត្រូវតែជាអាសយដ្ឋាន IPv6"
+        },
+        "8": {
+          "exp": "SimpleSchema.RegEx.Url",
+          "msg": "[label] ត្រូវតែជា URL"
+        },
+        "9": {
+          "exp": "SimpleSchema.RegEx.Id",
+          "msg": "[label] ត្រូវតែជាអក្សរ លេខ"
+        }
+      },
+      // Core
+      "passwordMismatch": "[label] មិនត្រូវបានផ្ទៀងផ្ទាត់"
+    }
+  }
+}
