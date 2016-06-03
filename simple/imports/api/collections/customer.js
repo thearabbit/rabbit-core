@@ -4,6 +4,7 @@ import {AutoForm} from 'meteor/aldeed:autoform';
 import {moment} from 'meteor/momentjs:moment';
 
 // Lib
+import {__} from '../../../../core/common/libs/tapi18n-callback-helper.js';
 import {SelectOpts} from '../../ui/libs/select-opts.js';
 
 export const Customer = new Mongo.Collection("simple_customer");
@@ -11,11 +12,11 @@ export const Customer = new Mongo.Collection("simple_customer");
 Customer.schema = new SimpleSchema({
     name: {
         type: String,
-        label: "Name"
+        label: __('simple.customer.nameLbl')
     },
     gender: {
         type: String,
-        label: "Gender",
+        label: __('simple.customer.genderLbl'),
         autoform: {
             type: "select2",
             options: function () {
@@ -25,7 +26,7 @@ Customer.schema = new SimpleSchema({
     },
     dob: {
         type: Date,
-        label: "Date of Birth",
+        label: __('simple.customer.dobLbl'),
         defaultValue: moment().toDate(),
         autoform: {
             afFieldInput: {
@@ -40,15 +41,15 @@ Customer.schema = new SimpleSchema({
     },
     address: {
         type: String,
-        label: "Address"
+        label: __('simple.customer.addressLbl')
     },
     telephone: {
         type: String,
-        label: "Telephone"
+        label: __('simple.customer.telephoneLbl')
     },
     email: {
         type: String,
-        label: "Email",
+        label: __('simple.customer.emailLbl'),
         regEx: SimpleSchema.RegEx.Email,
         optional: true
     },

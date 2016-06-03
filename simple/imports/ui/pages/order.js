@@ -15,6 +15,8 @@ import 'meteor/tap:i18n-ui';
 import {createNewAlertify} from '../../../../core/client/libs/create-new-alertify.js';
 import {renderTemplate} from '../../../../core/client/libs/render-template.js';
 import {destroyAction} from '../../../../core/client/libs/destroy-action.js';
+import {displaySuccess, displayError} from '../../../../core/client/libs/display-alert.js';
+import {__} from '../../../../core/common/libs/tapi18n-callback-helper.js';
 
 // Component
 import '../../../../core/client/components/loading.js';
@@ -59,21 +61,21 @@ indexTmpl.helpers({
 
 indexTmpl.events({
     'click .js-create' (event, instance) {
-        alertify.order(fa('plus', 'Order'), renderTemplate(newTmpl));
+        alertify.order(fa('plus', TAPi18n.__('simple.order.title')), renderTemplate(newTmpl));
     },
     'click .js-update' (event, instance) {
-        alertify.order(fa('pencil', 'Order'), renderTemplate(editTmpl, this));
+        alertify.order(fa('pencil', TAPi18n.__('simple.order.title')), renderTemplate(editTmpl, this));
     },
     'click .js-destroy' (event, instance) {
         let data = this;
         destroyAction(
             Order,
             {_id: data._id},
-            {title: 'Order', item: data._id}
+            {title: TAPi18n.__('simple.order.title'), item: data._id}
         );
     },
     'click .js-display' (event, instance) {
-        alertify.orderShow(fa('eye', 'Order'), renderTemplate(showTmpl, this));
+        alertify.orderShow(fa('eye', TAPi18n.__('simple.order.title')), renderTemplate(showTmpl, this));
     },
     'click .js-invoice' (event, instance) {
         let params = {};
@@ -182,10 +184,10 @@ let hooksObject = {
 
         alertify.order().close();
         // }
-        sAlert.success('Success');
+        displaySuccess();
     },
     onError (formType, error) {
-        sAlert.error(error.message);
+        displayError(error.message);
     }
 };
 

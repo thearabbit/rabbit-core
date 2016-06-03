@@ -5,6 +5,9 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {AutoForm} from 'meteor/aldeed:autoform';
 import {moment} from 'meteor/momentjs:moment';
 
+// Lib
+import {__} from '../../../../core/common/libs/tapi18n-callback-helper.js';
+
 // Method
 import {itemInfo} from '../../../common/methods/item-info.js';
 
@@ -14,7 +17,7 @@ let defaultPrice = new ReactiveVar(0);
 export const ItemsSchema = new SimpleSchema({
     tmpId: {
         type: String,
-        label: 'Name',
+        label: __('simple.order.itemLbl'),
         autoform: {
             type: 'universe-select',
             afFieldInput: {
@@ -25,7 +28,7 @@ export const ItemsSchema = new SimpleSchema({
     },
     tmpQty: {
         type: Number,
-        label: 'Qty',
+        label: __('simple.order.itemQtyLbl'),
         min: 1,
         autoform: {
             type: 'inputmask',
@@ -36,7 +39,7 @@ export const ItemsSchema = new SimpleSchema({
     },
     tmpPrice: {
         type: Number,
-        label: 'Price',
+        label: __('simple.order.itemPriceLbl'),
         decimal: true,
         defaultValue: function () {
             let id = AutoForm.getFieldValue('tmpId');
@@ -64,7 +67,7 @@ export const ItemsSchema = new SimpleSchema({
     },
     tmpAmount: {
         type: Number,
-        label: 'Amount',
+        label: __('simple.order.itemAmountLbl'),
         decimal: true,
         autoform: {
             type: 'inputmask',

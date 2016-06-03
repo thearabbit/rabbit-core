@@ -6,6 +6,9 @@ import 'meteor/arillo:flow-router-helpers';
 import 'meteor/zimme:active-route';
 import 'meteor/theara:flow-router-breadcrumb';
 
+// Lib
+import {__} from '../../core/common/libs/tapi18n-callback-helper.js';
+
 // Layout
 import {Layout} from '../../core/client/libs/render-layout.js';
 import '../../core/imports/ui/layouts/report/index.html';
@@ -24,14 +27,14 @@ let SimpleRoutes = FlowRouter.group({
 import '../imports/ui/reports/customer.js';
 SimpleRoutes.route('/customer-report', {
     name: 'simple.customerReport',
-    title: 'Customer Report',
+    title: __('simple.customerReport.title'),
     action: function (params, queryParams) {
         Layout.main('Simple_customerReport');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: 'Customer Report',
+        title: __('simple.customerReport.title'),
         icon: 'users',
         parent: 'simple.home'
     }
@@ -39,7 +42,7 @@ SimpleRoutes.route('/customer-report', {
 
 SimpleRoutes.route('/customer-report-gen', {
     name: 'simple.customerReportGen',
-    title: "Customer Report",
+    title: __('simple.customerReport.title'),
     action: function (params, queryParams) {
         Layout.report('Simple_customerReportGen');
     }
@@ -49,14 +52,14 @@ SimpleRoutes.route('/customer-report-gen', {
 import '../imports/ui/reports/order.js';
 SimpleRoutes.route('/order-report', {
     name: 'simple.orderReport',
-    title: 'Order Report',
+    title: __('simple.orderReport.title'),
     action: function (params, queryParams) {
         Layout.main('Simple_orderReport');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: 'Order Report',
+        title: __('simple.orderReport.title'),
         icon: 'cart-plus',
         parent: 'simple.home'
     }
@@ -64,7 +67,7 @@ SimpleRoutes.route('/order-report', {
 
 SimpleRoutes.route('/order-report-gen', {
     name: 'simple.orderReportGen',
-    title: "Order Report",
+    title: __('simple.orderReport.title'),
     action: function (params, queryParams) {
         Layout.report('Simple_orderReportGen');
     }

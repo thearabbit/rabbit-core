@@ -6,6 +6,9 @@ import 'meteor/arillo:flow-router-helpers';
 import 'meteor/zimme:active-route';
 import 'meteor/theara:flow-router-breadcrumb';
 
+// Lib
+import {__} from '../../core/common/libs/tapi18n-callback-helper.js';
+
 // Layout
 import {Layout} from '../../core/client/libs/render-layout.js';
 import '../../core/imports/ui/layouts/login';
@@ -25,14 +28,14 @@ let SimpleRoutes = FlowRouter.group({
 import '../imports/ui/pages/home.js';
 SimpleRoutes.route('/home', {
     name: 'simple.home',
-    title: 'Home',
+    title: __('simple.home.title'),
     action(param, queryParam){
         Layout.main('Simple_home');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: 'Home',
+        title: __('simple.home.title'),
         icon: 'home',
         parent: 'core.welcome'
     }
@@ -42,14 +45,14 @@ SimpleRoutes.route('/home', {
 import '../imports/ui/pages/item.js';
 SimpleRoutes.route('/item', {
     name: 'simple.item',
-    title: 'Item',
+    title: __('simple.item.title'),
     action: function (params, queryParams) {
         Layout.main('Simple_item');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: 'Item',
+        title: __('simple.item.title'),
         icon: 'product-hunt',
         parent: 'simple.home'
     }
@@ -59,14 +62,14 @@ SimpleRoutes.route('/item', {
 import '../imports/ui/pages/customer.js';
 SimpleRoutes.route('/customer', {
     name: 'simple.customer',
-    title: 'Customer',
+    title: __('simple.customer.title'),
     action: function (params, queryParams) {
         Layout.main('Simple_customer');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: 'Customer',
+        title: __('simple.customer.title'),
         icon: 'users',
         parent: 'simple.home'
     }
@@ -76,14 +79,14 @@ SimpleRoutes.route('/customer', {
 import '../imports/ui/pages/order.js';
 SimpleRoutes.route('/order', {
     name: 'simple.order',
-    title: 'order',
+    title: __('simple.order.title'),
     action: function (params, queryParams) {
         Layout.main('Simple_order');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: 'order',
+        title: __('simple.order.title'),
         icon: 'cart-plus',
         parent: 'simple.home'
     }

@@ -5,11 +5,14 @@ import {alertify} from 'meteor/ovcharik:alertifyjs';
 import {sAlert} from 'meteor/juliancwirko:s-alert';
 import {fa} from 'meteor/theara:fa-helpers';
 import {lightbox} from 'meteor/theara:lightbox-helpers';
+import {TAPi18n} from 'meteor/tap:i18n';
 
 // Lib
 import {createNewAlertify} from '../../../../core/client/libs/create-new-alertify.js';
 import {renderTemplate} from '../../../../core/client/libs/render-template.js';
 import {destroyAction} from '../../../../core/client/libs/destroy-action.js';
+import {displaySuccess, displayError} from '../../../../core/client/libs/display-alert.js';
+import {__} from '../../../../core/common/libs/tapi18n-callback-helper.js';
 
 // Component
 import '../../../../core/client/components/loading.js';
@@ -51,20 +54,20 @@ indexTmpl.helpers({
 
 indexTmpl.events({
     'click .js-create' (event, instance) {
-        alertify.customer(fa('plus', 'Customer'), renderTemplate(newTmpl));
+        alertify.customer(fa('plus', TAPi18n.__('simple.customer.title')), renderTemplate(newTmpl));
     },
     'click .js-update' (event, instance) {
-        alertify.customer(fa('pencil', 'Customer'), renderTemplate(editTmpl, this));
+        alertify.customer(fa('pencil', TAPi18n.__('simple.customer.title')), renderTemplate(editTmpl, this));
     },
     'click .js-destroy' (event, instance) {
         destroyAction(
             Customer,
             {_id: this._id},
-            {title: 'Customer', customer: this._id}
+            {title: TAPi18n.__('simple.customer.title'), customer: this._id}
         );
     },
     'click .js-display' (event, instance) {
-        alertify.customerShow(fa('eye', 'Customer'), renderTemplate(showTmpl, this));
+        alertify.customerShow(fa('eye', TAPi18n.__('simple.customer.title')), renderTemplate(showTmpl, this));
     }
 });
 
@@ -112,10 +115,10 @@ let hooksObject = {
         if (formType == 'update') {
             alertify.customer().close();
         }
-        sAlert.success('Success');
+        displaySuccess();
     },
     onError (formType, error) {
-        sAlert.error(error.message);
+        displayError(error.message);
     }
 };
 

@@ -2,9 +2,47 @@
   "simple": {
     "sidebarMenu": {
       "home": "ទំព័រដើម",
-      "item": "ទំនិញ",
+      "item": "មុខទំនិញ",
       "customer": "អតិថិជន",
-      "order": "បញ្ជាទិញ"
+      "order": "ទិញ"
+    },
+    "home": {
+      "title": "ទំព័រដើម",
+      "info": "Simple Module សូមស្វាគមន៍!"
+    },
+    "item": {
+      "title": "ទំនិញ",
+      "idLbl": "លេខកូដ",
+      "nameLbl": "ឈ្មោះ",
+      "priceLbl": "តម្លៃ",
+      "photoLbl": "រូបភាព"
+    },
+    "customer": {
+      "title": "អតិថិជន",
+      "idLbl": "លេខកូដ",
+      "nameLbl": "ឈ្មោះ",
+      "genderLbl": "ភេទ",
+      "dobLbl": "ថ្ងៃខែឆ្នាំកំណើត",
+      "addressLbl": "អាសយដ្ឋាន",
+      "telephoneLbl": "ទូរស័ព្ទ",
+      "emailLbl": "អ៊ីម៉ែល"
+    },
+    "order": {
+      "title": "ទិញ",
+      "itemLbl": "ទំនិញ",
+      "itemQtyLbl": "បរិមាណ",
+      "itemPriceLbl": "តម្លៃ",
+      "itemAmountLbl": "ចំនួន",
+      "dateLbl": "កាលបរិច្ឆេទទិញ",
+      "customerLbl": "អតិថិជន",
+      "desLbl": "បរិយាយ",
+      "totalLbl": "សរុប"
+    },
+    "customerReport": {
+      "title": "របាយការណ៍អតិថិជន"
+    },
+    "orderReport": {
+      "title": "របាយការណ៍ទិញ"
     }
   }
 }

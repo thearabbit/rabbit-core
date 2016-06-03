@@ -5,6 +5,44 @@
       "item": "Item",
       "customer": "Customer",
       "order": "Order"
+    },
+    "home": {
+      "title": "Home",
+      "info": "Welcome to Core Module!"
+    },
+    "item": {
+      "title": "Item",
+      "idLbl": "ID",
+      "nameLbl": "Name",
+      "priceLbl": "Price",
+      "photoLbl": "Photo"
+    },
+    "customer": {
+      "title": "Customer",
+      "idLbl": "ID",
+      "nameLbl": "Name",
+      "genderLbl": "genderLbl",
+      "dobLbl": "Date of birth",
+      "addressLbl": "Address",
+      "telephoneLbl": "Telephone",
+      "emailLbl": "Email"
+    },
+    "order": {
+      "title": "Order",
+      "itemLbl": "Item",
+      "itemQtyLbl": "Qty",
+      "itemPriceLbl": "Price",
+      "itemAmountLbl": "Amount",
+      "dateLbl": "Order date",
+      "customerLbl": "Customer",
+      "desLbl": "Description",
+      "totalLbl": "Total"
+    },
+    "customerReport": {
+      "title": "Customer Report"
+    },
+    "orderReport": {
+      "title": "Customer Report"
     }
   }
 }

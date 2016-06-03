@@ -25,12 +25,12 @@
         <li class="header"><i class="fa fa-file-o"></i> REPORT</li>
         <li class="{{isActiveRoute name='simple.customerReport'}}">
             <a href="{{pathFor 'simple.customerReport'}}">
-                <i class="fa fa-circle-o"></i> <span>Customer</span>
+                <i class="fa fa-circle-o"></i> <span>{{_ "simple.sidebarMenu.customer"}}</span>
             </a>
         </li>
         <li class="{{isActiveRoute name='simple.orderReport'}}">
             <a href="{{pathFor 'simple.orderReport'}}">
-                <i class="fa fa-circle-o"></i> <span>Order</span>
+                <i class="fa fa-circle-o"></i> <span>{{_ "simple.sidebarMenu.order"}}</span>
             </a>
         </li>
     {{/if}}
@@ -40,7 +40,7 @@
         <li class="header"><i class="fa fa-cogs"></i> SETTING</li>
         <li class="{{isActiveRoute name='core.exchange'}}">
             <a href="{{pathFor 'core.exchange'}}">
-                <i class="fa fa-circle-o"></i> <span>Exchange</span>
+                <i class="fa fa-circle-o"></i> <span>{{_ "core.sidebarMenu.exchange"}}</span>
             </a>
         </li>
         <li class="{{isActiveRoute name='simple.item'}}">

@@ -5,11 +5,14 @@ import {alertify} from 'meteor/ovcharik:alertifyjs';
 import {sAlert} from 'meteor/juliancwirko:s-alert';
 import {fa} from 'meteor/theara:fa-helpers';
 import {lightbox} from 'meteor/theara:lightbox-helpers';
+import {TAPi18n} from 'meteor/tap:i18n';
 
 // Lib
 import {createNewAlertify} from '../../../../core/client/libs/create-new-alertify.js';
 import {renderTemplate} from '../../../../core/client/libs/render-template.js';
 import {destroyAction} from '../../../../core/client/libs/destroy-action.js';
+import {displaySuccess, displayError} from '../../../../core/client/libs/display-alert.js';
+import {__} from '../../../../core/common/libs/tapi18n-callback-helper.js';
 
 // Component
 import '../../../../core/client/components/loading.js';
@@ -47,20 +50,20 @@ indexTmpl.helpers({
 
 indexTmpl.events({
     'click .js-create' (event, instance) {
-        alertify.item(fa('plus', 'Item'), renderTemplate(newTmpl));
+        alertify.item(fa('plus', TAPi18n.__('simple.item.title')), renderTemplate(newTmpl));
     },
     'click .js-update' (event, instance) {
-        alertify.item(fa('pencil', 'Item'), renderTemplate(editTmpl, this));
+        alertify.item(fa('pencil', TAPi18n.__('simple.item.title')), renderTemplate(editTmpl, this));
     },
     'click .js-destroy' (event, instance) {
         destroyAction(
             Item,
             {_id: this._id},
-            {title: 'Item', item: this._id}
+            {title: TAPi18n.__('simple.item.title'), item: this._id}
         );
     },
     'click .js-display' (event, instance) {
-        alertify.item(fa('eye', 'Item'), renderTemplate(showTmpl, this));
+        alertify.item(fa('eye', TAPi18n.__('simple.item.title')), renderTemplate(showTmpl, this));
     }
 });
 
@@ -116,10 +119,10 @@ let hooksObject = {
         if (formType == 'update') {
             alertify.item().close();
         }
-        sAlert.success('Success');
+        displaySuccess();
     },
     onError (formType, error) {
-        sAlert.error(error.message);
+        displayError(error.message);
     }
 };
 

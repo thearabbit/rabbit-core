@@ -5,6 +5,7 @@ import {AutoForm} from 'meteor/aldeed:autoform';
 import {moment} from 'meteor/momentjs:moment';
 
 // Lib
+import {__} from '../../../../core/common/libs/tapi18n-callback-helper.js';
 import {SelectOpts} from '../../ui/libs/select-opts.js';
 
 export const Order = new Mongo.Collection("simple_order");
@@ -13,21 +14,21 @@ export const Order = new Mongo.Collection("simple_order");
 let itemsSchema = new SimpleSchema({
     itemId: {
         type: String,
-        label: 'Name'
+        label: __('simple.order.itemLbl')
     },
     qty: {
         type: Number,
-        label: 'Qty',
+        label: __('simple.order.itemQtyLbl'),
         min: 1
     },
     price: {
         type: Number,
-        label: 'Price',
+        label: __('simple.order.itemPriceLbl'),
         decimal: true
     },
     amount: {
         type: Number,
-        label: 'Amount',
+        label: __('simple.order.itemAmountLbl'),
         decimal: true
     }
 });
@@ -36,6 +37,7 @@ let itemsSchema = new SimpleSchema({
 Order.schema = new SimpleSchema({
     orderDate: {
         type: Date,
+        label: __('simple.order.dateLbl'),
         defaultValue: moment().toDate(),
         autoform: {
             afFieldInput: {
@@ -49,6 +51,7 @@ Order.schema = new SimpleSchema({
     },
     customerId: {
         type: String,
+        label: __('simple.order.customerLbl'),
         autoform: {
             type: 'universe-select',
             afFieldInput: {
@@ -65,7 +68,7 @@ Order.schema = new SimpleSchema({
     },
     des: {
         type: String,
-        label: "Description",
+        label: __('simple.order.desLbl'),
         autoform: {
             afFieldInput: {
                 type: 'summernote',
@@ -84,10 +87,12 @@ Order.schema = new SimpleSchema({
         }
     },
     items: {
-        type: [itemsSchema]
+        type: [itemsSchema],
+        label: __('simple.order.itemLbl')
     },
     total: {
         type: Number,
+        label: __('simple.order.totalLbl'),
         decimal: true,
         autoform: {
             type: 'inputmask',
