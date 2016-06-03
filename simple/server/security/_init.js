@@ -5,8 +5,8 @@ import {Roles} from 'meteor/alanning:roles';
 Security.defineMethod("Simple_ifSetting", {
     fetch: [],
     transform: null,
-    deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['setting'], 'Simple');
+    allow (type, arg, userId) {
+        return Roles.userIsInRole(userId, ['setting'], 'Simple');
     }
 });
 
@@ -14,24 +14,24 @@ Security.defineMethod("Simple_ifSetting", {
 Security.defineMethod("Simple_ifDataInsert", {
     fetch: [],
     transform: null,
-    deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['data-insert'], 'Simple');
+    allow (type, arg, userId) {
+        return Roles.userIsInRole(userId, ['data-insert'], 'Simple');
     }
 });
 
 Security.defineMethod("Simple_ifDataUpdate", {
     fetch: [],
     transform: null,
-    deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['data-update'], 'Simple');
+    allow (type, arg, userId) {
+        return Roles.userIsInRole(userId, ['data-update'], 'Simple');
     }
 });
 
 Security.defineMethod("Simple_ifDataRemove", {
     fetch: [],
     transform: null,
-    deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['data-remove'], 'Simple');
+    allow (type, arg, userId) {
+        return Roles.userIsInRole(userId, ['data-remove'], 'Simple');
     }
 });
 
@@ -39,7 +39,7 @@ Security.defineMethod("Simple_ifDataRemove", {
 Security.defineMethod("Simple_ifReporter", {
     fetch: [],
     transform: null,
-    deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['reporter'], 'Simple');
+    allow (type, arg, userId) {
+        return Roles.userIsInRole(userId, ['reporter'], 'Simple');
     }
 });

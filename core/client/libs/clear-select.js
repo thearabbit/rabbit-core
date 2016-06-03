@@ -1,5 +1,8 @@
+import {$} from 'meteor/jquery';
+import {_} from 'meteor/erasaur:meteor-lodash';
+
 // Select 2
-clearSelect2 = function (elements) {
+export const clearSelect2 = function (elements) {
     elements = _.isUndefined(elements) ? [] : (_.isArray(elements) ? elements : [elements]);
 
     if (_.isEmpty(elements)) {
@@ -9,7 +12,7 @@ clearSelect2 = function (elements) {
 
         //console.log('clear all select2');
     } else {
-        _.each(elements, function (element) {
+        _.forEach(elements, function (element) {
             element.select2('val', '');
         });
 
@@ -18,7 +21,7 @@ clearSelect2 = function (elements) {
 };
 
 // Selectize
-clearSelectize = function (elements) {
+export const clearSelectize = function (elements) {
     elements = _.isUndefined(elements) ? [] : (_.isArray(elements) ? elements : [elements]);
 
     if (_.isEmpty(elements)) {
@@ -28,7 +31,7 @@ clearSelectize = function (elements) {
 
         //console.log('clear all selectize');
     } else {
-        _.each(elements, function (element) {
+        _.forEach(elements, function (element) {
             element[0].selectize.clear(true);
 
             //console.log('clear selectize:' + element);

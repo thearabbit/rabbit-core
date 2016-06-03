@@ -34,8 +34,8 @@ Template._SidebarForm.helpers({
 });
 
 Template._SidebarForm.events({
-    'change [name="branch"]': function (e, t) {
-        let branch = e.target.value;
+    'change [name="branch"]': function (event, instance) {
+        let branch = event.target.value;
 
         // Change current branch office
         Session.setAuth('currentBranch', branch);

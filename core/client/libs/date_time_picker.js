@@ -1,4 +1,6 @@
-DateTimePicker = {
+import {_} from 'meteor/erasaur:meteor-lodash';
+
+export const DateTimePicker = {
     /*** dateTimePicker Package ***/
     date: function (elements, options) {
         elements = _.isArray(elements) ? elements : [elements];

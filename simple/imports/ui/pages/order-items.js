@@ -7,6 +7,7 @@ import {sAlert} from 'meteor/juliancwirko:s-alert';
 import {fa} from 'meteor/theara:fa-helpers';
 import {lightbox} from 'meteor/theara:lightbox-helpers';
 import {_} from 'meteor/erasaur:meteor-lodash';
+import {$} from 'meteor/jquery';
 import 'meteor/theara:template-states';
 
 // Lib

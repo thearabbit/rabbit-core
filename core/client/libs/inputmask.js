@@ -1,4 +1,6 @@
-Inputmask = {
+import {_} from 'meteor/erasaur:meteor-lodash';
+
+export const Inputmask = {
     currency: function (elements, options) {
         elements = _.isArray(elements) ? elements : [elements];
         options = _.isObject(options) ? options : {};
