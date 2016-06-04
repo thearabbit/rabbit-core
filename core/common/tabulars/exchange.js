@@ -7,7 +7,7 @@ import {_} from 'meteor/erasaur:meteor-lodash';
 import {TAPi18n} from 'meteor/tap:i18n';
 
 // Lib
-import {tabularOpts} from '../configs/tabular-opts.js';
+import {tabularOpts} from '../libs/tabular-opts.js';
 
 // Collection
 import {Exchange} from '../../imports/api/collections/exchange.js';

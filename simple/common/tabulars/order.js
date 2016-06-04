@@ -8,7 +8,7 @@ import {numeral} from 'meteor/numeral:numeral';
 import {lightbox} from 'meteor/theara:lightbox-helpers';
 
 // Lib
-import {tabularOpts} from '../../../core/common/configs/tabular-opts.js';
+import {tabularOpts} from '../../../core/common/libs/tabular-opts.js';
 
 // Collection
 import {Order} from '../../imports/api/collections/order.js';

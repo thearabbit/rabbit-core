@@ -6,7 +6,7 @@ import {moment} from 'meteor/momentjs:moment';
 import {_} from 'meteor/erasaur:meteor-lodash';
 
 // Lib
-import {tabularOpts} from '../configs/tabular-opts.js';
+import {tabularOpts} from '../libs/tabular-opts.js';
 
 // Collection
 import {Branch} from '../../imports/api/collections/branch.js';

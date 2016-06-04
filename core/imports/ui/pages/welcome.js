@@ -1,7 +1,6 @@
 import {Meteor} from  'meteor/meteor';
 import {Template} from  'meteor/templating';
 import {Session} from  'meteor/session';
-import {TemplateController} from  'meteor/space:template-controller';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {Roles} from  'meteor/alanning:roles';
 import {AutoForm} from 'meteor/aldeed:autoform';
@@ -13,7 +12,7 @@ import {Logout} from '../../../client/libs/logout.js';
 
 // Component
 import '../../../client/components/loading.js';
-import '../../../client/components/tabular-action.js';
+import '../../../client/components/column-action.js';
 import '../../../client/components/form-footer.js';
 
 // Schema
@@ -22,27 +21,28 @@ import {WelcomeSchema} from '../../api/collections/welcome-schema.js';
 // Page
 import './welcome.html';
 
+// Declare template
+var indexTmpl = Template.Core_welcome,
+    loginTmpl = Template.Core_welcomeLogin,
+    configTmpl = Template.Core_welcomeConfig,
+    accessDeniedTmpl = Template.Core_welcomeAccessDenied;
 
 // Index
-TemplateController('Core_welcome', {
-    helpers: {
-        role() {
-            let role = Roles.getGroupsForUser(Meteor.userId());
-            if (role.length > 0) {
-                return true;
-            }
-
-            return false;
+indexTmpl.helpers({
+    role() {
+        let role = Roles.getGroupsForUser(Meteor.userId());
+        if (role.length > 0) {
+            return true;
         }
+
+        return false;
     }
 });
 
 // Login
-TemplateController('Core_welcomeLogin', {
-    helpers: {
-        schema(){
-            return WelcomeSchema.login;
-        }
+loginTmpl.helpers({
+    schema(){
+        return WelcomeSchema.login;
     }
 });
 
@@ -80,7 +80,7 @@ AutoForm.hooks({
 });
 
 // Config
-Template.Core_welcomeConfig.onCreated(function () {
+configTmpl.onCreated(function () {
     this.autorun(() => {
         if (Meteor.user() && Meteor.user().rolesBranch) {
             let rolesBranch = Meteor.user().rolesBranch;
@@ -89,13 +89,13 @@ Template.Core_welcomeConfig.onCreated(function () {
     });
 });
 
-Template.Core_welcomeConfig.helpers({
+configTmpl.helpers({
     schema() {
         return WelcomeSchema.config;
     }
 });
 
-Template.Core_welcomeConfig.events({
+configTmpl.events({
     'click .js-sign-out': function (event, instance) {
         Logout();
     }
@@ -124,10 +124,9 @@ AutoForm.hooks({
     }
 });
 
-TemplateController('Core_welcomeAccessDenied', {
-    events: {
-        'click .js-sign-out': function (event, instance) {
-            Logout();
-        }
+// Access denied
+accessDeniedTmpl.events({
+    'click .js-sign-out': function (event, instance) {
+        Logout();
     }
 });

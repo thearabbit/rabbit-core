@@ -11,7 +11,7 @@ import {TAPi18n} from 'meteor/tap:i18n';
 
 // Component
 import '../../../client/components/loading.js';
-import '../../../client/components/tabular-action.js';
+import '../../../client/components/column-action.js';
 import '../../../client/components/form-footer.js';
 
 // Lib

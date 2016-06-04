@@ -1,4 +1,4 @@
 import {Template} from 'meteor/templating';
 
 // Page
-import './tabular-action.html';
+import './column-action.html';

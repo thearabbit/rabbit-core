@@ -16,7 +16,7 @@ import {__} from '../../../../core/common/libs/tapi18n-callback-helper.js';
 
 // Component
 import '../../../../core/client/components/loading.js';
-import '../../../../core/client/components/tabular-action.js';
+import '../../../../core/client/components/column-action.js';
 import '../../../../core/client/components/form-footer.js';
 
 // Collection

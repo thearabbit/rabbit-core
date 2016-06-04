@@ -1,5 +1,4 @@
 import {Template} from 'meteor/templating';
-import {TemplateController} from  'meteor/space:template-controller';
 import {AutoForm} from 'meteor/aldeed:autoform';
 import {Roles} from  'meteor/alanning:roles';
 import {alertify} from 'meteor/ovcharik:alertifyjs';

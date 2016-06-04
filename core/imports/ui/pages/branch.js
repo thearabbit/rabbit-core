@@ -8,7 +8,7 @@ import {TAPi18n} from 'meteor/tap:i18n';
 
 // Lib
 import '../../../client/components/loading.js';
-import '../../../client/components/tabular-action.js';
+import '../../../client/components/column-action.js';
 import '../../../client/components/form-footer.js';
 import {createNewAlertify} from '../../../client/libs/create-new-alertify.js';
 import {renderTemplate} from '../../../client/libs/render-template.js';

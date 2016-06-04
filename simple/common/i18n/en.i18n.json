@@ -21,7 +21,7 @@
       "title": "Customer",
       "idLbl": "ID",
       "nameLbl": "Name",
-      "genderLbl": "genderLbl",
+      "genderLbl": "Gender",
       "dobLbl": "Date of birth",
       "addressLbl": "Address",
       "telephoneLbl": "Telephone",

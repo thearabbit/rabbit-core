@@ -1,19 +1,29 @@
 <!--Index-->
 <template name="Simple_customer">
     <p>
-        <button type="button" class="btn btn-primary js-create"><i class="fa fa-plus"></i> {{_ "action.addNew"}}</button>
+        <button type="button" class="btn btn-primary js-create"><i class="fa fa-plus"></i> {{_ "action.addNew"}}
+        </button>
     </p>
 
-    {{> tabular table=tabularTable selector=selector class="table table-striped table-bordered table-condensed"}}
+    <!--Tabular-->
+    <!--{{> tabular table=tabularTable selector=selector class="table table-striped table-bordered table-condensed"}}-->
+
+    <!--Reactive Table-->
+    <div class="row">
+        <div class="col-md-6">
+            {{> reactiveTableFilter id="simple.customerFilter" label="Filter"}}
+        </div>
+    </div>
+    {{> reactiveTable settings=tableSettings}}
 </template>
 
 <!--Action-->
 <template name="Simple_customerAction">
-    {{#tabularAction}}
+    {{#columnAction align="right"}}
         <li><a href="#" class="js-update"><i class="fa fa-pencil"></i> {{_ "action.edit"}}</a></li>
         <li><a href="#" class="js-destroy"><i class="fa fa-remove"></i> {{_ "action.delete"}}</a></li>
         <li><a href="#" class="js-display"><i class="fa fa-eye"></i> {{_ "action.show"}}</a></li>
-    {{/tabularAction}}
+    {{/columnAction}}
 </template>
 
 <!--Insert-->
