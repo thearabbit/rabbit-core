@@ -23,19 +23,19 @@
 
     <div class="row">
         <div class="col-sm-4">
-            Name
+            <strong>Name</strong>
         </div>
         <div class="col-sm-2">
-            Qty
+            <strong>Qty</strong>
         </div>
         <div class="col-sm-2">
-            Price
+            <strong>Price</strong>
         </div>
-        <div class="col-sm-3">
-            Amount
+        <div class="col-sm-2">
+            <strong>Amount</strong>
         </div>
-        <div class="col-sm-1">
-            Action
+        <div class="col-sm-2">
+            <strong>Action</strong>
         </div>
     </div>
     {{#each item in itemsList}}
@@ -58,22 +58,43 @@
         <!--</td>-->
         <!--</tr>-->
 
+        <!--<div class="row item">-->
+        <!--<div class="col-sm-4">-->
+        <!--{{> afQuickField name=(keyArgs @index "itemId") value=item.itemId class="input-sm js-itemId" readonly="true" label=false}}-->
+        <!--</div>-->
+        <!--<div class="col-sm-2">-->
+        <!--{{> afQuickField name=(keyArgs @index "qty") value=item.qty class="input-sm js-qty" label=false}}-->
+        <!--</div>-->
+        <!--<div class="col-sm-2">-->
+        <!--{{> afQuickField name=(keyArgs @index "price") value=item.price class="input-sm js-price" label=false}}-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+        <!--{{> afQuickField name=(keyArgs @index "amount") value=item.amount class="input-sm js-amount" readonly="true" label=false}}-->
+        <!--</div>-->
+        <!--<div class="col-sm-1">-->
+        <!--<ul class="list-inline">-->
+        <!--&lt;!&ndash;<li><a href="#" class="js-update-item"><i class="fa fa-pencil"></i></a></li>&ndash;&gt;-->
+        <!--<li><a href="#" class="js-destroy-item"><i class="fa fa-remove text-red"></i></a></li>-->
+        <!--</ul>-->
+        <!--&lt;!&ndash;<button type="button" class="btn btn-danger js-destroy-item">-</button>&ndash;&gt;-->
+        <!--</div>-->
+        <!--</div>-->
         <div class="row item">
-            <div class="col-sm-4">
-                {{> afQuickField name=(keyArgs @index "itemId") value=item.itemId class="input-sm js-itemId" readonly="true" label=false}}
+            <div class="col-sm-4 js-itemId">
+                {{item.itemId}}
             </div>
             <div class="col-sm-2">
-                {{> afQuickField name=(keyArgs @index "qty") value=item.qty class="input-sm js-qty" label=false}}
+                {{item.qty}}
             </div>
             <div class="col-sm-2">
-                {{> afQuickField name=(keyArgs @index "price") value=item.price class="input-sm js-price" label=false}}
+                {{numFormat item.price "0,0.00"}}
             </div>
-            <div class="col-sm-3">
-                {{> afQuickField name=(keyArgs @index "amount") value=item.amount class="input-sm js-amount" readonly="true" label=false}}
+            <div class="col-sm-2">
+                {{numFormat item.amount "0,0.00"}}
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <ul class="list-inline">
-                    <!--<li><a href="#" class="js-update-item"><i class="fa fa-pencil"></i></a></li>-->
+                    <li><a href="#" class="js-update-item"><i class="fa fa-pencil"></i></a></li>
                     <li><a href="#" class="js-destroy-item"><i class="fa fa-remove text-red"></i></a></li>
                 </ul>
                 <!--<button type="button" class="btn btn-danger js-destroy-item">-</button>-->
@@ -85,9 +106,23 @@
         <div class="col-sm-8">
             <div class="pull-right">Total:</div>
         </div>
-        <div class="col-sm-3">{{amount}}
+        <div class="col-sm-4">{{amount}}
             {{> afQuickField name="total" value=total label=false readonly="true"}}
         </div>
-        <div class="col-sm-1"></div>
     </div>
+</template>
+
+<template name="Simple_orderItemsEdit">
+    {{#autoForm schema=schema id="Simple_orderItemsEdit"}}
+        <div class="row">
+            <div class="col-md-12">
+                {{> afQuickField name="itemId" value=data.itemId readonly="true"}}
+                {{> afQuickField name="qty" value=data.qty}}
+                {{> afQuickField name="price" value=data.price}}
+                {{> afQuickField name="amount" value=amount readonly="true"}}
+            </div>
+        </div>
+
+        {{> formFooterWithButton}}
+    {{/autoForm}}
 </template>

@@ -11,7 +11,7 @@ import {SelectOpts} from '../../ui/libs/select-opts.js';
 export const Order = new Mongo.Collection("simple_order");
 
 // Items sub schema
-let itemsSchema = new SimpleSchema({
+Order.itemsSchema = new SimpleSchema({
     itemId: {
         type: String,
         label: __('simple.order.itemLbl')
@@ -24,12 +24,24 @@ let itemsSchema = new SimpleSchema({
     price: {
         type: Number,
         label: __('simple.order.itemPriceLbl'),
-        decimal: true
+        decimal: true,
+        autoform: {
+            type: 'inputmask',
+            inputmaskOptions: function () {
+                return inputmaskOptions.currency();
+            }
+        }
     },
     amount: {
         type: Number,
         label: __('simple.order.itemAmountLbl'),
-        decimal: true
+        decimal: true,
+        autoform: {
+            type: 'inputmask',
+            inputmaskOptions: function () {
+                return inputmaskOptions.currency();
+            }
+        }
     }
 });
 
@@ -87,7 +99,7 @@ Order.schema = new SimpleSchema({
         }
     },
     items: {
-        type: [itemsSchema],
+        type: [Order.itemsSchema],
         label: __('simple.order.itemLbl')
     },
     total: {

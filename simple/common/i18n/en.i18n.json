@@ -29,6 +29,7 @@
     },
     "order": {
       "title": "Order",
+      "invoiceAction": "invoice",
       "itemLbl": "Item",
       "itemQtyLbl": "Qty",
       "itemPriceLbl": "Price",

@@ -1,3 +1,4 @@
+import {ReactiveVar} from 'meteor/reactive-var';
 import {ReactiveDict} from 'meteor/reactive-dict';
 import {Template} from 'meteor/templating';
 import {AutoForm} from 'meteor/aldeed:autoform';
@@ -8,12 +9,14 @@ import {fa} from 'meteor/theara:fa-helpers';
 import {lightbox} from 'meteor/theara:lightbox-helpers';
 import {_} from 'meteor/erasaur:meteor-lodash';
 import {$} from 'meteor/jquery';
+import {TAPi18n} from 'meteor/tap:i18n';
 import 'meteor/theara:template-states';
 
 // Lib
 import {createNewAlertify} from '../../../../core/client/libs/create-new-alertify.js';
 import {renderTemplate} from '../../../../core/client/libs/render-template.js';
 import {destroyAction} from '../../../../core/client/libs/destroy-action.js';
+import {displaySuccess, displayError} from '../../../../core/client/libs/display-alert.js';
 
 // Component
 import '../../../../core/client/components/loading.js';
@@ -22,14 +25,16 @@ import '../../../../core/client/components/form-footer.js';
 
 // Collection
 import {ItemsSchema} from '../../api/collections/order-items.js';
+import {Order} from '../../api/collections/order.js';
 
 // Declare template
-var itemsTmpl = Template.Simple_orderItems;
+var itemsTmpl = Template.Simple_orderItems,
+    editItemsTmpl = Template.Simple_orderItemsEdit;
 
 
 // Local collection
 // let itemsCollection = new Mongo.Collection(null);
-let itemsCollection;
+var itemsCollection;
 
 // Page
 import './order-items.html';
@@ -41,7 +46,7 @@ itemsTmpl.onCreated(function () {
     // Data context
     let data = Template.currentData();
     itemsCollection = data.itemsCollection;
-    
+
     this.myState = new ReactiveDict();
     this.myState.setDefault({
         qty: 0,
@@ -137,21 +142,6 @@ itemsTmpl.events({
             });
         }
     },
-    // 'click .js-update-item': function (event, instance) {
-    //     let thisObj = $(event.currentTarget);
-    //     let name = thisObj.parents('tr.row.item').find('.js-itemId').val();
-    //     let qty = thisObj.parents('tr.row.item').find('.js-qty').val();
-    //     let price = thisObj.parents('tr.row.item').find('.js-price').val();
-    //     let amount = thisObj.parents('tr.row.item').find('.js-amount').val();
-    //     let data = {
-    //         name: name,
-    //         qty: qty,
-    //         price: price,
-    //         amount: amount
-    //     };
-    //
-    //     alertify.item(fa('pencil', 'Item'), renderTemplate(editItemsTmpl, data));
-    // },
     // 'click .js-plus-item': function (event, instance) {
     //     let thisObj = $(event.currentTarget);
     //     let parents = thisObj.parents('tr.item-list');
@@ -191,34 +181,99 @@ itemsTmpl.events({
     //         );
     //     }
     // },
-    // 'click .js-update-item': function (event, instance) {
-    //     let thisObj = $(event.currentTarget);
-    //     let parents = thisObj.parents('tr.item-list');
-    //     let name = parents.find('.js-itemId').html();
-    //
-    //     alertify.item(fa('pencil', 'Item'), renderTemplate(editItemsTmpl, {name: name}));
-    // },
+    'click .js-update-item': function (event, instance) {
+        let thisObj = $(event.currentTarget);
+        let parents = thisObj.parents('div.row.item');
+        let itemId = _.trim(parents.find('.js-itemId').html());
+
+        alertify.item(fa('pencil', TAPi18n.__('simple.order.itemLbl')), renderTemplate(editItemsTmpl, {itemId: itemId}));
+    },
     'click .js-destroy-item': function (event, instance) {
         let thisObj = $(event.currentTarget);
         let parents = thisObj.parents('div.row.item');
-        let itemId = parents.find('.js-itemId').val();
+        let itemId = _.trim(parents.find('.js-itemId').html());
 
         destroyAction(
             itemsCollection,
             {itemId: itemId},
-            {title: 'Item', item: itemId}
+            {title: TAPi18n.__('simple.order.itemLbl'), item: itemId}
         );
     },
-    'keyup .js-qty,.js-price': function (event, instance) {
-        let thisObj = $(event.currentTarget);
-        let itemId = thisObj.parents('div.row.item').find('.js-itemId').val();
-        let qty = thisObj.parents('div.row.item').find('.js-qty').val();
-        let price = thisObj.parents('div.row.item').find('.js-price').val();
-        let amount = qty * price;
+    // 'click .js-destroy-item': function (event, instance) {
+    //     let thisObj = $(event.currentTarget);
+    //     let parents = thisObj.parents('div.row.item');
+    //     let itemId = parents.find('.js-itemId').val();
+    //
+    //     destroyAction(
+    //         itemsCollection,
+    //         {itemId: itemId},
+    //         {title: 'Item', item: itemId}
+    //     );
+    // },
+    // 'keyup .js-qty,.js-price': function (event, instance) {
+    //     let thisObj = $(event.currentTarget);
+    //     let itemId = thisObj.parents('div.row.item').find('.js-itemId').val();
+    //     let qty = thisObj.parents('div.row.item').find('.js-qty').val();
+    //     let price = thisObj.parents('div.row.item').find('.js-price').val();
+    //     let amount = qty * price;
+    //
+    //     itemsCollection.update(
+    //         {itemId: itemId},
+    //         {$set: {qty: qty, price: price, amount: amount}}
+    //     );
+    // }
+});
 
-        itemsCollection.update(
-            {itemId: itemId},
-            {$set: {qty: qty, price: price, amount: amount}}
-        );
+
+// Edit
+editItemsTmpl.onCreated(function () {
+    this.state('amount', 0);
+});
+
+editItemsTmpl.helpers({
+    schema(){
+        return Order.itemsSchema;
+    },
+    data: function () {
+        let data = Template.currentData();
+        let itemId = data.itemId;
+        let instance = Template.instance();
+        let getItem = itemsCollection.findOne({itemId: itemId});
+
+        instance.state('amount', getItem.amount);
+
+        return getItem;
     }
 });
+
+editItemsTmpl.events({
+    'keyup [name="qty"],[name="price"]': function (event, instance) {
+        let qty = instance.$('[name="qty"]').val();
+        let price = instance.$('[name="price"]').val();
+        qty = _.isEmpty(qty) ? 0 : parseInt(qty);
+        price = _.isEmpty(price) ? 0 : parseFloat(price);
+        let amount = qty * price;
+
+        instance.state('amount', amount);
+    }
+});
+
+let hooksObject = {
+    onSubmit: function (insertDoc, updateDoc, currentDoc) {
+        this.event.preventDefault();
+        this.done(null, insertDoc);
+    },
+    onSuccess: function (formType, result) {
+        itemsCollection.update(
+            {itemId: result.itemId},
+            {$set: {qty: result.qty, price: result.price, amount: result.amount}}
+        );
+
+        alertify.item().close();
+        displaySuccess();
+    },
+    onError: function (formType, error) {
+        displayError(error.message);
+    }
+};
+AutoForm.addHooks(['Simple_orderItemsEdit'], hooksObject);

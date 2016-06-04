@@ -34,8 +34,8 @@ check
 fourseven:scss
 twbs:bootstrap
 fortawesome:fontawesome
-#fezvrasta:bootstrap-material-design
 theara:admin-lte
+#fezvrasta:bootstrap-material-design
 
 # Security
 #ian:accounts-ui-bootstrap-3

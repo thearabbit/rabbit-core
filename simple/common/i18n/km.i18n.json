@@ -29,6 +29,7 @@
     },
     "order": {
       "title": "ទិញ",
+      "invoiceAction": "វិក្កយប័ត្រ",
       "itemLbl": "ទំនិញ",
       "itemQtyLbl": "បរិមាណ",
       "itemPriceLbl": "តម្លៃ",

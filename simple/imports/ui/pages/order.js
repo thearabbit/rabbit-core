@@ -41,7 +41,7 @@ let indexTmpl = Template.Simple_order,
     showTmpl = Template.Simple_orderShow;
 
 // Local collection
-var itemsCollection = new Mongo.Collection(null);
+let itemsCollection = new Mongo.Collection(null);
 
 // Index
 indexTmpl.onCreated(function () {
@@ -169,9 +169,24 @@ showTmpl.helpers({
 // Hook
 let hooksObject = {
     before: {
-        // Replace `formType` with the form `type` attribute to which this hook applies
+        insert: function (doc) {
+            let items = [];
+            itemsCollection.find().forEach((obj)=> {
+                delete obj._id;
+                items.push(obj);
+            });
+            doc.items = items;
+
+            return doc;
+        },
         update: function (doc) {
-            // Potentially alter the doc
+            let items = [];
+            itemsCollection.find().forEach((obj)=> {
+                delete obj._id;
+                items.push(obj);
+            });
+            doc.$set.items = items;
+
             delete doc.$unset;
 
             return doc;
