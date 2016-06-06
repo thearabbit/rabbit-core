@@ -1,6 +1,8 @@
 export const reactiveTableSettings = {
-    class: 'table table-striped table-bordered table-condensed',
+    showFilter: true,
     rowsPerPage: 10,
     showNavigation: 'auto',
-    showColumnToggles: true
+    showRowCount: false,
+    showColumnToggles: true,
+    class: 'table table-striped table-bordered table-condensed'
 };

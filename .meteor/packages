@@ -140,6 +140,7 @@ tap:i18n
 tap:i18n-ui
 gwendall:simple-schema-i18n
 gwendall:autoform-i18n
+anti:i18n
 
 # Alert
 #theara:alertifyjs

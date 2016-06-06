@@ -1,0 +1,102 @@
+{
+  "simplePos": {
+    "sidebarMenu": {
+      "home": "ទំព័រដើម",
+      "item": "មុខទំនិញ",
+      "customer": "អតិថិជន",
+      "order": "ទិញ"
+    },
+    "home": {
+      "title": "ទំព័រដើម",
+      "info": "POS សូមស្វាគមន៍!"
+    },
+    "item": {
+      "title": "ទំនិញ",
+      "schema": {
+        "_id": {
+          "label": "លេខកូដ"
+        },
+        "name": {
+          "label": "ឈ្មោះ"
+        },
+        "price": {
+          "label": "តម្លៃ"
+        },
+        "photo": {
+          "label": "រូបភាព"
+        }
+      }
+    },
+    "customer": {
+      "title": "អតិថិជន",
+      "schema": {
+        "_id": {
+          "label": "លេខកូដ"
+        },
+        "name": {
+          "label": "ឈ្មោះ"
+        },
+        "gender": {
+          "label": "ភេទ"
+        },
+        "dob": {
+          "label": "ថ្ងៃខែឆ្នាំកំណើត"
+        },
+        "address": {
+          "label": "អាសយដ្ឋាន"
+        },
+        "telephone": {
+          "label": "ទូរស័ព្ទ"
+        },
+        "email": {
+          "label": "អ៊ីម៉ែល"
+        },
+        "branchId": {
+          "label": "សាខា"
+        }
+      }
+    },
+    "order": {
+      "title": "ទិញ",
+      "invoiceAction": "វិក្កយប័ត្រ",
+      "schema": {
+        "_id": {
+          "label": "លេខកូដ"
+        },
+        "itemId": {
+          "label": "ទំនិញ"
+        },
+        "qty": {
+          "label": "បរិមាណ"
+        },
+        "price": {
+          "label": "តម្លៃ"
+        },
+        "amount": {
+          "label": "ចំនួន"
+        },
+        "orderDate": {
+          "label": "កាលបរិច្ឆេទ"
+        },
+        "customerId": {
+          "label": "អតិថិជន"
+        },
+        "des": {
+          "label": "បរិយាយ"
+        },
+        "total": {
+          "label": "សរុប"
+        },
+        "branchId": {
+          "label": "សាខា"
+        }
+      }
+    },
+    "customerReport": {
+      "title": "របាយការណ៍អតិថិជន"
+    },
+    "orderReport": {
+      "title": "របាយការណ៍ទិញ"
+    }
+  }
+}

@@ -60,7 +60,7 @@ indexTmpl.events({
         destroyAction(
             Exchange,
             {_id: this._id},
-            {title: TAPi18n.__('core.exchange.title'), item: moment(this.exDate).format('DD/MM/YYYY')}
+            {title: TAPi18n.__('core.exchange.title'), itemTitle: moment(this.exDate).format('DD/MM/YYYY')}
         );
     },
     'click .js-display' (event, instance) {

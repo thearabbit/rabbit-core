@@ -1,0 +1,5 @@
+/* Column action width for reactive-table
+-----------------------*/
+.reactive-table .col-action-order-item {
+    width: 60px;
+}

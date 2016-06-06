@@ -22,7 +22,7 @@
   "alert": {
     "success": "ជោគជ័យ",
     "error": "កំហុស",
-    "deleteConfirm": "តើលោកអ្នកពិតជាចង់លុប <span class='text-red text-bold'>[__itemId__]</span>?"
+    "deleteConfirm": "តើលោកអ្នកពិតជាចង់លុប <span class='text-red text-bold'>[__itemTitle__]</span>?"
   },
   "action": {
     "addNew": "បង្កើតថ្មី",

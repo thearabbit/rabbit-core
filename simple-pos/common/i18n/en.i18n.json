@@ -1,0 +1,102 @@
+{
+  "simplePos": {
+    "sidebarMenu": {
+      "home": "Home",
+      "item": "Item",
+      "customer": "Customer",
+      "order": "Order"
+    },
+    "home": {
+      "title": "Home",
+      "info": "Welcome to POS!"
+    },
+    "item": {
+      "title": "Item",
+      "schema": {
+        "_id": {
+          "label": "ID"
+        },
+        "name": {
+          "label": "Name"
+        },
+        "price": {
+          "label": "Price"
+        },
+        "photo": {
+          "label": "Photo"
+        }
+      }
+    },
+    "customer": {
+      "title": "Customer",
+      "schema": {
+        "_id": {
+          "label": "ID"
+        },
+        "name": {
+          "label": "Name"
+        },
+        "gender": {
+          "label": "Gender"
+        },
+        "dob": {
+          "label": "Date of birth"
+        },
+        "address": {
+          "label": "Address"
+        },
+        "telephone": {
+          "label": "Telephone"
+        },
+        "email": {
+          "label": "Email"
+        },
+        "branchId": {
+          "label": "Branch"
+        }
+      }
+    },
+    "order": {
+      "title": "Order",
+      "invoiceAction": "invoice",
+      "schema": {
+        "_id": {
+          "label": "ID"
+        },
+        "itemId": {
+          "label": "Item"
+        },
+        "qty": {
+          "label": "Qty"
+        },
+        "price": {
+          "label": "Price"
+        },
+        "amount": {
+          "label": "Amount"
+        },
+        "orderDate": {
+          "label": "Date"
+        },
+        "customerId": {
+          "label": "Customer"
+        },
+        "des": {
+          "label": "Description"
+        },
+        "total": {
+          "label": "Total"
+        },
+        "branchId": {
+          "label": "Branch"
+        }
+      }
+    },
+    "customerReport": {
+      "title": "Customer Report"
+    },
+    "orderReport": {
+      "title": "Customer Report"
+    }
+  }
+}

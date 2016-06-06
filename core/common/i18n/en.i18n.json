@@ -22,7 +22,7 @@
   "alert": {
     "success": "Success",
     "error": "Error",
-    "deleteConfirm": "Are you sure to delete <span class='text-red text-bold'>[__itemId__]</span>?"
+    "deleteConfirm": "Are you sure to delete <span class='text-red text-bold'>[__itemTitle__]</span>?"
   },
   "action": {
     "addNew": "Add New",

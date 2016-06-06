@@ -16,7 +16,7 @@ export const destroyAction = (collection, selector = {}, options = {}) => {
 
     _.defaults(options, {
         title: 'Delete',
-        item: 'this',
+        itemTitle: 'this item',
         successMsg: null,
         errorMsg: null,
         i18n: true
@@ -24,7 +24,7 @@ export const destroyAction = (collection, selector = {}, options = {}) => {
 
     alertify.confirm(
         fa("trash", options.title),
-        TAPi18n.__('alert.deleteConfirm', {itemId: options.item}),
+        TAPi18n.__('alert.deleteConfirm', {itemTitle: options.itemTitle}),
         function () {
             collection.remove(selector, function (error) {
                 if (error) {

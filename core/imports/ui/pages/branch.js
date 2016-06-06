@@ -56,7 +56,7 @@ indexTmpl.events({
         destroyAction(
             Branch,
             {_id: this._id},
-            {title: TAPi18n.__('core.branch.title'), item: this._id}
+            {title: TAPi18n.__('core.branch.title'), itemTitle: this._id}
         );
     },
     'click .js-display' (event, instance) {

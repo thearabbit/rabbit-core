@@ -1,0 +1,52 @@
+<template name="SimplePos_sidebarMenu">
+    <li class="{{isActiveRoute name='simplePos.home'}}">
+        <a href="{{pathFor 'simplePos.home'}}">
+            <i class="fa fa-home"></i> <span>{{_ "simplePos.sidebarMenu.home"}}</span>
+        </a>
+    </li>
+
+    <!--Data-->
+    {{#if isInRole 'data-insert,data-update,data-remove' 'SimplePos'}}
+        <li class="header"><i class="fa fa-database"></i> DATA</li>
+        <li class="{{isActiveRoute name='simplePos.customer'}}">
+            <a href="{{pathFor 'simplePos.customer'}}">
+                <i class="fa fa-circle-o"></i> <span>{{_ "simplePos.sidebarMenu.customer"}}</span>
+            </a>
+        </li>
+        <li class="{{isActiveRoute name='simplePos.order'}}">
+            <a href="{{pathFor 'simplePos.order'}}">
+                <i class="fa fa-circle-o"></i> <span>{{_ "simplePos.sidebarMenu.order"}}</span>
+            </a>
+        </li>
+    {{/if}}
+
+    <!--Report-->
+    {{#if isInRole 'reporter' 'SimplePos'}}
+        <li class="header"><i class="fa fa-file-o"></i> REPORT</li>
+        <li class="{{isActiveRoute name='simplePos.customerReport'}}">
+            <a href="{{pathFor 'simplePos.customerReport'}}">
+                <i class="fa fa-circle-o"></i> <span>{{_ "simplePos.sidebarMenu.customer"}}</span>
+            </a>
+        </li>
+        <li class="{{isActiveRoute name='simplePos.orderReport'}}">
+            <a href="{{pathFor 'simplePos.orderReport'}}">
+                <i class="fa fa-circle-o"></i> <span>{{_ "simplePos.sidebarMenu.order"}}</span>
+            </a>
+        </li>
+    {{/if}}
+
+    <!--Settings-->
+    {{#if isInRole 'setting' 'SimplePos'}}
+        <li class="header"><i class="fa fa-cogs"></i> SETTING</li>
+        <li class="{{isActiveRoute name='core.exchange'}}">
+            <a href="{{pathFor 'core.exchange'}}">
+                <i class="fa fa-circle-o"></i> <span>{{_ "core.sidebarMenu.exchange"}}</span>
+            </a>
+        </li>
+        <li class="{{isActiveRoute name='simplePos.item'}}">
+            <a href="{{pathFor 'simplePos.item'}}">
+                <i class="fa fa-circle-o"></i> <span>{{_ "simplePos.sidebarMenu.item"}}</span>
+            </a>
+        </li>
+    {{/if}}
+</template>

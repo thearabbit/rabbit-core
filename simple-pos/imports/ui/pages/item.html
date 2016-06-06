@@ -1,0 +1,72 @@
+<!--Index-->
+<template name="SimplePos_item">
+    <p>
+        <button type="button" class="btn btn-primary js-create"><i class="fa fa-plus"></i> {{_ "action.addNew"}}
+        </button>
+    </p>
+
+    {{> tabular table=tabularTable class="table table-striped table-bordered table-condensed"}}
+</template>
+
+<!--Action-->
+<template name="SimplePos_itemAction">
+    {{#columnAction}}
+        <li><a href="#" class="js-update"><i class="fa fa-pencil"></i> {{_ "action.edit"}}</a></li>
+        <li><a href="#" class="js-destroy"><i class="fa fa-remove"></i> {{_ "action.delete"}}</a></li>
+        <li><a href="#" class="js-display"><i class="fa fa-eye"></i> {{_ "action.show"}}</a></li>
+    {{/columnAction}}
+</template>
+
+<!--Insert-->
+<template name="SimplePos_itemNew">
+    {{#autoForm collection=collection id="SimplePos_itemNew" type="insert"}}
+        <div class="row">
+            <div class="col-md-12">
+                {{> afQuickField name='name'}}
+                {{> afQuickField name='price'}}
+                {{> afQuickField name='photo'}}
+            </div>
+        </div>
+
+        {{> formFooterWithButton}}
+    {{/autoForm}}
+</template>
+
+<!--Update-->
+<template name="SimplePos_itemEdit">
+    {{#if Template.subscriptionsReady}}
+        {{#autoForm collection=collection id="SimplePos_itemEdit" doc=data type="update"}}
+            <div class="row">
+                <div class="col-md-12">
+                    {{> afQuickField name='name'}}
+                    {{> afQuickField name='price'}}
+                    {{> afQuickField name='photo'}}
+                </div>
+            </div>
+
+            {{> formFooterWithButton}}
+        {{/autoForm}}
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>
+
+<!--Show-->
+<template name="SimplePos_itemShow">
+    {{#if Template.subscriptionsReady}}
+        {{#with data}}
+            <dl class="dl-horizontal">
+                <dt>{{i18nLabel "_id"}}</dt>
+                <dd>{{_id}}</dd>
+                <dt>{{i18nLabel "name"}}</dt>
+                <dd>{{name}}</dd>
+                <dt>{{i18nLabel "price"}}</dt>
+                <dd>{{price}}</dd>
+                <dt>{{i18nLabel "photo"}}</dt>
+                <dd>{{lightbox url=photoUrl title=name}}</dd>
+            </dl>
+        {{/with}}
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>
