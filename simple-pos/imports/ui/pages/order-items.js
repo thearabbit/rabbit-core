@@ -1,4 +1,3 @@
-import {ReactiveVar} from 'meteor/reactive-var';
 import {ReactiveDict} from 'meteor/reactive-dict';
 import {Template} from 'meteor/templating';
 import {AutoForm} from 'meteor/aldeed:autoform';
@@ -19,6 +18,7 @@ import {renderTemplate} from '../../../../core/client/libs/render-template.js';
 import {destroyAction} from '../../../../core/client/libs/destroy-action.js';
 import {displaySuccess, displayError} from '../../../../core/client/libs/display-alert.js';
 import {reactiveTableSettings} from '../../../../core/client/libs/reactive-table-settings.js';
+import {__} from '../../../../core/common/libs/tapi18n-callback-helper.js';
 
 // Component
 import '../../../../core/client/components/loading.js';
@@ -36,7 +36,6 @@ editItemsTmpl = Template.SimplePos_orderItemsEdit;
 
 
 // Local collection
-// let itemsCollection = new Mongo.Collection(null);
 var itemsCollection;
 
 // Page
@@ -50,20 +49,10 @@ itemsTmpl.onCreated(function () {
     let data = Template.currentData();
     itemsCollection = data.itemsCollection;
 
-    this.myState = new ReactiveDict();
-    this.myState.setDefault({
-        qty: 0,
-        price: 0,
-        total: 0
-    });
 
-    // Template state
-    this.state('tmpAmount', 0);
+    // State
+    this.state('amount', 0);
 
-    this.autorun(()=> {
-        let tmpAmount = math.round(this.myState.get('qty') * this.myState.get('price'), 2);
-        this.state('tmpAmount', tmpAmount);
-    });
 });
 
 itemsTmpl.onRendered(function () {
@@ -71,25 +60,25 @@ itemsTmpl.onRendered(function () {
 
 itemsTmpl.helpers({
     tableSettings: function () {
-        let i18nPrefix = 'simplePos.item.schema';
+        let i18nPrefix = 'simplePos.order.schema';
 
         reactiveTableSettings.showFilter = false;
         reactiveTableSettings.showNavigation = 'never';
         reactiveTableSettings.showColumnToggles = false;
         reactiveTableSettings.collection = itemsCollection;
         reactiveTableSettings.fields = [
-            {key: 'itemId', label: 'Item'},
-            {key: 'qty', label: 'Qty'},
+            {key: 'itemId', label: __(`${i18nPrefix}.itemId.label`)},
+            {key: 'qty', label: __(`${i18nPrefix}.qty.label`)},
             {
                 key: 'price',
-                label: 'Price',
+                label: __(`${i18nPrefix}.price.label`),
                 fn (value, object, key) {
                     return numeral(value).format('0,0.00');
                 }
             },
             {
                 key: 'amount',
-                label: 'Amount',
+                label: __(`${i18nPrefix}.amount.label`),
                 fn (value, object, key) {
                     return numeral(value).format('0,0.00');
                 }
@@ -120,24 +109,14 @@ itemsTmpl.helpers({
 
         return {};
     },
-    itemsList: function () {
-        let getItems = itemsCollection.find();
-
-        return getItems;
-    },
     total: function () {
-        const instance = Template.instance();
-        let getItems = itemsCollection.find();
         let total = 0;
+        let getItems = itemsCollection.find();
         getItems.forEach((obj)=> {
             total += obj.amount;
         });
-        instance.myState.set('total', total);
 
         return total;
-    },
-    keyArgs(index, name){
-        return `items.${index}.${name}`;
     }
 });
 
@@ -146,18 +125,15 @@ itemsTmpl.events({
         instance.$('[name="qty"]').val('');
         instance.$('[name="price"]').val('');
         instance.$('[name="amount"]').val('');
-
-        instance.myState.set('qty', '');
-        instance.myState.set('price', '');
     },
     'keyup [name="qty"],[name="price"]': function (event, instance) {
-        var qty = instance.$('[name="qty"]').val();
-        var price = instance.$('[name="price"]').val();
+        let qty = instance.$('[name="qty"]').val();
+        let price = instance.$('[name="price"]').val();
         qty = _.isEmpty(qty) ? 0 : parseInt(qty);
         price = _.isEmpty(price) ? 0 : parseFloat(price);
+        let amount = qty * price;
 
-        instance.myState.set('qty', qty);
-        instance.myState.set('price', price);
+        instance.state('amount', amount);
     },
     'click .js-add-item': function (event, instance) {
         let itemId = instance.$('[name="itemId"]').val();
@@ -219,6 +195,11 @@ editItemsTmpl.helpers({
 });
 
 editItemsTmpl.events({
+    'change [name="itemId"]': function (event, instance) {
+        instance.$('[name="qty"]').val('');
+        instance.$('[name="price"]').val('');
+        instance.$('[name="amount"]').val('');
+    },
     'keyup [name="qty"],[name="price"]': function (event, instance) {
         let qty = instance.$('[name="qty"]').val();
         let price = instance.$('[name="price"]').val();

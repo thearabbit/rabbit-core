@@ -44,6 +44,8 @@ export const ItemsSchema = new SimpleSchema({
         defaultValue: function () {
             let id = AutoForm.getFieldValue('itemId');
 
+            console.log(id);
+
             if (id) {
                 itemInfo.callPromise({
                     _id: id

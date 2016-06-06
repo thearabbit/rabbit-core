@@ -12,7 +12,7 @@
                 {{> afQuickField name="price" label=false}}
             </div>
             <div class="col-sm-3">
-                {{> afQuickField name="amount" value=tmpAmount label=false readonly=true}}
+                {{> afQuickField name="amount" value=amount label=false readonly=true}}
             </div>
             <div class="col-sm-1">
                 <button type="button" class="btn btn-primary js-add-item" {{disabledAddItemBtn}}>+</button>
@@ -29,7 +29,7 @@
         <div class="col-sm-8">
             <div class="pull-right">Total:</div>
         </div>
-        <div class="col-sm-4">{{amount}}
+        <div class="col-sm-4">
             {{> afQuickField name="total" value=total label=false readonly="true"}}
         </div>
     </div>
@@ -52,10 +52,6 @@
                 {{> afQuickField name="qty"}}
                 {{> afQuickField name="price"}}
                 {{> afQuickField name="amount" value=amount readonly="true"}}
-                <!--{{> afQuickField name="itemId" value=data.itemId readonly="true"}}-->
-                <!--{{> afQuickField name="qty" value=data.qty}}-->
-                <!--{{> afQuickField name="price" value=data.price}}-->
-                <!--{{> afQuickField name="amount" value=amount readonly="true"}}-->
             </div>
         </div>
 
