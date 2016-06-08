@@ -97,7 +97,7 @@ digilord:faker
 anti:fake
 
 # Template
-space:template-controller
+#comerc:template2@1.5.0
 #peerlibrary:blaze-components
 aldeed:autoform
 #natestrauser:select2
