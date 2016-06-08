@@ -16,7 +16,7 @@ Template._ContentHeaderLayout.onCreated(function () {
         let currentTitle = FlowRouter.current().route.options.title;
         if (currentTitle) {
             currentTitle = _.isFunction(currentTitle) ? currentTitle() : currentTitle;
-            self.pageHeader = currentTitle;
+            self.pageHeader.set(currentTitle);
         }
     });
 });
@@ -24,6 +24,6 @@ Template._ContentHeaderLayout.onCreated(function () {
 Template._ContentHeaderLayout.helpers({
     pageHeader(){
         const instance = Template.instance();
-        return instance.pageHeader;
+        return instance.pageHeader.get();
     }
 });
