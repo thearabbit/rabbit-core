@@ -20,8 +20,8 @@
     "btnDelete": "Delete"
   },
   "alert": {
-    "success": "Success",
-    "error": "Error",
+    "success": "Your transaction is successful!",
+    "error": "Your transaction is not successful!",
     "deleteConfirm": "Are you sure to delete <span class='text-red text-bold'>[__itemTitle__]</span>?"
   },
   "action": {

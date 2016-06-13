@@ -55,8 +55,6 @@ chuangbo:cookie@1.1.0
 coffeescript@1.0.17
 comerc:autoform-typeahead@1.0.6
 comerc:bs-typeahead@1.0.2
-comerc:template-two-way-binding@1.6.1
-comerc:template2@1.5.0
 cottz:flow-router-auth@0.1.0
 czbaker:lightbox2@2.7.1_1
 dburles:collection-helpers@1.0.4
@@ -211,7 +209,6 @@ theara:numeral-helpers@0.0.4
 theara:reactive-list@0.2.9
 theara:relation-exist@0.0.2
 theara:round-khr@0.0.3
-theara:template-states@0.0.1
 themeteorchef:bert@2.1.0
 tmeasday:publish-counts@0.7.3
 tracker@1.0.13

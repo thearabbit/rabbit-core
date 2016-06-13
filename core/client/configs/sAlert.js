@@ -3,8 +3,8 @@ import {sAlert} from 'meteor/juliancwirko:s-alert';
 
 Meteor.startup(function () {
     sAlert.config({
-        effect: 'scale',
-        position: 'bottom-right',
+        effect: 'flip',
+        position: 'top-right',
         timeout: 5000,
         html: false,
         onRouteClose: true,

@@ -20,8 +20,8 @@
     "btnDelete": "លុប"
   },
   "alert": {
-    "success": "ជោគជ័យ",
-    "error": "កំហុស",
+    "success": "ប្រតិបត្តិការគឺជោគជ័យ!",
+    "error": "ប្រតិបត្តិការគឺបរាជ័យ!",
     "deleteConfirm": "តើលោកអ្នកពិតជាចង់លុប <span class='text-red text-bold'>[__itemTitle__]</span>?"
   },
   "action": {

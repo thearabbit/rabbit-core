@@ -9,6 +9,14 @@ export const displaySuccess = (msg = null, i18n = false) => {
     }
 
     sAlert.success(msg);
+    // swal({
+    //     title: "Success",
+    //     text: msg,
+    //     type: "success",
+    //     confirmButtonClass: "btn-primary",
+    //     showConfirmButton: false,
+    //     timer: 3000
+    // });
 };
 
 export const displayError = (msg = null, i18n = false) => {
@@ -19,4 +27,12 @@ export const displayError = (msg = null, i18n = false) => {
     }
 
     sAlert.error(msg);
+    // swal({
+    //     title: "Error",
+    //     text: msg,
+    //     type: "error",
+    //     confirmButtonClass: "btn-danger",
+    //     showConfirmButton: false,
+    //     timer: 3000
+    // });
 };
