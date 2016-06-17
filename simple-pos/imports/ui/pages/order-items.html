@@ -48,7 +48,7 @@
     {{#autoForm schema=schema id="SimplePos_orderItemsEdit" doc=data}}
         <div class="row">
             <div class="col-md-12">
-                {{> afQuickField name="itemId" readonly="true"}}
+                {{> afQuickField type="text" name="itemId" readonly=true}}
                 {{> afQuickField name="qty"}}
                 {{> afQuickField name="price"}}
                 {{> afQuickField name="amount" value=amount readonly="true"}}

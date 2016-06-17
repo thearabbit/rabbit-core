@@ -4,7 +4,6 @@ import {ReactiveVar} from 'meteor/reactive-var';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {AutoForm} from 'meteor/aldeed:autoform';
 import {sAlert} from 'meteor/juliancwirko:s-alert';
-import 'meteor/theara:template-states';
 import 'meteor/theara:autoprint';
 
 // Component

@@ -112,7 +112,9 @@ AutoForm.hooks({
             Session.setAuth('currentModule', result.module);
             Session.setAuth('currentBranch', result.branch);
 
-            FlowRouter.go(_.camelCase(result.module) + '.home');
+            let routerName = _.camelCase(result.module) + '.home';
+            
+            FlowRouter.go(routerName);
         },
         onError: function (formType, error) {
             Bert.alert({

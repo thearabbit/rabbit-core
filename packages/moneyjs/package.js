@@ -1,6 +1,6 @@
 Package.describe({
     name: 'theara:moneyjs',
-    version: '0.0.3',
+    version: '0.0.4',
     // Brief, one-line summary of the package.
     summary: 'Simple and tiny JavaScript library for realtime currency conversion and exchange.',
     // URL to the Git repository containing the source code for this package.
@@ -15,6 +15,8 @@ Package.onUse(function (api) {
     api.use('ecmascript');
 
     api.addFiles('moneyjs.js');
+
+    api.export('fx');
 });
 
 Package.onTest(function (api) {

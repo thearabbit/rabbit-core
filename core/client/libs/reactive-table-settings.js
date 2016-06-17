@@ -4,5 +4,5 @@ export const reactiveTableSettings = {
     showNavigation: 'auto',
     showRowCount: false,
     showColumnToggles: true,
-    class: 'table table-striped table-bordered table-condensed'
+    class: 'table table-striped table-bordered table-condensed table-hover'
 };

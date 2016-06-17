@@ -44,7 +44,7 @@
 
                     <!--Content-->
                     <table class="report-content">
-                        <thead class="content-header">
+                        <thead class="report-content-header">
                         <tr>
                             <th>#</th>
                             <th>Item</th>
@@ -54,7 +54,7 @@
                         </tr>
                         </thead>
 
-                        <tbody class="content-body">
+                        <tbody class="report-content-body">
                         {{#each item in items}}
                             <tr>
                                 <td>{{@index}}</td>
@@ -66,7 +66,7 @@
                         {{/each}}
                         </tbody>
 
-                        <tfoot class="content-footer">
+                        <tfoot class="report-content-footer">
                         <tr>
                             <td colspan="4" class="text-right">Total:</td>
                             <td>{{numFormat total "0,0.00"}}</td>

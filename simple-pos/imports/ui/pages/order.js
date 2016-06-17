@@ -95,8 +95,8 @@ newTmpl.helpers({
         return itemsCollection;
     },
     disabledSubmitBtn: function () {
-        let cont = itemsCollection.find().count();
-        if (cont == 0) {
+        let count = itemsCollection.find().count();
+        if (count == 0) {
             return {disabled: true};
         }
 

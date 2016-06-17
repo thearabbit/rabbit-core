@@ -110,8 +110,10 @@ aldeed:autoform-select2
 vazco:universe-autoform-select
 rajit:bootstrap3-datepicker
 aldeed:autoform-bs-datepicker
-tsega:bootstrap3-datetimepicker@=3.1.3_3
-aldeed:autoform-bs-datetimepicker
+#tsega:bootstrap3-datetimepicker@=3.1.3_3
+tsega:bootstrap3-datetimepicker
+#aldeed:autoform-bs-datetimepicker
+theara:autoform-bs-datetimepicker
 #baysao:autoform-bs-daterangepicker
 dburles:spacebars-tohtml
 raix:handlebar-helpers
@@ -180,7 +182,7 @@ frozeman:template-var
 erasaur:meteor-lodash
 underscorestring:underscore.string
 #digilord:sugarjs
-ecwyne:mathjs
+#ecwyne:mathjs
 lepozepo:accounting
 numeral:numeral
 natestrauser:animate-css
@@ -194,7 +196,7 @@ simple:markdown-templating
 theara:collection-cache
 theara:id-generator
 theara:relation-exist
-theara:moneyjs
+#theara:moneyjs
 theara:fa-helpers
 theara:events
 theara:round-khr
@@ -210,6 +212,5 @@ theara:app-dump
 #theara:autoform-bs-md-datetimepicker
 theara:inputmask
 theara:autoform-inputmask
-#theara:autoform-bs-datetimepicker
 theara:autoform-bs-daterangepicker
 #theara:particles

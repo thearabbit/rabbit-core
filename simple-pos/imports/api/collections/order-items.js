@@ -21,7 +21,7 @@ export const ItemsSchema = new SimpleSchema({
         autoform: {
             type: 'universe-select',
             afFieldInput: {
-                uniPlaceholder: 'Select One',
+                uniPlaceholder: 'Please search... (limit 10)',
                 optionsMethod: 'simplePos.selectOptMethods.item'
             }
         }
@@ -43,9 +43,7 @@ export const ItemsSchema = new SimpleSchema({
         decimal: true,
         defaultValue: function () {
             let id = AutoForm.getFieldValue('itemId');
-
-            console.log(id);
-
+            
             if (id) {
                 itemInfo.callPromise({
                     _id: id

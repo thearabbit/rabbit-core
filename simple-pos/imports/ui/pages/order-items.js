@@ -1,5 +1,5 @@
-import {ReactiveDict} from 'meteor/reactive-dict';
 import {Template} from 'meteor/templating';
+import {ReactiveVar} from 'meteor/reactive-var';
 import {AutoForm} from 'meteor/aldeed:autoform';
 import {Roles} from  'meteor/alanning:roles';
 import {alertify} from 'meteor/ovcharik:alertifyjs';
@@ -10,7 +10,6 @@ import {_} from 'meteor/erasaur:meteor-lodash';
 import {$} from 'meteor/jquery';
 import {TAPi18n} from 'meteor/tap:i18n';
 import {ReactiveTable} from 'meteor/aslagle:reactive-table';
-import 'meteor/theara:template-states';
 
 // Lib
 import {createNewAlertify} from '../../../../core/client/libs/create-new-alertify.js';
@@ -29,33 +28,28 @@ import '../../../../core/client/components/form-footer.js';
 import {ItemsSchema} from '../../api/collections/order-items.js';
 import {Order} from '../../api/collections/order.js';
 
+// Page
+import './order-items.html';
+
 // Declare template
 var itemsTmpl = Template.SimplePos_orderItems,
-    actionItemsTmpl = Template.SimplePos_orderItemsAction;
-editItemsTmpl = Template.SimplePos_orderItemsEdit;
-
+    actionItemsTmpl = Template.SimplePos_orderItemsAction,
+    editItemsTmpl = Template.SimplePos_orderItemsEdit;
 
 // Local collection
 var itemsCollection;
 
-// Page
-import './order-items.html';
 
 itemsTmpl.onCreated(function () {
     // Create new  alertify
     createNewAlertify('item');
 
+    // State
+    this.amountState = new ReactiveVar(0);
+
     // Data context
     let data = Template.currentData();
     itemsCollection = data.itemsCollection;
-
-
-    // State
-    this.state('amount', 0);
-
-});
-
-itemsTmpl.onRendered(function () {
 });
 
 itemsTmpl.helpers({
@@ -98,12 +92,16 @@ itemsTmpl.helpers({
 
         return reactiveTableSettings;
     },
+    amount(){
+        const instance = Template.instance();
+        return instance.amountState.get();
+    },
     schema(){
         return ItemsSchema;
     },
     disabledAddItemBtn: function () {
         const instance = Template.instance();
-        if (instance.state('tmpAmount') <= 0) {
+        if (instance.amountState.get() <= 0) {
             return {disabled: true};
         }
 
@@ -133,7 +131,7 @@ itemsTmpl.events({
         price = _.isEmpty(price) ? 0 : parseFloat(price);
         let amount = qty * price;
 
-        instance.state('amount', amount);
+        instance.amountState.set(amount);
     },
     'click .js-add-item': function (event, instance) {
         let itemId = instance.$('[name="itemId"]').val();
@@ -176,11 +174,12 @@ itemsTmpl.events({
 
 // Edit
 editItemsTmpl.onCreated(function () {
-    this.state('amount', 0);
+    let self = this;
+    self.amountState = new ReactiveVar(0);
 
-    this.autorun(()=> {
+    self.autorun(()=> {
         let data = Template.currentData();
-        this.state('amount', data.amount);
+        self.amountState.set(data.amount);
     });
 });
 
@@ -191,6 +190,10 @@ editItemsTmpl.helpers({
     data: function () {
         let data = Template.currentData();
         return data;
+    },
+    amount: function () {
+        const instance = Template.instance();
+        return instance.amountState.get();
     }
 });
 
@@ -207,7 +210,7 @@ editItemsTmpl.events({
         price = _.isEmpty(price) ? 0 : parseFloat(price);
         let amount = qty * price;
 
-        instance.state('amount', amount);
+        instance.amountState.set(amount);
     }
 });
 
