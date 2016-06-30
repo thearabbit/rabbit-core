@@ -1,45 +1,50 @@
 <!--List-->
 <template name="Core_profile">
-    {{#with data}}
-        <dl class="dl-horizontal">
-            <!--<dt>Id</dt>-->
-            <!--<dd>{{_id}}</dd>-->
-            <dt>Full Name</dt>
-            <dd>{{profile.name}}</dd>
-            <dt>Username</dt>
-            <dd>{{username}}</dd>
-            <dt>Email</dt>
-            <dd>{{email}}</dd>
-            <dt>Password</dt>
-            <dd>******</dd>
-            <dt>Roles</dt>
-            <dd>{{roles}}</dd>
-            <dt>Roles Branch</dt>
-            <dd>{{rolesBranch}}</dd>
-        </dl>
+    <div class="box-body">
+        {{#with data}}
+            <dl class="dl-horizontal">
+                <!--<dt>Id</dt>-->
+                <!--<dd>{{_id}}</dd>-->
+                <dt>Full Name</dt>
+                <dd>{{profile.name}}</dd>
+                <dt>Username</dt>
+                <dd>{{username}}</dd>
+                <dt>Email</dt>
+                <dd>{{email}}</dd>
+                <dt>Password</dt>
+                <dd>******</dd>
+                <dt>Roles</dt>
+                <dd>{{roles}}</dd>
+                <dt>Roles Branch</dt>
+                <dd>{{rolesBranch}}</dd>
+            </dl>
 
-        {{#formFooter}}
-            <button type="button" class="btn btn-primary js-update"><i class="fa fa-pencil"></i> Edit</button>
-        {{/formFooter}}
-    {{/with}}
+            {{#formFooter}}
+                <button type="button" class="btn btn-primary js-update"><i class="fa fa-pencil"></i> Edit</button>
+            {{/formFooter}}
+        {{/with}}
+    </div>
+    <!-- /.box-body -->
 </template>
 
 <!--User Profile Edit-->
 <template name="Core_profileEdit">
-    {{#autoForm schema=schema id="Core_profileEdit" doc=data}}
-        <div class="row">
-            <div class="col-xs-6">
-                {{> afQuickField name="fullName"}}
-                {{> afQuickField name="username"}}
-                {{> afQuickField name="email"}}
+    <div class="box-body">
+        {{#autoForm schema=schema id="Core_profileEdit" doc=data}}
+            <div class="row">
+                <div class="col-xs-6">
+                    {{> afQuickField name="fullName"}}
+                    {{> afQuickField name="username"}}
+                    {{> afQuickField name="email"}}
+                </div>
+                <div class="col-xs-6">
+                    {{> afQuickField name="oldPassword" type="password"}}
+                    {{> afQuickField name="newPassword" type="password"}}
+                    {{> afQuickField name="newConfirmPassword" type="password"}}
+                </div>
             </div>
-            <div class="col-xs-6">
-                {{> afQuickField name="oldPassword" type="password"}}
-                {{> afQuickField name="newPassword" type="password"}}
-                {{> afQuickField name="newConfirmPassword" type="password"}}
-            </div>
-        </div>
 
-        {{> formFooterWithButton}}
-    {{/autoForm}}
+            {{> formFooterWithButton}}
+        {{/autoForm}}
+    </div>
 </template>

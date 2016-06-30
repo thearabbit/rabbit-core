@@ -66,6 +66,7 @@ matb33:collection-hooks
 dburles:collection-helpers
 aldeed:collection2
 meteorhacks:aggregate
+jcbernack:reactive-aggregate
 aldeed:simple-schema
 #zimme:collection-softremovable
 percolate:migrations

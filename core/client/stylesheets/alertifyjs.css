@@ -1,0 +1,12 @@
+.alertify .ajs-dialog {
+    background-color: #ecf0f5;
+}
+
+.alertify .ajs-header {
+    color: white;
+    background: #dd4b39;
+}
+
+.alertify .ajs-commands button {
+    background-color: white;
+}

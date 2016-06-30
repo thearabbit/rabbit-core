@@ -22,15 +22,19 @@
 
                 <!-- Main content -->
                 <section class="content">
+                    <!--<div class="box box-default color-palette-box">-->
+                    {{#contentBox}}
 
-                    {{> Template.dynamic template=content}}
+                        {{> Template.dynamic template=content}}
 
-                    <!-- Alert -->
-                    {{> sAlert}}
+                        <!-- Alert -->
+                        {{> sAlert}}
 
-                    <!-- Connection Status -->
-                    {{> meteorStatus}}
+                        <!-- Connection Status -->
+                        {{> meteorStatus}}
 
+                    {{/contentBox}}
+                    <!--</div>-->
                 </section><!-- /.content -->
 
             </div><!-- /.content-wrapper -->

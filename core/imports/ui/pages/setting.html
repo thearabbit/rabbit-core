@@ -1,20 +1,23 @@
 <!--Setting-->
 <template name="Core_setting">
-    {{#if Template.subscriptionsReady}}
-        {{#autoForm collection=collection id="Core_setting" doc=data type="update"}}
-            <div class="row">
-                <div class="col-md-6">
-                    {{> afQuickField name='headOffice'}}
-                    {{> afQuickField name='baseCurrency'}}
+    <div class="box-body">
+        {{#if Template.subscriptionsReady}}
+            {{#autoForm collection=collection id="Core_setting" doc=data type="update"}}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{> afQuickField name='headOffice'}}
+                        {{> afQuickField name='baseCurrency'}}
+                    </div>
+                    <div class="col-md-6">
+                        {{> afQuickField name='language'}}
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    {{> afQuickField name='language'}}
-                </div>
-            </div>
 
-            {{> formFooterWithButton}}
-        {{/autoForm}}
-    {{else}}
-        {{> loading}}
-    {{/if}}
+                {{> formFooterWithButton}}
+            {{/autoForm}}
+        {{else}}
+            {{> loading}}
+        {{/if}}
+    </div>
+    <!-- /.box-body -->
 </template>

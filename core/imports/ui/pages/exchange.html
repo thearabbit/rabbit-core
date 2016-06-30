@@ -1,11 +1,17 @@
 <!--Index-->
 <template name="Core_exchange">
-    <p>
-        <button type="button" class="btn btn-primary js-create"><i class="fa fa-plus"></i> {{_ "action.addNew"}}
-        </button>
-    </p>
+    <div class="box-header with-border">
+        <h3 class="box-title">
+            {{> addNewButton}}
+        </h3>
+    </div>
+    <!-- /.box-header -->
 
-    {{> tabular table=tabularTable class="table table-striped table-bordered table-condensed"}}
+    <div class="box-body">
+        <!--Tabular-->
+        {{> tabular table=tabularTable class="table table-striped table-bordered table-condensed"}}
+    </div>
+    <!-- /.box-body -->
 </template>
 
 <!--Action-->
@@ -19,47 +25,14 @@
 
 <!--Insert-->
 <template name="Core_exchangeNew">
-    {{#autoForm collection=collection id="Core_exchangeNew" type="insert"}}
-        <div class="row">
-            <div class="col-md-6">
-                {{> afQuickField name="exDate"}}
-            </div>
-            <div class="col-md-6">
-                {{> afQuickField name="base" value=doc.base readonly="true"}}
-            </div>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">Rates</div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        {{> afQuickField name="rates.KHR" value=doc.khr}}
-                    </div>
-                    <div class="col-md-4">
-                        {{> afQuickField name="rates.USD" value=doc.usd}}
-                    </div>
-                    <div class="col-md-4">
-                        {{> afQuickField name="rates.THB" value=doc.thb}}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{> formFooterWithButton}}
-    {{/autoForm}}
-</template>
-
-<!--Update-->
-<template name="Core_exchangeEdit">
-    {{#if Template.subscriptionsReady}}
-        {{#autoForm collection=collection id="Core_exchangeEdit" doc=doc type="update"}}
+    <div class="box-body">
+        {{#autoForm collection=collection id="Core_exchangeNew" type="insert"}}
             <div class="row">
                 <div class="col-md-6">
                     {{> afQuickField name="exDate"}}
                 </div>
                 <div class="col-md-6">
-                    {{> afQuickField name="base" readonly="true"}}
+                    {{> afQuickField name="base" value=doc.base readonly="true"}}
                 </div>
             </div>
 
@@ -68,13 +41,13 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-4">
-                            {{> afQuickField name="rates.KHR"}}
+                            {{> afQuickField name="rates.KHR" value=doc.khr}}
                         </div>
                         <div class="col-md-4">
-                            {{> afQuickField name="rates.USD"}}
+                            {{> afQuickField name="rates.USD" value=doc.usd}}
                         </div>
                         <div class="col-md-4">
-                            {{> afQuickField name="rates.THB"}}
+                            {{> afQuickField name="rates.THB" value=doc.thb}}
                         </div>
                     </div>
                 </div>
@@ -82,25 +55,64 @@
 
             {{> formFooterWithButton}}
         {{/autoForm}}
-    {{else}}
-        {{> loading}}
-    {{/if}}
+    </div>
+</template>
+
+<!--Update-->
+<template name="Core_exchangeEdit">
+    <div class="box-body">
+        {{#if Template.subscriptionsReady}}
+            {{#autoForm collection=collection id="Core_exchangeEdit" doc=doc type="update"}}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{> afQuickField name="exDate"}}
+                    </div>
+                    <div class="col-md-6">
+                        {{> afQuickField name="base" readonly="true"}}
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Rates</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                {{> afQuickField name="rates.KHR"}}
+                            </div>
+                            <div class="col-md-4">
+                                {{> afQuickField name="rates.USD"}}
+                            </div>
+                            <div class="col-md-4">
+                                {{> afQuickField name="rates.THB"}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{> formFooterWithButton}}
+            {{/autoForm}}
+        {{else}}
+            {{> loading}}
+        {{/if}}
+    </div>
 </template>
 
 <!--Show-->
 <template name="Core_exchangeShow">
-    {{#if Template.subscriptionsReady}}
-        {{#with doc}}
-            <dl class="dl-horizontal">
-                <dt>{{_ "core.exchange.dateLbl"}}</dt>
-                <dd>{{moFormat exDate "DD/MM/YYYY"}}</dd>
-                <dt>{{_ "core.exchange.baseCurrencyLbl"}}</dt>
-                <dd>{{base}}</dd>
-                <dt>{{_ "core.exchange.ratesLbl"}}</dt>
-                <dd>{{ratesVal}}</dd>
-            </dl>
-        {{/with}}
-    {{else}}
-        {{> loading}}
-    {{/if}}
+    <div class="box-body">
+        {{#if Template.subscriptionsReady}}
+            {{#with doc}}
+                <dl class="dl-horizontal">
+                    <dt>{{_ "core.exchange.dateLbl"}}</dt>
+                    <dd>{{moFormat exDate "DD/MM/YYYY"}}</dd>
+                    <dt>{{_ "core.exchange.baseCurrencyLbl"}}</dt>
+                    <dd>{{base}}</dd>
+                    <dt>{{_ "core.exchange.ratesLbl"}}</dt>
+                    <dd>{{ratesVal}}</dd>
+                </dl>
+            {{/with}}
+        {{else}}
+            {{> loading}}
+        {{/if}}
+    </div>
 </template>

@@ -1,6 +1,6 @@
 Package.describe({
     name: 'theara:admin-lte',
-    version: '0.3.4',
+    version: '0.3.5',
     // Brief, one-line summary of the package.
     summary: 'AdmintLTE Layout',
     // URL to the Git repository containing the source code for this package.
@@ -40,7 +40,7 @@ Package.onUse(function (api) {
     api.addFiles([
         'lib/css/fonts.css',
         'lib/css/AdminLTE.css',
-        'lib/css/custom.css'
+        // 'lib/css/custom.css'
     ], 'client');
 
     // Theme Skins

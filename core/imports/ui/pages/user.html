@@ -1,10 +1,17 @@
 <!--Index-->
 <template name="Core_user">
-    <p>
-        <button type="button" class="btn btn-primary js-new"><i class="fa fa-plus"></i> {{_ "action.addNew"}}</button>
-    </p>
+    <div class="box-header with-border">
+        <h3 class="box-title">
+            {{> addNewButton}}
+        </h3>
+    </div>
+    <!-- /.box-header -->
 
-    {{> tabular table=tabularTable selector=tabularSelector class="table table-striped table-bordered table-condensed"}}
+    <div class="box-body">
+        <!--Tabular-->
+        {{> tabular table=tabularTable selector=tabularSelector class="table table-striped table-bordered table-condensed"}}
+    </div>
+    <!-- /.box-body -->
 </template>
 
 <!--Action-->
@@ -18,74 +25,80 @@
 
 <!--New-->
 <template name="Core_userNew">
-    {{#if Template.subscriptionsReady}}
-        {{#autoForm schema=schema id="Core_userNew" type="method" meteormethod="core.insertUser"}}
-            <div class="row">
-                <div class="col-xs-6">
-                    {{> afQuickField name='profile.name'}}
-                    {{> afQuickField name='username'}}
-                    {{> afQuickField name='email'}}
-                    {{> afQuickField name='password' type="password"}}
-                    {{> afQuickField name='confirmPassword' type="password"}}
+    <div class="box-body">
+        {{#if Template.subscriptionsReady}}
+            {{#autoForm schema=schema id="Core_userNew" type="method" meteormethod="core.insertUser"}}
+                <div class="row">
+                    <div class="col-xs-6">
+                        {{> afQuickField name='profile.name'}}
+                        {{> afQuickField name='username'}}
+                        {{> afQuickField name='email'}}
+                        {{> afQuickField name='password' type="password"}}
+                        {{> afQuickField name='confirmPassword' type="password"}}
+                    </div>
+                    <div class="col-xs-6">
+                        {{> afQuickField name='roles' size=7}}
+                        {{> afQuickField name='rolesBranch' size=6}}
+                    </div>
                 </div>
-                <div class="col-xs-6">
-                    {{> afQuickField name='roles' size=7}}
-                    {{> afQuickField name='rolesBranch' size=6}}
-                </div>
-            </div>
 
-            {{> formFooterWithButton}}
-        {{/autoForm}}
-    {{else}}
-        {{> loading}}
-    {{/if}}
+                {{> formFooterWithButton}}
+            {{/autoForm}}
+        {{else}}
+            {{> loading}}
+        {{/if}}
+    </div>
 </template>
 
 <!--Edit-->
 <template name="Core_userEdit">
-    {{#if Template.subscriptionsReady}}
-        {{#autoForm schema=schema id="Core_userEdit" doc=data type="method-update" meteormethod="core.updateUser" singleMethodArgument=true}}
-            <div class="row">
-                <div class="col-xs-6">
-                    {{> afQuickField name='profile.name'}}
-                    {{> afQuickField name='username'}}
-                    {{> afQuickField name='email'}}
-                    {{> afQuickField name='password' type="password"}}
-                    {{> afQuickField name='confirmPassword' type="password"}}
+    <div class="box-body">
+        {{#if Template.subscriptionsReady}}
+            {{#autoForm schema=schema id="Core_userEdit" doc=data type="method-update" meteormethod="core.updateUser" singleMethodArgument=true}}
+                <div class="row">
+                    <div class="col-xs-6">
+                        {{> afQuickField name='profile.name'}}
+                        {{> afQuickField name='username'}}
+                        {{> afQuickField name='email'}}
+                        {{> afQuickField name='password' type="password"}}
+                        {{> afQuickField name='confirmPassword' type="password"}}
+                    </div>
+                    <div class="col-xs-6">
+                        {{> afQuickField name='roles' size=7}}
+                        {{> afQuickField name='rolesBranch' size=6}}
+                    </div>
                 </div>
-                <div class="col-xs-6">
-                    {{> afQuickField name='roles' size=7}}
-                    {{> afQuickField name='rolesBranch' size=6}}
-                </div>
-            </div>
 
-            {{> formFooterWithButton}}
-        {{/autoForm}}
-    {{else}}
-        {{> loading}}
-    {{/if}}
+                {{> formFooterWithButton}}
+            {{/autoForm}}
+        {{else}}
+            {{> loading}}
+        {{/if}}
+    </div>
 </template>
 
 <!--Show-->
 <template name="Core_userShow">
-    {{#if Template.subscriptionsReady}}
-        {{#with data}}
-            <dl class="dl-horizontal">
-                <!--<dt>Id</dt>-->
-                <!--<dd>{{_id}}</dd>-->
-                <dt>{{_ "core.fullNameLbl"}}</dt>
-                <dd>{{profile.name}}</dd>
-                <dt>{{_ "core.usernameLbl"}}</dt>
-                <dd>{{username}}</dd>
-                <dt>{{_ "core.emailLbl"}}</dt>
-                <dd>{{email}}</dd>
-                <dt>{{_ "core.rolesLbl"}}</dt>
-                <dd>{{roles}}</dd>
-                <dt>{{_ "core.rolesBranchLbl"}}</dt>
-                <dd>{{rolesBranch}}</dd>
-            </dl>
-        {{/with}}
-    {{else}}
-        {{> loading}}
-    {{/if}}
+    <div class="box-body">
+        {{#if Template.subscriptionsReady}}
+            {{#with data}}
+                <dl class="dl-horizontal">
+                    <!--<dt>Id</dt>-->
+                    <!--<dd>{{_id}}</dd>-->
+                    <dt>{{_ "core.fullNameLbl"}}</dt>
+                    <dd>{{profile.name}}</dd>
+                    <dt>{{_ "core.usernameLbl"}}</dt>
+                    <dd>{{username}}</dd>
+                    <dt>{{_ "core.emailLbl"}}</dt>
+                    <dd>{{email}}</dd>
+                    <dt>{{_ "core.rolesLbl"}}</dt>
+                    <dd>{{roles}}</dd>
+                    <dt>{{_ "core.rolesBranchLbl"}}</dt>
+                    <dd>{{rolesBranch}}</dd>
+                </dl>
+            {{/with}}
+        {{else}}
+            {{> loading}}
+        {{/if}}
+    </div>
 </template>
