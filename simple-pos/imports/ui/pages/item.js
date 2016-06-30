@@ -77,7 +77,7 @@ newTmpl.helpers({
 // Edit
 editTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.item', {_id: this.data._id});
+        this.subscribe('simplePos.itemById', this.data._id);
     });
 });
 
@@ -94,7 +94,7 @@ editTmpl.helpers({
 // Show
 showTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.item', {_id: this.data._id});
+        this.subscribe('simplePos.itemById', this.data._id);
     });
 });
 

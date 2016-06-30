@@ -5,16 +5,15 @@ import {ReactiveTable} from 'meteor/aslagle:reactive-table';
 // Collection
 import {Customer} from '../../imports/api/collections/customer.js';
 
-Meteor.publish('simplePos.customer', function simpleCustomer(selector = {}, options = {}) {
+Meteor.publish('simplePos.customerById', function simpleCustomer(customerId) {
     this.unblock();
 
     new SimpleSchema({
-        selector: {type: Object, blackbox: true},
-        options: {type: Object, blackbox: true}
-    }).validate({selector, options});
+        customerId: {type: String}
+    }).validate({customerId});
 
     if (this.userId) {
-        let data = Customer.find(selector, options);
+        let data = Customer.find({_id: customerId});
 
         return data;
     }

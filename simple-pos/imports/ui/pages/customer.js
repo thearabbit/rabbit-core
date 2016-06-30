@@ -127,7 +127,7 @@ newTmpl.helpers({
 // Edit
 editTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.customer', {_id: this.data._id});
+        this.subscribe('simplePos.customerById', this.data._id);
     });
 });
 
@@ -144,7 +144,7 @@ editTmpl.helpers({
 // Show
 showTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.customer', {_id: this.data._id});
+        this.subscribe('simplePos.customerById', this.data._id);
     });
 });
 

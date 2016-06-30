@@ -112,7 +112,7 @@ newTmpl.onDestroyed(function () {
 // Edit
 editTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.order', {_id: this.data._id});
+        this.subscribe('simplePos.orderById', this.data._id);
     });
 });
 
@@ -151,7 +151,7 @@ editTmpl.onDestroyed(function () {
 // Show
 showTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.order', {_id: this.data._id});
+        this.subscribe('simplePos.orderById', this.data._id);
     });
 });
 

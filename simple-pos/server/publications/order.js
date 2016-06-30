@@ -4,16 +4,15 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 // Collection
 import {Order} from '../../imports/api/collections/order.js';
 
-Meteor.publish('simplePos.order', function simpleOrder(selector = {}, options = {}) {
+Meteor.publish('simplePos.orderById', function simpleOrder(orderId) {
     this.unblock();
-    
+
     new SimpleSchema({
-        selector: {type: Object, blackbox: true},
-        options: {type: Object, blackbox: true}
+        orderId: {type: String}
     }).validate({selector, options});
 
     if (this.userId) {
-        let data = Order.find(selector, options);
+        let data = Order.find({_id: orderId});
 
         return data;
     }
