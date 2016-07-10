@@ -16,7 +16,7 @@ import '../../../client/components/form-footer.js';
 import {createNewAlertify} from '../../../client/libs/create-new-alertify.js';
 import {renderTemplate} from '../../../client/libs/render-template.js';
 import {destroyAction} from '../../../client/libs/destroy-action.js';
-import {displaySuccess, displayError} from '../../../client/libs/display-alert.js';
+import {displaySuccess, displayError, displayLoading} from '../../../client/libs/display-alert.js';
 
 // Collection
 import {Exchange} from '../../api/collections/exchange.js';

@@ -52,7 +52,7 @@ indexTmpl.helpers({
 });
 
 indexTmpl.events({
-    'click .js-new': function (event, instance) {
+    'click .js-create': function (event, instance) {
         alertify.user(fa("plus", TAPi18n.__('core.user.title')), renderTemplate(newTmpl));
     },
     'click .js-update': function (event, instance) {
@@ -61,19 +61,35 @@ indexTmpl.events({
     'click .js-destroy': function (event, instance) {
         let self = this;
 
-        alertify.confirm(
-            fa("remove", TAPi18n.__('core.user.title')),
-            TAPi18n.__('alert.deleteConfirm', {itemId: self.username}),
-            function () {
-                removeUser.call({userId: self._id}, function (error, result) {
-                    if (error) {
-                        sAlert.error(error.message);
-                    } else {
-                        sAlert.success('Success');
-                    }
-                });
-            },
-            null);
+        swal({
+            title: 'Are you sure?',
+            text: `You won't be able to revert this <span class="text-red">[${self.username}]</span>!`,
+            type: 'warning',
+            allowEscapeKey: false,
+            allowOutsideClick: true,
+            showCloseButton: true,
+            showConfirmButton: true,
+            confirmButtonColor: "#dd4b39",
+            confirmButtonText: 'Yes, delete it!',
+            showCancelButton: true
+        }).then(function () {
+            removeUser.call({userId: self._id}, function (error, result) {
+                if (error) {
+                    displayError(error.message);
+                } else {
+                    swal({
+                        title: "Deleted!",
+                        text: `Your doc <span class="text-red">[${self.username}]</span> has been deleted`,
+                        type: "success",
+                        allowEscapeKey: false,
+                        showCloseButton: true,
+                        showConfirmButton: false,
+                        allowOutsideClick: true,
+                        timer: 3000
+                    }).done();
+                }
+            });
+        }).done();
     },
     'click .js-display': function (event, instance) {
         alertify.userShow(fa("eye", TAPi18n.__('core.user.title')), renderTemplate(showTmpl, this));

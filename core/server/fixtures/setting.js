@@ -7,6 +7,12 @@ Meteor.startup(function () {
         const data = {
             headOffice: '001',
             baseCurrency: 'USD',
+            roundNumber: {
+                type: 'general', // general, up, down
+                khrPrecision: -2,
+                usdPrecision: 2,
+                thbPrecision: 0
+            },
             language: 'en'
         };
 

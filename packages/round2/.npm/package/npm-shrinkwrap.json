@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "is-finite": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/is-finite/-/is-finite-1.0.1.tgz",
+      "from": "is-finite@>=1.0.1 <2.0.0"
+    },
+    "number-is-integer": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/number-is-integer/-/number-is-integer-1.0.0.tgz",
+      "from": "number-is-integer@>=1.0.0 <2.0.0"
+    },
+    "number-is-nan": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.0.tgz",
+      "from": "number-is-nan@>=1.0.0 <2.0.0"
+    },
+    "round-to": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/round-to/-/round-to-1.1.0.tgz",
+      "from": "round-to@1.1.0"
+    }
+  }
+}

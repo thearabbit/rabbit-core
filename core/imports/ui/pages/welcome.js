@@ -9,6 +9,7 @@ import {Bert} from 'meteor/themeteorchef:bert';
 
 // Lib
 import {Logout} from '../../../client/libs/logout.js';
+import {displaySuccess, displayError} from '../../../client/libs/display-alert.js';
 
 // Component
 import '../../../client/components/loading.js';
@@ -55,26 +56,41 @@ AutoForm.hooks({
         onSuccess: function (formType, result) {
             Meteor.loginWithPassword(result.username, result.password, (error)=> {
                 if (error) {
-                    Bert.alert({
-                        // title: 'Error',
-                        message: error.message,
-                        type: 'danger'
-                    });
+                    swal({
+                        title: "Error",
+                        text: error.message,
+                        type: "error",
+                        allowEscapeKey: true,
+                        showCloseButton: true,
+                        showConfirmButton: false,
+                        allowOutsideClick: true,
+                        timer: 1000
+                    }).done();
                 } else {
-                    Bert.alert({
-                        // title: 'Success',
-                        message: 'You are login',
-                        type: 'success'
-                    });
+                    swal({
+                        title: "Success",
+                        text: 'You are login!',
+                        type: "success",
+                        allowEscapeKey: true,
+                        showCloseButton: true,
+                        showConfirmButton: false,
+                        allowOutsideClick: true,
+                        timer: 1000
+                    }).done();
                 }
             });
         },
         onError: function (formType, error) {
-            Bert.alert({
-                // title: 'Error',
-                message: error.message,
-                type: 'danger'
-            });
+            swal({
+                title: "Error",
+                text: error.message,
+                type: "error",
+                allowEscapeKey: true,
+                showCloseButton: true,
+                showConfirmButton: false,
+                allowOutsideClick: true,
+                timer: 1000
+            }).done();
         }
     }
 });
@@ -117,11 +133,16 @@ AutoForm.hooks({
             FlowRouter.go(_.camelCase(result.module) + '.home');
         },
         onError: function (formType, error) {
-            Bert.alert({
-                // title: 'Error',
-                message: error.message,
-                type: 'danger'
-            });
+            swal({
+                title: "Error",
+                text: error.message,
+                type: "error",
+                allowEscapeKey: true,
+                showCloseButton: true,
+                showConfirmButton: false,
+                allowOutsideClick: true,
+                timer: 1000
+            }).done();
         }
     }
 });

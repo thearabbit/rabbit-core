@@ -11,12 +11,18 @@ export const Logout = ()=> {
             // Session.clearPersistent();
 
             FlowRouter.go('core.welcome');
-            Bert.alert({
-                // title: 'Success',
-                message: 'You are logout',
-                type: 'success'
-            });
-            // sAlert.success('You are logout');
+
+            swal({
+                title: "Success",
+                text: 'You are logout!',
+                type: "success",
+                allowEscapeKey: true,
+                showCloseButton: true,
+                showConfirmButton: false,
+                allowOutsideClick: true,
+                timer: 1000
+            }).done();
+
         }
     });
 };

@@ -5,15 +5,16 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "bignumber.js": "^2.3.0",
     "datatables.net": "^1.10.12",
     "datatables.net-bs": "^1.10.12",
     "datatables.net-buttons": "^1.2.1",
     "datatables.net-jqui": "^1.10.12",
     "jquery": "^2.2.3",
-    "json-markup": "^0.1.7",
     "mathjs": "^3.2.1",
     "meteor-node-stubs": "~0.2.0",
     "moment": "^2.13.0",
-    "money": "^0.2.0"
+    "money": "^0.2.0",
+    "p-loading": "^1.0.2"
   }
 }

@@ -1,6 +1,6 @@
 Package.describe({
     name: 'theara:admin-lte',
-    version: '0.3.5',
+    version: '2.3.5_6',
     // Brief, one-line summary of the package.
     summary: 'AdmintLTE Layout',
     // URL to the Git repository containing the source code for this package.
@@ -31,9 +31,9 @@ Package.onUse(function (api) {
     // Plugins JS
     api.addFiles([
         'lib/index.js',
-        // 'lib/plugins/fastclick/fastclick.min.js',
-        // 'lib/plugins/slimScroll/jquery.slimscroll.min.js',
-        // 'lib/plugins/select2/select2.full.min.js'
+        'lib/plugins/fastclick/fastclick.min.js',
+        'lib/plugins/slimScroll/jquery.slimscroll.min.js',
+        'lib/plugins/select2/select2.full.min.js'
     ], 'client');
 
     // Theme CSS

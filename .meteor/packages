@@ -34,8 +34,8 @@ check
 fourseven:scss
 twbs:bootstrap
 fortawesome:fontawesome
-theara:admin-lte
 #fezvrasta:bootstrap-material-design
+theara:admin-lte
 
 # Security
 #ian:accounts-ui-bootstrap-3
@@ -66,7 +66,6 @@ matb33:collection-hooks
 dburles:collection-helpers
 aldeed:collection2
 meteorhacks:aggregate
-jcbernack:reactive-aggregate
 aldeed:simple-schema
 #zimme:collection-softremovable
 percolate:migrations
@@ -77,11 +76,14 @@ dburles:mongo-collection-instances
 meteorhacks:subs-manager
 ccorcos:subs-cache
 reywood:publish-composite
+cottz:publish-relations
+jcbernack:reactive-aggregate
 tmeasday:publish-counts
 meteorhacks:unblock
 
 # Loading
 sacha:spin
+theara:blockui
 
 # Method
 mdg:validated-method
@@ -103,7 +105,7 @@ anti:fake
 aldeed:autoform
 #natestrauser:select2
 #zimme:select2-bootstrap3-css
-aldeed:autoform-select2
+theara:autoform-select2
 #jeremy:selectize # For default theme
 #chhib:selectize-bootstrap-3 # For bs3 theme
 #comerc:autoform-selectize
@@ -215,3 +217,4 @@ theara:inputmask
 theara:autoform-inputmask
 theara:autoform-bs-daterangepicker
 #theara:particles
+theara:round2

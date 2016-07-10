@@ -8,6 +8,7 @@ import {fa} from 'meteor/theara:fa-helpers';
 
 // Lib
 import {displaySuccess, displayError} from './display-alert.js';
+import {__} from '../../common/libs/tapi18n-callback-helper.js';
 
 export const destroyAction = (collection, selector = {}, options = {}) => {
     check(collection, Mongo.Collection);
@@ -22,20 +23,51 @@ export const destroyAction = (collection, selector = {}, options = {}) => {
         i18n: true
     });
 
-    alertify.confirm(
-        fa("trash", options.title),
-        TAPi18n.__('alert.deleteConfirm', {itemTitle: options.itemTitle}),
-        function () {
-            collection.remove(selector, function (error) {
-                if (error) {
-                    // sAlert.error(options.errorMsg ? options.errorMsg : error.message);
-                    displayError(options.errorMsg, options.i18n);
-                } else {
-                    // sAlert.success(options.successMsg);
-                    displaySuccess(options.successMsg, options.i18n);
-                }
-            });
-        },
-        null
-    );
+    swal({
+        title: 'Are you sure?',
+        text: `You won't be able to revert this <span class="text-red">[${options.itemTitle}]</span>!`,
+        type: 'warning',
+        allowEscapeKey: false,
+        allowOutsideClick: true,
+        showCloseButton: true,
+        showConfirmButton: true,
+        confirmButtonColor: "#dd4b39",
+        confirmButtonText: 'Yes, delete it!',
+        showCancelButton: true
+    }).then(function () {
+        collection.remove(selector, function (error) {
+            if (error) {
+                // sAlert.error(options.errorMsg ? options.errorMsg : error.message);
+                displayError(options.errorMsg, options.i18n);
+            } else {
+                swal({
+                    title: "Deleted!",
+                    text: `Your doc <span class="text-red">[${options.itemTitle}]</span> has been deleted`,
+                    type: "success",
+                    allowEscapeKey: false,
+                    showCloseButton: true,
+                    showConfirmButton: false,
+                    allowOutsideClick: true,
+                    timer: 3000
+                }).done();
+            }
+        });
+    }).done();
+
+    // alertify.confirm(
+    //     fa("trash", options.title),
+    //     TAPi18n.__('alert.deleteConfirm', {itemTitle: options.itemTitle}),
+    //     function () {
+    //         collection.remove(selector, function (error) {
+    //             if (error) {
+    //                 // sAlert.error(options.errorMsg ? options.errorMsg : error.message);
+    //                 displayError(options.errorMsg, options.i18n);
+    //             } else {
+    //                 // sAlert.success(options.successMsg);
+    //                 displaySuccess(options.successMsg, options.i18n);
+    //             }
+    //         });
+    //     },
+    //     null
+    // );
 };
