@@ -31,8 +31,7 @@ import './item.html';
 // Declare template
 let indexTmpl = Template.SimplePos_item,
     actionTmpl = Template.SimplePos_itemAction,
-    newTmpl = Template.SimplePos_itemNew,
-    editTmpl = Template.SimplePos_itemEdit,
+    formTmpl = Template.SimplePos_itemForm,
     showTmpl = Template.SimplePos_itemShow;
 
 
@@ -50,10 +49,10 @@ indexTmpl.helpers({
 
 indexTmpl.events({
     'click .js-create' (event, instance) {
-        alertify.item(fa('plus', TAPi18n.__('simplePos.item.title')), renderTemplate(newTmpl));
+        alertify.item(fa('plus', TAPi18n.__('simplePos.item.title')), renderTemplate(formTmpl));
     },
     'click .js-update' (event, instance) {
-        alertify.item(fa('pencil', TAPi18n.__('simplePos.item.title')), renderTemplate(editTmpl, this));
+        alertify.item(fa('pencil', TAPi18n.__('simplePos.item.title')), renderTemplate(formTmpl, this));
     },
     'click .js-destroy' (event, instance) {
         destroyAction(
@@ -67,34 +66,41 @@ indexTmpl.events({
     }
 });
 
-// New
-newTmpl.helpers({
-    collection(){
-        return Item;
-    }
-});
-
-// Edit
-editTmpl.onCreated(function () {
+// Form
+formTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.itemById', this.data._id);
+        let currentData = Template.currentData();
+        if (currentData) {
+            this.subscribe('simplePos.itemById', currentData._id);
+        }
     });
 });
 
-editTmpl.helpers({
+formTmpl.helpers({
     collection(){
         return Item;
     },
     data () {
-        let data = Item.findOne(this._id);
-        return data;
+        let currentData = Template.currentData();
+        if (currentData) {
+            return Item.findOne(currentData._id);
+        }
+    },
+    formType () {
+        let currentData = Template.currentData();
+        if (currentData) {
+            return 'update';
+        }
+
+        return 'insert';
     }
 });
 
 // Show
 showTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.itemById', this.data._id);
+        let currentData = Template.currentData();
+        this.subscribe('simplePos.itemById', currentData._id);
     });
 });
 
@@ -104,7 +110,8 @@ showTmpl.helpers({
         return TAPi18n.__(key);
     },
     data () {
-        let data = Item.findOne(this._id);
+        let currentData = Template.currentData();
+        let data = Item.findOne(currentData._id);
         data.photoUrl = null;
         if (data.photo) {
             let img = Files.findOne(data.photo);
@@ -130,7 +137,4 @@ let hooksObject = {
     }
 };
 
-AutoForm.addHooks([
-    'SimplePos_itemNew',
-    'SimplePos_itemEdit'
-], hooksObject);
+AutoForm.addHooks(['SimplePos_itemForm'], hooksObject);

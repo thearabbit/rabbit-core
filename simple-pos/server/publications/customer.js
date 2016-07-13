@@ -12,13 +12,11 @@ Meteor.publish('simplePos.customerById', function simpleCustomer(customerId) {
         customerId: {type: String}
     }).validate({customerId});
 
-    if (this.userId) {
-        let data = Customer.find({_id: customerId});
-
-        return data;
+    if (!this.userId) {
+        return this.ready();
     }
 
-    return this.ready();
+    return Customer.find({_id: customerId});
 });
 
 // Reactive Table

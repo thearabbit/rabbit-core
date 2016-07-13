@@ -4,7 +4,8 @@
       "home": "Home",
       "item": "Item",
       "customer": "Customer",
-      "order": "Order"
+      "order": "Order",
+      "invoice": "Invoice"
     },
     "home": {
       "title": "Home",

@@ -36,14 +36,19 @@ export const SelectOpts = {
 
         return list;
     },
-    currency: function () {
-        let list = [{label: "(Select One)", value: ""}];
+    currency: function (selectOne = true) {
+        let list = [];
+        if (selectOne) {
+            list.push({label: "(Select One)", value: ""});
+        }
+        
         Currency.find()
             .forEach(function (obj) {
                 list.push({label: obj._id + ' (' + obj.num + ')', value: obj._id})
             });
 
         return list;
+
     },
     branch: function (selectOne = true) {
         let list = [];
@@ -57,7 +62,8 @@ export const SelectOpts = {
             });
 
         return list;
-    },
+    }
+    ,
     role: function () {
         let list = [];
 
@@ -74,5 +80,6 @@ export const SelectOpts = {
         });
 
         return list;
-    },
+    }
+    ,
 };

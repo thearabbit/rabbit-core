@@ -29,15 +29,9 @@ Setting.schema = new SimpleSchema({
         type: String,
         label: __('core.setting.baseCurrencyLbl'),
         autoform: {
-            type: "select2",
+            type: "select-radio-inline",
             options: function () {
-                return SelectOpts.currency();
-            },
-            afFieldInput: {
-                select2Options: {
-                    placeholder: '(Select One)',
-                    allowClear: true
-                }
+                return SelectOpts.currency(false);
             }
         }
     },
@@ -94,7 +88,7 @@ Setting.schema = new SimpleSchema({
         type: String,
         label: __('core.setting.languageLbl'),
         autoform: {
-            type: "select2",
+            type: "select-radio-inline",
             options: function () {
                 return [
                     {label: 'En', value: 'en'},

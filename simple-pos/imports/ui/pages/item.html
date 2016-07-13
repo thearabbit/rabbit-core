@@ -23,28 +23,11 @@
     {{/columnAction}}
 </template>
 
-<!--Insert-->
-<template name="SimplePos_itemNew">
-    <div class="box-body">
-        {{#autoForm collection=collection id="SimplePos_itemNew" type="insert"}}
-            <div class="row">
-                <div class="col-md-12">
-                    {{> afQuickField name='name'}}
-                    {{> afQuickField name='price'}}
-                    {{> afQuickField name='photo'}}
-                </div>
-            </div>
-
-            {{> formFooterWithButton}}
-        {{/autoForm}}
-    </div>
-</template>
-
-<!--Update-->
-<template name="SimplePos_itemEdit">
+<!--Form-->
+<template name="SimplePos_itemForm">
     <div class="box-body">
         {{#if Template.subscriptionsReady}}
-            {{#autoForm collection=collection id="SimplePos_itemEdit" doc=data type="update"}}
+            {{#autoForm collection=collection id="SimplePos_itemForm" doc=data type=formType}}
                 <div class="row">
                     <div class="col-md-12">
                         {{> afQuickField name='name'}}

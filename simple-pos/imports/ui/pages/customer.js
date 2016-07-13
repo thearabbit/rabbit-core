@@ -34,8 +34,7 @@ import './customer.html';
 // Declare template
 let indexTmpl = Template.SimplePos_customer,
     actionTmpl = Template.SimplePos_customerAction,
-    newTmpl = Template.SimplePos_customerNew,
-    editTmpl = Template.SimplePos_customerEdit,
+    formTmpl = Template.SimplePos_customerForm,
     showTmpl = Template.SimplePos_customerShow;
 
 
@@ -48,7 +47,7 @@ indexTmpl.onCreated(function () {
     // Reactive table filter
     this.filter = new ReactiveTable.Filter('simplePos.customerByBranchFilter', ['branchId']);
     this.autorun(()=> {
-        this.filter.set(Session.get('currentBranch'));
+        this.filter.set(Session.get('currentByBranch'));
     });
 });
 
@@ -57,7 +56,7 @@ indexTmpl.helpers({
         return CustomerTabular;
     },
     selector() {
-        return {branchId: Session.get('currentBranch')};
+        return {branchId: Session.get('currentByBranch')};
     },
     tableSettings(){
         let i18nPrefix = 'simplePos.customer.schema';
@@ -100,62 +99,65 @@ indexTmpl.helpers({
 
 indexTmpl.events({
     'click .js-create' (event, instance) {
-        alertify.customer(fa('plus', TAPi18n.__('simplePos.customer.title')), renderTemplate(newTmpl));
+        alertify.customer(fa('plus', 'Customer'), renderTemplate(formTmpl));
     },
     'click .js-update' (event, instance) {
-        alertify.customer(fa('pencil', TAPi18n.__('simplePos.customer.title')), renderTemplate(editTmpl, this));
+        alertify.customer(fa('pencil', 'Customer'), renderTemplate(formTmpl, this));
     },
     'click .js-destroy' (event, instance) {
         destroyAction(
             Customer,
             {_id: this._id},
-            {title: TAPi18n.__('simplePos.customer.title'), itemTitle: this._id}
+            {title: 'Customer', itemTitle: this._id}
         );
     },
     'click .js-display' (event, instance) {
-        alertify.customerShow(fa('eye', TAPi18n.__('simplePos.customer.title')), renderTemplate(showTmpl, this));
+        alertify.customerShow(fa('eye', 'Customer'), renderTemplate(showTmpl, this));
     }
 });
 
-// New
-newTmpl.helpers({
-    collection(){
-        return Customer;
-    }
-});
-
-// Edit
-editTmpl.onCreated(function () {
+// Form
+formTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.customerById', this.data._id);
+        let currentData = Template.currentData();
+        if (currentData) {
+            this.subscribe('simplePos.customerById', currentData._id);
+        }
     });
 });
 
-editTmpl.helpers({
+formTmpl.helpers({
     collection(){
         return Customer;
     },
     data () {
-        let data = Customer.findOne(this._id);
-        return data;
+        let currentData = Template.currentData();
+        if (currentData) {
+            return Customer.findOne(currentData._id);
+        }
+    },
+    formType () {
+        let currentData = Template.currentData();
+        if (currentData) {
+            return 'update';
+        }
+
+        return 'insert';
     }
 });
 
 // Show
 showTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.customerById', this.data._id);
+        let currentData = Template.currentData();
+        this.subscribe('simplePos.customerById', currentData._id);
     });
 });
 
 showTmpl.helpers({
-    i18nLabel(label){
-        let i18nLabel = `simplePos.customer.schema.${label}.label`;
-        return i18nLabel;
-    },
     data () {
-        let data = Customer.findOne(this._id);
-        return data;
+        let currentData = Template.currentData();
+        return Customer.findOne(currentData._id);
     }
 });
 
@@ -172,7 +174,4 @@ let hooksObject = {
     }
 };
 
-AutoForm.addHooks([
-    'SimplePos_customerNew',
-    'SimplePos_customerEdit'
-], hooksObject);
+AutoForm.addHooks(['SimplePos_customerForm'], hooksObject);

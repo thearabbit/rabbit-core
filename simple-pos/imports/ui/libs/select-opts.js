@@ -18,12 +18,13 @@ export const SelectOpts = {
 
         return list;
     },
-    gender: function () {
-        let list = [
-            {label: "(Select One)", value: ""},
-            {label: "Male", value: "M"},
-            {label: "Female", value: "F"}
-        ];
+    gender: function (selectOne = true) {
+        let list = [];
+        if (selectOne) {
+            list.push({label: "(Select One)", value: ""});
+        }
+        list.push({label: "Male", value: "M"});
+        list.push({label: "Female", value: "F"});
 
         return list;
     }

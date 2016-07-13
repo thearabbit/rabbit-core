@@ -45,16 +45,18 @@
 
 <!--Edit Item-->
 <template name="SimplePos_orderItemsEdit">
-    {{#autoForm schema=schema id="SimplePos_orderItemsEdit" doc=data}}
-        <div class="row">
-            <div class="col-md-12">
-                {{> afQuickField type="text" name="itemId" readonly=true}}
-                {{> afQuickField name="qty"}}
-                {{> afQuickField name="price"}}
-                {{> afQuickField name="amount" value=amount readonly="true"}}
+    <div class="box-body">
+        {{#autoForm schema=schema id="SimplePos_orderItemsEdit" doc=data}}
+            <div class="row">
+                <div class="col-md-12">
+                    {{> afQuickField type="text" name="itemId" readonly=true}}
+                    {{> afQuickField name="qty"}}
+                    {{> afQuickField name="price"}}
+                    {{> afQuickField name="amount" value=amount readonly="true"}}
+                </div>
             </div>
-        </div>
 
-        {{> formFooterWithButton}}
-    {{/autoForm}}
+            {{> formFooterWithButton}}
+        {{/autoForm}}
+    </div>
 </template>

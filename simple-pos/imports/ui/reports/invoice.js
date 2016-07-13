@@ -10,6 +10,7 @@ import 'printthis';
 // Lib
 import {displaySuccess, displayError} from '../../../../core/client/libs/display-alert.js';
 
+
 // Component
 import '../../../../core/imports/ui/layouts/report/content.html';
 import '../../../../core/imports/ui/layouts/report/sign-footer.html';
@@ -17,16 +18,17 @@ import '../../../../core/client/components/loading.js';
 import '../../../../core/client/components/form-footer.js';
 
 // Method
-import {customerReport} from '../../../common/methods/reports/customer.js';
+import {orderReport} from '../../../common/methods/reports/oreder.js';
 
 // Schema
-import {CustomerSchema} from '../../api/collections/reports/customer.js';
+import {OrderSchema} from '../../api/collections/reports/order.js';
 
 // Page
-import './customer.html';
+import './invoice.html';
 
 // Declare template
-let indexTmpl = Template.SimplePos_customerReport;
+let indexTmpl = Template.SimplePos_invoiceReport;
+
 
 // State
 let formDataState = new ReactiveVar(null);
@@ -48,7 +50,8 @@ indexTmpl.onCreated(function () {
         if (formDataState.get()) {
             this.rptInitState.set(true);
             this.rptDataState.set(false);
-            customerReport.callPromise(formDataState.get())
+
+            orderReport.callPromise(formDataState.get())
                 .then((result)=> {
                     this.rptDataState.set(result);
                 }).catch((err)=> {
@@ -62,7 +65,7 @@ indexTmpl.onCreated(function () {
 
 indexTmpl.helpers({
     schema(){
-        return CustomerSchema;
+        return OrderSchema;
     },
     // Generate
     options: function () {
@@ -71,7 +74,7 @@ indexTmpl.helpers({
         // orientation = portrait, landscape
         return {
             //fontSize: 'bg',
-            paper: 'a4',
+            paper: 'mini',
             orientation: 'portrait'
         };
     },
@@ -100,8 +103,7 @@ indexTmpl.events({
             // formValues: true            // preserve input/form values
         };
 
-
-        $('#print-data').printThis();
+        $('#report-content').printThis(opts);
     }
 });
 
@@ -126,4 +128,4 @@ let hooksObject = {
     }
 };
 
-AutoForm.addHooks('SimplePos_customerReport', hooksObject);
+AutoForm.addHooks('SimplePos_invoiceReport', hooksObject);

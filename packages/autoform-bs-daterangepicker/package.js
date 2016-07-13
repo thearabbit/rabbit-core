@@ -1,6 +1,6 @@
 Package.describe({
     name: 'theara:autoform-bs-daterangepicker',
-    version: '0.2.0',
+    version: '0.2.4',
     // Brief, one-line summary of the package.
     summary: '',
     // URL to the Git repository containing the source code for this package.

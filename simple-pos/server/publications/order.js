@@ -9,13 +9,11 @@ Meteor.publish('simplePos.orderById', function simpleOrder(orderId) {
 
     new SimpleSchema({
         orderId: {type: String}
-    }).validate({selector, options});
+    }).validate({orderId});
 
-    if (this.userId) {
-        let data = Order.find({_id: orderId});
-
-        return data;
+    if (!this.userId) {
+        return this.ready();
     }
 
-    return this.ready();
+    return Order.find({_id: orderId});
 });

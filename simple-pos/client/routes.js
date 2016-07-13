@@ -62,14 +62,14 @@ SimplePOSRoutes.route('/item', {
 import '../imports/ui/pages/customer.js';
 SimplePOSRoutes.route('/customer', {
     name: 'simplePos.customer',
-    title: __('simplePos.customer.title'),
+    title: 'Customer',
     action: function (params, queryParams) {
         Layout.main('SimplePos_customer');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: __('simplePos.customer.title'),
+        title: 'Customer',
         icon: 'users',
         parent: 'simplePos.home'
     }
@@ -79,14 +79,14 @@ SimplePOSRoutes.route('/customer', {
 import '../imports/ui/pages/order.js';
 SimplePOSRoutes.route('/order', {
     name: 'simplePos.order',
-    title: __('simplePos.order.title'),
+    title: 'Order',
     action: function (params, queryParams) {
         Layout.main('SimplePos_order');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: __('simplePos.order.title'),
+        title: 'Order',
         icon: 'cart-plus',
         parent: 'simplePos.home'
     }

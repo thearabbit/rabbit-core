@@ -123,15 +123,15 @@
         {{#if Template.subscriptionsReady}}
             {{#with data}}
                 <dl class="dl-horizontal">
-                    <dt>{{i18nLabel "_id"}}</dt>
+                    <dt>ID</dt>
                     <dd>{{_id}}</dd>
-                    <dt>{{i18nLabel "orderDate"}}</dt>
+                    <dt>Order Date</dt>
                     <dd>{{moFormat orderDate "DD/MM/YYYY"}}</dd>
-                    <dt>{{i18nLabel "customerId"}}</dt>
+                    <dt>Customer</dt>
                     <dd>{{customerId}}</dd>
-                    <dt>{{i18nLabel "des"}}</dt>
+                    <dt>Description</dt>
                     <dd>{{des}}</dd>
-                    <dt>{{i18nLabel "itemId"}}</dt>
+                    <dt>Items</dt>
                     <dd>
                         <!--json2html-->
                         <!--{{json2html items}}-->
@@ -139,7 +139,7 @@
                         <!--jsonview-->
                         {{> jsonView json=data.items options=data.jsonViewOpts}}
                     </dd>
-                    <dt>{{i18nLabel "total"}}</dt>
+                    <dt>Total</dt>
                     <dd>{{numFormat total "0,0.00"}}</dd>
                 </dl>
             {{/with}}

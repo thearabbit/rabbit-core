@@ -61,21 +61,21 @@ indexTmpl.helpers({
 
 indexTmpl.events({
     'click .js-create' (event, instance) {
-        alertify.order(fa('plus', TAPi18n.__('simplePos.order.title')), renderTemplate(newTmpl));
+        alertify.order(fa('plus', 'Order'), renderTemplate(newTmpl)).maximize();
     },
     'click .js-update' (event, instance) {
-        alertify.order(fa('pencil', TAPi18n.__('simplePos.order.title')), renderTemplate(editTmpl, this));
+        alertify.order(fa('pencil', 'Order'), renderTemplate(editTmpl, this)).maximize();
     },
     'click .js-destroy' (event, instance) {
         let data = this;
         destroyAction(
             Order,
             {_id: data._id},
-            {title: TAPi18n.__('simplePos.order.title'), itemTitle: data._id}
+            {title: 'Order', itemTitle: data._id}
         );
     },
     'click .js-display' (event, instance) {
-        alertify.orderShow(fa('eye', TAPi18n.__('simplePos.order.title')), renderTemplate(showTmpl, this));
+        alertify.orderShow(fa('eye', 'Order'), renderTemplate(showTmpl, this));
     },
     'click .js-invoice' (event, instance) {
         let params = {};
@@ -112,7 +112,8 @@ newTmpl.onDestroyed(function () {
 // Edit
 editTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.orderById', this.data._id);
+        let currentData = Template.currentData();
+        this.subscribe('simplePos.orderById', currentData._id);
     });
 });
 
@@ -121,7 +122,8 @@ editTmpl.helpers({
         return Order;
     },
     data () {
-        let data = Order.findOne(this._id);
+        let currentData = Template.currentData();
+        let data = Order.findOne(currentData._id);
 
         // Add items to local collection
         _.forEach(data.items, (value)=> {
@@ -151,17 +153,15 @@ editTmpl.onDestroyed(function () {
 // Show
 showTmpl.onCreated(function () {
     this.autorun(()=> {
-        this.subscribe('simplePos.orderById', this.data._id);
+        let currentData = Template.currentData();
+        this.subscribe('simplePos.orderById', currentData._id);
     });
 });
 
 showTmpl.helpers({
-    i18nLabel(label){
-        let key = `simplePos.order.schema.${label}.label`;
-        return TAPi18n.__(key);
-    },
     data () {
-        let data = Order.findOne(this._id);
+        let currentData = Template.currentData();
+        let data = Order.findOne(currentData._id);
 
         // Use jsonview
         data.jsonViewOpts = {collapsed: true};
@@ -174,22 +174,11 @@ showTmpl.helpers({
 let hooksObject = {
     before: {
         insert: function (doc) {
-            let items = [];
-            itemsCollection.find().forEach((obj)=> {
-                delete obj._id;
-                items.push(obj);
-            });
-            doc.items = items;
-
+            doc.items = itemsCollection.find().fetch();
             return doc;
         },
         update: function (doc) {
-            let items = [];
-            itemsCollection.find().forEach((obj)=> {
-                delete obj._id;
-                items.push(obj);
-            });
-            doc.$set.items = items;
+            doc.$set.items = itemsCollection.find().fetch();
 
             delete doc.$unset;
 
@@ -197,12 +186,10 @@ let hooksObject = {
         }
     },
     onSuccess (formType, result) {
-        // if (formType == 'update') {
         // Remove items collection
         itemsCollection.remove({});
 
         alertify.order().close();
-        // }
         displaySuccess();
     },
     onError (formType, error) {

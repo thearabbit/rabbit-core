@@ -13,14 +13,17 @@ export const Order = new Mongo.Collection("simplePos_order");
 // Items sub schema
 Order.itemsSchema = new SimpleSchema({
     itemId: {
-        type: String
+        type: String,
+        label: 'Item'
     },
     qty: {
         type: Number,
+        label: 'Qty',
         min: 1
     },
     price: {
         type: Number,
+        label: 'Price',
         decimal: true,
         autoform: {
             type: 'inputmask',
@@ -31,6 +34,7 @@ Order.itemsSchema = new SimpleSchema({
     },
     amount: {
         type: Number,
+        label: 'Amount',
         decimal: true,
         autoform: {
             type: 'inputmask',
@@ -45,6 +49,7 @@ Order.itemsSchema = new SimpleSchema({
 Order.schema = new SimpleSchema({
     orderDate: {
         type: Date,
+        label: 'Order date',
         defaultValue: moment().toDate(),
         autoform: {
             afFieldInput: {
@@ -58,6 +63,7 @@ Order.schema = new SimpleSchema({
     },
     customerId: {
         type: String,
+        label: 'Customer',
         autoform: {
             type: 'universe-select',
             afFieldInput: {
@@ -74,6 +80,7 @@ Order.schema = new SimpleSchema({
     },
     des: {
         type: String,
+        label: 'Description',
         autoform: {
             afFieldInput: {
                 type: 'summernote',
@@ -96,6 +103,7 @@ Order.schema = new SimpleSchema({
     },
     total: {
         type: Number,
+        label: 'Total',
         decimal: true,
         autoform: {
             type: 'inputmask',
@@ -109,8 +117,4 @@ Order.schema = new SimpleSchema({
     }
 });
 
-Meteor.startup(function () {
-    Order.itemsSchema.i18n("simplePos.order.schema");
-    Order.schema.i18n("simplePos.order.schema");
-    Order.attachSchema(Order.schema);
-});
+Order.attachSchema(Order.schema);

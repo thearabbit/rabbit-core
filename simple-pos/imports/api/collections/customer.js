@@ -9,21 +9,25 @@ import {SelectOpts} from '../../ui/libs/select-opts.js';
 
 export const Customer = new Mongo.Collection("simplePos_customer");
 
-Customer.schema = new SimpleSchema({
+let schema = new SimpleSchema({
     name: {
-        type: String
+        type: String,
+        label: 'Name'
     },
     gender: {
         type: String,
+        label: 'Gender',
+        defaultValue: 'M',
         autoform: {
-            type: "select2",
+            type: "select-radio-inline",
             options: function () {
-                return SelectOpts.gender();
+                return SelectOpts.gender(false);
             }
         }
     },
     dob: {
         type: Date,
+        label: 'Date of birth',
         defaultValue: moment().toDate(),
         autoform: {
             afFieldInput: {
@@ -36,13 +40,16 @@ Customer.schema = new SimpleSchema({
         }
     },
     address: {
-        type: String
+        type: String,
+        label: 'Address'
     },
     telephone: {
-        type: String
+        type: String,
+        label: 'Telephone'
     },
     email: {
         type: String,
+        label: 'Email',
         regEx: SimpleSchema.RegEx.Email,
         optional: true
     },
@@ -51,7 +58,4 @@ Customer.schema = new SimpleSchema({
     }
 });
 
-Meteor.startup(function () {
-    Customer.schema.i18n("simplePos.customer.schema");
-    Customer.attachSchema(Customer.schema);
-});
+Customer.attachSchema(schema);

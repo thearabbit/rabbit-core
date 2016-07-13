@@ -9,13 +9,13 @@ Meteor.publish('simplePos.itemById', function simpleItem(itemId) {
 
     new SimpleSchema({
         itemId: {type: String},
-    }).validate({selector, options});
+    }).validate({itemId});
 
-    if (this.userId) {
-        let data = Item.find({_id: itemId});
-
-        return data;
+    if (!this.userId) {
+        return this.ready();
     }
 
-    return this.ready();
+    Meteor._sleepForMs(200);
+
+    return Item.find({_id: itemId});
 });

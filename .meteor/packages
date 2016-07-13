@@ -96,8 +96,8 @@ okgrow:promise
 theara:fetcher
 
 # Factory, Faker
+dburles:factory
 digilord:faker
-anti:fake
 
 # Template
 #comerc:template2@1.5.0
@@ -118,6 +118,7 @@ tsega:bootstrap3-datetimepicker
 #aldeed:autoform-bs-datetimepicker
 theara:autoform-bs-datetimepicker
 #baysao:autoform-bs-daterangepicker
+#antalakas:autoform-bs-daterangepicker
 dburles:spacebars-tohtml
 raix:handlebar-helpers
 #ostrio:templatehelpers
@@ -208,7 +209,7 @@ theara:call-async
 theara:autoprint
 theara:reactive-list
 theara:numeral-helpers
-theara:factory
+#theara:factory
 theara:app-dump
 #theara:autoform-file
 #theara:scrollup

@@ -27,48 +27,32 @@ let SimplePOSRoutes = FlowRouter.group({
 import '../imports/ui/reports/customer.js';
 SimplePOSRoutes.route('/customer-report', {
     name: 'simplePos.customerReport',
-    title: __('simplePos.customerReport.title'),
+    title: 'Customer Report',
     action: function (params, queryParams) {
         Layout.main('SimplePos_customerReport');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: __('simplePos.customerReport.title'),
+        title: 'Customer Report',
         icon: 'users',
         parent: 'simplePos.home'
     }
 });
 
-SimplePOSRoutes.route('/customer-report-gen', {
-    name: 'simplePos.customerReportGen',
-    title: __('simplePos.customerReport.title'),
+// Invoice
+import '../imports/ui/reports/invoice.js';
+SimplePOSRoutes.route('/invoice-report', {
+    name: 'simplePos.invoiceReport',
+    title: 'Invoice Report',
     action: function (params, queryParams) {
-        Layout.report('SimplePos_customerReportGen');
-    }
-});
-
-// Order
-import '../imports/ui/reports/order.js';
-SimplePOSRoutes.route('/order-report', {
-    name: 'simplePos.orderReport',
-    title: __('simplePos.orderReport.title'),
-    action: function (params, queryParams) {
-        Layout.main('SimplePos_orderReport');
+        Layout.main('SimplePos_invoiceReport');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: __('simplePos.orderReport.title'),
+        title: 'Invoice Report',
         icon: 'cart-plus',
         parent: 'simplePos.home'
-    }
-});
-
-SimplePOSRoutes.route('/order-report-gen', {
-    name: 'simplePos.orderReportGen',
-    title: __('simplePos.orderReport.title'),
-    action: function (params, queryParams) {
-        Layout.report('SimplePos_orderReportGen');
     }
 });
