@@ -43,12 +43,18 @@ export const ItemsSchema = new SimpleSchema({
         decimal: true,
         defaultValue: function () {
             let id = AutoForm.getFieldValue('itemId');
-            
+
             if (id) {
+                $.blockUI();
                 itemInfo.callPromise({
                     _id: id
                 }).then(function (result) {
                     defaultPrice.set(result.price);
+
+                    Meteor.setTimeout(()=> {
+                        $.unblockUI();
+                    }, 2000);
+
                 }).catch(function (err) {
                     console.log(err.message);
                 });
