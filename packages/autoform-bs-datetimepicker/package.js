@@ -1,7 +1,7 @@
 Package.describe({
     name: 'theara:autoform-bs-datetimepicker',
     summary: 'Custom bootstrap-datetimepicker input type with timezone support for AutoForm',
-    version: '1.0.6',
+    version: '1.0.7',
     git: ''
 });
 

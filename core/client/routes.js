@@ -128,7 +128,7 @@ CoreRoutes.route('/company', {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: __('core.company.title'),
-        icon: 'sitemap',
+        icon: 'building',
         parent: 'core.welcome'
     }
 });
@@ -145,7 +145,7 @@ CoreRoutes.route('/exchange', {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: __('core.exchange.title'),
-        icon: 'sitemap',
+        icon: 'exchange',
         parent: 'core.welcome'
     }
 });
@@ -162,7 +162,7 @@ CoreRoutes.route('/setting', {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: __('core.setting.title'),
-        icon: 'sitemap',
+        icon: 'cogs',
         parent: 'core.welcome'
     }
 });
@@ -179,7 +179,7 @@ CoreRoutes.route('/user', {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: __('core.user.title'),
-        icon: 'sitemap',
+        icon: 'user',
         parent: 'core.welcome'
     }
 });

@@ -4,7 +4,8 @@
 
 .alertify .ajs-header {
     color: white;
-    background: #dd4b39;
+    background: #3c8dbc;
+    /*background: #dd4b39;*/
 }
 
 .alertify .ajs-commands button {

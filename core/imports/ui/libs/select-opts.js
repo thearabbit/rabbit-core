@@ -13,8 +13,10 @@ export const SelectOpts = {
 
         Roles.getGroupsForUser(Meteor.userId())
             .forEach(function (group) {
-                let label = Module[group].name;
-                list.push({label: label, value: group});
+                if (Module[group]) {
+                    let label = Module[group].name;
+                    list.push({label: label, value: group});
+                }
             });
 
         return list;
@@ -41,7 +43,7 @@ export const SelectOpts = {
         if (selectOne) {
             list.push({label: "(Select One)", value: ""});
         }
-        
+
         Currency.find()
             .forEach(function (obj) {
                 list.push({label: obj._id + ' (' + obj.num + ')', value: obj._id})

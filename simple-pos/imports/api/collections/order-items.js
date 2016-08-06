@@ -53,7 +53,7 @@ export const ItemsSchema = new SimpleSchema({
 
                     Meteor.setTimeout(()=> {
                         $.unblockUI();
-                    }, 2000);
+                    }, 500);
 
                 }).catch(function (err) {
                     console.log(err.message);

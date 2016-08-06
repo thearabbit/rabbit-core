@@ -14,7 +14,8 @@
 	"btnGo": "ទៅ",
 	"btnProfile": "ព័ត៌មាន",
 	"btnSave": "រក្សាទុក",
-	"btnReset": "កំណត់ឡើងវិញ",
+    "btnSubmit": "បញ្ជូន",
+    "btnReset": "កំណត់ឡើងវិញ",
     "btnAddNew": "បង្កើតថ្មី",
     "btnEdit": "កែ",
     "btnDelete": "លុប"

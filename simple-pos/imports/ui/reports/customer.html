@@ -10,17 +10,13 @@
                 <div class="col-md-6">
                     {{> afQuickField name="repDate"}}
 
-                    <button type="submit" class="btn btn-danger"><i class="fa fa-floppy-o"></i> {{_ "form.btnSave"}}
-                    </button>
-                    <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> {{_ "form.btnReset"}}
-                    </button>
+                    {{> formFooterWithButton}}
                 </div>
             </div>
         {{/autoForm}}
 
         <hr>
-        <button type="button" class="btn btn-info pull-right" id="print-report"><i class="fa fa-print"></i> Print
-        </button>
+        <button type="button" class="btn btn-info pull-right btn-print"><i class="fa fa-print"></i> Print</button>
 
 
         <!--Is ready-->

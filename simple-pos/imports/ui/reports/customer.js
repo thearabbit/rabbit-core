@@ -31,7 +31,7 @@ let indexTmpl = Template.SimplePos_customerReport;
 // State
 let formDataState = new ReactiveVar(null);
 
-// Form
+// Index
 indexTmpl.onCreated(function () {
     this.rptInitState = new ReactiveVar(false);
     this.rptDataState = new ReactiveVar(null);
@@ -48,6 +48,7 @@ indexTmpl.onCreated(function () {
         if (formDataState.get()) {
             this.rptInitState.set(true);
             this.rptDataState.set(false);
+
             customerReport.callPromise(formDataState.get())
                 .then((result)=> {
                     this.rptDataState.set(result);
@@ -64,17 +65,6 @@ indexTmpl.helpers({
     schema(){
         return CustomerSchema;
     },
-    // Generate
-    options: function () {
-        // font size = null (default), bg
-        // paper = a4, a5, mini
-        // orientation = portrait, landscape
-        return {
-            //fontSize: 'bg',
-            paper: 'a4',
-            orientation: 'portrait'
-        };
-    },
     rptInit(){
         let instance = Template.instance();
         return instance.rptInitState.get();
@@ -86,7 +76,7 @@ indexTmpl.helpers({
 });
 
 indexTmpl.events({
-    'click #print-report'(event, instance){
+    'click .btn-print'(event, instance){
         let opts = {
             // debug: true,               // show the iframe for debugging
             // importCSS: true,            // import page CSS
@@ -109,7 +99,7 @@ indexTmpl.onDestroyed(function () {
     formDataState.set(null);
 });
 
-// Form hook
+// hook
 let hooksObject = {
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
         this.event.preventDefault();
@@ -118,7 +108,6 @@ let hooksObject = {
         this.done(null, insertDoc);
     },
     onSuccess: function (formType, result) {
-        console.log(result);
         formDataState.set(result);
     },
     onError: function (formType, error) {

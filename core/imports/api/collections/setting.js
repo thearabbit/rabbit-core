@@ -20,7 +20,7 @@ Setting.schema = new SimpleSchema({
             afFieldInput: {
                 select2Options: {
                     placeholder: '(Select One)',
-                    allowClear: true
+                    // allowClear: true
                 }
             }
         }

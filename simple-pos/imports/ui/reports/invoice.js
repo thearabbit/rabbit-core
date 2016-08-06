@@ -67,17 +67,6 @@ indexTmpl.helpers({
     schema(){
         return OrderSchema;
     },
-    // Generate
-    options: function () {
-        // font size = null (default), bg
-        // paper = a4, a5, mini
-        // orientation = portrait, landscape
-        return {
-            //fontSize: 'bg',
-            paper: 'mini',
-            orientation: 'portrait'
-        };
-    },
     rptInit(){
         let instance = Template.instance();
         return instance.rptInitState.get();
@@ -89,7 +78,7 @@ indexTmpl.helpers({
 });
 
 indexTmpl.events({
-    'click #print-report'(event, instance){
+    'click .btn-print'(event, instance){
         let opts = {
             // debug: true,               // show the iframe for debugging
             // importCSS: true,            // import page CSS
@@ -103,7 +92,7 @@ indexTmpl.events({
             // formValues: true            // preserve input/form values
         };
 
-        $('#report-content').printThis(opts);
+        $('#print-data').printThis(opts);
     }
 });
 
