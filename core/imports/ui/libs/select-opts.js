@@ -82,6 +82,70 @@ export const SelectOpts = {
         });
 
         return list;
+    },
+    backupRestoreModule: function () {
+        let userId = Meteor.userId(),
+            currentModule = Session.get('currentModule'),
+            list = [];
+        // list.push({label: "(Select One)", value: ""});
+
+        if (currentModule == 'Core') {
+            list.push({label: "- All -", value: "All"});
+            Roles.getGroupsForUser(userId)
+                .forEach(function (group) {
+                    if (Module[group]) {
+                        let label = Module[group].name;
+                        list.push({label: label, value: group});
+                    }
+                });
+        } else {
+            if (Module[currentModule]) {
+                let label = Module[currentModule].name;
+                list.push({label: label, value: currentModule});
+            }
+        }
+
+        return list;
+    },
+    backupRestoreType: function (module) {
+        let list = [];
+
+        if (!_.isEmpty(module)) {
+            if (module == 'All' || module == 'Core') {
+                list.push({label: '- All -', value: 'all'});
+            } else {
+                //list.push({label: '- All -', value: 'all'});
+                if (Module[module]) {
+                    _.each(Module[module].dump, function (val, key) {
+                        list.push({label: key, value: key});
+                    });
+                }
+            }
+        }
+        // list.unshift({label: '(Select One)', value: ''});
+
+        return list;
+    },
+    backupRestoreBranch: function (type) {
+        let currentModule = Session.get('currentModule'),
+            currentBranch = Session.get('currentBranch'),
+            list = [];
+
+        if (!_.isEmpty(type)) {
+            // Check current module
+            if (type == 'all' || type == 'setting') {
+                list.push({label: '- All -', value: 'all'});
+            } else {
+                if (Meteor.user() && Meteor.user().rolesBranch) {
+                    _.each(Meteor.user().rolesBranch, function (branch) {
+                        let getBranch = Branch.findOne(branch);
+                        list.push({label: getBranch.enName, value: getBranch._id});
+                    });
+                }
+            }
+        }
+        // list.unshift({label: '(Select One)', value: ''});
+
+        return list;
     }
-    ,
 };

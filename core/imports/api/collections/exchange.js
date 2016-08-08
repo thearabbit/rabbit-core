@@ -17,7 +17,7 @@ let Rates = new SimpleSchema({
         autoform: {
             type: 'inputmask',
             inputmaskOptions: function () {
-                return inputmaskOptions.currency();
+                return inputmaskOptions.currency({prefix: '៛'});
             }
         }
     },
@@ -27,7 +27,7 @@ let Rates = new SimpleSchema({
             return TAPi18n.__('core.exchange.usdLbl');
         },
         decimal: true,
-        min:0.1,
+        min: 0.1,
         autoform: {
             type: 'inputmask',
             inputmaskOptions: function () {
@@ -41,11 +41,11 @@ let Rates = new SimpleSchema({
             return TAPi18n.__('core.exchange.thbLbl');
         },
         decimal: true,
-        min:0.1,
+        min: 0.1,
         autoform: {
             type: 'inputmask',
             inputmaskOptions: function () {
-                return inputmaskOptions.currency();
+                return inputmaskOptions.currency({prefix: 'B'});
             }
         }
     }

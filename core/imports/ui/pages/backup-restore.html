@@ -1,0 +1,50 @@
+<!--Backup-->
+<template name="Core_backup">
+    <div class="box-body">
+        {{#autoForm schema=backupSchema id="Core_backup"}}
+            <div class="row">
+                <div class="col-md-6">
+                    {{> afQuickField name='token' type="hidden"}}
+                    {{> afQuickField name='module'}}
+                    {{> afQuickField name='type' options=type}}
+                </div>
+                <div class="col-md-6">
+                    {{> afQuickField name='branch' options=branch}}
+                </div>
+            </div>
+
+            {{#formFooter}}
+                <button type="submit" class="btn btn-primary">{{fa "download"}} Backup</button>
+                <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+            {{/formFooter}}
+        {{/autoForm}}
+    </div>
+</template>
+
+<!--Restore-->
+<template name="Core_restore">
+    <div class="box-body">
+        {{#autoForm schema=restoreSchema id="Core_restore" enctype="multipart/form-data"}}
+            <div class="row">
+                <div class="col-md-6">
+                    {{> afQuickField name='token' type="hidden"}}
+                    {{> afQuickField name='module'}}
+                    {{> afQuickField name='type' options=type}}
+                </div>
+                <div class="col-md-6">
+                    {{> afQuickField name='branch' options=branch}}
+                    {{> afQuickField name='dropCollections' type="hidden" value=dropCollections}}
+                    {{> afQuickField name='dropQuery' type="hidden" value=dropQuery}}
+                    {{> afQuickField name='restoreFile' accept=".tar"}}
+                </div>
+            </div>
+
+            {{#formFooter}}
+                <button type="submit" class="btn btn-primary">{{fa "upload"}} Restore</button>
+                <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+            {{/formFooter}}
+        {{/autoForm}}
+
+
+    </div>
+</template>

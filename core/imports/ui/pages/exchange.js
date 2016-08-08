@@ -4,7 +4,7 @@ import {Roles} from  'meteor/alanning:roles';
 import {alertify} from 'meteor/ovcharik:alertifyjs';
 import {sAlert} from 'meteor/juliancwirko:s-alert';
 import {fa} from 'meteor/theara:fa-helpers';
-import {moment} from 'meteor/momentjs:moment';
+import moment from 'moment';
 import {EJSON} from 'meteor/ejson';
 import {ReactiveTable} from 'meteor/aslagle:reactive-table';
 import {TAPi18n} from 'meteor/tap:i18n';

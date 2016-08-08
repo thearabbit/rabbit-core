@@ -7,6 +7,7 @@
   "dependencies": {
     "bignumber.js": "^2.3.0",
     "bson-ext": "^0.1.13",
+    "busboy": "^0.2.13",
     "casual": "^1.5.3",
     "datatables.net": "^1.10.12",
     "datatables.net-bs": "^1.10.12",
@@ -18,6 +19,8 @@
     "meteor-node-stubs": "~0.2.0",
     "moment": "^2.13.0",
     "money": "^0.2.0",
+    "mongodb-backup": "^1.6.3",
+    "mongodb-restore": "^1.5.4",
     "printthis": "^0.1.5"
   }
 }

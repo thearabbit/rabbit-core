@@ -7,16 +7,14 @@ export const clearSelect2 = function (elements) {
 
     if (_.isEmpty(elements)) {
         $('.select2-container').each(function () {
-            $(this).select2('val', '');
+            $(this).val(null).trigger("change");
         });
 
         //console.log('clear all select2');
     } else {
         _.forEach(elements, function (element) {
-            element.select2('val', '');
+            element.val(null).trigger("change");
         });
-
-        //console.log('clear select2: ' + element);
     }
 };
 
@@ -28,13 +26,9 @@ export const clearSelectize = function (elements) {
         $('.selectized').each(function () {
             $(this)[0].selectize.clear(true);
         });
-
-        //console.log('clear all selectize');
     } else {
         _.forEach(elements, function (element) {
             element[0].selectize.clear(true);
-
-            //console.log('clear selectize:' + element);
         });
     }
 };

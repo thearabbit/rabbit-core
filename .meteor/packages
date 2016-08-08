@@ -29,6 +29,7 @@ random@1.0.10
 ejson@1.0.12
 less@2.7.4
 check@1.2.3
+http
 
 # Layout
 fourseven:scss
@@ -57,7 +58,7 @@ arillo:flow-router-helpers
 zimme:active-route
 ostrio:flow-router-title
 #tomwasd:flow-router-autoscroll
-meteorhacks:fast-render
+#meteorhacks:fast-render
 #philippspo:momentum-flow-router
 theara:flow-router-breadcrumb
 
@@ -211,7 +212,7 @@ theara:autoprint
 theara:reactive-list
 theara:numeral-helpers
 #theara:factory
-theara:app-dump
+#theara:app-dump
 #theara:autoform-file
 #theara:scrollup
 #theara:autoform-bs-md-datetimepicker

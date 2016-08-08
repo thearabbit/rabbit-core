@@ -8,6 +8,7 @@ import {SidebarBranchSchema} from '../../../api/collections/sidebar-branch.js';
 
 // Page
 import './sidebar.html';
+import './sidebar-menu-tool.js';
 
 // Sidebar Layout
 Template._SidebarLayout.helpers({

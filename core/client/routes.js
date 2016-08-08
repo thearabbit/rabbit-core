@@ -200,3 +200,35 @@ CoreRoutes.route('/profile', {
         parent: 'core.welcome'
     }
 });
+
+// Backup  & Restore
+import '../imports/ui/pages/backup-restore.js';
+CoreRoutes.route('/backup', {
+    name: 'core.backup',
+    title: 'Backup',
+    action: function (params, queryParams) {
+        Layout.main('Core_backup');
+    },
+    breadcrumb: {
+        //params: ['id'],
+        //queryParams: ['show', 'color'],
+        title: 'Backup',
+        icon: 'download',
+        parent: 'core.welcome'
+    }
+});
+
+CoreRoutes.route('/restore', {
+    name: 'core.restore',
+    title: 'Restore',
+    action: function (params, queryParams) {
+        Layout.main('Core_restore');
+    },
+    breadcrumb: {
+        //params: ['id'],
+        //queryParams: ['show', 'color'],
+        title: 'Restore',
+        icon: 'upload',
+        parent: 'core.welcome'
+    }
+});

@@ -1,13 +1,13 @@
 <!--Index-->
 <template name="Core_branch">
-    <div class="box-header with-border">
-        <h3 class="box-title">
-            {{#if isInRole 'super' 'Core'}}
+    {{#if isInRole 'super' 'Core'}}
+        <div class="box-header with-border">
+            <h3 class="box-title">
                 <button type="button" class="btn btn-primary js-create"><i class="fa fa-plus"></i> {{_ "action.addNew"}}
                 </button>
-            {{/if}}
-        </h3>
-    </div>
+            </h3>
+        </div>
+    {{/if}}
     <!-- /.box-header -->
 
     <div class="box-body">
