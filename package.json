@@ -6,7 +6,6 @@
   },
   "dependencies": {
     "bignumber.js": "^2.3.0",
-    "bson-ext": "^0.1.13",
     "busboy": "^0.2.13",
     "casual": "^1.5.3",
     "datatables.net": "^1.10.12",
