@@ -26,6 +26,11 @@
     {{/columnAction}}
 </template>
 
+<!--Contact Tabular-->
+<template name="SimplePos_customerContact">
+    {{> jsonView json=contact options=jsonViewOpts}}
+</template>
+
 <!--Form-->
 <template name="SimplePos_customerForm">
     <div class="box-body">
@@ -39,9 +44,10 @@
                         {{> afQuickField name='address' rows=3}}
                     </div>
                     <div class="col-md-6">
-                        {{> afQuickField name='telephone'}}
                         {{> afQuickField name='email'}}
                         {{> afQuickField type="hidden" name='branchId' value=currentBranch}}
+
+                        {{> afArrayField name="contact" id="contact" template="customArrayFieldForContact" subtemplate="customObjectFieldForContact"}}
                     </div>
                 </div>
 
@@ -69,14 +75,67 @@
                     <dd>{{moFormat dob "DD/MM/YYYY"}}</dd>
                     <dt>Address</dt>
                     <dd>{{address}}</dd>
-                    <dt>Telephone</dt>
-                    <dd>{{telephone}}</dd>
                     <dt>Email</dt>
                     <dd>{{email}}</dd>
+                    <dt>Contact</dt>
+                    <dd>{{contact}}</dd>
                 </dl>
             {{/with}}
         {{else}}
             {{> loading}}
         {{/if}}
+    </div>
+</template>
+
+<!------------Custom contact array field-------------------->
+<template name="afArrayField_customArrayFieldForContact">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
+        <div class="panel-body">
+
+            {{#if afFieldIsInvalid name=this.atts.name}}
+                <div class="has-error">
+                    <span class="help-block">{{{afFieldMessage name=this.atts.name}}}</span>
+                </div>
+            {{/if}}
+
+            {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
+                <div class="row">
+                    {{> UI.dynamic template=../atts.subtemplate}}
+
+                    <div class="col-sm-1">
+                        {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount
+                              maxCount=../atts.maxCount}}
+                            <button type="button" class="btn btn-sm btn-danger autoform-remove-item">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/afEachArrayItem}}
+
+            {{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount
+                  maxCount=this.atts.maxCount}}
+                <div class="row">
+                    <div class="col-sm-1 col-md-offset-11">
+                        <button type="button" class="btn btn-primary autoform-add-item btn-sm"
+                                data-autoform-field="{{this.atts.name}}" data-autoform-minCount="{{this.atts.minCount}}"
+                                data-autoform-maxCount="{{this.atts.maxCount}}">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+            {{/if}}
+
+        </div>
+    </div>
+</template>
+
+<template name="customObjectFieldForContact">
+    <div class="col-sm-5">
+        {{> afQuickField name=current.type template="bootstrap3" label=false class="input-sm"}}
+    </div>
+    <div class="col-sm-6">
+        {{> afQuickField name=current.number template="bootstrap3" label=false class="input-sm"}}
     </div>
 </template>

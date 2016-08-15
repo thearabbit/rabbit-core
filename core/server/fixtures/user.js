@@ -23,7 +23,7 @@ Meteor.startup(() => {
         const adminData = {
             username: 'admin',
             email: 'admin@rabbit.com',
-            password: 'admin123',
+            password: '123456',
             profile: {
                 name: 'Admin'
             }

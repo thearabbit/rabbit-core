@@ -24,14 +24,14 @@ tabularOpts.columns = [
     {data: "_id", title: "ID"},
     {data: "name", title: "Name"},
     {data: "gender", title: "Gender"},
-    {
-        data: "dob",
-        title: "Date of Birth",
-        render: function (val, type, doc) {
-            return moment(val).format('DD/MM/YYYY');
-        }
-    },
-    {data: "telephone", title: "Telephone"},
-    {data: "email", title: "Email"}
+    // {
+    //     data: "dob",
+    //     title: "Date of Birth",
+    //     render: function (val, type, doc) {
+    //         return moment(val).format('DD/MM/YYYY');
+    //     }
+    // },
+    {data: "email", title: "Email"},
+    {data: 'contact', title: 'Contact', tmpl: Meteor.isClient && Template.SimplePos_customerContact},
 ];
 export const CustomerTabular = new Tabular.Table(tabularOpts);

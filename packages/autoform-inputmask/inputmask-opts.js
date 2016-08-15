@@ -68,5 +68,14 @@ inputmaskOptions = {
         });
 
         return options;
+    },
+    phone: function (options) {
+        options = _.isObject(options) ? options : {};
+
+        _.defaults(options, {
+            mask: "099 999-999[9]"
+        });
+
+        return options;
     }
 };

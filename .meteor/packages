@@ -133,6 +133,9 @@ comerc:bs-typeahead
 comerc:autoform-typeahead
 trsdln:flyouts
 forwarder:autoform-wizard
+abpetkov:switchery
+theara:autoform-switchery
+theara:autoform-bootstrap-switch
 
 # Date
 momentjs:moment
@@ -186,6 +189,9 @@ frozeman:template-var
 #netanelgilad:node-uuid
 #netanelgilad:mkdirp
 #vsivsi:file-collection
+
+# Chart
+chart:chart
 
 ### Others ###
 erasaur:meteor-lodash

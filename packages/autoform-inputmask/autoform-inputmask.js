@@ -8,6 +8,17 @@ AutoForm.addInputType("inputmask", {
     }
 });
 
+Template.afInputmask.helpers({
+    atts: function addFormControlAtts() {
+        var atts = _.clone(this.atts);
+        // Add bootstrap class
+        atts = AutoForm.Utility.addClass(atts, "form-control");
+        delete atts.inputmaskOptions;
+
+        return atts;
+    }
+});
+
 Template.afInputmask.onRendered(function () {
     var $input = this.$('input');
 
@@ -22,17 +33,6 @@ Template.afInputmask.onRendered(function () {
 
         $input.inputmask(opts);
     });
-});
-
-Template.afInputmask.helpers({
-    atts: function addFormControlAtts() {
-        var atts = _.clone(this.atts);
-        // Add bootstrap class
-        atts = AutoForm.Utility.addClass(atts, "form-control");
-        delete atts.inputmaskOptions;
-
-        return atts;
-    }
 });
 
 Template.afInputmask.onDestroyed(function () {

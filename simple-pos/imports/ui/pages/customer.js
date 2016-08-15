@@ -33,7 +33,7 @@ import './customer.html';
 
 // Declare template
 let indexTmpl = Template.SimplePos_customer,
-    actionTmpl = Template.SimplePos_customerAction,
+    contactTmpl = Template.SimplePos_customerContact,
     formTmpl = Template.SimplePos_customerForm,
     showTmpl = Template.SimplePos_customerShow;
 
@@ -57,43 +57,6 @@ indexTmpl.helpers({
     },
     selector() {
         return {branchId: Session.get('currentByBranch')};
-    },
-    tableSettings(){
-        let i18nPrefix = 'simplePos.customer.schema';
-
-        reactiveTableSettings.collection = 'simplePos.reactiveTable.customer';
-        reactiveTableSettings.filters = ['simplePos.customerByBranchFilter'];
-        reactiveTableSettings.fields = [
-            {
-                key: '_id',
-                label: __(`${i18nPrefix}._id.label`),
-                sortOrder: 0,
-                sortDirection: 'asc'
-            },
-            {key: 'name', label: __(`${i18nPrefix}.name.label`)},
-            {key: 'gender', label: __(`${i18nPrefix}.gender.label`)},
-            {
-                key: 'dob',
-                label: __(`${i18nPrefix}.dob.label`),
-                fn (value, object, key) {
-                    return moment(value).format('YYYY-MM-DD');
-                }
-            },
-            {key: 'telephone', label: __(`${i18nPrefix}.telephone.label`)},
-            {
-                key: '_id',
-                label(){
-                    return fa('bars', '', true);
-                },
-                headerClass: function () {
-                    let css = 'text-center col-action';
-                    return css;
-                },
-                tmpl: actionTmpl, sortable: false
-            }
-        ];
-
-        return reactiveTableSettings;
     }
 });
 
@@ -113,6 +76,13 @@ indexTmpl.events({
     },
     'click .js-display' (event, instance) {
         alertify.customerShow(fa('eye', 'Customer'), renderTemplate(showTmpl, this));
+    }
+});
+
+// Contact tabular
+contactTmpl.helpers({
+    jsonViewOpts () {
+        return {collapsed: true};
     }
 });
 

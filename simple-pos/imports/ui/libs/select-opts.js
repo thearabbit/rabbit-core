@@ -27,5 +27,16 @@ export const SelectOpts = {
         list.push({label: "Female", value: "F"});
 
         return list;
+    },
+    contactType: function (selectOne = true) {
+        let list = [];
+        if (selectOne) {
+            list.push({label: "(Select One)", value: ""});
+        }
+        list.push({label: "Mobile", value: "M"});
+        list.push({label: "Home", value: "Home"});
+        list.push({label: "Work", value: "Work"});
+
+        return list;
     }
 };

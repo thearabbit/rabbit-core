@@ -43,15 +43,37 @@ let schema = new SimpleSchema({
         type: String,
         label: 'Address'
     },
-    telephone: {
-        type: String,
-        label: 'Telephone'
-    },
     email: {
         type: String,
         label: 'Email',
         regEx: SimpleSchema.RegEx.Email,
         optional: true
+    },
+    contact: {
+        type: [Object],
+        label: 'Contact',
+        minCount: 1,
+        maxCount: 3
+    },
+    'contact.$.type': {
+        type: String,
+        label: 'Type',
+        autoform: {
+            type: "select",
+            options: function () {
+                return SelectOpts.contactType(false);
+            }
+        }
+    },
+    'contact.$.number': {
+        type: String,
+        label: 'Number',
+        autoform: {
+            type: 'inputmask',
+            inputmaskOptions: function () {
+                return inputmaskOptions.phone();
+            }
+        }
     },
     branchId: {
         type: String

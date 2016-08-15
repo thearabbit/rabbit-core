@@ -13,8 +13,12 @@ Meteor.startup(function () {
                 gender: faker.random.arrayElement(['M', 'F']),
                 dob: faker.date.past(),
                 address: faker.address.city(),
-                telephone: faker.phone.phoneNumber(),
                 email: faker.internet.email(),
+                contact: faker.random.arrayElement([
+                    [{type: 'W', number: '053 506-3777'}],
+                    [{type: 'M', number: '070 550-880'}],
+                    [{type: 'H', number: '011 880-550'}],
+                ]),
                 branchId: '001'
             };
 

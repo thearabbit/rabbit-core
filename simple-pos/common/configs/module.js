@@ -1,9 +1,9 @@
 Module = typeof Module === 'undefined' ? {} : Module;
 
 Module.SimplePos = {
-    name: 'Simple POS System',
+    name: 'Simple POS',
     version: '2.0.0',
-    summary: 'Simple POS Management System is ...',
+    summary: 'Simple POS is ...',
     roles: [
         'setting',
         'data-insert',
