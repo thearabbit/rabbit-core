@@ -36,7 +36,6 @@ http
 
 # Layout
 fourseven:scss
-#fourseven:scss@3.8.0_1
 twbs:bootstrap
 fortawesome:fontawesome
 #fezvrasta:bootstrap-material-design
