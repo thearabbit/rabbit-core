@@ -9,7 +9,7 @@ import {SelectOpts} from '../../ui/libs/select-opts.js';
 
 export const Customer = new Mongo.Collection("simplePos_customer");
 
-let schema = new SimpleSchema({
+Customer.generalSchema = new SimpleSchema({
     name: {
         type: String,
         label: 'Name'
@@ -49,6 +49,12 @@ let schema = new SimpleSchema({
         regEx: SimpleSchema.RegEx.Email,
         optional: true
     },
+    branchId: {
+        type: String
+    }
+});
+
+Customer.contactSchema = new SimpleSchema({
     contact: {
         type: [Object],
         label: 'Contact',
@@ -75,9 +81,9 @@ let schema = new SimpleSchema({
             }
         }
     },
-    branchId: {
-        type: String
-    }
 });
 
-Customer.attachSchema(schema);
+Customer.attachSchema([
+    Customer.generalSchema,
+    Customer.contactSchema
+]);

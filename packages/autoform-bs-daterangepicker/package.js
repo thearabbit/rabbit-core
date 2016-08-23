@@ -1,6 +1,6 @@
 Package.describe({
     name: 'theara:autoform-bs-daterangepicker',
-    version: '0.2.4',
+    version: '0.2.5',
     // Brief, one-line summary of the package.
     summary: '',
     // URL to the Git repository containing the source code for this package.
@@ -26,8 +26,11 @@ Package.onUse(function (api) {
         'lib/daterangepicker.js',
         'lib/daterangepicker.css',
         'autoform-bs-daterangepicker.html',
-        'autoform-bs-daterangepicker.js'
+        'autoform-bs-daterangepicker.js',
+        'bs-daterangepicker-opts.js'
     ], 'client');
+
+    api.export('dateRangePickerOptions', 'client');
 });
 
 Package.onTest(function (api) {

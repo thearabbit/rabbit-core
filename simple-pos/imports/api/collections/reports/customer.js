@@ -3,7 +3,6 @@ import {AutoForm} from 'meteor/aldeed:autoform';
 import {moment} from 'meteor/momentjs:moment';
 
 // Lib
-import {dateRangePickerOpts} from '../../../../../core/client/libs/date-range-picker-opts';
 import {SelectOpts} from '../../../ui/libs/select-opts.js';
 
 export const CustomerSchema = new SimpleSchema({
@@ -38,7 +37,9 @@ export const CustomerSchema = new SimpleSchema({
         autoform: {
             type: "bootstrap-daterangepicker",
             afFieldInput: {
-                dateRangePickerOptions: dateRangePickerOpts
+                dateRangePickerOptions: function () {
+                    return dateRangePickerOptions;
+                }
             }
         }
     }

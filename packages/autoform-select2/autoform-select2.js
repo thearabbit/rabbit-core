@@ -194,7 +194,7 @@ Template.afSelect2.destroyed = function () {
  *  BOOTSTRAP THEME
  */
 
-Template.afSelect2.copyAs('afSelect2_bootstrap3');
+Template.afSelect2.copyAs(['afSelect2_bootstrap3']);
 
 // The only difference is that we need to add "form-control" class
 Template.afSelect2_bootstrap3.helpers({

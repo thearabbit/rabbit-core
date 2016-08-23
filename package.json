@@ -5,6 +5,7 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "bignumber.js": "^2.3.0",
     "busboy": "^0.2.13",
     "casual": "^1.5.3",

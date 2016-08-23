@@ -1,4 +1,4 @@
-<!--Form-->
+<!--Report-->
 <template name="SimplePos_invoiceReport">
     <div class="box-body">
         {{#autoForm schema=schema id="SimplePos_invoiceReport" type="normal"}}
@@ -12,10 +12,11 @@
         {{/autoForm}}
 
         <hr>
+        <!--Print Button-->
         <button type="button" class="btn btn-info pull-right btn-print"><i class="fa fa-print"></i> Print</button>
 
 
-        <!--Is ready-->
+        <!--Report Paper-->
         <div id="print-data">
             <div class="rpt rpt-2x rpt-portrait-mini">
                 {{#if rptInit}}

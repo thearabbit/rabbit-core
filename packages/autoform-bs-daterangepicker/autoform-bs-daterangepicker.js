@@ -43,8 +43,9 @@ Template.afBootstrapDateRangePicker.onRendered(function () {
     var data = this.data;
     var opts = data.atts.dateRangePickerOptions || {};
 
-    //console.log('render');
-    //console.log(data);
+    if (_.isFunction(opts)) {
+        opts = opts();
+    }
 
     // instanciate daterangepicker
     $input.daterangepicker(opts);
@@ -63,7 +64,7 @@ Template.afBootstrapDateRangePicker.helpers({
 Template.afBootstrapDateRangePicker.onDestroyed(function () {
     var $input = this.$('input');
     var drp = $input.data('daterangepicker');
-    if(drp){
+    if (drp) {
         drp.remove()
     }
 });
