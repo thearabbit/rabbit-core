@@ -73,8 +73,13 @@ export const SelectOpts = {
             let options = [];
 
             _.forEach(Module[key].roles, function (roleVal) {
-                if (!(key == 'Core' && roleVal == 'super')) {
+                // Check super user
+                if (Meteor.user().username == 'super') {
                     options.push({label: roleVal, value: key + ':' + roleVal});
+                } else {
+                    if (!(key == 'Core' && roleVal == 'super')) {
+                        options.push({label: roleVal, value: key + ':' + roleVal});
+                    }
                 }
             });
 

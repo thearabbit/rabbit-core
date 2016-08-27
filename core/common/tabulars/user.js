@@ -13,9 +13,9 @@ Meteor.isClient && require('../../imports/ui/pages/user.html');
 
 tabularOpts.name = "core.user";
 tabularOpts.collection = Meteor.users;
-tabularOpts.selector = function (userId) {
-    return {username: {$ne: 'super'}}
-};
+// tabularOpts.selector = function (userId) {
+//     return {username: {$ne: 'super'}}
+// };
 tabularOpts.columns = [
     {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Core_userAction},
     {data: "profile.name", title: "Full Name"},

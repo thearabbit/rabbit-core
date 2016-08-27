@@ -48,7 +48,13 @@ indexTmpl.onCreated(function () {
 indexTmpl.helpers({
     tabularTable(){
         return UserTabular;
-    }
+    },
+    selector(){
+        // Check super user
+        if (Meteor.user() && Meteor.user().username != 'super') {
+            return {username: {$ne: 'super'}};
+        }
+    },
 });
 
 indexTmpl.events({
