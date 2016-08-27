@@ -19,7 +19,7 @@
     "meteor-node-stubs": "~0.2.0",
     "moment": "^2.13.0",
     "money": "^0.2.0",
-    "mongodb-backup": "^1.6.3",
+    "mongodb-backup": "^1.6.4",
     "mongodb-restore": "^1.5.4",
     "printthis": "^0.1.5"
   }
