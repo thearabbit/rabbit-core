@@ -41,6 +41,23 @@ SimplePOSRoutes.route('/home', {
     }
 });
 
+// Lookup Value
+import '../imports/ui/pages/lookup-value.js';
+SimplePOSRoutes.route('/lookup-value', {
+    name: 'simplePos.lookupValue',
+    title: 'Lookup Value',
+    action: function (params, queryParams) {
+        Layout.main('SimplePos_lookupValue');
+    },
+    breadcrumb: {
+        //params: ['id'],
+        //queryParams: ['show', 'color'],
+        title: 'Lookup Value',
+        icon: 'asterisk',
+        parent: 'simplePos.home'
+    }
+});
+
 // Item
 import '../imports/ui/pages/item.js';
 SimplePOSRoutes.route('/item', {

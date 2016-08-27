@@ -23,58 +23,59 @@ import '../../../../core/client/components/column-action.js';
 import '../../../../core/client/components/form-footer.js';
 
 // Collection
-import {Customer} from '../../api/collections/customer.js';
+import {LookupValue} from '../../api/collections/lookup-value.js';
 
 // Tabular
-import {CustomerTabular} from '../../../common/tabulars/customer.js';
+import {LookupValueTabular} from '../../../common/tabulars/lookup-value.js';
 
 // Page
-import './customer.html';
+import './lookup-value.html';
 
 // Declare template
-let indexTmpl = Template.SimplePos_customer,
-    contactTmpl = Template.SimplePos_customerContact,
-    formTmpl = Template.SimplePos_customerForm,
-    showTmpl = Template.SimplePos_customerShow;
+let indexTmpl = Template.SimplePos_lookupValue,
+    optionsTmpl = Template.SimplePos_lookupValueOptions,
+    formTmpl = Template.SimplePos_lookupValueForm;
 
 
 // Index
 indexTmpl.onCreated(function () {
     // Create new  alertify
-    createNewAlertify('customer', {size: 'lg'});
-    createNewAlertify('customerShow',);
+    createNewAlertify('lookupValue', {size: 'lg'});
 });
 
 indexTmpl.helpers({
     tabularTable(){
-        return CustomerTabular;
+        return LookupValueTabular;
     },
-    selector() {
-        return {branchId: Session.get('currentByBranch')};
-    }
 });
 
 indexTmpl.events({
     'click .js-create' (event, instance) {
-        alertify.customer(fa('plus', 'Customer'), renderTemplate(formTmpl));
+        alertify.lookupValue(fa('plus', 'Lookup Value'), renderTemplate(formTmpl));
     },
     'click .js-update' (event, instance) {
-        alertify.customer(fa('pencil', 'Customer'), renderTemplate(formTmpl, this));
+        // Check private
+        if (this.private) {
+            displayError('You can not update [Private = true]!');
+        } else {
+            alertify.lookupValue(fa('pencil', 'Lookup Value'), renderTemplate(formTmpl, this));
+        }
     },
     'click .js-destroy' (event, instance) {
-        destroyAction(
-            Customer,
-            {_id: this._id},
-            {title: 'Customer', itemTitle: this._id}
-        );
+        if (this.private) {
+            displayError('You can not delete [Private = true]!');
+        } else {
+            destroyAction(
+                LookupValue,
+                {_id: this._id},
+                {title: 'Lookup Value', itemTitle: this._id}
+            );
+        }
     },
-    'click .js-display' (event, instance) {
-        alertify.customerShow(fa('eye', 'Customer'), renderTemplate(showTmpl, this));
-    }
 });
 
 // Contact tabular
-contactTmpl.helpers({
+optionsTmpl.helpers({
     jsonViewOpts () {
         return {collapsed: true};
     }
@@ -83,24 +84,21 @@ contactTmpl.helpers({
 // Form
 formTmpl.onCreated(function () {
     this.autorun(()=> {
-        // Lookup value
-        this.subscribe('simplePos.lookupValueByNames', ['Gender', 'Contact Type']);
-
         let currentData = Template.currentData();
         if (currentData) {
-            this.subscribe('simplePos.customerById', currentData._id);
+            this.subscribe('simplePos.lookupValueById', currentData._id);
         }
     });
 });
 
 formTmpl.helpers({
     collection(){
-        return Customer;
+        return LookupValue;
     },
     data () {
         let currentData = Template.currentData();
         if (currentData) {
-            return Customer.findOne(currentData._id);
+            return LookupValue.findOne(currentData._id);
         }
     },
     formType () {
@@ -113,26 +111,11 @@ formTmpl.helpers({
     }
 });
 
-// Show
-showTmpl.onCreated(function () {
-    this.autorun(()=> {
-        let currentData = Template.currentData();
-        this.subscribe('simplePos.customerById', currentData._id);
-    });
-});
-
-showTmpl.helpers({
-    data () {
-        let currentData = Template.currentData();
-        return Customer.findOne(currentData._id);
-    }
-});
-
 // Hook
 let hooksObject = {
     onSuccess (formType, result) {
         if (formType == 'update') {
-            alertify.customer().close();
+            alertify.lookupValue().close();
         }
         displaySuccess();
     },
@@ -141,4 +124,4 @@ let hooksObject = {
     }
 };
 
-AutoForm.addHooks(['SimplePos_customerForm'], hooksObject);
+AutoForm.addHooks(['SimplePos_lookupValueForm'], hooksObject);

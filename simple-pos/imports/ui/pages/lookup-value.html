@@ -1,5 +1,5 @@
 <!--Index-->
-<template name="SimplePos_customer">
+<template name="SimplePos_lookupValue">
     <div class="box-header with-border">
         <h3 class="box-title">
             {{> addNewButton}}
@@ -9,42 +9,36 @@
 
     <div class="box-body">
         <!--Tabular-->
-        {{> tabular table=tabularTable selector=selector class="table table-striped table-bordered table-condensed"}}
+        {{> tabular table=tabularTable class="table table-striped table-bordered table-condensed"}}
     </div>
     <!-- /.box-body -->
 </template>
 
 <!--Action-->
-<template name="SimplePos_customerAction">
+<template name="SimplePos_lookupValueAction">
     {{#columnAction}}
         <li><a href="#" class="js-update"><i class="fa fa-pencil"></i> {{_ "action.edit"}}</a></li>
         <li><a href="#" class="js-destroy"><i class="fa fa-remove"></i> {{_ "action.delete"}}</a></li>
-        <li><a href="#" class="js-display"><i class="fa fa-eye"></i> {{_ "action.show"}}</a></li>
     {{/columnAction}}
 </template>
 
 <!--Contact Tabular-->
-<template name="SimplePos_customerContact">
-    {{> jsonView json=contact options=jsonViewOpts}}
+<template name="SimplePos_lookupValueOptions">
+    {{> jsonView json=options options=jsonViewOpts}}
 </template>
 
 <!--Form-->
-<template name="SimplePos_customerForm">
+<template name="SimplePos_lookupValueForm">
     <div class="box-body">
         {{#if Template.subscriptionsReady}}
-            {{#autoForm collection=collection id="SimplePos_customerForm" doc=data type=formType}}
+            {{#autoForm collection=collection id="SimplePos_lookupValueForm" doc=data type=formType}}
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-12">
                         {{> afQuickField name='name'}}
-                        {{> afQuickField name='gender'}}
-                        {{> afQuickField name='dob'}}
-                        {{> afQuickField name='address' rows=3}}
+                        {{> afQuickField name='private'}}
                     </div>
-                    <div class="col-md-7">
-                        {{> afQuickField name='email'}}
-                        {{> afQuickField type="hidden" name='branchId' value=currentBranch}}
-
-                        {{> afArrayField name="contact" id="contact" template="customArrayFieldForContact" subtemplate="customObjectFieldForContact"}}
+                    <div class="col-md-12">
+                        {{> afArrayField name="options" id="options" template="customArrayFieldForOptions" subtemplate="customObjectFieldForOptions"}}
                     </div>
                 </div>
 
@@ -56,45 +50,25 @@
     </div>
 </template>
 
-<!--Show-->
-<template name="SimplePos_customerShow">
-    <div class="box-body">
-        {{#if Template.subscriptionsReady}}
-            {{#with data}}
-                <dl class="dl-horizontal">
-                    <dt>ID</dt>
-                    <dd>{{_id}}</dd>
-                    <dt>Name</dt>
-                    <dd>{{name}}</dd>
-                    <dt>Gender</dt>
-                    <dd>{{gender}}</dd>
-                    <dt>Date of birth</dt>
-                    <dd>{{moFormat dob "DD/MM/YYYY"}}</dd>
-                    <dt>Address</dt>
-                    <dd>{{address}}</dd>
-                    <dt>Email</dt>
-                    <dd>{{email}}</dd>
-                    <dt>Contact</dt>
-                    <dd>{{contact}}</dd>
-                </dl>
-            {{/with}}
-        {{else}}
-            {{> loading}}
-        {{/if}}
-    </div>
-</template>
-
-<!------------Custom contact array field-------------------->
-<template name="afArrayField_customArrayFieldForContact">
+<!------------Custom options array field-------------------->
+<template name="afArrayField_customArrayFieldForOptions">
     <div class="panel panel-default">
         <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
         <div class="panel-body">
 
+            <!--Error Msg-->
             {{#if afFieldIsInvalid name=this.atts.name}}
                 <div class="has-error">
                     <span class="help-block">{{{afFieldMessage name=this.atts.name}}}</span>
                 </div>
             {{/if}}
+
+            <!--Field Title-->
+            <div class="row">
+                <div class="col-sm-4">Value</div>
+                <div class="col-sm-5">Label</div>
+                <div class="col-sm-2">Order</div>
+            </div>
 
             {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
                 <div class="row">
@@ -128,11 +102,14 @@
     </div>
 </template>
 
-<template name="customObjectFieldForContact">
-    <div class="col-sm-5">
-        {{> afQuickField name=current.type template="bootstrap3" label=false class="input-sm"}}
+<template name="customObjectFieldForOptions">
+    <div class="col-sm-4">
+        {{> afQuickField name=current.value template="bootstrap3" label=false class="input-sm"}}
     </div>
-    <div class="col-sm-6">
-        {{> afQuickField name=current.number template="bootstrap3" label=false class="input-sm"}}
+    <div class="col-sm-5">
+        {{> afQuickField name=current.label template="bootstrap3" label=false class="input-sm"}}
+    </div>
+    <div class="col-sm-2">
+        {{> afQuickField name=current.order template="bootstrap3" label=false class="input-sm"}}
     </div>
 </template>

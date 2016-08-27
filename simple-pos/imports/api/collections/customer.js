@@ -21,7 +21,7 @@ Customer.generalSchema = new SimpleSchema({
         autoform: {
             type: "select-radio-inline",
             options: function () {
-                return SelectOpts.gender(false);
+                return SelectOpts.lookupValue('Gender', false);
             }
         }
     },
@@ -67,7 +67,7 @@ Customer.contactSchema = new SimpleSchema({
         autoform: {
             type: "select",
             options: function () {
-                return SelectOpts.contactType(false);
+                return SelectOpts.lookupValue('Contact Type', false);
             }
         }
     },
