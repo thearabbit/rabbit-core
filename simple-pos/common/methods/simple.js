@@ -1,24 +1,23 @@
-// import {Meteor} from 'meteor/meteor';
-// import {Accounts} from 'meteor/accounts-base';
-// import {ValidatedMethod} from 'meteor/mdg:validated-method';
-// import {SimpleSchema} from 'meteor/aldeed:simple-schema';
-//
-// // Check user password
-// export const simpleMethod = new ValidatedMethod({
+import {Meteor} from 'meteor/meteor';
+import {ValidatedMethod} from 'meteor/mdg:validated-method';
+import {SimpleSchema} from 'meteor/aldeed:simple-schema';
+import {CallPromiseMixin} from 'meteor/didericis:callpromise-mixin';
+
+// Collection
+// import {MyCollection} from '../../imports/api/collections/myCollection.js';
+
+// export const myMethod = new ValidatedMethod({
 //     name: 'simplePos.myMethod',
+//     mixins: [CallPromiseMixin],
 //     validate: new SimpleSchema({
-//         password: {type: String}
+//         myId: {type: String}
 //     }).validator(),
-//     run({password}) {
+//     run({myId}) {
 //         if (!this.isSimulation) {
-//            
-//             let digest = Package.sha.SHA256(password);
+//             Meteor._sleepForMs(200);
 //
-//             let user = Meteor.user();
-//             let passwordOpts = {digest: digest, algorithm: 'sha-256'};
-//             let result = Accounts._checkPassword(user, passwordOpts);
-//
-//             return result;
+//             let data = MyCollection.findOne({_id: myId});
+//             return data;
 //         }
 //     }
 // });

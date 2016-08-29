@@ -58,7 +58,7 @@ indexTmpl.events({
         if (this.private) {
             displayError('You can not update [Private = true]!');
         } else {
-            alertify.lookupValue(fa('pencil', 'Lookup Value'), renderTemplate(formTmpl, this));
+            alertify.lookupValue(fa('pencil', 'Lookup Value'), renderTemplate(formTmpl, {lookupValueId: this._id}));
         }
     },
     'click .js-destroy' (event, instance) {
@@ -86,7 +86,7 @@ formTmpl.onCreated(function () {
     this.autorun(()=> {
         let currentData = Template.currentData();
         if (currentData) {
-            this.subscribe('simplePos.lookupValueById', currentData._id);
+            this.subscribe('simplePos.lookupValueById', currentData.lookupValueId);
         }
     });
 });
@@ -96,18 +96,18 @@ formTmpl.helpers({
         return LookupValue;
     },
     data () {
+        let data = {
+            formType: 'insert',
+            doc: {}
+        };
         let currentData = Template.currentData();
+
         if (currentData) {
-            return LookupValue.findOne(currentData._id);
-        }
-    },
-    formType () {
-        let currentData = Template.currentData();
-        if (currentData) {
-            return 'update';
+            data.formType = 'update';
+            data.doc = LookupValue.findOne(currentData.lookupValueId);
         }
 
-        return 'insert';
+        return data;
     }
 });
 

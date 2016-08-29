@@ -59,7 +59,7 @@ indexTmpl.events({
         alertify.customer(fa('plus', 'Customer'), renderTemplate(formTmpl));
     },
     'click .js-update' (event, instance) {
-        alertify.customer(fa('pencil', 'Customer'), renderTemplate(formTmpl, this));
+        alertify.customer(fa('pencil', 'Customer'), renderTemplate(formTmpl, {customerId: this._id}));
     },
     'click .js-destroy' (event, instance) {
         destroyAction(
@@ -69,7 +69,7 @@ indexTmpl.events({
         );
     },
     'click .js-display' (event, instance) {
-        alertify.customerShow(fa('eye', 'Customer'), renderTemplate(showTmpl, this));
+        alertify.customerShow(fa('eye', 'Customer'), renderTemplate(showTmpl, {customerId: this._id}));
     }
 });
 
@@ -88,7 +88,7 @@ formTmpl.onCreated(function () {
 
         let currentData = Template.currentData();
         if (currentData) {
-            this.subscribe('simplePos.customerById', currentData._id);
+            this.subscribe('simplePos.customerById', currentData.customerId);
         }
     });
 });
@@ -98,18 +98,18 @@ formTmpl.helpers({
         return Customer;
     },
     data () {
+        let data = {
+            formType: 'insert',
+            doc: {}
+        };
         let currentData = Template.currentData();
+
         if (currentData) {
-            return Customer.findOne(currentData._id);
-        }
-    },
-    formType () {
-        let currentData = Template.currentData();
-        if (currentData) {
-            return 'update';
+            data.formType = 'update';
+            data.doc = Customer.findOne(currentData.customerId);
         }
 
-        return 'insert';
+        return data;
     }
 });
 
@@ -117,14 +117,14 @@ formTmpl.helpers({
 showTmpl.onCreated(function () {
     this.autorun(()=> {
         let currentData = Template.currentData();
-        this.subscribe('simplePos.customerById', currentData._id);
+        this.subscribe('simplePos.customerById', currentData.customerId);
     });
 });
 
 showTmpl.helpers({
     data () {
         let currentData = Template.currentData();
-        return Customer.findOne(currentData._id);
+        return Customer.findOne(currentData.customerId);
     }
 });
 

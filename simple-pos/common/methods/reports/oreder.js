@@ -12,8 +12,11 @@ import {Order} from '../../../imports/api/collections/order.js';
 export const orderReport = new ValidatedMethod({
     name: 'simplePos.orderReport',
     mixins: [CallPromiseMixin],
-    validate: null,
-    run(params) {
+    // validate: null,
+    validate: new SimpleSchema({
+        orderId: {type: String}
+    }).validator(),
+    run({orderId}) {
         if (!this.isSimulation) {
             Meteor._sleepForMs(200);
 
@@ -23,15 +26,61 @@ export const orderReport = new ValidatedMethod({
                 footer: {}
             };
 
-            // let date = _.trim(_.words(params.date, /[^To]+/g));
-            let orderId = params.orderId;
-
             /****** Title *****/
             data.title = Company.findOne();
 
             /****** Content *****/
-            data.content = Order.findOne({_id: orderId});
-            
+            data.content = Order.aggregate([
+                {
+                    $match: {_id: orderId}
+                },
+                {
+                    $unwind: "$items"
+                },
+                {
+                    $lookup: {
+                        from: "simplePos_item",
+                        localField: "items.itemId",
+                        foreignField: "_id",
+                        as: "itemDoc"
+                    }
+                },
+                {
+                    $unwind: "$itemDoc"
+                },
+                {
+                    $lookup: {
+                        from: "simplePos_customer",
+                        localField: "customerId",
+                        foreignField: "_id",
+                        as: "customerDoc"
+                    }
+                },
+                {
+                    $unwind: "$customerDoc"
+                },
+                {
+                    $group: {
+                        _id: "$_id",
+                        customerId: {$last: "$customerId"},
+                        customerDoc: {$last: "$customerDoc"},
+                        orderDate: {$last: "$orderDate"},
+                        des: {$last: "$des"},
+                        branchId: {$last: "$branchId"},
+                        total: {$last: "$total"},
+                        items: {
+                            $addToSet: {
+                                itemId: "$items.itemId",
+                                itemName: "$itemDoc.name",
+                                qty: "$items.qty",
+                                price: "$items.price",
+                                amount: "$items.amount"
+                            }
+                        }
+                    }
+                }
+            ])[0];
+
             return data
         }
     }

@@ -102,7 +102,7 @@ SelectOptMethods.order = new ValidatedMethod({
 
             let data = Order.find(selector, {limit: 10});
             data.forEach(function (value) {
-                let label = value._id + ' | Date: ' + moment(value.orderDate).format('DD/MM/YYYY');
+                let label = `${value._id} | Date: ` + moment(value.orderDate).format('DD/MM/YYYY') + ` | Amount: ` + numeral(value.total).format('0,0.00');
                 list.push({label: label, value: value._id});
             });
 

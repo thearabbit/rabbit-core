@@ -23,7 +23,7 @@ let SimplePOSRoutes = FlowRouter.group({
     }
 });
 
-// Customer list
+// Customer list with in page (printThis package)
 import '../imports/ui/reports/customer.js';
 SimplePOSRoutes.route('/customer-report', {
     name: 'simplePos.customerReport',
@@ -40,7 +40,7 @@ SimplePOSRoutes.route('/customer-report', {
     }
 });
 
-// Invoice
+// Invoice with new page
 import '../imports/ui/reports/invoice.js';
 SimplePOSRoutes.route('/invoice-report', {
     name: 'simplePos.invoiceReport',
@@ -54,5 +54,12 @@ SimplePOSRoutes.route('/invoice-report', {
         title: 'Invoice Report',
         icon: 'cart-plus',
         parent: 'simplePos.home'
+    }
+});
+SimplePOSRoutes.route('/invoice-report-gen', {
+    name: 'simplePos.invoiceReportGe',
+    title: 'Invoice Report',
+    action: function (params, queryParams) {
+        Layout.report('SimplePos_invoiceReportGen');
     }
 });

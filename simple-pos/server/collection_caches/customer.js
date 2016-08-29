@@ -4,5 +4,5 @@ import 'meteor/theara:collection-cache';
 import {Customer} from '../../imports/api/collections/customer.js';
 import {Order} from '../../imports/api/collections/order.js';
 
-Customer.cacheTimestamp();
-Order.cacheCount('orderCount', Order, 'customerId');
+// Customer.cacheTimestamp();
+// Order.cacheCount('orderCount', Order, 'customerId');

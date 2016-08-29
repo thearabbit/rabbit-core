@@ -52,7 +52,7 @@ indexTmpl.events({
         alertify.item(fa('plus', TAPi18n.__('simplePos.item.title')), renderTemplate(formTmpl));
     },
     'click .js-update' (event, instance) {
-        alertify.item(fa('pencil', TAPi18n.__('simplePos.item.title')), renderTemplate(formTmpl, this));
+        alertify.item(fa('pencil', TAPi18n.__('simplePos.item.title')), renderTemplate(formTmpl, {itemId: this._id}));
     },
     'click .js-destroy' (event, instance) {
         destroyAction(
@@ -62,7 +62,7 @@ indexTmpl.events({
         );
     },
     'click .js-display' (event, instance) {
-        alertify.item(fa('eye', TAPi18n.__('simplePos.item.title')), renderTemplate(showTmpl, this));
+        alertify.item(fa('eye', TAPi18n.__('simplePos.item.title')), renderTemplate(showTmpl, {itemId: this._id}));
     }
 });
 
@@ -71,7 +71,7 @@ formTmpl.onCreated(function () {
     this.autorun(()=> {
         let currentData = Template.currentData();
         if (currentData) {
-            this.subscribe('simplePos.itemById', currentData._id);
+            this.subscribe('simplePos.itemById', currentData.itemId);
         }
     });
 });
@@ -81,18 +81,18 @@ formTmpl.helpers({
         return Item;
     },
     data () {
+        let data = {
+            formType: 'insert',
+            doc: {}
+        };
         let currentData = Template.currentData();
+
         if (currentData) {
-            return Item.findOne(currentData._id);
-        }
-    },
-    formType () {
-        let currentData = Template.currentData();
-        if (currentData) {
-            return 'update';
+            data.formType = 'update';
+            data.doc = Item.findOne(currentData.itemId);
         }
 
-        return 'insert';
+        return data;
     }
 });
 
@@ -100,7 +100,7 @@ formTmpl.helpers({
 showTmpl.onCreated(function () {
     this.autorun(()=> {
         let currentData = Template.currentData();
-        this.subscribe('simplePos.itemById', currentData._id);
+        this.subscribe('simplePos.itemById', currentData.itemId);
     });
 });
 

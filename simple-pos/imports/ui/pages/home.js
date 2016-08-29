@@ -7,13 +7,11 @@ import './home.html';
 Template.SimplePos_home.events({
     'click .uiblock'(event, instance){
         // UIBlock.block('Wait...');
-
         $.blockUI();
 
         Meteor.setTimeout(()=> {
-            UIBlock.unblock();
-
-            // $.unblockUI();
+            // UIBlock.unblock();
+            $.unblockUI();
         }, 500);
     },
     'click .swal'(event, instance){

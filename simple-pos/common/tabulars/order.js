@@ -30,13 +30,6 @@ tabularOpts.columns = [
     },
     {data: "total", title: "Total"},
     {data: "des", title: "Description"},
-    {data: "customerId", title: "Customer ID"},
-    //{
-    //    data: "_customer",
-    //    title: "Customer Info",
-    //    render: function (val, type, doc) {
-    //        return JSON.stringify(val, null, ' ');
-    //    }
-    //}
+    {data: "customerId", title: "Customer"},
 ];
 export const OrderTabular = new Tabular.Table(tabularOpts);

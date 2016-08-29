@@ -23,6 +23,9 @@ import '../../../../core/client/components/loading.js';
 import '../../../../core/client/components/column-action.js';
 import '../../../../core/client/components/form-footer.js';
 
+// Method
+import {lookupOrder} from '../../../common/methods/lookup-order';
+
 // Collection
 import {Order} from '../../api/collections/order.js';
 
@@ -64,23 +67,22 @@ indexTmpl.events({
         alertify.order(fa('plus', 'Order'), renderTemplate(newTmpl)).maximize();
     },
     'click .js-update' (event, instance) {
-        alertify.order(fa('pencil', 'Order'), renderTemplate(editTmpl, this)).maximize();
+        alertify.order(fa('pencil', 'Order'), renderTemplate(editTmpl, {orderId: this._id})).maximize();
     },
     'click .js-destroy' (event, instance) {
-        let data = this;
         destroyAction(
             Order,
-            {_id: data._id},
-            {title: 'Order', itemTitle: data._id}
+            {_id: this._id},
+            {title: 'Order', itemTitle: this._id}
         );
     },
     'click .js-display' (event, instance) {
-        alertify.orderShow(fa('eye', 'Order'), renderTemplate(showTmpl, this));
+        alertify.orderShow(fa('eye', 'Order'), renderTemplate(showTmpl, {orderId: this._id}));
     },
     'click .js-invoice' (event, instance) {
         let params = {};
         let queryParams = {orderId: this._id};
-        let path = FlowRouter.path("simplePos.orderReportGen", params, queryParams);
+        let path = FlowRouter.path("simplePos.invoiceReportGe", params, queryParams);
 
         window.open(path, '_blank');
     }
@@ -113,7 +115,7 @@ newTmpl.onDestroyed(function () {
 editTmpl.onCreated(function () {
     this.autorun(()=> {
         let currentData = Template.currentData();
-        this.subscribe('simplePos.orderById', currentData._id);
+        this.subscribe('simplePos.orderById', currentData.orderId);
     });
 });
 
@@ -123,7 +125,7 @@ editTmpl.helpers({
     },
     data () {
         let currentData = Template.currentData();
-        let data = Order.findOne(currentData._id);
+        let data = Order.findOne(currentData.orderId);
 
         // Add items to local collection
         _.forEach(data.items, (value)=> {
@@ -152,19 +154,37 @@ editTmpl.onDestroyed(function () {
 
 // Show
 showTmpl.onCreated(function () {
-    this.autorun(()=> {
+    let self = this;
+    self.isLoading = new ReactiveVar(true);
+    self.dataState = new ReactiveVar();
+
+    self.autorun(()=> {
         let currentData = Template.currentData();
-        this.subscribe('simplePos.orderById', currentData._id);
+        lookupOrder.callPromise({
+            orderId: currentData.orderId
+        }).then(function (result) {
+            console.log('result: ', result);
+
+            self.dataState.set(result);
+            self.isLoading.set(false);
+        }).catch(function (err) {
+            console.log(err);
+        });
     });
 });
 
 showTmpl.helpers({
+    isLoading(){
+        return Template.instance().isLoading.get();
+    },
     data () {
-        let currentData = Template.currentData();
-        let data = Order.findOne(currentData._id);
+        let data = Template.instance().dataState.get();
 
         // Use jsonview
-        data.jsonViewOpts = {collapsed: true};
+        if (data) {
+            data.des = Spacebars.SafeString(data.des);
+            data.jsonViewOpts = {collapsed: true};
+        }
 
         return data;
     }

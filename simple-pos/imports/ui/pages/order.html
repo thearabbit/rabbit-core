@@ -120,15 +120,15 @@
 <!--Show-->
 <template name="SimplePos_orderShow">
     <div class="box-body">
-        {{#if Template.subscriptionsReady}}
+        {{#if isLoading}}
+            {{> loading}}
+        {{else}}
             {{#with data}}
                 <dl class="dl-horizontal">
                     <dt>ID</dt>
                     <dd>{{_id}}</dd>
                     <dt>Order Date</dt>
                     <dd>{{moFormat orderDate "DD/MM/YYYY"}}</dd>
-                    <dt>Customer</dt>
-                    <dd>{{customerId}}</dd>
                     <dt>Description</dt>
                     <dd>{{des}}</dd>
                     <dt>Items</dt>
@@ -137,14 +137,16 @@
                         <!--{{json2html items}}-->
 
                         <!--jsonview-->
-                        {{> jsonView json=data.items options=data.jsonViewOpts}}
+                        {{> jsonView json=items options=jsonViewOpts}}
                     </dd>
                     <dt>Total</dt>
                     <dd>{{numFormat total "0,0.00"}}</dd>
+                    <dt>Customer</dt>
+                    <dd>
+                        {{json2html customerDoc}}
+                    </dd>
                 </dl>
             {{/with}}
-        {{else}}
-            {{> loading}}
         {{/if}}
     </div>
 </template>

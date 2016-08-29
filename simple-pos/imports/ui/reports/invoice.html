@@ -1,100 +1,94 @@
 <!--Report-->
 <template name="SimplePos_invoiceReport">
     <div class="box-body">
-        {{#autoForm schema=schema id="SimplePos_invoiceReport" type="normal"}}
-            <div class="row">
-                <div class="col-md-6">
-                    {{> afQuickField name="orderId"}}
+        {{#if Template.subscriptionsReady}}
+            {{#autoForm schema=schema id="SimplePos_invoiceReport" type="normal"}}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{> afQuickField name="orderId"}}
 
-                    {{> formFooterWithButton}}
+                        {{> formFooterWithButton}}
+                    </div>
                 </div>
-            </div>
-        {{/autoForm}}
-
-        <hr>
-        <!--Print Button-->
-        <button type="button" class="btn btn-info pull-right btn-print"><i class="fa fa-print"></i> Print</button>
-
-
-        <!--Report Paper-->
-        <div id="print-data">
-            <div class="rpt rpt-2x rpt-portrait-mini">
-                {{#if rptInit}}
-                    {{#if rptData}}
-
-                        {{#with rptData}}
-
-                            <!--Title-->
-                            {{#with title}}
-                                <div class="rpt-title">
-                                    <div class="rpt-title-2x rpt-kh-muol">{{khName}}</div>
-                                    <div class="rpt-title-2x">{{enName}}</div>
-                                    <div><u>Order Invoice</u></div>
-                                    <div>Tel: {{telephone}}</div>
-                                </div>
-                            {{/with}}
-
-                            <!--Header-->
-                            {{#with content}}
-                                <div style="width: 100%">
-                                    <div style="width: 50%; float: left">
-                                        <div><strong>ID:</strong> {{_id}}</div>
-                                        <div><strong>Date:</strong> {{moFormat orderDate "DD/MM/YYYY"}}</div>
-                                    </div>
-
-                                    <div style="width: 50%; float: right">
-                                        <div><strong>Customer:</strong> {{_customer.name}}</div>
-                                    </div>
-                                </div>
-
-                                <!--Content-->
-                                <table class="rpt rpt-content">
-                                    <thead class="rpt-content-header">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Item</th>
-                                        <th>Qty</th>
-                                        <th>Price</th>
-                                        <th>Amount</th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody class="rpt-content-body">
-                                    {{#each item in items}}
-                                        <tr>
-                                            <td>{{@index}}</td>
-                                            <td>{{item.itemId}}</td>
-                                            <td>{{item.qty}}</td>
-                                            <td>{{numFormat item.price "0,0.00"}}</td>
-                                            <td>{{numFormat item.amount "0,0.00"}}</td>
-                                        </tr>
-                                    {{/each}}
-                                    </tbody>
-
-                                    <tfoot class="rpt-content-footer">
-                                    <tr>
-                                        <td colspan="4" class="text-right">Total:</td>
-                                        <td>{{numFormat total "0,0.00"}}</td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-
-                            {{/with}}
-                        {{/with}}
-
-                        <!--Sign-->
-
-                        <!--Auto print-->
-                        <!--{{autoprint close="true"}}-->
-
-                    {{else}}
-                        <div class="text-center">
-                            {{> iconLoading size="fa-5x"}}
-                        </div>
-                    {{/if}}
-                {{/if}}
-            </div>
-        </div>
+            {{/autoForm}}
+        {{else}}
+            {{> loading}}
+        {{/if}}
     </div>
     <!-- /.box-body -->
+</template>
+
+<template name="SimplePos_invoiceReportGen">
+    <div class="rpt rpt-2x rpt-portrait-a5">
+        {{#if rptData}}
+
+            {{#with rptData}}
+
+                <!--Title-->
+                {{#with title}}
+                    <div class="rpt-title">
+                        <div class="rpt-title-3x rpt-kh-muol">{{khName}}</div>
+                        <div class="rpt-title-3x">{{enName}}</div>
+                        <div class="rpt-title-3x"><u>Order Invoice</u></div>
+                        <div>Address: {{enAddress}}, Tel: {{telephone}}</div>
+                    </div>
+                {{/with}}
+
+                <!--Header-->
+                {{#with content}}
+                    <div style="width: 100%">
+                        <div style="width: 50%; float: left">
+                            <div><strong>ID:</strong> {{_id}}</div>
+                            <div><strong>Date:</strong> {{moFormat orderDate "DD/MM/YYYY"}}</div>
+                        </div>
+
+                        <div style="width: 50%; float: right">
+                            <div><strong>Customer:</strong> {{customerDoc.name}}</div>
+                        </div>
+                    </div>
+
+                    <!--Content-->
+                    <table class="rpt rpt-content">
+                        <thead class="rpt-content-header">
+                        <tr>
+                            <th>#</th>
+                            <th>Item</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                        </tr>
+                        </thead>
+
+                        <tbody class="rpt-content-body">
+                        {{#each item in items}}
+                            <tr>
+                                <td>{{@index}}</td>
+                                <td>{{item.itemId}} : {{item.itemName}}</td>
+                                <td>{{item.qty}}</td>
+                                <td class="text-right">{{numFormat item.price "0,0.00"}}</td>
+                                <td class="text-right">{{numFormat item.amount "0,0.00"}}</td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+
+                        <tfoot class="rpt-content-footer">
+                        <tr>
+                            <td colspan="4" class="text-right">Total:</td>
+                            <td class="text-right">{{numFormat total "0,0.00"}}</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                {{/with}}
+            {{/with}}
+
+            <!--Sign-->
+
+            <!--Auto print-->
+            <!--{{autoprint close="true"}}-->
+
+        {{else}}
+            {{> loading}}
+        {{/if}}
+    </div>
 </template>

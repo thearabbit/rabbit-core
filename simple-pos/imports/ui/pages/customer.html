@@ -32,7 +32,7 @@
 <template name="SimplePos_customerForm">
     <div class="box-body">
         {{#if Template.subscriptionsReady}}
-            {{#autoForm collection=collection id="SimplePos_customerForm" doc=data type=formType}}
+            {{#autoForm collection=collection id="SimplePos_customerForm" doc=data.doc type=data.formType}}
                 <div class="row">
                     <div class="col-md-5">
                         {{> afQuickField name='name'}}

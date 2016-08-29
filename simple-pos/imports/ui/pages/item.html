@@ -27,7 +27,7 @@
 <template name="SimplePos_itemForm">
     <div class="box-body">
         {{#if Template.subscriptionsReady}}
-            {{#autoForm collection=collection id="SimplePos_itemForm" doc=data type=formType}}
+            {{#autoForm collection=collection id="SimplePos_itemForm" doc=data.doc type=data.formType}}
                 <div class="row">
                     <div class="col-md-12">
                         {{> afQuickField name='name'}}
