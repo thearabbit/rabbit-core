@@ -33,6 +33,7 @@ ejson@1.0.12
 less@2.7.5
 check@1.2.3
 http@1.2.9
+shell-server@0.2.1
 
 # Layout
 fourseven:scss
@@ -230,4 +231,3 @@ theara:autoform-inputmask
 theara:autoform-bs-daterangepicker
 #theara:particles
 theara:round2
-shell-server@0.2.1

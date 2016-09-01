@@ -55,8 +55,8 @@ export const insertUser = new ValidatedMethod({
             _.each(doc.roles, function (element) {
                 let roleWords = _.words(element, /[^:]+/g);
                 Roles.addUsersToRoles(userId,
-                    roleWords[1],
-                    roleWords[0]);
+                    roleWords[1], // roles
+                    roleWords[0]); // [group]
             });
         }
     }
@@ -86,7 +86,8 @@ export const updateUser = new ValidatedMethod({
                     'emails.0.address': doc.email,
                     username: doc.username,
                     profile: {name: doc['profile.name']},
-                    rolesBranch: doc.rolesBranch
+                    rolesBranch: doc.rolesBranch,
+                    roles: {}
                 }
             });
 
@@ -98,8 +99,8 @@ export const updateUser = new ValidatedMethod({
             _.forEach(doc.roles, function (element) {
                 let roleWords = _.words(element, /[^:]+/g);
                 Roles.addUsersToRoles(_id,
-                    roleWords[1],
-                    roleWords[0]);
+                    roleWords[1], // roles
+                    roleWords[0]); // [group]
             });
         }
     }
