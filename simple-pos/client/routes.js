@@ -15,10 +15,10 @@ import '../../core/imports/ui/layouts/login';
 import '../../core/imports/ui/layouts/main';
 
 // Group
-let SimplePOSRoutes = FlowRouter.group({
+let SimplePosRoutes = FlowRouter.group({
     prefix: '/simple-pos',
-    title: "Simple POS",
-    titlePrefix: 'Simple POS > ',
+    title: "Simple Pos",
+    titlePrefix: 'Simple Pos > ',
     subscriptions: function (params, queryParams) {
 //     this.register('files', Meteor.subscribe('files'));
     }
@@ -26,7 +26,7 @@ let SimplePOSRoutes = FlowRouter.group({
 
 // Home
 import '../imports/ui/pages/home.js';
-SimplePOSRoutes.route('/home', {
+SimplePosRoutes.route('/home', {
     name: 'simplePos.home',
     title: __('simplePos.home.title'),
     action(param, queryParam){
@@ -43,7 +43,7 @@ SimplePOSRoutes.route('/home', {
 
 // Lookup Value
 import '../imports/ui/pages/lookup-value.js';
-SimplePOSRoutes.route('/lookup-value', {
+SimplePosRoutes.route('/lookup-value', {
     name: 'simplePos.lookupValue',
     title: 'Lookup Value',
     action: function (params, queryParams) {
@@ -53,14 +53,14 @@ SimplePOSRoutes.route('/lookup-value', {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'Lookup Value',
-        icon: 'asterisk',
+        // icon: 'asterisk',
         parent: 'simplePos.home'
     }
 });
 
 // Item
 import '../imports/ui/pages/item.js';
-SimplePOSRoutes.route('/item', {
+SimplePosRoutes.route('/item', {
     name: 'simplePos.item',
     title: __('simplePos.item.title'),
     action: function (params, queryParams) {
@@ -70,14 +70,14 @@ SimplePOSRoutes.route('/item', {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: __('simplePos.item.title'),
-        icon: 'product-hunt',
+        // icon: 'product-hunt',
         parent: 'simplePos.home'
     }
 });
 
 // Customer
 import '../imports/ui/pages/customer.js';
-SimplePOSRoutes.route('/customer', {
+SimplePosRoutes.route('/customer', {
     name: 'simplePos.customer',
     title: 'Customer',
     action: function (params, queryParams) {
@@ -87,14 +87,14 @@ SimplePOSRoutes.route('/customer', {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'Customer',
-        icon: 'users',
+        // icon: 'users',
         parent: 'simplePos.home'
     }
 });
 
 // Order
 import '../imports/ui/pages/order.js';
-SimplePOSRoutes.route('/order', {
+SimplePosRoutes.route('/order', {
     name: 'simplePos.order',
     title: 'Order',
     action: function (params, queryParams) {
@@ -104,7 +104,7 @@ SimplePOSRoutes.route('/order', {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'Order',
-        icon: 'cart-plus',
+        // icon: 'cart-plus',
         parent: 'simplePos.home'
     }
 });

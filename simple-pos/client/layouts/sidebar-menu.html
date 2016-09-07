@@ -22,15 +22,15 @@
 
     <!--Report-->
     {{#if isInRole 'reporter' 'SimplePos'}}
-        <li class="header"><i class="fa fa-file-o"></i> REPORT</li>
-        <li class="{{isActiveRoute name='simplePos.customerReport'}}">
-            <a href="{{pathFor 'simplePos.customerReport'}}">
-                <i class="fa fa-circle-o"></i> <span>Customer List</span>
-            </a>
-        </li>
+        <li class="header"><i class="fa fa-file-text-o"></i> REPORT</li>
         <li class="{{isActiveRoute name='simplePos.invoiceReport'}}">
             <a href="{{pathFor 'simplePos.invoiceReport'}}">
-                <i class="fa fa-circle-o"></i> <span>Invoice</span>
+                <i class="fa fa-file-o"></i> <span>Invoice</span>
+            </a>
+        </li>
+        <li class="{{isActiveRoute name='simplePos.orderReport'}}">
+            <a href="{{pathFor 'simplePos.orderReport'}}">
+                <i class="fa fa-file-o"></i> <span>Order</span>
             </a>
         </li>
     {{/if}}
@@ -40,17 +40,17 @@
         <li class="header"><i class="fa fa-cogs"></i> SETTING</li>
         <li class="{{isActiveRoute name='core.exchange'}}">
             <a href="{{pathFor 'core.exchange'}}">
-                <i class="fa fa-circle-o"></i> <span>{{_ "core.sidebarMenu.exchange"}}</span>
+                <i class="fa fa-cog"></i> <span>{{_ "core.sidebarMenu.exchange"}}</span>
             </a>
         </li>
         <li class="{{isActiveRoute name='simplePos.item'}}">
             <a href="{{pathFor 'simplePos.item'}}">
-                <i class="fa fa-circle-o"></i> <span>{{_ "simplePos.sidebarMenu.item"}}</span>
+                <i class="fa fa-cog"></i> <span>{{_ "simplePos.sidebarMenu.item"}}</span>
             </a>
         </li>
         <li class="{{isActiveRoute name='simplePos.lookupValue'}}">
             <a href="{{pathFor 'simplePos.lookupValue'}}">
-                <i class="fa fa-circle-o"></i> <span>Lookup Value</span>
+                <i class="fa fa-cog"></i> <span>Lookup Value</span>
             </a>
         </li>
     {{/if}}

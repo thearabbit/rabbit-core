@@ -68,7 +68,7 @@ Order.schema = new SimpleSchema({
             type: 'universe-select',
             afFieldInput: {
                 uniPlaceholder: 'Select One',
-                optionsMethod: 'simplePos.selectOptMethods.customer',
+                optionsMethod: 'simplePos.selectOptsMethod.customer',
                 optionsMethodParams: function () {
                     if (Meteor.isClient) {
                         let currentBranch = Session.get('currentBranch');

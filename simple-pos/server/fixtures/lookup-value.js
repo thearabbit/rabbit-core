@@ -26,6 +26,16 @@ Meteor.startup(function () {
                     {label: 'Female', value: 'F', index: 2},
                 ]
             },
+            // Contact Type
+            {
+                name: 'Contact Type',
+                private: false,
+                options: [
+                    {label: 'Mobile', value: 'M', index: 1},
+                    {label: 'Home', value: 'H', index: 2},
+                    {label: 'Work', value: 'W', index: 3},
+                ]
+            },
         ];
 
         _.forEach(data, (value)=> {

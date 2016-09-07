@@ -9,8 +9,8 @@ import {moment} from  'meteor/momentjs:moment';
 import {Company} from '../../../../core/imports/api/collections/company.js';
 import {Order} from '../../../imports/api/collections/order.js';
 
-export const orderReport = new ValidatedMethod({
-    name: 'simplePos.orderReport',
+export const invoiceReport = new ValidatedMethod({
+    name: 'simplePos.invoiceReport',
     mixins: [CallPromiseMixin],
     // validate: null,
     validate: new SimpleSchema({
@@ -20,17 +20,13 @@ export const orderReport = new ValidatedMethod({
         if (!this.isSimulation) {
             Meteor._sleepForMs(200);
 
-            let data = {
-                title: {},
-                content: [{index: 'No Result'}],
-                footer: {}
-            };
+            let rptTitle, rptContent, rptFooter;
 
-            /****** Title *****/
-            data.title = Company.findOne();
+            // --- Title ---
+            rptTitle = Company.findOne();
 
-            /****** Content *****/
-            data.content = Order.aggregate([
+            // --- Content ---
+            rptContent = Order.aggregate([
                 {
                     $match: {_id: orderId}
                 },
@@ -81,7 +77,7 @@ export const orderReport = new ValidatedMethod({
                 }
             ])[0];
 
-            return data
+            return {rptTitle, rptContent};
         }
     }
 });

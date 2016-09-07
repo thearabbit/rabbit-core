@@ -38,7 +38,7 @@ Template.LoginLayout.onCreated(function () {
             if (currentDateTime.day() == 0 || currentDateTime.day() == 6) {
                 this.state.set('cssColor', 'red');
             }
-            this.state.set('currentDateTime', currentDateTime.format('dddd D, MMMM YYYY H:mm:ss'));
+            this.state.set('currentDateTime', currentDateTime.format('ddd D, MMM YYYY H:mm:ss'));
         });
     }, 1000);
 });

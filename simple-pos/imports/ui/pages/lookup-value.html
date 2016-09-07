@@ -1,10 +1,12 @@
 <!--Index-->
 <template name="SimplePos_lookupValue">
-    <div class="box-header with-border">
-        <h3 class="box-title">
-            {{> addNewButton}}
-        </h3>
-    </div>
+    {{#if isInRole 'super' 'Core'}}
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                {{> addNewButton}}
+            </h3>
+        </div>
+    {{/if}}
     <!-- /.box-header -->
 
     <div class="box-body">

@@ -7,7 +7,17 @@
 
 <template name="formFooterWithButton">
     <div class="form-footer">
-        <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane-o"></i> {{_ "form.btnSubmit"}}</button>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane-o"></i> {{_ "form.btnSubmit"}}
+        </button>
         <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> {{_ "form.btnReset"}}</button>
     </div>
+</template>
+
+<template name="reportFormFooter">
+    {{> Template.contentBlock}}
+</template>
+
+<template name="reportFormFooterWithButton">
+    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane-o"></i> {{_ "form.btnSubmit"}}</button>
+    <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> {{_ "form.btnReset"}}</button>
 </template>

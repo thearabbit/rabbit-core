@@ -1,0 +1,152 @@
+<!--Report-->
+<template name="SimplePos_orderReport">
+    <div class="box-body">
+        {{#if subsReady}}
+            <!--Form-->
+            {{#autoForm schema=schema id="SimplePos_orderReport" resetOnSuccess=false type="normal"}}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{> afQuickField name="branchId"}}
+                        {{> afQuickField name="repDate"}}
+                    </div>
+                    <div class="col-md-6">
+                        {{> afQuickField name="exchangeId"}}
+
+                        {{> reportFormFooterWithButton}}
+                    </div>
+                </div>
+
+            {{/autoForm}}
+        {{else}}
+            {{> loading}}
+        {{/if}}
+
+
+        <!--Report Paper-->
+        <div class="rpt rpt-portrait-a4">
+            {{#if rptInit}}
+                {{#if rptData}}
+
+                    <!--Print Button-->
+                    <hr>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-success btn-print-area">
+                            <i class="fa fa-print"></i> Print Area
+                        </button>
+                        <button type="button" class="btn btn-info btn-print-this">
+                            <i class="fa fa-print"></i> Print This
+                        </button>
+                    </div>
+                    <!--Print Button-->
+
+                    <div id="print-data">
+
+                        {{#with rptData}}
+
+                            <!--Title-->
+                            {{#with rptTitle}}
+                                <div class="rpt-title">
+                                    <div class="rpt-title-3x rpt-kh-muol">{{khName}}</div>
+                                    <div class="rpt-title-3x">{{enName}}</div>
+                                    <div class="rpt-title-2x"><u>Order Report</u></div>
+                                    <div>{{enAddress}}</div>
+                                </div>
+                            {{/with}}
+
+                            <!--Header-->
+                            {{#with rptHeader}}
+                                <div style="width: 100%">
+                                    <div style="width: 50%; float: left">
+                                        <div><strong>Branch:</strong> {{branchHeader}}</div>
+                                        <div><strong>Date:</strong>
+                                            {{moFormat repDate.[0] "DD/MM/YYYY"}}
+                                            -
+                                            {{moFormat repDate.[1] "DD/MM/YYYY"}}
+                                        </div>
+                                    </div>
+
+                                    <div style="width: 50%; float: right">
+                                        <div><strong>Exchange:</strong> {{exchangeHeader}}</div>
+                                    </div>
+                                </div>
+                            {{/with}}
+
+                            <!--Content-->
+                            <table class="rpt rpt-content">
+                                <thead class="rpt-content-header">
+                                <tr>
+                                    <th>No</th>
+                                    <th>ID</th>
+                                    <th>Order Date</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Amount</th>
+                                </tr>
+                                </thead>
+
+                                <tbody class="rpt-content-body">
+                                {{#each rptContent.data}}
+                                    <tr style="vertical-align: top">
+                                        <td>{{increaseIndex @index}}</td>
+                                        <td>{{_id}}</td>
+                                        <td>{{moFormat orderDate "DD/MM/YYYY"}}</td>
+                                        <td>{{customerDoc.name}}</td>
+                                        <td>
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Qty</th>
+                                                    <th>Price</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                {{#each items}}
+                                                    <tr>
+                                                        <td>{{itemId}}:{{itemName}}</td>
+                                                        <td>{{qty}}</td>
+                                                        <td>{{numFormat price  "0,0.00"}}</td>
+                                                        <td>{{numFormat amount "0,0.00"}}</td>
+                                                    </tr>
+                                                {{/each}}
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td class="text-right">{{numFormat total "0,0.00"}}</td>
+                                    </tr>
+                                {{/each}}
+                                </tbody>
+
+                                <tfoot class="rpt-content-footer">
+                                <tr>
+                                    <td class="text-right" colspan="5">Total:</td>
+                                    <td class="text-right">{{numFormat rptContent.sumTotal "0,0.00"}}</td>
+                                </tr>
+                                </tfoot>
+                            </table>
+
+                        {{/with}}
+
+                        <!--&lt;!&ndash;Sign&ndash;&gt;-->
+                        <!--{{> ReportSignFooter classSize="rpt-2x"}}-->
+                        {{> ReportSignFooter}}
+
+
+                        <!--Auto print-->
+                        <!--{{autoprint close="true"}}-->
+
+                    </div>
+                {{else}}
+                    <div class="text-center">
+                        {{> iconLoading size="fa-5x"}}
+                    </div>
+                {{/if}}
+            {{/if}}
+        </div>
+        <!--/Report Paper-->
+
+    </div>
+    <!-- /.box-body -->
+</template>

@@ -206,10 +206,16 @@ let hooksObject = {
         }
     },
     onSuccess (formType, result) {
+        if (formType == 'update') {
+            alertify.order().close();
+        }
         // Remove items collection
         itemsCollection.remove({});
+        $('[name="itemId"]').val(null).trigger('change');
+        $('[name="qty"]').val(null);
+        $('[name="price"]').val(null);
+        $('[name="amount"]').val(null);
 
-        alertify.order().close();
         displaySuccess();
     },
     onError (formType, error) {

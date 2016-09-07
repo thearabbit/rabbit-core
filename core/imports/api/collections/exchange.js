@@ -69,6 +69,10 @@ Exchange.schema = new SimpleSchema({
             }
         }
     },
+    exDateText: {
+        type: String,
+        optional: true
+    },
     base: {
         type: String,
         label: function () {

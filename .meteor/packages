@@ -192,7 +192,7 @@ theara:template-states
 #vsivsi:file-collection
 
 # Chart
-chart:chart
+#chart:chart
 
 ### Others ###
 erasaur:meteor-lodash

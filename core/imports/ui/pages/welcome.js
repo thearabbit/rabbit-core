@@ -130,7 +130,7 @@ AutoForm.hooks({
 
             let routerName = _.camelCase(result.module) + '.home';
 
-            FlowRouter.go(_.camelCase(result.module) + '.home');
+            FlowRouter.go(routerName);
         },
         onError: function (formType, error) {
             swal({

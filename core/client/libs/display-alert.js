@@ -18,7 +18,7 @@ export const displaySuccess = (msg = null, i18n = false) => {
         showCloseButton: true,
         showConfirmButton: false,
         allowOutsideClick: true,
-        timer: 3000
+        timer: 2000
     }).done();
 };
 
@@ -38,7 +38,7 @@ export const displayError = (msg = null, i18n = false) => {
         showCloseButton: true,
         showConfirmButton: false,
         allowOutsideClick: true,
-        timer: 3000
+        timer: 2000
     }).done();
 };
 
@@ -58,7 +58,7 @@ export const displayWarning = (msg = null, i18n = false) => {
         showCloseButton: true,
         showConfirmButton: false,
         allowOutsideClick: true,
-        timer: 3000
+        timer: 2000
     }).done();
 };
 
@@ -78,7 +78,7 @@ export const displayInfo = (msg = null, i18n = false) => {
         showCloseButton: true,
         showConfirmButton: false,
         allowOutsideClick: true,
-        timer: 3000
+        timer: 2000
     }).done();
 };
 
@@ -98,6 +98,6 @@ export const displayQuestion = (msg = null, i18n = false) => {
         showCloseButton: true,
         showConfirmButton: false,
         allowOutsideClick: true,
-        timer: 3000
+        timer: 2000
     }).done();
 };

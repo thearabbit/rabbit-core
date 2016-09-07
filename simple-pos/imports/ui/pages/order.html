@@ -28,14 +28,14 @@
 <!--Insert-->
 <template name="SimplePos_orderNew">
     <div class="box-body">
-        {{#autoForm collection=collection id="SimplePos_orderNew" type="insert"}}
+        {{#autoForm collection=collection id="SimplePos_orderNew" resetOnSuccess=false type="insert"}}
             <div class="row">
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">Order</div>
                         <div class="panel-body">
-                            {{> afQuickField name="customerId"}}
                             {{> afQuickField name="orderDate"}}
+                            {{> afQuickField name="customerId"}}
                             {{> afQuickField name="des"}}
 
                             {{> afQuickField type="hidden" name="branchId" value=currentBranch}}
@@ -79,8 +79,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Order</div>
                             <div class="panel-body">
-                                {{> afQuickField name="customerId"}}
                                 {{> afQuickField name="orderDate"}}
+                                {{> afQuickField name="customerId"}}
                                 {{> afQuickField name="des"}}
 
                                 {{> afQuickField type="hidden" name="branchId"}}

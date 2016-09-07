@@ -22,7 +22,7 @@ export const ItemsSchema = new SimpleSchema({
             type: 'universe-select',
             afFieldInput: {
                 uniPlaceholder: 'Please search... (limit 10)',
-                optionsMethod: 'simplePos.selectOptMethods.item'
+                optionsMethod: 'simplePos.selectOptsMethod.item'
             }
         }
     },

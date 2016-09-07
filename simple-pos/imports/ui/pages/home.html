@@ -4,5 +4,15 @@
 
         <button type="button" class="uiblock">UI Block</button>
         <button type="button" class="swal">Sweet Alert2</button>
+
+        <!--Highcharts-->
+        {{#if isLoading}}
+            {{> loading}}
+        {{/if}}
+
+        <div id="container" style="width:100%; height:400px;"></div>
+
+        <!--ChartJS-->
+        <!--<canvas id="myChart" width="400" height="400"></canvas>-->
     </div>
 </template>

@@ -1,19 +1,19 @@
 import {Meteor} from 'meteor/meteor';
-import {Accounts} from 'meteor/accounts-base';
 import {ValidatedMethod} from 'meteor/mdg:validated-method';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {_} from 'meteor/erasaur:meteor-lodash';
 import {moment} from  'meteor/momentjs:moment';
 
 // Collection
+import {Exchange} from '../../../core/imports/api/collections/exchange';
 import {Customer} from '../../imports/api/collections/customer.js';
 import {Item} from '../../imports/api/collections/item.js';
 import {Order} from '../../imports/api/collections/order.js';
 
-export let SelectOptMethods = {};
+export let SelectOptsMethod = {};
 
-SelectOptMethods.customer = new ValidatedMethod({
-    name: 'simplePos.selectOptMethods.customer',
+SelectOptsMethod.customer = new ValidatedMethod({
+    name: 'simplePos.selectOptsMethod.customer',
     validate: null,
     run(options) {
         if (!this.isSimulation) {
@@ -47,8 +47,8 @@ SelectOptMethods.customer = new ValidatedMethod({
     }
 });
 
-SelectOptMethods.item = new ValidatedMethod({
-    name: 'simplePos.selectOptMethods.item',
+SelectOptsMethod.item = new ValidatedMethod({
+    name: 'simplePos.selectOptsMethod.item',
     validate: null,
     run(options) {
         if (!this.isSimulation) {
@@ -80,8 +80,8 @@ SelectOptMethods.item = new ValidatedMethod({
     }
 });
 
-SelectOptMethods.order = new ValidatedMethod({
-    name: 'simplePos.selectOptMethods.order',
+SelectOptsMethod.order = new ValidatedMethod({
+    name: 'simplePos.selectOptsMethod.order',
     validate: null,
     run(options) {
         if (!this.isSimulation) {
@@ -110,3 +110,36 @@ SelectOptMethods.order = new ValidatedMethod({
         }
     }
 });
+
+SelectOptsMethod.exchange = new ValidatedMethod({
+    name: 'simplePos.selectOptsMethod.exchange',
+    validate: null,
+    run(options) {
+        if (!this.isSimulation) {
+            this.unblock();
+
+            let list = [], selector = {};
+            let searchText = options.searchText;
+            let values = options.values;
+
+            if (searchText) {
+                selector = {$text: {$search: searchText}};
+            } else if (values.length) {
+                selector = {_id: {$in: values}};
+            }
+
+            let data = Exchange.find(selector, {limit: 10});
+            data.forEach(function (value) {
+                var label = moment(value.exDate).format('DD/MM/YYYY') +
+                    ' | ' + numeral(value.rates.USD).format('0,0.00') + ' $' +
+                    ' = ' + numeral(value.rates.KHR).format('0,0.00') + ' ៛' + ' = ' +
+                    numeral(value.rates.THB).format('0,0.00') + ' B';
+
+                list.push({label: label, value: value._id});
+            });
+
+            return list;
+        }
+    }
+});
+

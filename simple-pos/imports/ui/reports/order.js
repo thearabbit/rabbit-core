@@ -17,16 +17,16 @@ import '../../../../core/client/components/loading.js';
 import '../../../../core/client/components/form-footer.js';
 
 // Method
-import {customerReport} from '../../../common/methods/reports/customer.js';
+import {orderReport} from '../../../common/methods/reports/order.js';
 
 // Schema
-import {CustomerSchema} from '../../api/collections/reports/customer.js';
+import {OrderSchema} from '../../api/collections/reports/order.js';
 
 // Page
-import './customer.html';
+import './order.html';
 
 // Declare template
-let indexTmpl = Template.SimplePos_customerReport;
+let indexTmpl = Template.SimplePos_orderReport;
 
 // State
 let formDataState = new ReactiveVar(null);
@@ -37,19 +37,12 @@ indexTmpl.onCreated(function () {
     this.rptDataState = new ReactiveVar(null);
 
     this.autorun(() => {
-        // Form Filter
-        let user = Meteor.user();
-        if (user) {
-            let rolesBranch = user.rolesBranch;
-            this.subscribe('core.branch', {_id: {$in: rolesBranch}});
-        }
-
         // Report Data
         if (formDataState.get()) {
             this.rptInitState.set(true);
             this.rptDataState.set(false);
 
-            customerReport.callPromise(formDataState.get())
+            orderReport.callPromise(formDataState.get())
                 .then((result)=> {
                     this.rptDataState.set(result);
                 }).catch((err)=> {
@@ -63,7 +56,7 @@ indexTmpl.onCreated(function () {
 
 indexTmpl.helpers({
     schema(){
-        return CustomerSchema;
+        return OrderSchema;
     },
     rptInit(){
         let instance = Template.instance();
@@ -72,6 +65,9 @@ indexTmpl.helpers({
     rptData: function () {
         let instance = Template.instance();
         return instance.rptDataState.get();
+    },
+    increaseIndex(index){
+        return index += 1;
     }
 });
 
@@ -123,4 +119,4 @@ let hooksObject = {
     }
 };
 
-AutoForm.addHooks('SimplePos_customerReport', hooksObject);
+AutoForm.addHooks('SimplePos_orderReport', hooksObject);
