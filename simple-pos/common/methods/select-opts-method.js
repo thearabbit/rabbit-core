@@ -5,10 +5,10 @@ import {_} from 'meteor/erasaur:meteor-lodash';
 import {moment} from  'meteor/momentjs:moment';
 
 // Collection
-import {Exchange} from '../../../core/imports/api/collections/exchange';
-import {Customer} from '../../imports/api/collections/customer.js';
-import {Item} from '../../imports/api/collections/item.js';
-import {Order} from '../../imports/api/collections/order.js';
+import {Exchange} from '../../../core/common/collections/exchange';
+import {Customer} from '../collections/customer.js';
+import {Item} from '../collections/item.js';
+import {Order} from '../collections/order.js';
 
 export let SelectOptsMethod = {};
 

@@ -11,7 +11,7 @@ import {__} from '../../core/common/libs/tapi18n-callback-helper.js';
 
 // Layout
 import {Layout} from '../../core/client/libs/render-layout.js';
-import '../../core/imports/ui/layouts/report/index.html';
+import '../../core/imports/layouts/report/index.html';
 
 // Group
 let SimplePosRoutes = FlowRouter.group({
@@ -28,7 +28,7 @@ let SimplePosRoutes = FlowRouter.group({
 });
 
 // Invoice
-import '../imports/ui/reports/invoice.js';
+import '../imports/reports/invoice.js';
 SimplePosRoutes.route('/invoice-report', {
     name: 'simplePos.invoiceReport',
     title: 'Invoice Report',
@@ -52,7 +52,7 @@ SimplePosRoutes.route('/invoice-report-gen', {
 });
 
 // Order
-import '../imports/ui/reports/order.js';
+import '../imports/reports/order.js';
 SimplePosRoutes.route('/order-report', {
     name: 'simplePos.orderReport',
     title: 'Order Report',

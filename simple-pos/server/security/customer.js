@@ -1,4 +1,4 @@
-import {Customer} from '../../imports/api/collections/customer.js';
+import {Customer} from '../../common/collections/customer.js';
 
 // Lib
 import './_init.js';

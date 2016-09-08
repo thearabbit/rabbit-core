@@ -6,7 +6,7 @@ import {Roles} from  'meteor/alanning:roles';
 import {_} from 'meteor/erasaur:meteor-lodash';
 
 // Schema
-import {ProfileSchema} from '../../imports/api/collections/profile-schema.js';
+import {ProfileSchema} from '../collections/profile-schema.js';
 
 // Validate schema
 let validateSchema = new SimpleSchema({

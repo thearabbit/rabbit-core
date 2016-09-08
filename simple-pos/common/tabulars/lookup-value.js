@@ -12,10 +12,10 @@ import {lightbox} from 'meteor/theara:lightbox-helpers';
 import {tabularOpts} from '../../../core/common/libs/tabular-opts.js';
 
 // Collection
-import {LookupValue} from '../../imports/api/collections/lookup-value.js';
+import {LookupValue} from '../collections/lookup-value.js';
 
 // Page
-Meteor.isClient && require('../../imports/ui/pages/lookup-value.html');
+Meteor.isClient && require('../../imports/pages/lookup-value.html');
 
 tabularOpts.name = 'simplePos.lookupValue';
 tabularOpts.collection = LookupValue;

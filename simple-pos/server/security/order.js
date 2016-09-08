@@ -1,4 +1,4 @@
-import {Order} from '../../imports/api/collections/order.js';
+import {Order} from '../../common/collections/order.js';
 
 // Lib
 import './_init.js';

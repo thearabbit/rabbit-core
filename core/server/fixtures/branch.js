@@ -1,8 +1,8 @@
 import {Meteor} from 'meteor/meteor';
 import {moment} from 'meteor/momentjs:moment';
 
-import {Branch} from '../../imports/api/collections/branch.js';
-import {Exchange} from '../../imports/api/collections/exchange.js';
+import {Branch} from '../../common/collections/branch.js';
+import {Exchange} from '../../common/collections/exchange.js';
 
 Meteor.startup(function () {
     if (Branch.find().count() == 0) {

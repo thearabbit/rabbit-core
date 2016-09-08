@@ -2,7 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 // Import collection
-import {Currency} from '../../imports/api/collections/currency.js';
+import {Currency} from '../../common/collections/currency.js';
 
 Meteor.publish('core.currency', function coreCurrency() {
     this.unblock();

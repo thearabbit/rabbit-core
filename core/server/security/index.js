@@ -1,7 +1,7 @@
-import {Company} from '../../imports/api/collections/company.js';
-import {Branch} from '../../imports/api/collections/branch.js';
-import {Setting} from '../../imports/api/collections/setting.js';
-import {Exchange} from '../../imports/api/collections/exchange.js';
+import {Company} from '../../common/collections/company.js';
+import {Branch} from '../../common/collections/branch.js';
+import {Setting} from '../../common/collections/setting.js';
+import {Exchange} from '../../common/collections/exchange.js';
 
 // Lib
 import './_init.js';

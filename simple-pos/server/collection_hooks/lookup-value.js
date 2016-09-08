@@ -3,7 +3,7 @@ import {idGenerator} from 'meteor/theara:id-generator';
 import {_} from 'meteor/erasaur:meteor-lodash';
 
 // Collection
-import {LookupValue} from '../../imports/api/collections/lookup-value';
+import {LookupValue} from '../../common/collections/lookup-value';
 
 LookupValue.before.insert(function (userId, doc) {
     doc.options = _.compact(doc.options);

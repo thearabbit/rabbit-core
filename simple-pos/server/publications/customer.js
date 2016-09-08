@@ -3,7 +3,7 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {ReactiveTable} from 'meteor/aslagle:reactive-table';
 
 // Collection
-import {Customer} from '../../imports/api/collections/customer.js';
+import {Customer} from '../../common/collections/customer.js';
 
 Meteor.publish('simplePos.customerById', function simpleCustomer(customerId) {
     this.unblock();

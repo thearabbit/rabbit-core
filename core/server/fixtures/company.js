@@ -1,6 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 
-import {Company} from '../../imports/api/collections/company.js';
+import {Company} from '../../common/collections/company.js';
 
 Meteor.startup(function () {
     if (Company.find().count() == 0) {

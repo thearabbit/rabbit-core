@@ -11,10 +11,10 @@ import {lightbox} from 'meteor/theara:lightbox-helpers';
 import {tabularOpts} from '../../../core/common/libs/tabular-opts.js';
 
 // Collection
-import {Order} from '../../imports/api/collections/order.js';
+import {Order} from '../collections/order.js';
 
 // Page
-Meteor.isClient && require('../../imports/ui/pages/order.html');
+Meteor.isClient && require('../../imports/pages/order.html');
 
 tabularOpts.name = 'simplePos.order';
 tabularOpts.collection = Order;

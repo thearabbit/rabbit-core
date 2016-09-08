@@ -2,7 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 // Import collection
-import {Exchange} from '../../imports/api/collections/exchange.js';
+import {Exchange} from '../../common/collections/exchange.js';
 
 Meteor.publish('core.exchange', function coreExchange(selector = {}, options = {}) {
     this.unblock();

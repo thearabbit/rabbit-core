@@ -4,7 +4,7 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {CallPromiseMixin} from 'meteor/didericis:callpromise-mixin';
 
 // Collection
-import {Order} from '../../imports/api/collections/order';
+import {Order} from '../collections/order';
 
 export const lookupOrder = new ValidatedMethod({
     name: 'simplePos.lookupOrder',
@@ -55,8 +55,8 @@ export const lookupOrder = new ValidatedMethod({
                         branchId: 1,
                         total: 1,
                         items: 1,
-                        itemsDoc: 1,
-                        itemLabel: {$concat: ["$itemDoc._id", " : ", "$itemDoc.name"]}
+                        itemDoc: 1,
+                        itemName: "$itemDoc.name"
                     }
                 },
                 {
@@ -72,7 +72,7 @@ export const lookupOrder = new ValidatedMethod({
                             $addToSet: {
                                 _id: "$items.itemId",
                                 itemId: "$items.itemId",
-                                itemLabel: "$itemLabel",
+                                itemName: "$itemName",
                                 qty: "$items.qty",
                                 price: "$items.price",
                                 amount: "$items.amount"

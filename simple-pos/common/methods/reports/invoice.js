@@ -6,8 +6,8 @@ import {_} from 'meteor/erasaur:meteor-lodash';
 import {moment} from  'meteor/momentjs:moment';
 
 // Collection
-import {Company} from '../../../../core/imports/api/collections/company.js';
-import {Order} from '../../../imports/api/collections/order.js';
+import {Company} from '../../../../core/common/collections/company.js';
+import {Order} from '../../collections/order.js';
 
 export const invoiceReport = new ValidatedMethod({
     name: 'simplePos.invoiceReport',

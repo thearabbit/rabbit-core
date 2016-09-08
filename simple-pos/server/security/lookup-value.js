@@ -1,4 +1,4 @@
-import {LookupValue} from '../../imports/api/collections/lookup-value.js';
+import {LookupValue} from '../../common/collections/lookup-value.js';
 
 // Lib
 import './_init.js';

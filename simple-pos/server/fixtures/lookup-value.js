@@ -1,7 +1,7 @@
 import {Meteor} from 'meteor/meteor';
 import {_} from 'meteor/erasaur:meteor-lodash';
 
-import {LookupValue} from '../../imports/api/collections/lookup-value.js';
+import {LookupValue} from '../../common/collections/lookup-value.js';
 
 Meteor.startup(function () {
     if (LookupValue.find().count() == 0) {

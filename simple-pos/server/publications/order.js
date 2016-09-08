@@ -2,7 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 // Collection
-import {Order} from '../../imports/api/collections/order.js';
+import {Order} from '../../common/collections/order.js';
 
 Meteor.publish('simplePos.orderById', function simpleOrder(orderId) {
     this.unblock();

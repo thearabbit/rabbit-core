@@ -6,11 +6,11 @@ import {_} from 'meteor/erasaur:meteor-lodash';
 import {moment} from  'meteor/momentjs:moment';
 
 // Collection
-import {Company} from '../../../../core/imports/api/collections/company';
-import {Branch} from '../../../../core/imports/api/collections/branch';
-import {Exchange} from '../../../../core/imports/api/collections/exchange';
-import {Customer} from '../../../imports/api/collections/customer';
-import {Order} from '../../../imports/api/collections/order';
+import {Company} from '../../../../core/common/collections/company';
+import {Branch} from '../../../../core/common/collections/branch';
+import {Exchange} from '../../../../core/common/collections/exchange';
+import {Customer} from '../../collections/customer';
+import {Order} from '../../collections/order';
 
 export const orderChartReport = new ValidatedMethod({
     name: 'simplePos.orderChartReport',

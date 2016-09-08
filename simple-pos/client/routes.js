@@ -11,8 +11,8 @@ import {__} from '../../core/common/libs/tapi18n-callback-helper.js';
 
 // Layout
 import {Layout} from '../../core/client/libs/render-layout.js';
-import '../../core/imports/ui/layouts/login';
-import '../../core/imports/ui/layouts/main';
+import '../../core/imports/layouts/login';
+import '../../core/imports/layouts/main';
 
 // Group
 let SimplePosRoutes = FlowRouter.group({
@@ -25,7 +25,7 @@ let SimplePosRoutes = FlowRouter.group({
 });
 
 // Home
-import '../imports/ui/pages/home.js';
+import '../imports/pages/home.js';
 SimplePosRoutes.route('/home', {
     name: 'simplePos.home',
     title: __('simplePos.home.title'),
@@ -42,7 +42,7 @@ SimplePosRoutes.route('/home', {
 });
 
 // Lookup Value
-import '../imports/ui/pages/lookup-value.js';
+import '../imports/pages/lookup-value.js';
 SimplePosRoutes.route('/lookup-value', {
     name: 'simplePos.lookupValue',
     title: 'Lookup Value',
@@ -59,7 +59,7 @@ SimplePosRoutes.route('/lookup-value', {
 });
 
 // Item
-import '../imports/ui/pages/item.js';
+import '../imports/pages/item.js';
 SimplePosRoutes.route('/item', {
     name: 'simplePos.item',
     title: __('simplePos.item.title'),
@@ -76,7 +76,7 @@ SimplePosRoutes.route('/item', {
 });
 
 // Customer
-import '../imports/ui/pages/customer.js';
+import '../imports/pages/customer.js';
 SimplePosRoutes.route('/customer', {
     name: 'simplePos.customer',
     title: 'Customer',
@@ -93,7 +93,7 @@ SimplePosRoutes.route('/customer', {
 });
 
 // Order
-import '../imports/ui/pages/order.js';
+import '../imports/pages/order.js';
 SimplePosRoutes.route('/order', {
     name: 'simplePos.order',
     title: 'Order',

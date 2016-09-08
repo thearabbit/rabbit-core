@@ -12,8 +12,8 @@ import {__} from '../common/libs/tapi18n-callback-helper.js';
 
 // Layout
 import {Layout} from './libs/render-layout.js';
-import '../imports/ui/layouts/login';
-import '../imports/ui/layouts/main';
+import '../imports/layouts/login';
+import '../imports/layouts/main';
 
 // Global subscriptions
 FlowRouter.subscriptions = function () {
@@ -43,7 +43,7 @@ FlowRouter.triggers.enter([
 });
 
 // Not found
-import '../imports/ui/pages/not-found.js';
+import '../imports/pages/not-found.js';
 FlowRouter.notFound = {
     name: 'core.notFound',
     title: '404: Page not found',
@@ -66,7 +66,7 @@ let CoreRoutes = FlowRouter.group({
 });
 
 // Welcome
-import '../imports/ui/pages/welcome.js';
+import '../imports/pages/welcome.js';
 FlowRouter.route('/', {
     name: 'core.welcome',
     title: __('core.welcome.title'),
@@ -83,7 +83,7 @@ FlowRouter.route('/', {
 });
 
 // Home
-import '../imports/ui/pages/home.js';
+import '../imports/pages/home.js';
 CoreRoutes.route('/home', {
     name: 'core.home',
     title: __('core.home.title'),
@@ -100,7 +100,7 @@ CoreRoutes.route('/home', {
 });
 
 // Branch
-import '../imports/ui/pages/branch.js';
+import '../imports/pages/branch.js';
 CoreRoutes.route('/branch', {
     name: 'core.branch',
     title: __('core.branch.title'),
@@ -117,7 +117,7 @@ CoreRoutes.route('/branch', {
 });
 
 // Company
-import '../imports/ui/pages/company.js';
+import '../imports/pages/company.js';
 CoreRoutes.route('/company', {
     name: 'core.company',
     title: __('core.company.title'),
@@ -134,7 +134,7 @@ CoreRoutes.route('/company', {
 });
 
 // Exchange
-import '../imports/ui/pages/exchange.js';
+import '../imports/pages/exchange.js';
 CoreRoutes.route('/exchange', {
     name: 'core.exchange',
     title: __('core.exchange.title'),
@@ -151,7 +151,7 @@ CoreRoutes.route('/exchange', {
 });
 
 // Setting
-import '../imports/ui/pages/setting.js';
+import '../imports/pages/setting.js';
 CoreRoutes.route('/setting', {
     name: 'core.setting',
     title: __('core.setting.title'),
@@ -168,7 +168,7 @@ CoreRoutes.route('/setting', {
 });
 
 // User
-import '../imports/ui/pages/user.js';
+import '../imports/pages/user.js';
 CoreRoutes.route('/user', {
     name: 'core.user',
     title: __('core.user.title'),
@@ -185,7 +185,7 @@ CoreRoutes.route('/user', {
 });
 
 // Profile
-import '../imports/ui/pages/profile.js';
+import '../imports/pages/profile.js';
 CoreRoutes.route('/profile', {
     name: 'core.profile',
     title: 'Profile',
@@ -202,7 +202,7 @@ CoreRoutes.route('/profile', {
 });
 
 // Backup  & Restore
-import '../imports/ui/pages/backup-restore.js';
+import '../imports/pages/backup-restore.js';
 CoreRoutes.route('/backup', {
     name: 'core.backup',
     title: 'Backup',

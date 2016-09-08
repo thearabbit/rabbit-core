@@ -2,7 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 // Import collection
-import {Company} from '../../imports/api/collections/company.js';
+import {Company} from '../../common/collections/company.js';
 
 Meteor.publish('core.company', function coreCompany() {
     this.unblock();

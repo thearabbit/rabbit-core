@@ -5,7 +5,7 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {CallPromiseMixin} from 'meteor/didericis:callpromise-mixin';
 
 // Collection
-import {Item} from '../../imports/api/collections/item.js';
+import {Item} from '../collections/item.js';
 
 // Check user password
 export const lookupItem = new ValidatedMethod({

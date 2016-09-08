@@ -3,7 +3,7 @@ import {_} from 'meteor/erasaur:meteor-lodash';
 import casual from 'casual';
 import faker from 'faker';
 
-import {Customer} from '../../imports/api/collections/customer.js';
+import {Customer} from '../../common/collections/customer.js';
 
 Meteor.startup(function () {
     if (Customer.find().count() == 0) {

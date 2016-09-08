@@ -2,7 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 // Collection
-import {LookupValue} from '../../imports/api/collections/lookup-value.js';
+import {LookupValue} from '../../common/collections/lookup-value.js';
 
 Meteor.publish('simplePos.lookupValueByNames', function simpleLookupValue(lookupNames = []) {
     this.unblock();

@@ -1,4 +1,4 @@
-import {Item} from '../../imports/api/collections/item.js';
+import {Item} from '../../common/collections/item.js';
 
 // Lib
 import './_init.js';

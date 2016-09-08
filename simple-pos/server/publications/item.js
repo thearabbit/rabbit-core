@@ -2,7 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 // Collection
-import {Item} from '../../imports/api/collections/item.js';
+import {Item} from '../../common/collections/item.js';
 
 Meteor.publish('simplePos.itemById', function simpleItem(itemId) {
     this.unblock();

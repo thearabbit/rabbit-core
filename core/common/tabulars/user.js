@@ -9,7 +9,7 @@ import {_} from 'meteor/erasaur:meteor-lodash';
 import {tabularOpts} from '../libs/tabular-opts.js';
 
 // Page
-Meteor.isClient && require('../../imports/ui/pages/user.html');
+Meteor.isClient && require('../../imports/pages/user.html');
 
 tabularOpts.name = "core.user";
 tabularOpts.collection = Meteor.users;

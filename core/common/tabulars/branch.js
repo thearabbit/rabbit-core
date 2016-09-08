@@ -9,11 +9,11 @@ import {_} from 'meteor/erasaur:meteor-lodash';
 import {tabularOpts} from '../libs/tabular-opts.js';
 
 // Collection
-import {Branch} from '../../imports/api/collections/branch.js';
-import {Setting} from '../../imports/api/collections/setting.js';
+import {Branch} from '../collections/branch.js';
+import {Setting} from '../collections/setting.js';
 
 // Page
-Meteor.isClient && require('../../imports/ui/pages/branch.html');
+Meteor.isClient && require('../../imports/pages/branch.html');
 
 tabularOpts.name = 'core.branch';
 tabularOpts.collection = Branch;

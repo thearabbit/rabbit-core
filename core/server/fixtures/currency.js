@@ -1,6 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 
-import {Currency} from '../../imports/api/collections/currency.js';
+import {Currency} from '../../common/collections/currency.js';
 
 Meteor.startup(function () {
     if (Currency.find().count() == 0) {

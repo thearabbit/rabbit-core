@@ -12,10 +12,10 @@ import {lightbox} from 'meteor/theara:lightbox-helpers';
 import {tabularOpts} from '../../../core/common/libs/tabular-opts.js';
 
 // Collection
-import {Customer} from '../../imports/api/collections/customer.js';
+import {Customer} from '../collections/customer.js';
 
 // Page
-Meteor.isClient && require('../../imports/ui/pages/customer.html');
+Meteor.isClient && require('../../imports/pages/customer.html');
 
 tabularOpts.name = 'simplePos.customer';
 tabularOpts.collection = Customer;

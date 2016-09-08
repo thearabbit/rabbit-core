@@ -2,7 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {TAPi18n} from 'meteor/tap:i18n';
 
 // Collection
-import {Setting} from '../../imports/api/collections/setting.js';
+import {Setting} from '../../common/collections/setting.js';
 
 Meteor.startup(function () {
     // Get language setting
