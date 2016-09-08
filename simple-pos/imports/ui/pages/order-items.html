@@ -1,27 +1,10 @@
 <!--Item Temporary-->
-<template name="SimplePos_orderItemsNew">
-    {{#autoForm schema=schema id="SimplePos_orderItemsNew"}}
-        <div class="row">
-            <div class="col-sm-4">
-                {{> afQuickField name="itemId" label=false}}
-            </div>
-            <div class="col-sm-2">
-                {{> afQuickField name="qty" label=false}}
-            </div>
-            <div class="col-sm-2">
-                {{> afQuickField name="price" value=price label=false}}
-            </div>
-            <div class="col-sm-3">
-                {{> afQuickField name="amount" value=amount label=false readonly=true}}
-            </div>
-            <div class="col-sm-1">
-                <button type="button" class="btn btn-primary js-add-item" {{disabledAddItemBtn}}>+</button>
-            </div>
-        </div>
-    {{/autoForm}}
+<template name="SimplePos_orderItems">
+    <!--Item form-->
+    {{> SimplePos_orderItemsNew}}
     <!--<hr>-->
 
-    <!--Reactive table-->
+    <!--Items list-->
     {{> reactiveTable settings=tableSettings}}
 
 
@@ -41,6 +24,29 @@
         <li><a href="#" class="js-update-item"><i class="fa fa-pencil"></i></a></li>
         <li><a href="#" class="js-destroy-item"><i class="fa fa-remove"></i></a></li>
     </ul>
+</template>
+
+<!--New Item-->
+<template name="SimplePos_orderItemsNew">
+    {{#autoForm schema=schema id="SimplePos_orderItemsNew"}}
+        <div class="row">
+            <div class="col-sm-4">
+                {{> afQuickField name="itemId" label=false placeholder="Item"}}
+            </div>
+            <div class="col-sm-2">
+                {{> afQuickField name="qty" label=false placeholder="Qty"}}
+            </div>
+            <div class="col-sm-2">
+                {{> afQuickField name="price" value=price label=false placeholder="Price"}}
+            </div>
+            <div class="col-sm-3">
+                {{> afQuickField name="amount" value=amount label=false placeholder="Amount" readonly=true}}
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-primary js-add-item" {{disabledAddItemBtn}}>+</button>
+            </div>
+        </div>
+    {{/autoForm}}
 </template>
 
 <!--Edit Item-->

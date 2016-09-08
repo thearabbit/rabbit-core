@@ -39,8 +39,7 @@ import './order-items.js';
 // Declare template
 let indexTmpl = Template.SimplePos_order,
     actionTmpl = Template.SimplePos_orderAction,
-    newTmpl = Template.SimplePos_orderNew,
-    editTmpl = Template.SimplePos_orderEdit,
+    formTmpl = Template.SimplePos_orderForm,
     showTmpl = Template.SimplePos_orderShow;
 
 // Local collection
@@ -64,10 +63,10 @@ indexTmpl.helpers({
 
 indexTmpl.events({
     'click .js-create' (event, instance) {
-        alertify.order(fa('plus', 'Order'), renderTemplate(newTmpl)).maximize();
+        alertify.order(fa('plus', 'Order'), renderTemplate(formTmpl)).maximize();
     },
     'click .js-update' (event, instance) {
-        alertify.order(fa('pencil', 'Order'), renderTemplate(newTmpl, {orderId: this._id})).maximize();
+        alertify.order(fa('pencil', 'Order'), renderTemplate(formTmpl, {orderId: this._id})).maximize();
     },
     'click .js-destroy' (event, instance) {
         destroyAction(
@@ -88,8 +87,8 @@ indexTmpl.events({
     }
 });
 
-// New
-newTmpl.onCreated(function () {
+// Form
+formTmpl.onCreated(function () {
     let self = this;
     self.isLoading = new ReactiveVar(false);
     self.orderDoc = new ReactiveVar();
@@ -102,8 +101,6 @@ newTmpl.onCreated(function () {
             lookupOrder.callPromise({
                 orderId: currentData.orderId
             }).then((result)=> {
-                console.log('result: ', result);
-
                 // Add items to local collection
                 _.forEach(result.items, (value)=> {
                     itemsCollection.insert(value);
@@ -118,7 +115,7 @@ newTmpl.onCreated(function () {
     });
 });
 
-newTmpl.helpers({
+formTmpl.helpers({
     collection(){
         return Order;
     },
@@ -152,7 +149,7 @@ newTmpl.helpers({
     }
 });
 
-newTmpl.onDestroyed(function () {
+formTmpl.onDestroyed(function () {
     // Remove items collection
     itemsCollection.remove({});
 });
@@ -228,7 +225,4 @@ let hooksObject = {
     }
 };
 
-AutoForm.addHooks([
-    'SimplePos_orderNew',
-    'SimplePos_orderEdit'
-], hooksObject);
+AutoForm.addHooks(['SimplePos_orderForm'], hooksObject);

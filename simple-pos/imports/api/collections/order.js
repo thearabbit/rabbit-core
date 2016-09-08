@@ -81,6 +81,7 @@ Order.schema = new SimpleSchema({
     des: {
         type: String,
         label: 'Description',
+        optional: true,
         autoform: {
             afFieldInput: {
                 type: 'summernote',

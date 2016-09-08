@@ -29,36 +29,30 @@ import {lookupItem} from '../../../common/methods/lookup-item.js';
 
 // Collection
 import {OrderItemsSchema} from '../../api/collections/order-items.js';
-import {Order} from '../../api/collections/order.js';
 
 // Page
 import './order-items.html';
 
 // Declare template
-var newTmpl = Template.SimplePos_orderItemsNew,
+let indexTmpl = Template.SimplePos_orderItems,
     actionTmpl = Template.SimplePos_orderItemsAction,
+    newTmpl = Template.SimplePos_orderItemsNew,
     editTmpl = Template.SimplePos_orderItemsEdit;
 
 // Local collection
-var itemsCollection;
+let itemsCollection;
 
-
-// New
-newTmpl.onCreated(function () {
+// Index
+indexTmpl.onCreated(function () {
     // Create new  alertify
     createNewAlertify('item');
-
-    // State
-    this.qty = new ReactiveVar(0);
-    this.price = new ReactiveVar(0);
-    this.amount = new ReactiveVar(0);
 
     // Data context
     let data = Template.currentData();
     itemsCollection = data.itemsCollection;
 });
 
-newTmpl.helpers({
+indexTmpl.helpers({
     tableSettings: function () {
         let i18nPrefix = 'simplePos.order.schema';
 
@@ -105,27 +99,6 @@ newTmpl.helpers({
 
         return reactiveTableSettings;
     },
-    schema(){
-        return OrderItemsSchema;
-    },
-    price: function () {
-        return Template.instance().price.get();
-    },
-    amount: function () {
-        const instance = Template.instance();
-        let amount = instance.qty.get() * instance.price.get();
-        instance.amount.set(amount);
-
-        return amount;
-    },
-    disabledAddItemBtn: function () {
-        const instance = Template.instance();
-        if (instance.amount.get() <= 0) {
-            return {disabled: true};
-        }
-
-        return {};
-    },
     total: function () {
         let total = 0;
         let getItems = itemsCollection.find();
@@ -137,9 +110,83 @@ newTmpl.helpers({
     }
 });
 
+indexTmpl.events({
+    'click .js-update-item': function (event, instance) {
+        alertify.item(fa('pencil', 'Items'), renderTemplate(editTmpl, this));
+    },
+    'click .js-destroy-item': function (event, instance) {
+        destroyAction(
+            itemsCollection,
+            {_id: this._id},
+            {title: 'Items', itemTitle: this.itemId}
+        );
+    },
+    'keyup .item-qty,.item-price'(event, instance){
+        let $parents = $(event.currentTarget).parents('tr');
+
+        let itemId = $parents.find('.itemId').text();
+        let qty = $parents.find('.item-qty').val();
+        let price = $parents.find('.item-price').val();
+        qty = _.isEmpty(qty) ? 0 : parseInt(qty);
+        price = _.isEmpty(price) ? 0 : parseFloat(price);
+        let amount = numeral(qty * price).format("0,0.00");
+
+        $parents.find('.amount').text(amount);
+    },
+    'blur .item-qty,.item-price': function (event, instance) {
+        let $parents = $(event.currentTarget).parents('tr');
+
+        let itemId = $parents.find('.itemId').text();
+        let qty = $parents.find('.item-qty').val();
+        let price = $parents.find('.item-price').val();
+        qty = _.isEmpty(qty) ? 0 : parseInt(qty);
+        price = _.isEmpty(price) ? 0 : parseFloat(price);
+        amount = math.round(qty * price, 2);
+
+        // Update
+        $parents.find('.amount').text('');
+        itemsCollection.update(
+            {_id: itemId},
+            {$set: {qty: qty, price: price, amount: amount}}
+        );
+    }
+});
+
+// New
+newTmpl.onCreated(function () {
+    // State
+    this.itemId = new ReactiveVar();
+    this.qty = new ReactiveVar(0);
+    this.price = new ReactiveVar(0);
+});
+
+newTmpl.helpers({
+    schema(){
+        return OrderItemsSchema;
+    },
+    price: function () {
+        return Template.instance().price.get();
+    },
+    amount: function () {
+        const instance = Template.instance();
+        let amount = instance.qty.get() * instance.price.get();
+
+        return amount;
+    },
+    disabledAddItemBtn: function () {
+        const instance = Template.instance();
+        if (instance.itemId.get() && instance.qty.get() > 0) {
+            return {};
+        }
+
+        return {disabled: true};
+    },
+});
+
 newTmpl.events({
     'change [name="itemId"]': function (event, instance) {
         let itemId = event.currentTarget.value;
+        instance.itemId.set(itemId);
 
         // Check item value
         if (itemId) {
@@ -201,29 +248,6 @@ newTmpl.events({
             });
         }
     },
-    // Reactive table for item
-    'click .js-update-item': function (event, instance) {
-        alertify.item(fa('pencil', 'Items'), renderTemplate(editTmpl, this));
-    },
-    'click .js-destroy-item': function (event, instance) {
-        destroyAction(
-            itemsCollection,
-            {_id: this._id},
-            {title: 'Items', itemTitle: this.itemId}
-        );
-    },
-    'keyup .item-qty,.item-price'(event, instance){
-        let $parents = $(event.currentTarget).parents('tr');
-
-        let itemId = $parents.find('.itemId').text();
-        let qty = $parents.find('.item-qty').val();
-        let price = $parents.find('.item-price').val();
-        qty = _.isEmpty(qty) ? 0 : parseInt(qty);
-        price = _.isEmpty(price) ? 0 : parseFloat(price);
-        let amount = numeral(qty * price).format("0,0.00");
-
-        $parents.find('.amount').text(amount);
-    }
 });
 
 // Edit

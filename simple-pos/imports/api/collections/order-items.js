@@ -40,6 +40,7 @@ export const OrderItemsSchema = new SimpleSchema({
         label: 'Price',
         decimal: true,
         defaultValue: 0,
+        min: 0,
         autoform: {
             type: 'inputmask',
             inputmaskOptions: function () {
@@ -50,8 +51,9 @@ export const OrderItemsSchema = new SimpleSchema({
     amount: {
         type: Number,
         label: 'Amount',
-        defaultValue: 0,
         decimal: true,
+        defaultValue: 0,
+        min: 0,
         autoform: {
             type: 'inputmask',
             inputmaskOptions: function () {

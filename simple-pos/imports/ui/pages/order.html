@@ -25,13 +25,13 @@
     {{/columnAction}}
 </template>
 
-<!--Insert-->
-<template name="SimplePos_orderNew">
+<!--Form-->
+<template name="SimplePos_orderForm">
     <div class="box-body">
         {{#if isLoading}}
             {{> loading}}
         {{else}}
-            {{#autoForm collection=collection id="SimplePos_orderNew" doc=data.doc type=data.formType
+            {{#autoForm collection=collection id="SimplePos_orderForm" doc=data.doc type=data.formType
                         resetOnSuccess=false}}
                 <div class="row">
                     <div class="col-md-4">
@@ -49,7 +49,7 @@
 
                     <div class="col-md-8">
                         <!--Item Temporary-->
-                        {{> SimplePos_orderItemsNew itemsCollection=itemsCollection}}
+                        {{> SimplePos_orderItems itemsCollection=itemsCollection}}
 
                         <div class="row">
                             <div class="col-sm-12 pull-right">
@@ -70,54 +70,6 @@
                 </div>
 
             {{/autoForm}}
-        {{/if}}
-    </div>
-</template>
-
-<!--Update-->
-<template name="SimplePos_orderEdit">
-    <div class="box-body">
-        {{#if Template.subscriptionsReady}}
-            {{#autoForm collection=collection id="SimplePos_orderEdit" doc=data type="update"}}
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Order</div>
-                            <div class="panel-body">
-                                {{> afQuickField name="orderDate"}}
-                                {{> afQuickField name="customerId"}}
-                                {{> afQuickField name="des"}}
-
-                                {{> afQuickField type="hidden" name="branchId"}}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-8">
-                        <!--Item Temporary-->
-                        {{> SimplePos_orderItemsNew itemsCollection=itemsCollection}}
-
-                        <div class="row">
-                            <div class="col-sm-12 pull-right">
-                                <!--{{> formFooterWithButton}}-->
-
-                                {{#formFooter}}
-                                    <button type="submit" class="btn btn-primary" {{disabledSubmitBtn}}>
-                                        <i class="fa fa-floppy-o"></i> {{_ "form.btnSave"}}
-                                    </button>
-                                    <button type="reset" class="btn btn-default">
-                                        <i class="fa fa-refresh"></i> {{_ "form.btnReset"}}
-                                    </button>
-                                {{/formFooter}}
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            {{/autoForm}}
-        {{else}}
-            {{> loading}}
         {{/if}}
     </div>
 </template>
