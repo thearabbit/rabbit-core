@@ -67,7 +67,7 @@ indexTmpl.events({
         alertify.order(fa('plus', 'Order'), renderTemplate(newTmpl)).maximize();
     },
     'click .js-update' (event, instance) {
-        alertify.order(fa('pencil', 'Order'), renderTemplate(editTmpl, {orderId: this._id})).maximize();
+        alertify.order(fa('pencil', 'Order'), renderTemplate(newTmpl, {orderId: this._id})).maximize();
     },
     'click .js-destroy' (event, instance) {
         destroyAction(
@@ -89,9 +89,55 @@ indexTmpl.events({
 });
 
 // New
+newTmpl.onCreated(function () {
+    let self = this;
+    self.isLoading = new ReactiveVar(false);
+    self.orderDoc = new ReactiveVar();
+
+    self.autorun(()=> {
+        let currentData = Template.currentData();
+        if (currentData) {
+            self.isLoading.set(true);
+
+            lookupOrder.callPromise({
+                orderId: currentData.orderId
+            }).then((result)=> {
+                console.log('result: ', result);
+
+                // Add items to local collection
+                _.forEach(result.items, (value)=> {
+                    itemsCollection.insert(value);
+                });
+
+                self.orderDoc.set(result);
+                self.isLoading.set(false);
+            }).catch((err)=> {
+                console.log(err);
+            });
+        }
+    });
+});
+
 newTmpl.helpers({
     collection(){
         return Order;
+    },
+    isLoading(){
+        return Template.instance().isLoading.get();
+    },
+    data () {
+        let data = {
+            formType: 'insert',
+            doc: {}
+        };
+
+        let currentData = Template.currentData();
+        if (currentData) {
+            data.formType = 'update';
+            data.doc = Template.instance().orderDoc.get();
+        }
+
+        return data;
     },
     itemsCollection(){
         return itemsCollection;
@@ -111,63 +157,22 @@ newTmpl.onDestroyed(function () {
     itemsCollection.remove({});
 });
 
-// Edit
-editTmpl.onCreated(function () {
-    this.autorun(()=> {
-        let currentData = Template.currentData();
-        this.subscribe('simplePos.orderById', currentData.orderId);
-    });
-});
-
-editTmpl.helpers({
-    collection(){
-        return Order;
-    },
-    data () {
-        let currentData = Template.currentData();
-        let data = Order.findOne(currentData.orderId);
-
-        // Add items to local collection
-        _.forEach(data.items, (value)=> {
-            itemsCollection.insert(value);
-        });
-
-        return data;
-    },
-    itemsCollection(){
-        return itemsCollection;
-    },
-    disabledSubmitBtn: function () {
-        let cont = itemsCollection.find().count();
-        if (cont == 0) {
-            return {disabled: true};
-        }
-
-        return {};
-    }
-});
-
-editTmpl.onDestroyed(function () {
-    // Remove items collection
-    itemsCollection.remove({});
-});
-
 // Show
 showTmpl.onCreated(function () {
-    let self = this;
-    self.isLoading = new ReactiveVar(true);
-    self.dataState = new ReactiveVar();
+    // let self = this;
+    this.isLoading = new ReactiveVar(true);
+    this.orderDoc = new ReactiveVar();
 
-    self.autorun(()=> {
+    this.autorun(()=> {
         let currentData = Template.currentData();
         lookupOrder.callPromise({
             orderId: currentData.orderId
-        }).then(function (result) {
+        }).then((result)=> {
             console.log('result: ', result);
 
-            self.dataState.set(result);
-            self.isLoading.set(false);
-        }).catch(function (err) {
+            this.orderDoc.set(result);
+            this.isLoading.set(false);
+        }).catch((err)=> {
             console.log(err);
         });
     });
@@ -178,7 +183,7 @@ showTmpl.helpers({
         return Template.instance().isLoading.get();
     },
     data () {
-        let data = Template.instance().dataState.get();
+        let data = Template.instance().orderDoc.get();
 
         // Use jsonview
         if (data) {

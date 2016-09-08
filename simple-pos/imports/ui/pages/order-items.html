@@ -1,6 +1,6 @@
 <!--Item Temporary-->
-<template name="SimplePos_orderItems">
-    {{#autoForm schema=schema id="SimplePos_orderItems"}}
+<template name="SimplePos_orderItemsNew">
+    {{#autoForm schema=schema id="SimplePos_orderItemsNew"}}
         <div class="row">
             <div class="col-sm-4">
                 {{> afQuickField name="itemId" label=false}}
@@ -9,7 +9,7 @@
                 {{> afQuickField name="qty" label=false}}
             </div>
             <div class="col-sm-2">
-                {{> afQuickField name="price" label=false}}
+                {{> afQuickField name="price" value=price label=false}}
             </div>
             <div class="col-sm-3">
                 {{> afQuickField name="amount" value=amount label=false readonly=true}}
@@ -49,9 +49,9 @@
         {{#autoForm schema=schema id="SimplePos_orderItemsEdit" doc=data}}
             <div class="row">
                 <div class="col-md-12">
-                    {{> afQuickField type="text" name="itemId" readonly=true}}
+                    {{> afQuickField name="itemId"}}
                     {{> afQuickField name="qty"}}
-                    {{> afQuickField name="price"}}
+                    {{> afQuickField name="price" value=price}}
                     {{> afQuickField name="amount" value=amount readonly="true"}}
                 </div>
             </div>

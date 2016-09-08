@@ -20,14 +20,16 @@ export const orderChartReport = new ValidatedMethod({
         if (!this.isSimulation) {
             Meteor._sleepForMs(200);
 
+            let selector = {
+                orderDate: {
+                    $gte: moment().subtract(6, 'days').startOf('day').toDate(),
+                    $lte: moment().endOf('day').toDate()
+                }
+            };
+
             let data = Order.aggregate([
                 {
-                    $match: {
-                        orderDate: {
-                            $gte: moment().subtract(7, 'days').toDate(),
-                            $lte: moment().toDate()
-                        }
-                    }
+                    $match: selector
                 },
                 {
                     $group: {

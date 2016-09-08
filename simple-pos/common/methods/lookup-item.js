@@ -8,17 +8,15 @@ import {CallPromiseMixin} from 'meteor/didericis:callpromise-mixin';
 import {Item} from '../../imports/api/collections/item.js';
 
 // Check user password
-export const itemInfo = new ValidatedMethod({
-    name: 'simplePos.itemInfo',
+export const lookupItem = new ValidatedMethod({
+    name: 'simplePos.lookupItem',
     mixins: [CallPromiseMixin],
     validate: new SimpleSchema({
-        _id: {type: String}
+        itemId: {type: String}
     }).validator(),
-    run(_id) {
+    run({itemId}) {
         if (!this.isSimulation) {
-            let data = Item.findOne(_id);
-
-            return data;
+            return Item.findOne({_id: itemId});
         }
     }
 });

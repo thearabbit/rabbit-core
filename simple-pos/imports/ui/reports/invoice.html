@@ -24,80 +24,80 @@
 
             {{#with rptData}}
 
-                <!--Print Button-->
-                <div class="text-right">
-                    <button type="button" class="btn btn-success btn-print-area">
-                        <i class="fa fa-print"></i> Print Area
-                    </button>
-                    <button type="button" class="btn btn-info btn-print-this">
-                        <i class="fa fa-print"></i> Print This
-                    </button>
-                </div>
-                <!--Print Button-->
+                <!--Title-->
+                {{#with rptTitle}}
+                    <div class="rpt-title">
+                        <div class="rpt-title-3x rpt-kh-muol">{{khName}}</div>
+                        <div class="rpt-title-3x">{{enName}}</div>
+                        <div class="rpt-title-2x"><u>Order Invoice</u></div>
+                        <div>Address: {{enAddress}}, Tel: {{telephone}}</div>
+                    </div>
+                {{/with}}
 
-                <div id="print-data">
-
-                    <!--Title-->
-                    {{#with rptTitle}}
-                        <div class="rpt-title">
-                            <div class="rpt-title-3x rpt-kh-muol">{{khName}}</div>
-                            <div class="rpt-title-3x">{{enName}}</div>
-                            <div class="rpt-title-2x"><u>Order Invoice</u></div>
-                            <div>Address: {{enAddress}}, Tel: {{telephone}}</div>
-                        </div>
-                    {{/with}}
-
-                    <!--Header-->
-                    {{#with rptContent}}
-                        <div style="width: 100%">
-                            <div style="width: 50%; float: left">
-                                <div><strong>ID:</strong> {{_id}}</div>
-                                <div><strong>Date:</strong> {{moFormat orderDate "DD/MM/YYYY"}}</div>
-                            </div>
-
-                            <div style="width: 50%; float: right">
-                                <div><strong>Customer:</strong> {{customerDoc.name}}</div>
-                            </div>
+                <!--Header-->
+                {{#with rptContent}}
+                    <div style="width: 100%">
+                        <div style="width: 50%; float: left">
+                            <div><strong>ID:</strong> {{_id}}</div>
+                            <div><strong>Date:</strong> {{moFormat orderDate "DD/MM/YYYY"}}</div>
                         </div>
 
-                        <!--Content-->
-                        <table class="rpt rpt-content">
-                            <thead class="rpt-content-header">
+                        <div style="width: 50%; float: right">
+                            <div><strong>Customer:</strong> {{customerDoc.name}}</div>
+                        </div>
+                    </div>
+
+                    <!--Content-->
+                    <table class="rpt rpt-content">
+                        <thead class="rpt-content-header">
+                        <tr>
+                            <th>#</th>
+                            <th>Item</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                        </tr>
+                        </thead>
+
+                        <tbody class="rpt-content-body">
+                        {{#each item in items}}
                             <tr>
-                                <th>#</th>
-                                <th>Item</th>
-                                <th>Qty</th>
-                                <th>Price</th>
-                                <th>Amount</th>
+                                <td>{{increaseIndex @index}}</td>
+                                <td>{{item.itemId}} : {{item.itemName}}</td>
+                                <td>{{item.qty}}</td>
+                                <td class="text-right">{{numFormat item.price "0,0.00"}}</td>
+                                <td class="text-right">{{numFormat item.amount "0,0.00"}}</td>
                             </tr>
-                            </thead>
+                        {{/each}}
+                        </tbody>
 
-                            <tbody class="rpt-content-body">
-                            {{#each item in items}}
-                                <tr>
-                                    <td>{{increaseIndex @index}}</td>
-                                    <td>{{item.itemId}} : {{item.itemName}}</td>
-                                    <td>{{item.qty}}</td>
-                                    <td class="text-right">{{numFormat item.price "0,0.00"}}</td>
-                                    <td class="text-right">{{numFormat item.amount "0,0.00"}}</td>
-                                </tr>
-                            {{/each}}
-                            </tbody>
+                        <tfoot class="rpt-content-footer">
+                        <tr>
+                            <td colspan="4" class="text-right">Total:</td>
+                            <td class="text-right">{{numFormat total "0,0.00"}}</td>
+                        </tr>
+                        </tfoot>
+                    </table>
 
-                            <tfoot class="rpt-content-footer">
-                            <tr>
-                                <td colspan="4" class="text-right">Total:</td>
-                                <td class="text-right">{{numFormat total "0,0.00"}}</td>
-                            </tr>
-                            </tfoot>
-                        </table>
+                {{/with}}
+                <!--/Report data-->
 
-                    {{/with}}
-
-                </div>
             {{/with}}
+            <!--/Report init-->
 
             <!--Sign-->
+            <div style="width: 100%">
+                <div style="width: 50%; float: left">
+
+                </div>
+                <div style="text-align:center; width: 50%; float: right">
+                    Date:................................<br>
+                    <div style="margin-bottom: 7em">
+                        <strong>Cashier</strong>
+                    </div>
+                    __________________
+                </div>
+            </div>
 
             <!--Auto print-->
             <!--{{autoprint close="true"}}-->

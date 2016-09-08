@@ -52,7 +52,9 @@ check@1.2.3
 coffeescript@1.2.4_1
 comerc:autoform-typeahead@1.0.6
 comerc:bs-typeahead@1.0.2
+copleykj:livestamp@1.1.7
 cottz:flow-router-auth@0.1.3
+cottz:flow-router-query@0.0.4
 cottz:publish-relations@2.0.6
 czbaker:lightbox2@2.7.1_1
 dburles:collection-helpers@1.0.4

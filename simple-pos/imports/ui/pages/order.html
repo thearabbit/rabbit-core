@@ -28,44 +28,49 @@
 <!--Insert-->
 <template name="SimplePos_orderNew">
     <div class="box-body">
-        {{#autoForm collection=collection id="SimplePos_orderNew" resetOnSuccess=false type="insert"}}
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Order</div>
-                        <div class="panel-body">
-                            {{> afQuickField name="orderDate"}}
-                            {{> afQuickField name="customerId"}}
-                            {{> afQuickField name="des"}}
+        {{#if isLoading}}
+            {{> loading}}
+        {{else}}
+            {{#autoForm collection=collection id="SimplePos_orderNew" doc=data.doc type=data.formType
+                        resetOnSuccess=false}}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Order</div>
+                            <div class="panel-body">
+                                {{> afQuickField name="orderDate"}}
+                                {{> afQuickField name="customerId"}}
+                                {{> afQuickField name="des"}}
 
-                            {{> afQuickField type="hidden" name="branchId" value=currentBranch}}
+                                {{> afQuickField type="hidden" name="branchId" value=currentBranch}}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-8">
-                    <!--Item Temporary-->
-                    {{> SimplePos_orderItems itemsCollection=itemsCollection}}
+                    <div class="col-md-8">
+                        <!--Item Temporary-->
+                        {{> SimplePos_orderItemsNew itemsCollection=itemsCollection}}
 
-                    <div class="row">
-                        <div class="col-sm-12 pull-right">
-                            <!--{{> formFooterWithButton}}-->
+                        <div class="row">
+                            <div class="col-sm-12 pull-right">
+                                <!--{{> formFooterWithButton}}-->
 
-                            {{#formFooter}}
-                                <button type="submit" class="btn btn-primary" {{disabledSubmitBtn}}>
-                                    <i class="fa fa-floppy-o"></i> {{_ "form.btnSave"}}
-                                </button>
-                                <button type="reset" class="btn btn-default">
-                                    <i class="fa fa-refresh"></i> {{_ "form.btnReset"}}
-                                </button>
-                            {{/formFooter}}
+                                {{#formFooter}}
+                                    <button type="submit" class="btn btn-primary" {{disabledSubmitBtn}}>
+                                        <i class="fa fa-floppy-o"></i> {{_ "form.btnSave"}}
+                                    </button>
+                                    <button type="reset" class="btn btn-default">
+                                        <i class="fa fa-refresh"></i> {{_ "form.btnReset"}}
+                                    </button>
+                                {{/formFooter}}
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
-            </div>
-
-        {{/autoForm}}
+            {{/autoForm}}
+        {{/if}}
     </div>
 </template>
 
@@ -90,7 +95,7 @@
 
                     <div class="col-md-8">
                         <!--Item Temporary-->
-                        {{> SimplePos_orderItems itemsCollection=itemsCollection}}
+                        {{> SimplePos_orderItemsNew itemsCollection=itemsCollection}}
 
                         <div class="row">
                             <div class="col-sm-12 pull-right">
@@ -129,21 +134,16 @@
                     <dd>{{_id}}</dd>
                     <dt>Order Date</dt>
                     <dd>{{moFormat orderDate "DD/MM/YYYY"}}</dd>
+                    <dt>Customer</dt>
+                    <dd>{{customerId}} : {{customerDoc.name}}</dd>
                     <dt>Description</dt>
                     <dd>{{des}}</dd>
-                    <dt>Items</dt>
-                    <dd>
-                        <!--json2html-->
-                        <!--{{json2html items}}-->
-
-                        <!--jsonview-->
-                        {{> jsonView json=items options=jsonViewOpts}}
-                    </dd>
                     <dt>Total</dt>
                     <dd>{{numFormat total "0,0.00"}}</dd>
-                    <dt>Customer</dt>
+                    <dt>Items</dt>
                     <dd>
-                        {{json2html customerDoc}}
+                        <!--jsonview-->
+                        {{> jsonView json=items options=jsonViewOpts}}
                     </dd>
                 </dl>
             {{/with}}

@@ -16,10 +16,10 @@ standard-minifier-css@1.2.0   # CSS minifier run for production mode
 standard-minifier-js@1.2.0    # JS minifier run for production mode
 es5-shim@4.6.14                # ECMAScript 5 compatibility for older browsers.
 ecmascript@0.5.8              # Enable ECMAScript2015+ syntax in app code
+shell-server@0.2.1            # Server-side component of the `meteor shell` command
 
 #autopublish@1.0.7             # Publish all data to the clients (for prototyping)
 #insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
-
 
 # Core
 accounts-base@1.2.11
@@ -33,7 +33,6 @@ ejson@1.0.12
 less@2.7.5
 check@1.2.3
 http@1.2.9
-shell-server@0.2.1
 
 # Layout
 fourseven:scss
@@ -58,6 +57,7 @@ meteorhacks:picker
 kadira:flow-router
 kadira:blaze-layout
 cottz:flow-router-auth
+cottz:flow-router-query
 arillo:flow-router-helpers
 zimme:active-route
 ostrio:flow-router-title
@@ -142,6 +142,7 @@ theara:autoform-bootstrap-switch
 momentjs:moment
 risul:moment-timezone
 lbee:moment-helpers
+copleykj:livestamp
 
 # List View
 aslagle:reactive-table
@@ -190,9 +191,6 @@ theara:template-states
 #netanelgilad:node-uuid
 #netanelgilad:mkdirp
 #vsivsi:file-collection
-
-# Chart
-#chart:chart
 
 ### Others ###
 erasaur:meteor-lodash

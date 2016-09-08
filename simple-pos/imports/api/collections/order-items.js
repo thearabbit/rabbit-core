@@ -9,12 +9,9 @@ import {moment} from 'meteor/momentjs:moment';
 import {__} from '../../../../core/common/libs/tapi18n-callback-helper.js';
 
 // Method
-import {itemInfo} from '../../../common/methods/item-info.js';
+import {lookupItem} from '../../../common/methods/lookup-item.js';
 
-// Item schema
-let defaultPrice = new ReactiveVar(0);
-
-export const ItemsSchema = new SimpleSchema({
+export const OrderItemsSchema = new SimpleSchema({
     itemId: {
         type: String,
         label: 'Item',
@@ -29,6 +26,7 @@ export const ItemsSchema = new SimpleSchema({
     qty: {
         type: Number,
         label: 'Qty',
+        defaultValue: 1,
         min: 1,
         autoform: {
             type: 'inputmask',
@@ -41,29 +39,7 @@ export const ItemsSchema = new SimpleSchema({
         type: Number,
         label: 'Price',
         decimal: true,
-        defaultValue: function () {
-            let id = AutoForm.getFieldValue('itemId');
-
-            if (id) {
-                $.blockUI();
-                itemInfo.callPromise({
-                    _id: id
-                }).then(function (result) {
-                    defaultPrice.set(result.price);
-
-                    Meteor.setTimeout(()=> {
-                        $.unblockUI();
-                    }, 500);
-
-                }).catch(function (err) {
-                    console.log(err.message);
-                });
-            } else {
-                defaultPrice.set(0);
-            }
-
-            return defaultPrice.get();
-        },
+        defaultValue: 0,
         autoform: {
             type: 'inputmask',
             inputmaskOptions: function () {
@@ -74,6 +50,7 @@ export const ItemsSchema = new SimpleSchema({
     amount: {
         type: Number,
         label: 'Amount',
+        defaultValue: 0,
         decimal: true,
         autoform: {
             type: 'inputmask',
