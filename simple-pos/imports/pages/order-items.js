@@ -234,7 +234,7 @@ newTmpl.events({
             amount = math.round(qty * price, 2);
 
             itemsCollection.update(
-                {_id: _id},
+                {_id: itemId},
                 {$set: {qty: qty, price: price, amount: amount}}
             );
         } else {

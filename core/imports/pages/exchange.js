@@ -38,7 +38,7 @@ let indexTmpl = Template.Core_exchange,
 // Index
 indexTmpl.onCreated(function () {
     // Create new  alertify
-    createNewAlertify('exchange', {size: 'lg'});
+    createNewAlertify('exchange');
     createNewAlertify('exchangeShow');
 });
 indexTmpl.helpers({
