@@ -1,7 +1,7 @@
 import {Order} from '../../common/collections/order.js';
 
-// Lib
-import './_init.js';
+// Config
+import '../configs/security.js';
 
 Order.permit(['insert'])
     .SimplePos_ifDataInsert()

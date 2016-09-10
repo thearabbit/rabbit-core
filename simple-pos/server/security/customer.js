@@ -1,7 +1,7 @@
 import {Customer} from '../../common/collections/customer.js';
 
-// Lib
-import './_init.js';
+// Config
+import '../configs/security.js';
 
 Customer.permit(['insert'])
     .SimplePos_ifDataInsert()

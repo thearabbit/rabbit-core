@@ -66,14 +66,14 @@ AutoForm.addHooks('SimplePos_invoiceReport', hooksObject);
 
 // Generate
 genTmpl.onCreated(function () {
-    this.rptDataState = new ReactiveVar();
+    this.rptData = new ReactiveVar();
 
     this.autorun(()=> {
         let queryParams = FlowRouter.current().queryParams;
 
         invoiceReport.callPromise(queryParams)
             .then((result)=> {
-                this.rptDataState.set(result);
+                this.rptData.set(result);
             }).catch((err)=> {
                 console.log(err.message);
             }
@@ -82,7 +82,7 @@ genTmpl.onCreated(function () {
 });
 genTmpl.helpers({
     rptData(){
-        return Template.instance().rptDataState.get();
+        return Template.instance().rptData.get();
     },
     increaseIndex(index){
         return index += 1;

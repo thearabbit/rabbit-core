@@ -33,18 +33,18 @@ let formDataState = new ReactiveVar(null);
 
 // Index
 indexTmpl.onCreated(function () {
-    this.rptInitState = new ReactiveVar(false);
-    this.rptDataState = new ReactiveVar(null);
+    this.rptInit = new ReactiveVar(false);
+    this.rptData = new ReactiveVar(null);
 
     this.autorun(() => {
         // Report Data
         if (formDataState.get()) {
-            this.rptInitState.set(true);
-            this.rptDataState.set(false);
+            this.rptInit.set(true);
+            this.rptData.set(false);
 
             orderReport.callPromise(formDataState.get())
                 .then((result)=> {
-                    this.rptDataState.set(result);
+                    this.rptData.set(result);
                 }).catch((err)=> {
                     console.log(err.message);
                 }
@@ -60,11 +60,11 @@ indexTmpl.helpers({
     },
     rptInit(){
         let instance = Template.instance();
-        return instance.rptInitState.get();
+        return instance.rptInit.get();
     },
     rptData: function () {
         let instance = Template.instance();
-        return instance.rptDataState.get();
+        return instance.rptData.get();
     },
     increaseIndex(index){
         return index += 1;

@@ -1,7 +1,7 @@
 import {Item} from '../../common/collections/item.js';
 
-// Lib
-import './_init.js';
+// Config
+import '../configs/security.js';
 
 Item.permit(['insert', 'update', 'remove'])
     .SimplePos_ifSetting()

@@ -46,7 +46,10 @@ indexTmpl.onRendered(function () {
                         text: 'Source: Rabbit Technology'
                     },
                     xAxis: {
-                        type: 'category'
+                        type: 'category',
+                        title: {
+                            text: null
+                        }
                     },
                     yAxis: {
                         title: {
