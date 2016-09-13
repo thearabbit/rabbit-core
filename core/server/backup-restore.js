@@ -1,13 +1,13 @@
-import  {Meteor} from 'meteor/meteor';
-import  {Accounts} from 'meteor/accounts-base';
-import  {EEJSON} from 'meteor/ejson';
-import  {Picker} from 'meteor/meteorhacks:picker';
-import  moment from 'moment';
+import {Meteor} from 'meteor/meteor';
+import {Accounts} from 'meteor/accounts-base';
+import {EJSON} from 'meteor/ejson';
+import {Picker} from 'meteor/meteorhacks:picker';
+import moment from 'moment';
 import {_} from 'meteor/erasaur:meteor-lodash';
 import 'meteor/matb33:collection-hooks';
 import 'meteor/dburles:mongo-collection-instances';
 
-import  Backup from 'mongodb-backup';
+import Backup from 'mongodb-backup';
 import Restore from 'mongodb-restore';
 import Busboy from 'busboy';
 
