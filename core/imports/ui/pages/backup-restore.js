@@ -86,7 +86,7 @@ AutoForm.hooks({
             type = result.type;
             branch = result.branch;
 
-            dumpUrl = '/appDump?';
+            dumpUrl = '/app-dump?';
 
             collections = [];
             if (module != 'All') {
@@ -146,7 +146,7 @@ restoreTmpl.onCreated(function () {
                 allowEscapeKey: false,
                 showCloseButton: false,
                 showConfirmButton: true,
-                confirmButtonText: 'Please login again...',
+                confirmButtonText: 'Please login to continues...',
                 allowOutsideClick: false,
                 // timer: 1000
             }).then(function () {
