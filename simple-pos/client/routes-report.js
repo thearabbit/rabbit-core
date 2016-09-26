@@ -27,6 +27,23 @@ let SimplePosRoutes = FlowRouter.group({
     }
 });
 
+// Item List
+import '../imports/reports/itemList.js';
+SimplePosRoutes.route('/item-list-report', {
+    name: 'simplePos.itemListReport',
+    title: 'Item List',
+    action: function (params, queryParams) {
+        Layout.main('SimplePos_itemListReport');
+    },
+    breadcrumb: {
+        //params: ['id'],
+        //queryParams: ['show', 'color'],
+        title: 'Item List',
+        // icon: 'cart-plus',
+        parent: 'simplePos.home'
+    }
+});
+
 // Invoice
 import '../imports/reports/invoice.js';
 SimplePosRoutes.route('/invoice-report', {

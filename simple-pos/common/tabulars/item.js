@@ -30,6 +30,14 @@ tabularOpts.columns = [
         }
     },
     {
+        data: "parentId",
+        title: "Parent",
+        render: function (val, type, doc) {
+            return val;
+        }
+    },
+    {data: "order", title: "Order"},
+    {
         data: "photo",
         title: "Photo",
         render: function (val, type, doc) {

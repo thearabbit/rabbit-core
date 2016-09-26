@@ -27,9 +27,11 @@
 <template name="SimplePos_itemForm">
     <div class="box-body">
         {{#if Template.subscriptionsReady}}
-            {{#autoForm collection=collection id="SimplePos_itemForm" doc=data.doc type=data.formType}}
+            {{#autoForm collection=collection id="SimplePos_itemForm" doc=data.doc type=data.formType
+                        resetOnSuccess=false}}
                 <div class="row">
                     <div class="col-md-12">
+                        {{> afQuickField name='parentId'}}
                         {{> afQuickField name='name'}}
                         {{> afQuickField name='price'}}
                         {{> afQuickField name='photo'}}
@@ -56,6 +58,8 @@
                     <dd>{{name}}</dd>
                     <dt>{{i18nLabel "price"}}</dt>
                     <dd>{{price}}</dd>
+                    <dt>{{i18nLabel "parentId"}}</dt>
+                    <dd>{{parentId}}</dd>
                     <dt>{{i18nLabel "photo"}}</dt>
                     <dd>{{lightbox url=photoUrl title=name}}</dd>
                 </dl>

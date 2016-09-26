@@ -1,0 +1,72 @@
+<!--Report-->
+<template name="SimplePos_itemListReport">
+    <div class="box-body">
+        <!--Report Paper-->
+        <div class="rpt rpt-portrait-a4">
+            {{#if rptInit}}
+                {{#if rptData}}
+
+                    <!--Print Button-->
+                    <hr>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-success btn-print-area">
+                            <i class="fa fa-print"></i> Print Area
+                        </button>
+                        <button type="button" class="btn btn-info btn-print-this">
+                            <i class="fa fa-print"></i> Print This
+                        </button>
+                    </div>
+                    <!--Print Button-->
+
+                    <div id="print-data">
+
+                        {{#with rptData}}
+
+                            <!--Title-->
+                            {{#with rptTitle}}
+                                <div class="rpt-title">
+                                    <div class="rpt-title-3x rpt-kh-muol">{{khName}}</div>
+                                    <div class="rpt-title-3x">{{enName}}</div>
+                                    <div class="rpt-title-2x"><u>Item List Report</u></div>
+                                    <div>{{enAddress}}</div>
+                                </div>
+                            {{/with}}
+
+                            <!--Content-->
+                            <table class="rpt rpt-content">
+                                <thead class="rpt-content-header">
+                                <tr>
+                                    <th>No</th>
+                                    <th>ID</th>
+                                    <th>Item Name</th>
+                                    <th>Price</th>
+                                </tr>
+                                </thead>
+
+                                <tbody class="rpt-content-body">
+                                {{#each data in rptContent}}
+                                    <tr style="vertical-align: top">
+                                        <td>{{increaseIndex @index}}</td>
+                                        <td>{{data._id}}</td>
+                                        <td>{{data.name}}</td>
+                                        <td>{{numFormat data.price "0,0.00"}}</td>
+                                    </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
+
+                        {{/with}}
+
+                    </div>
+                {{else}}
+                    <div class="text-center">
+                        {{> iconLoading size="fa-5x"}}
+                    </div>
+                {{/if}}
+            {{/if}}
+        </div>
+        <!--/Report Paper-->
+
+    </div>
+    <!-- /.box-body -->
+</template>

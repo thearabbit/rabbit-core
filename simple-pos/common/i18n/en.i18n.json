@@ -23,6 +23,9 @@
         "price": {
           "label": "Price"
         },
+        "parentId": {
+          "label": "Parent"
+        },
         "photo": {
           "label": "Photo"
         }

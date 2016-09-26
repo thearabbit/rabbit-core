@@ -12,6 +12,43 @@ import {Order} from '../collections/order.js';
 
 export let SelectOptsMethod = {};
 
+SelectOptsMethod.item = new ValidatedMethod({
+    name: 'simplePos.selectOptsMethod.item',
+    validate: null,
+    run(options) {
+        if (!this.isSimulation) {
+            this.unblock();
+
+            let list = [], selector = {};
+            let searchText = options.searchText;
+            let values = options.values;
+
+            if (searchText) {
+                selector = {
+                    $or: [
+                        {_id: {$regex: searchText, $options: 'i'}},
+                        {name: {$regex: searchText, $options: 'i'}}
+                    ]
+                };
+            } else if (values.length) {
+                selector = {_id: {$in: values}};
+            }
+
+            let data = Item.find(selector, {limit: 10});
+            data.forEach(function (value) {
+                let label = `${value._id} : ${value.name}`;
+                if (value.parentId) {
+                    label += ` (${value.parentId})`;
+                }
+
+                list.push({label: label, value: value._id});
+            });
+
+            return list;
+        }
+    }
+});
+
 SelectOptsMethod.customer = new ValidatedMethod({
     name: 'simplePos.selectOptsMethod.customer',
     validate: null,
@@ -47,8 +84,8 @@ SelectOptsMethod.customer = new ValidatedMethod({
     }
 });
 
-SelectOptsMethod.item = new ValidatedMethod({
-    name: 'simplePos.selectOptsMethod.item',
+SelectOptsMethod.itemOrder = new ValidatedMethod({
+    name: 'simplePos.selectOptsMethod.itemOrder',
     validate: null,
     run(options) {
         if (!this.isSimulation) {
@@ -74,6 +111,8 @@ SelectOptsMethod.item = new ValidatedMethod({
                 let label = value._id + ' : ' + value.name;
                 list.push({label: label, value: value._id});
             });
+
+            list.push({optgroup: 'Hi', options: list});
 
             return list;
         }

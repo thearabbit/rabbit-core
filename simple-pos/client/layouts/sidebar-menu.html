@@ -23,6 +23,11 @@
     <!--Report-->
     {{#if isInRole 'reporter' 'SimplePos'}}
         <li class="header"><i class="fa fa-file-text-o"></i> REPORT</li>
+        <li class="{{isActiveRoute name='simplePos.itemListReport'}}">
+            <a href="{{pathFor 'simplePos.itemListReport'}}">
+                <i class="fa fa-file-o"></i> <span>Item List</span>
+            </a>
+        </li>
         <li class="{{isActiveRoute name='simplePos.invoiceReport'}}">
             <a href="{{pathFor 'simplePos.invoiceReport'}}">
                 <i class="fa fa-file-o"></i> <span>Invoice</span>

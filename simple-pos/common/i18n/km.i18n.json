@@ -23,6 +23,9 @@
         "price": {
           "label": "តម្លៃ"
         },
+        "parentId": {
+          "label": "មេ"
+        },
         "photo": {
           "label": "រូបភាព"
         }

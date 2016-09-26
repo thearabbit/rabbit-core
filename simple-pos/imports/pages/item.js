@@ -131,6 +131,10 @@ let hooksObject = {
             alertify.item().close();
         }
         displaySuccess();
+
+        $('[name="name"]').val('');
+        $('[name="price"]').val('');
+        $('[name="name"]').focus();
     },
     onError (formType, error) {
         displayError(error.message);
