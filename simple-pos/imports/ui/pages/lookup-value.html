@@ -40,7 +40,7 @@
                         {{> afQuickField name='private'}}
                     </div>
                     <div class="col-md-12">
-                        {{> afArrayField name="options" id="options" template="customArrayFieldForOptions" subtemplate="customObjectFieldForOptions"}}
+                        {{> afArrayField name="options" id="options" template="simplePosCustomArrayFieldForLookupOptions" subtemplate="SimplePos_customObjectFieldForOptions"}}
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@
 </template>
 
 <!------------Custom options array field-------------------->
-<template name="afArrayField_customArrayFieldForOptions">
+<template name="afArrayField_simplePosCustomArrayFieldForLookupOptions">
     <div class="panel panel-default">
         <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
         <div class="panel-body">
@@ -104,7 +104,7 @@
     </div>
 </template>
 
-<template name="customObjectFieldForOptions">
+<template name="SimplePos_customObjectFieldForOptions">
     <div class="col-sm-4">
         {{> afQuickField name=current.value template="bootstrap3" label=false class="input-sm"}}
     </div>
