@@ -12,8 +12,8 @@ import {Order} from '../collections/order.js';
 
 export let SelectOptsMethod = {};
 
-SelectOptsMethod.item = new ValidatedMethod({
-    name: 'simplePos.selectOptsMethod.item',
+SelectOptsMethod.parentItem = new ValidatedMethod({
+    name: 'simplePos.selectOptsMethod.parentItem',
     validate: null,
     run(options) {
         if (!this.isSimulation) {
@@ -33,12 +33,16 @@ SelectOptsMethod.item = new ValidatedMethod({
             } else if (values.length) {
                 selector = {_id: {$in: values}};
             }
+            selector.main = true;
 
             let data = Item.find(selector, {limit: 10});
             data.forEach(function (value) {
                 let label = `${value._id} : ${value.name}`;
-                if (value.parentId) {
-                    label += ` (${value.parentId})`;
+                if (value.ancestors) {
+                    let getAncestors = Item.find({_id: {$in: value.ancestors}}, {sort: {_id: 1}}).fetch();
+                    label += ' [' + _.map(getAncestors, (o)=> {
+                            return o.name;
+                        }) + ']';
                 }
 
                 list.push({label: label, value: value._id});
@@ -84,8 +88,8 @@ SelectOptsMethod.customer = new ValidatedMethod({
     }
 });
 
-SelectOptsMethod.itemOrder = new ValidatedMethod({
-    name: 'simplePos.selectOptsMethod.itemOrder',
+SelectOptsMethod.orderItem = new ValidatedMethod({
+    name: 'simplePos.selectOptsMethod.orderItem',
     validate: null,
     run(options) {
         if (!this.isSimulation) {
@@ -105,14 +109,20 @@ SelectOptsMethod.itemOrder = new ValidatedMethod({
             } else if (values.length) {
                 selector = {_id: {$in: values}};
             }
+            selector.main = false;
 
             let data = Item.find(selector, {limit: 10});
             data.forEach(function (value) {
-                let label = value._id + ' : ' + value.name;
+                let label = `${value._id} : ${value.name}`;
+                if (value.ancestors) {
+                    let getAncestors = Item.find({_id: {$in: value.ancestors}}, {sort: {_id: 1}}).fetch();
+                    label += ' [' + _.map(getAncestors, (o)=> {
+                            return o.name;
+                        }) + ']';
+                }
+
                 list.push({label: label, value: value._id});
             });
-
-            list.push({optgroup: 'Hi', options: list});
 
             return list;
         }

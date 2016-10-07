@@ -19,7 +19,7 @@ export const OrderItemsSchema = new SimpleSchema({
             type: 'universe-select',
             afFieldInput: {
                 uniPlaceholder: 'Please search... (limit 10)',
-                optionsMethod: 'simplePos.selectOptsMethod.itemOrder'
+                optionsMethod: 'simplePos.selectOptsMethod.orderItem'
             }
         }
     },

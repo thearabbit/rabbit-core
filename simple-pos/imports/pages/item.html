@@ -31,7 +31,8 @@
                         resetOnSuccess=false}}
                 <div class="row">
                     <div class="col-md-12">
-                        {{> afQuickField name='parentId'}}
+                        {{> afQuickField name='main'}}
+                        {{> afQuickField name='parent'}}
                         {{> afQuickField name='name'}}
                         {{> afQuickField name='price'}}
                         {{> afQuickField name='photo'}}
@@ -58,8 +59,10 @@
                     <dd>{{name}}</dd>
                     <dt>{{i18nLabel "price"}}</dt>
                     <dd>{{price}}</dd>
-                    <dt>{{i18nLabel "parentId"}}</dt>
-                    <dd>{{parentId}}</dd>
+                    <dt>{{i18nLabel "main"}}</dt>
+                    <dd>{{main}}</dd>
+                    <dt>{{i18nLabel "parent"}}</dt>
+                    <dd>{{parent}}</dd>
                     <dt>{{i18nLabel "photo"}}</dt>
                     <dd>{{lightbox url=photoUrl title=name}}</dd>
                 </dl>
