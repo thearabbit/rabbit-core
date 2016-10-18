@@ -33,14 +33,17 @@
             <div class="col-sm-4">
                 {{> afQuickField name="itemId" label=false placeholder="Item"}}
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-1">
                 {{> afQuickField name="qty" label=false placeholder="Qty"}}
             </div>
             <div class="col-sm-2">
                 {{> afQuickField name="price" value=price label=false placeholder="Price"}}
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 {{> afQuickField name="amount" value=amount label=false placeholder="Amount" readonly=true}}
+            </div>
+            <div class="col-sm-2">
+                {{> afQuickField name="memo" label=false placeholder="Memo"}}
             </div>
             <div class="col-sm-1">
                 <button type="button" class="btn btn-primary js-add-item" {{disabledAddItemBtn}}>+</button>
@@ -59,6 +62,7 @@
                     {{> afQuickField name="qty"}}
                     {{> afQuickField name="price" value=price}}
                     {{> afQuickField name="amount" value=amount readonly="true"}}
+                    {{> afQuickField name="memo"}}
                 </div>
             </div>
 

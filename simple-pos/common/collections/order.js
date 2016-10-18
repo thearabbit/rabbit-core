@@ -42,6 +42,11 @@ Order.itemsSchema = new SimpleSchema({
                 return inputmaskOptions.currency();
             }
         }
+    },
+    memo: {
+        type: String,
+        label: 'Memo',
+        optional: true
     }
 });
 

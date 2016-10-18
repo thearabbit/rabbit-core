@@ -61,7 +61,7 @@ indexTmpl.helpers({
         reactiveTableSettings.showColumnToggles = false;
         reactiveTableSettings.collection = itemsCollection;
         reactiveTableSettings.fields = [
-            {key: 'itemId', label: 'ID'},
+            {key: 'itemId', label: 'ID', hidden: true},
             {key: 'itemName', label: 'Name'},
             {
                 key: 'qty',
@@ -82,6 +82,13 @@ indexTmpl.helpers({
                 label: 'Amount',
                 fn (value, object, key) {
                     return numeral(value).format('0,0.00');
+                }
+            },
+            {
+                key: 'memo',
+                label: 'Memo',
+                fn(value, obj, key){
+                    return Spacebars.SafeString(`<input type="text" value="${value}" class="item-memo">`);
                 }
             },
             {
@@ -133,21 +140,23 @@ indexTmpl.events({
 
         $parents.find('.amount').text(amount);
     },
-    'blur .item-qty,.item-price': function (event, instance) {
+    'blur .item-qty,.item-price,.item-memo': function (event, instance) {
         let $parents = $(event.currentTarget).parents('tr');
 
         let itemId = $parents.find('.itemId').text();
         let qty = $parents.find('.item-qty').val();
         let price = $parents.find('.item-price').val();
+        let memo = $parents.find('.item-memo').val();
+
         qty = _.isEmpty(qty) ? 0 : parseInt(qty);
         price = _.isEmpty(price) ? 0 : parseFloat(price);
         amount = math.round(qty * price, 2);
 
         // Update
-        $parents.find('.amount').text('');
+        $parents.find('.amount').text('null');
         itemsCollection.update(
             {_id: itemId},
-            {$set: {qty: qty, price: price, amount: amount}}
+            {$set: {qty: qty, price: price, amount: amount, memo: memo}}
         );
     }
 });
@@ -222,9 +231,12 @@ newTmpl.events({
     },
     'click .js-add-item': function (event, instance) {
         let itemId = instance.$('[name="itemId"]').val();
-        let itemName = _.split(instance.$('[name="itemId"] option:selected').text(), " : ")[1];
+        let itemName = _.trim(_.split(instance.$('[name="itemId"] option:selected').text(), " [")[0]);
+        itemName = _.trim(_.split(itemName, " : ")[1]);
+
         let qty = parseInt(instance.$('[name="qty"]').val());
         let price = math.round(parseFloat(instance.$('[name="price"]').val()), 2);
+        let memo = instance.$('[name="memo"]').val();
         let amount = math.round(qty * price, 2);
 
         // Check exist
@@ -235,7 +247,7 @@ newTmpl.events({
 
             itemsCollection.update(
                 {_id: itemId},
-                {$set: {qty: qty, price: price, amount: amount}}
+                {$set: {qty: qty, price: price, amount: amount, memo: memo}}
             );
         } else {
             itemsCollection.insert({
@@ -244,7 +256,8 @@ newTmpl.events({
                 itemName: itemName,
                 qty: qty,
                 price: price,
-                amount: amount
+                amount: amount,
+                memo: memo
             });
         }
     },
@@ -336,10 +349,11 @@ let hooksObject = {
 
                 itemsCollection.update(
                     {_id: insertDoc.itemId},
-                    {$set: {qty: newQty, price: newPrice, amount: newAmount}}
+                    {$set: {qty: newQty, price: newPrice, amount: newAmount, memo: insertDoc.memo}}
                 );
             } else {
-                let itemName = _.split($('[name="itemId"] option:selected').text(), " : ")[1];
+                let itemName = _.trim(_.split($('[name="itemId"] option:selected').text(), " [")[0]);
+                itemName = _.trim(_.split(itemName, " : ")[1]);
 
                 itemsCollection.insert({
                     _id: insertDoc.itemId,
@@ -347,7 +361,8 @@ let hooksObject = {
                     itemName: itemName,
                     qty: insertDoc.qty,
                     price: insertDoc.price,
-                    amount: insertDoc.amount
+                    amount: insertDoc.amount,
+                    memo: insertDoc.memo
                 });
             }
         }
