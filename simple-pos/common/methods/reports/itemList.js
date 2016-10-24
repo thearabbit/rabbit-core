@@ -9,8 +9,6 @@ import {moment} from  'meteor/momentjs:moment';
 import {Company} from '../../../../core/common/collections/company';
 import {Item} from '../../collections/item';
 
-let tmpData = [];
-
 export const itemListReport = new ValidatedMethod({
     name: 'simplePos.itemListReport',
     mixins: [CallPromiseMixin],
@@ -25,30 +23,9 @@ export const itemListReport = new ValidatedMethod({
             rptTitle = Company.findOne();
 
             // --- Content ---
-            let getItem = Item.find({}, {sort: {parentId: 1, _id: 1}}).fetch();
-            let getFirst = _.filter(getItem, function (o) {
-                return _.isUndefined(o.parentId);
-            });
+            rptContent = Item.find({}, {sort: {parent: 1, _id: 1}}).fetch();
 
-            _.forEach(getFirst, function (o) {
-                tmpData.push(getChild(o, getItem));
-            });
-
-
-            rptContent = tmpData;
             return {rptTitle, rptHeader, rptContent};
         }
     }
 });
-
-function getChild(data, items) {
-    data.child = _.filter(items, function (o) {
-        return o.parentId == o._id;
-    });
-
-    _.forEach(data.child, function (o) {
-        getChild(o, items);
-    });
-
-    return data;
-}

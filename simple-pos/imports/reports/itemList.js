@@ -36,7 +36,7 @@ indexTmpl.onCreated(function () {
             .then((result)=> {
                 console.log(result);
 
-                // this.rptData.set(result);
+                this.rptData.set(result);
             }).catch((err)=> {
                 console.log(err.message);
             }
