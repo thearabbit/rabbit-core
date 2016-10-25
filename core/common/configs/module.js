@@ -1,9 +1,9 @@
 Module = typeof Module === 'undefined' ? {} : Module;
 
 Module.Core = {
-    name: 'Core System',
+    name: 'Core',
     version: '2.0.0',
-    summary: 'Core Management System is ...',
+    summary: 'Core System is ...',
     roles: [
         'super',
         'admin'

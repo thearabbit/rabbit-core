@@ -44,7 +44,7 @@
                         {{> afQuickField name='email'}}
                         {{> afQuickField type="hidden" name='branchId' value=currentBranch}}
 
-                        {{> afArrayField name="contact" id="contact" template="customArrayFieldForContact" subtemplate="customObjectFieldForContact"}}
+                        {{> afArrayField name="contact" id="contact" template="SimplePos_customArrayFieldForContact" subtemplate="SimplePos_customObjectFieldForContact"}}
                     </div>
                 </div>
 
@@ -85,7 +85,7 @@
 </template>
 
 <!------------Custom contact array field-------------------->
-<template name="afArrayField_customArrayFieldForContact">
+<template name="afArrayField_SimplePos_customArrayFieldForContact">
     <div class="panel panel-default">
         <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
         <div class="panel-body">
@@ -128,7 +128,7 @@
     </div>
 </template>
 
-<template name="customObjectFieldForContact">
+<template name="SimplePos_customObjectFieldForContact">
     <div class="col-sm-5">
         {{> afQuickField name=current.type template="bootstrap3" label=false class="input-sm"}}
     </div>
