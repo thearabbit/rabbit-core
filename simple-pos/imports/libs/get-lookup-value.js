@@ -4,7 +4,7 @@ import {_} from 'meteor/erasaur:meteor-lodash';
 // Collection
 import {LookupValue} from '../../common/collections/lookup-value';
 
-export const getLookupValue = function (name, selectOne) {
+export const getLookupValue = function (name, selectOne = false) {
     let list = [];
     if (selectOne) {
         list.push({label: "(Select One)", value: ""});

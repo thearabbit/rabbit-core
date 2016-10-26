@@ -6,6 +6,7 @@ import {AutoForm} from 'meteor/aldeed:autoform';
 import {sAlert} from 'meteor/juliancwirko:s-alert';
 import 'meteor/theara:autoprint';
 import 'printthis';
+import {_} from 'meteor/erasaur:meteor-lodash';
 
 // Lib
 import {displaySuccess, displayError} from '../../../core/client/libs/display-alert.js';
@@ -55,6 +56,10 @@ indexTmpl.helpers({
     },
     increaseIndex(index){
         return index += 1;
+    },
+    addSpace(ancestors){
+        let num = _.isArray(ancestors) ? ancestors.length : 0;
+        return Spacebars.SafeString(_.repeat('&nbsp;', num * 5));
     }
 });
 

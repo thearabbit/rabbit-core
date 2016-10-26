@@ -75,7 +75,7 @@
                     <dt>Email</dt>
                     <dd>{{email}}</dd>
                     <dt>Contact</dt>
-                    <dd>{{contact}}</dd>
+                    <dd>{{> jsonView json=contact options=jsonViewOpts}}</dd>
                 </dl>
             {{/with}}
         {{else}}

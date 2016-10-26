@@ -84,7 +84,7 @@ contactTmpl.helpers({
 formTmpl.onCreated(function () {
     this.autorun(()=> {
         // Lookup value
-        this.subscribe('simplePos.lookupValueByNames', ['Gender', 'Contact Type']);
+        this.subscribe('simplePos.lookupValue', ['Gender', 'Contact Type']);
 
         let currentData = Template.currentData();
         if (currentData) {
@@ -125,6 +125,9 @@ showTmpl.helpers({
     data () {
         let currentData = Template.currentData();
         return Customer.findOne(currentData.customerId);
+    },
+    jsonViewOpts () {
+        return {collapsed: true};
     }
 });
 

@@ -4,16 +4,20 @@ import {AutoForm} from 'meteor/aldeed:autoform';
 
 // Lib
 import {__} from '../../../core/common/libs/tapi18n-callback-helper.js';
+import {getLookupValue} from '../../imports/libs/get-lookup-value.js';
 
 export const Item = new Mongo.Collection("simplePos_item");
 
 Item.schema = new SimpleSchema({
-    main: {
-        type: Boolean,
-        label: 'Main',
-        defaultValue: true,
+    type: {
+        type: String,
+        label: 'Type',
+        defaultValue: 'P',
         autoform: {
-            type: "boolean-checkbox"
+            type: "select-radio-inline",
+            options: function () {
+                return getLookupValue('Item Type');
+            }
         }
     },
     name: {
@@ -24,22 +28,17 @@ Item.schema = new SimpleSchema({
     price: {
         type: Number,
         decimal: true,
+        defaultValue: 0,
         min: 0,
         optional: true,
         autoform: {
             type: 'inputmask',
             inputmaskOptions: function () {
                 return inputmaskOptions.currency();
-            },
-            afFieldInput: {
-                readonly: function () {
-                    let main = AutoForm.getFieldValue('main');
-                    return main || _.isUndefined(main) ? true : false;
-                }
             }
         },
         custom: function () {
-            if (!this.field('main').value && !this.value) {
+            if (this.field('type').value == 'C' && !this.value) {
                 return 'required';
             }
         }

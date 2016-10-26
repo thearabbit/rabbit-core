@@ -33,7 +33,7 @@ SelectOptsMethod.parentItem = new ValidatedMethod({
             } else if (values.length) {
                 selector = {_id: {$in: values}};
             }
-            selector.main = true;
+            selector.type = 'P';
 
             let data = Item.find(selector, {limit: 10});
             data.forEach(function (value) {
@@ -109,7 +109,7 @@ SelectOptsMethod.orderItem = new ValidatedMethod({
             } else if (values.length) {
                 selector = {_id: {$in: values}};
             }
-            selector.main = false;
+            selector.type = 'C';
 
             let data = Item.find(selector, {limit: 10});
             data.forEach(function (value) {

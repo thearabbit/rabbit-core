@@ -31,10 +31,12 @@
                         resetOnSuccess=false}}
                 <div class="row">
                     <div class="col-md-12">
-                        {{> afQuickField name='main'}}
+                        {{> afQuickField name='type'}}
                         {{> afQuickField name='parent'}}
                         {{> afQuickField name='name'}}
-                        {{> afQuickField name='price'}}
+                        {{#if showPrice}}
+                            {{> afQuickField name='price'}}
+                        {{/if}}
                         {{> afQuickField name='photo'}}
                     </div>
                 </div>
@@ -59,7 +61,7 @@
                     <dd>{{name}}</dd>
                     <dt>{{i18nLabel "price"}}</dt>
                     <dd>{{price}}</dd>
-                    <dt>{{i18nLabel "main"}}</dt>
+                    <dt>{{i18nLabel "type"}}</dt>
                     <dd>{{main}}</dd>
                     <dt>{{i18nLabel "parent"}}</dt>
                     <dd>{{parent}}</dd>

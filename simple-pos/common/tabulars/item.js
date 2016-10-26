@@ -36,7 +36,7 @@ tabularOpts.columns = [
             return val;
         }
     },
-    {data: "main", title: "Main"},
+    {data: "type", title: "Type"},
     {
         data: "photo",
         title: "Photo",

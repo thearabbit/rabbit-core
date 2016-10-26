@@ -18,23 +18,11 @@ Customer.generalSchema = new SimpleSchema({
     gender: {
         type: String,
         label: 'Gender',
-        // defaultValue: 'M',
+        defaultValue: 'M',
         autoform: {
-            type: 'universe-select',
-            // type: "select-radio-inline",
+            type: "select-radio-inline",
             options: function () {
-                // return SelectOpts.gender();
-                // return getLookupValue('Gender');
-                return [
-                    {
-                        optgroup: 'Hi',
-                        options: [
-                            {label: 'M', value: 'M'},
-                            {label: 'F', value: 'F'}
-                        ]
-                    }
-                ];
-
+                return getLookupValue('Gender');
             }
         }
     },

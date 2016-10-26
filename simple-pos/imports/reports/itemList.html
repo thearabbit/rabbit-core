@@ -40,6 +40,7 @@
                                     <th>ID</th>
                                     <th>Item Name</th>
                                     <th>Price</th>
+                                    <th>Type</th>
                                     <th>Ancestors</th>
                                 </tr>
                                 </thead>
@@ -51,6 +52,7 @@
                                         <td>{{data._id}}</td>
                                         <td>{{data.name}}</td>
                                         <td>{{numFormat data.price "0,0.00"}}</td>
+                                        <td>{{data.type}}</td>
                                         <td>{{data.ancestors}}</td>
                                     </tr>
                                 {{/each}}

@@ -36,6 +36,15 @@ Meteor.startup(function () {
                     {label: 'Work', value: 'W', index: 3},
                 ]
             },
+            // Item Type
+            {
+                name: 'Item Type',
+                private: false,
+                options: [
+                    {label: 'Parent', value: 'P', index: 1},
+                    {label: 'Child', value: 'C', index: 2},
+                ]
+            },
         ];
 
         _.forEach(data, (value)=> {

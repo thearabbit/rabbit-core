@@ -4,7 +4,7 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 // Collection
 import {LookupValue} from '../../common/collections/lookup-value.js';
 
-Meteor.publish('simplePos.lookupValueByNames', function simpleLookupValue(lookupNames = []) {
+Meteor.publish('simplePos.lookupValue', function simpleLookupValue(lookupNames = []) {
     this.unblock();
 
     new SimpleSchema({

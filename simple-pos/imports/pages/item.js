@@ -52,7 +52,10 @@ indexTmpl.events({
         alertify.item(fa('plus', TAPi18n.__('simplePos.item.title')), renderTemplate(formTmpl));
     },
     'click .js-update' (event, instance) {
-        alertify.item(fa('pencil', TAPi18n.__('simplePos.item.title')), renderTemplate(formTmpl, {itemId: this._id}));
+        alertify.item(fa('pencil', TAPi18n.__('simplePos.item.title')), renderTemplate(formTmpl, {
+            itemId: this._id,
+            type: this.type
+        }));
     },
     'click .js-destroy' (event, instance) {
         destroyAction(
@@ -68,9 +71,15 @@ indexTmpl.events({
 
 // Form
 formTmpl.onCreated(function () {
+    this.type = new ReactiveVar();
+
     this.autorun(()=> {
+        // Lookup value
+        this.subscribe('simplePos.lookupValue', ['Item Type']);
+
         let currentData = Template.currentData();
         if (currentData) {
+            this.type.set(currentData.type);
             this.subscribe('simplePos.itemById', currentData.itemId);
         }
     });
@@ -93,6 +102,16 @@ formTmpl.helpers({
         }
 
         return data;
+    },
+    showPrice(){
+        let type = Template.instance().type.get();
+        return type == 'C' ? true : false;
+    }
+});
+
+formTmpl.events({
+    'change [name="type"]'(event, instance){
+        instance.type.set(instance.$(event.currentTarget).val());
     }
 });
 
@@ -133,8 +152,8 @@ let hooksObject = {
         displaySuccess();
 
         $('[name="name"]').val('');
-        $('[name="price"]').val('');
         $('[name="name"]').focus();
+        $('[name="price"]').val('');
     },
     onError (formType, error) {
         displayError(error.message);
