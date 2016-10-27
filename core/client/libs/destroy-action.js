@@ -25,7 +25,7 @@ export const destroyAction = (collection, selector = {}, options = {}) => {
 
     swal({
         title: 'Are you sure?',
-        text: `You won't be able to revert this <span class="text-red">[${options.itemTitle}]</span>!`,
+        text: `You won't be able to revert this <span class="text-red text-bold">[${options.itemTitle}]</span>!`,
         type: 'warning',
         allowEscapeKey: false,
         allowOutsideClick: true,
@@ -40,16 +40,18 @@ export const destroyAction = (collection, selector = {}, options = {}) => {
                 // sAlert.error(options.errorMsg ? options.errorMsg : error.message);
                 displayError(options.errorMsg, options.i18n);
             } else {
-                swal({
-                    title: "Deleted!",
-                    text: `Your doc <span class="text-red">[${options.itemTitle}]</span> has been deleted`,
-                    type: "success",
-                    allowEscapeKey: false,
-                    showCloseButton: true,
-                    showConfirmButton: false,
-                    allowOutsideClick: true,
-                    timer: 3000
-                }).done();
+                displaySuccess(`Your doc <span class="text-red">[${options.itemTitle}]</span> has been deleted`);
+
+                // swal({
+                //     title: "Deleted!",
+                //     text: `Your doc <span class="text-red">[${options.itemTitle}]</span> has been deleted`,
+                //     type: "success",
+                //     allowEscapeKey: false,
+                //     showCloseButton: true,
+                //     showConfirmButton: false,
+                //     allowOutsideClick: true,
+                //     timer: 3000
+                // }).done();
             }
         });
     }).done();

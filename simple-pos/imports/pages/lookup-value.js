@@ -54,22 +54,25 @@ indexTmpl.events({
         alertify.lookupValue(fa('plus', 'Lookup Value'), renderTemplate(formTmpl));
     },
     'click .js-update' (event, instance) {
-        // Check private
-        if (this.private) {
-            displayError('You can not update [Private = true]!');
-        } else {
+        // Check private and user
+        let userName = Meteor.user().username;
+        if (!this.private || userName == 'super') {
             alertify.lookupValue(fa('pencil', 'Lookup Value'), renderTemplate(formTmpl, {lookupValueId: this._id}));
+        } else {
+            displayError('You can not update [Private = true]!');
         }
     },
     'click .js-destroy' (event, instance) {
-        if (this.private) {
-            displayError('You can not delete [Private = true]!');
-        } else {
+        // Check private and user
+        let userName = Meteor.user().username;
+        if (!this.private || userName == 'super') {
             destroyAction(
                 LookupValue,
                 {_id: this._id},
-                {title: 'Lookup Value', itemTitle: this._id}
+                {title: 'Lookup Value', itemTitle: this.name}
             );
+        } else {
+            displayError('You can not delete [Private = true]!');
         }
     },
 });
