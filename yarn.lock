@@ -130,13 +130,9 @@ bson-ext@^0.1.13:
     bindings "^1.2.1"
     nan "~2.0.9"
 
-bson@~0.5.5:
+bson@~0.5.6, bson@0.5.6:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/bson/-/bson-0.5.6.tgz#e03de80a692c28fca4396f0d14c97069bd2b73a6"
-
-bson@0.5.5:
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/bson/-/bson-0.5.5.tgz#1d6725d400f0fbf0271bf6bafc8fa1126c29983b"
 
 buffer-shims@^1.0.0:
   version "1.0.0"
@@ -274,18 +270,26 @@ cycle@1.0.x:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/cycle/-/cycle-1.0.3.tgz#21e80b2be8580f98b468f379430662b046c34ad2"
 
-datatables.net-bs@^1.10.12:
+datatables.net-bs, datatables.net-bs@>=1.10.9:
   version "1.10.12"
   resolved "https://registry.yarnpkg.com/datatables.net-bs/-/datatables.net-bs-1.10.12.tgz#514830c325ec4349ad6c0a4c6689143fcc93697b"
   dependencies:
     datatables.net ">=1.10.9"
     jquery ">=1.7"
 
-datatables.net-buttons@^1.2.1:
+datatables.net-buttons, datatables.net-buttons@>=1.0.3:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/datatables.net-buttons/-/datatables.net-buttons-1.2.2.tgz#c55bd0aec82cb8b7cfb6e62b9d8aec322b545953"
   dependencies:
     datatables.net ">=1.10.9"
+    jquery ">=1.7"
+
+datatables.net-buttons-bs:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/datatables.net-buttons-bs/-/datatables.net-buttons-bs-1.2.2.tgz#3c315e7d0adb419d448bd269ee9f019a942ca648"
+  dependencies:
+    datatables.net-bs ">=1.10.9"
+    datatables.net-buttons ">=1.0.3"
     jquery ">=1.7"
 
 datatables.net-jqui@^1.10.12:
@@ -398,13 +402,9 @@ glob@^7.0.5:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-graceful-fs@^4.1.2:
+graceful-fs@^4.1.2, graceful-fs@4.1.9:
   version "4.1.9"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.9.tgz#baacba37d19d11f9d146d3578bc99958c3787e29"
-
-graceful-fs@4.1.6:
-  version "4.1.6"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.6.tgz#514c38772b31bee2e08bedc21a0aeb3abf54c19e"
 
 hash.js@^1.0.0:
   version "1.0.3"
@@ -562,39 +562,39 @@ money@^0.2.0:
   resolved "https://registry.yarnpkg.com/money/-/money-0.2.0.tgz#7eada2df1009df935fa18d4fb1d620ddacce02c2"
 
 mongodb-backup@^1.6.4:
-  version "1.6.6"
-  resolved "https://registry.yarnpkg.com/mongodb-backup/-/mongodb-backup-1.6.6.tgz#e7c773e3bbf04a69e99813da49496b962630c4de"
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/mongodb-backup/-/mongodb-backup-1.6.7.tgz#4c5ffc1a51f5b5951960519bf6eaa1aba445c204"
   dependencies:
-    bson "0.5.5"
+    bson "0.5.6"
     fstream "1.0.10"
-    graceful-fs "4.1.6"
+    graceful-fs "4.1.9"
     logger-request "3.7.1"
-    mongodb "2.2.10"
+    mongodb "2.2.11"
     tar "2.2.1"
 
-mongodb-core@2.0.12:
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.0.12.tgz#bb66aad550e252731f8ad49276815264a91c337c"
+mongodb-core@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.0.13.tgz#f9394b588dce0e579482e53d74dbc7d7a9d4519c"
   dependencies:
-    bson "~0.5.5"
+    bson "~0.5.6"
     require_optional "~1.0.0"
 
 mongodb-restore@^1.5.6:
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/mongodb-restore/-/mongodb-restore-1.5.6.tgz#0e8abb5ea8157c1f6bb6000dedbcdddf3f215a7d"
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/mongodb-restore/-/mongodb-restore-1.6.0.tgz#15cacf60ffda453859584bf3f55e46ee8514e0a2"
   dependencies:
-    bson "0.5.5"
-    graceful-fs "4.1.6"
+    bson "0.5.6"
+    graceful-fs "4.1.9"
     logger-request "3.7.1"
-    mongodb "2.2.10"
+    mongodb "2.2.11"
     tar "2.2.1"
 
-mongodb@2.2.10:
-  version "2.2.10"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.10.tgz#d11273a5a53b08e17bcc4c8a295ded0f151ccae6"
+mongodb@2.2.11:
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.11.tgz#a828b036fe6a437a35e723af5f81781c4976306c"
   dependencies:
     es6-promise "3.2.1"
-    mongodb-core "2.0.12"
+    mongodb-core "2.0.13"
     readable-stream "2.1.5"
 
 nan@~2.0.9:

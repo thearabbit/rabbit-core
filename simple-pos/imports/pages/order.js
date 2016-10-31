@@ -10,7 +10,6 @@ import 'meteor/theara:jsonview';
 import {TAPi18n} from 'meteor/tap:i18n';
 import 'meteor/tap:i18n-ui';
 
-
 // Lib
 import {createNewAlertify} from '../../../core/client/libs/create-new-alertify.js';
 import {renderTemplate} from '../../../core/client/libs/render-template.js';

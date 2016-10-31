@@ -6,6 +6,11 @@ import {sAlert} from 'meteor/juliancwirko:s-alert';
 import {fa} from 'meteor/theara:fa-helpers';
 import {TAPi18n} from 'meteor/tap:i18n';
 
+import { $ } from 'meteor/jquery';
+import dataTablesBootstrap from 'datatables.net-bs';
+import 'datatables.net-bs/css/dataTables.bootstrap.css';
+dataTablesBootstrap(window, $);
+
 // Lib
 import '../../client/components/loading.js';
 import '../../client/components/column-action.js';

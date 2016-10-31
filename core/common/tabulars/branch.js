@@ -1,6 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {Templet} from 'meteor/templating';
-import {Tabular} from 'meteor/aldeed:tabular';
+import Tabular from 'meteor/aldeed:tabular';
 import {EJSON} from 'meteor/ejson';
 import {moment} from 'meteor/momentjs:moment';
 import {_} from 'meteor/erasaur:meteor-lodash';
@@ -27,7 +27,7 @@ tabularOpts.columns = [
             if (val != setting.headOffice) {
                 return val;
             }
-        
+
             return '<u class="text-primary">' + val + '</u>';
         }
     },

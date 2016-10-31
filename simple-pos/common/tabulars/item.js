@@ -1,6 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {Templet} from 'meteor/templating';
-import {Tabular} from 'meteor/aldeed:tabular';
+import Tabular from 'meteor/aldeed:tabular';
 import {EJSON} from 'meteor/ejson';
 import {moment} from 'meteor/momentjs:moment';
 import {_} from 'meteor/erasaur:meteor-lodash';
@@ -40,6 +40,7 @@ tabularOpts.columns = [
     {
         data: "photo",
         title: "Photo",
+        visible: false,
         render: function (val, type, doc) {
             if (val) {
                 let img = Files.findOne(val);
@@ -52,4 +53,5 @@ tabularOpts.columns = [
         }
     }
 ];
+
 export const ItemTabular = new Tabular.Table(tabularOpts);
