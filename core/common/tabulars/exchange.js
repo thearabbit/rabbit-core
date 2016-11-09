@@ -15,25 +15,27 @@ import {Exchange} from '../collections/exchange.js';
 // Page
 Meteor.isClient && require('../../imports/pages/exchange.html');
 
-tabularOpts.name = "core.exchange";
-tabularOpts.collection = Exchange;
-tabularOpts.columns = [
-    {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Core_exchangeAction},
-    {
-        data: "exDate",
-        title: "Data",
-        render: function (val, type, doc) {
-            return moment(val).format('DD/MM/YYYY');
-        }
-    },
-    {data: "base", title: "Base Currency"},
-    {
-        data: "rates",
-        title: "Rates",
-        render: function (val, type, doc) {
-            return EJSON.stringify(val);
-        }
-    }
-];
-
-export const ExchangeTabular = new Tabular.Table(tabularOpts);
+let tabularData = _.assignIn(_.clone(tabularOpts), {
+        name: "core.exchange",
+        collection: Exchange,
+        columns: [
+            {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Core_exchangeAction},
+            {
+                data: "exDate",
+                title: "Data",
+                render: function (val, type, doc) {
+                    return moment(val).format('DD/MM/YYYY');
+                }
+            },
+            {data: "base", title: "Base Currency"},
+            {
+                data: "rates",
+                title: "Rates",
+                render: function (val, type, doc) {
+                    return EJSON.stringify(val);
+                }
+            }
+        ],
+    })
+    ;
+export const ExchangeTabular = new Tabular.Table(tabularData);

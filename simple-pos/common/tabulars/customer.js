@@ -17,21 +17,24 @@ import {Customer} from '../collections/customer.js';
 // Page
 Meteor.isClient && require('../../imports/pages/customer.html');
 
-tabularOpts.name = 'simplePos.customer';
-tabularOpts.collection = Customer;
-tabularOpts.columns = [
-    {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.SimplePos_customerAction},
-    {data: "_id", title: "ID"},
-    {data: "name", title: "Name"},
-    {data: "gender", title: "Gender"},
-    // {
-    //     data: "dob",
-    //     title: "Date of Birth",
-    //     render: function (val, type, doc) {
-    //         return moment(val).format('DD/MM/YYYY');
-    //     }
-    // },
-    {data: "email", title: "Email"},
-    {data: 'contact', title: 'Contact', tmpl: Meteor.isClient && Template.SimplePos_customerContact},
-];
-export const CustomerTabular = new Tabular.Table(tabularOpts);
+let tabularData = _.assignIn(_.clone(tabularOpts), {
+    name: 'simplePos.customer',
+    collection: Customer,
+    columns: [
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.SimplePos_customerAction},
+        {data: "_id", title: "ID"},
+        {data: "name", title: "Name"},
+        {data: "gender", title: "Gender"},
+        // {
+        //     data: "dob",
+        //     title: "Date of Birth",
+        //     render: function (val, type, doc) {
+        //         return moment(val).format('DD/MM/YYYY');
+        //     }
+        // },
+        {data: "email", title: "Email"},
+        {data: 'contact', title: 'Contact', tmpl: Meteor.isClient && Template.SimplePos_customerContact},
+    ],
+});
+
+export const CustomerTabular = new Tabular.Table(tabularData);

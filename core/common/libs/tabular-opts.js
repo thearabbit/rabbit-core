@@ -13,6 +13,11 @@ export const tabularOpts = {
     // buttons: ['copy', 'csv']
     // other properties...
     buttonContainer: '.col-sm-6:eq(0)',
-    buttons: ['copy', 'excel', 'csv', 'colvis']
+    buttons: [
+        'copy',
+        'excel',
+        'csv',
+        // 'colvis'
+    ]
 
 };

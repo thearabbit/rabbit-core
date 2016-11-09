@@ -58,6 +58,23 @@ SimplePosRoutes.route('/lookup-value', {
     }
 });
 
+// Location
+import '../imports/pages/location.js';
+SimplePosRoutes.route('/location', {
+    name: 'simplePos.location',
+    title: 'Location',
+    action: function (params, queryParams) {
+        Layout.main('SimplePos_location');
+    },
+    breadcrumb: {
+        //params: ['id'],
+        //queryParams: ['show', 'color'],
+        title: 'Location',
+        // icon: 'product-hunt',
+        parent: 'simplePos.home'
+    }
+});
+
 // Item
 import '../imports/pages/item.js';
 SimplePosRoutes.route('/item', {

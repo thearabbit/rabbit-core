@@ -1,0 +1,71 @@
+<!--Index-->
+<template name="SimplePos_location">
+    <div class="box-header with-border">
+        <h3 class="box-title">
+            {{> addNewButton}}
+        </h3>
+    </div>
+    <!-- /.box-header -->
+
+    <div class="box-body">
+        <!--Tabular-->
+        {{> tabular table=tabularTable class="table table-striped table-bordered table-condensed"}}
+    </div>
+    <!-- /.box-body -->
+</template>
+
+<!--Action-->
+<template name="SimplePos_locationAction">
+    {{#columnAction}}
+        <li><a href="#" class="js-update"><i class="fa fa-pencil"></i> {{_ "action.edit"}}</a></li>
+        <li><a href="#" class="js-destroy"><i class="fa fa-remove"></i> {{_ "action.delete"}}</a></li>
+        <li><a href="#" class="js-display"><i class="fa fa-eye"></i> {{_ "action.show"}}</a></li>
+    {{/columnAction}}
+</template>
+
+<!--Form-->
+<template name="SimplePos_locationForm">
+    <div class="box-body">
+        {{#if Template.subscriptionsReady}}
+            {{#autoForm collection=collection id="SimplePos_locationForm" doc=data.doc type=data.formType
+                        resetOnSuccess=false}}
+                <div class="row">
+                    <div class="col-md-12">
+                        {{> afQuickField name='type'}}
+                        {{#if showParent}}
+                            {{> afQuickField name='parent'}}
+                        {{/if}}
+                        {{> afQuickField name='code'}}
+                        {{> afQuickField name='name'}}
+                    </div>
+                </div>
+
+                {{> formFooterWithButton}}
+            {{/autoForm}}
+        {{else}}
+            {{> loading}}
+        {{/if}}
+    </div>
+</template>
+
+<!--Show-->
+<template name="SimplePos_locationShow">
+    <div class="box-body">
+        {{#if Template.subscriptionsReady}}
+            {{#with data}}
+                <dl class="dl-horizontal">
+                    <dt>Type</dt>
+                    <dd>{{type}}</dd>
+                    <dt>Code</dt>
+                    <dd>{{code}}</dd>
+                    <dt>Name</dt>
+                    <dd>{{name}}</dd>
+                    <dt>Ancestors</dt>
+                    <dd>{{> jsonView json=ancestorsDoc options=jsonViewOpts}}</dd>
+                </dl>
+            {{/with}}
+        {{else}}
+            {{> loading}}
+        {{/if}}
+    </div>
+</template>

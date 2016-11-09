@@ -11,55 +11,54 @@ import {tabularOpts} from '../libs/tabular-opts.js';
 // Page
 Meteor.isClient && require('../../imports/pages/user.html');
 
-tabularOpts.name = "core.user";
-tabularOpts.collection = Meteor.users;
-// tabularOpts.selector = function (userId) {
-//     return {username: {$ne: 'super'}}
-// };
-tabularOpts.columns = [
-    {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Core_userAction},
-    {data: "profile.name", title: "Full Name"},
-    {data: "username", title: "User Name"},
-    {
-        data: "emails",
-        title: "Emails",
-        render: function (val) {
-            if (typeof val !== 'undefined') {
-                return val[0].address;
+let tabularData = _.assignIn(_.clone(tabularOpts), {
+    name: "core.user",
+    collection: Meteor.users,
+    columns: [
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Core_userAction},
+        {data: "profile.name", title: "Full Name"},
+        {data: "username", title: "User Name"},
+        {
+            data: "emails",
+            title: "Emails",
+            render: function (val) {
+                if (typeof val !== 'undefined') {
+                    return val[0].address;
+                }
+                return null;
             }
-            return null;
-        }
-    },
-    {
-        data: "roles",
-        title: "Roles",
-        render: function (val, type, doc) {
-            if (typeof val !== undefined) {
-                return EJSON.stringify(val);
+        },
+        {
+            data: "roles",
+            title: "Roles",
+            render: function (val, type, doc) {
+                if (typeof val !== undefined) {
+                    return EJSON.stringify(val);
+                }
+                return null;
             }
-            return null;
-        }
-    },
-    {
-        data: "rolesBranch",
-        title: "Roles For Branch",
-        render: function (val, type, doc) {
-            if (typeof val !== 'undefined') {
-                return val;
+        },
+        {
+            data: "rolesBranch",
+            title: "Roles For Branch",
+            render: function (val, type, doc) {
+                if (typeof val !== 'undefined') {
+                    return val;
+                }
+                return null;
             }
-            return null;
         }
-    }
-    //{
-    //    data: "status.online", title: "Status",
-    //    render: function (val, type, doc) {
-    //        if (val == true) {
-    //            return '<span class="label label-success">online</span>';
-    //        } else {
-    //            return '<span class="label label-default">offline</span>';
-    //        }
-    //    }
-    //}
-];
+        //{
+        //    data: "status.online", title: "Status",
+        //    render: function (val, type, doc) {
+        //        if (val == true) {
+        //            return '<span class="label label-success">online</span>';
+        //        } else {
+        //            return '<span class="label label-default">offline</span>';
+        //        }
+        //    }
+        //}
+    ],
+});
 
-export const UserTabular = new Tabular.Table(tabularOpts);
+export const UserTabular = new Tabular.Table(tabularData);

@@ -53,6 +53,11 @@
                 <i class="fa fa-cog"></i> <span>{{_ "simplePos.sidebarMenu.item"}}</span>
             </a>
         </li>
+        <li class="{{isActiveRoute name='simplePos.location'}}">
+            <a href="{{pathFor 'simplePos.location'}}">
+                <i class="fa fa-sitemap"></i> <span>Location</span>
+            </a>
+        </li>
         <li class="{{isActiveRoute name='simplePos.lookupValue'}}">
             <a href="{{pathFor 'simplePos.lookupValue'}}">
                 <i class="fa fa-cog"></i> <span>Lookup Value</span>

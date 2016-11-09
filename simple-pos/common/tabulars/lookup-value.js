@@ -17,18 +17,21 @@ import {LookupValue} from '../collections/lookup-value.js';
 // Page
 Meteor.isClient && require('../../imports/pages/lookup-value.html');
 
-tabularOpts.name = 'simplePos.lookupValue';
-tabularOpts.collection = LookupValue;
-tabularOpts.columns = [
-    {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.SimplePos_lookupValueAction},
-    {data: "name", title: "Name"},
-    {data: "private", title: "Private"},
-    {
-        data: "options",
-        title: "Options",
-        tmpl: Meteor.isClient && Template.SimplePos_lookupValueOptions
-    },
-];
-tabularOpts.extraFields = ['_id'];
-tabularOpts.order = [[1, 'asc']];
-export const LookupValueTabular = new Tabular.Table(tabularOpts);
+let tabularData = _.assignIn(_.clone(tabularOpts), {
+    name: 'simplePos.lookupValue',
+    collection: LookupValue,
+    columns: [
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.SimplePos_lookupValueAction},
+        {data: "name", title: "Name"},
+        {data: "private", title: "Private"},
+        {
+            data: "options",
+            title: "Options",
+            tmpl: Meteor.isClient && Template.SimplePos_lookupValueOptions
+        },
+    ],
+    extraFields: ['_id'],
+    order: [[1, 'asc']],
+});
+
+export const LookupValueTabular = new Tabular.Table(tabularData);

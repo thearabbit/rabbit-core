@@ -23,7 +23,13 @@
         "price": {
           "label": "តម្លៃ"
         },
-        "parentId": {
+        "type": {
+          "label": "ប្រភេទ"
+        },
+        "parent": {
+          "label": "មេ"
+        },
+        "ancestors": {
           "label": "មេ"
         },
         "photo": {

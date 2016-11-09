@@ -6,12 +6,89 @@ import {moment} from  'meteor/momentjs:moment';
 
 // Collection
 import {Exchange} from '../../../core/common/collections/exchange';
-import {Customer} from '../collections/customer.js';
-import {Item} from '../collections/item.js';
-import {Order} from '../collections/order.js';
+import {Customer} from '../collections/customer';
+import {Item} from '../collections/item';
+import {Location} from '../collections/location';
+import {Order} from '../collections/order';
 
 export let SelectOptsMethod = {};
 
+// Location
+SelectOptsMethod.location = new ValidatedMethod({
+    name: 'simplePos.selectOptsMethod.location',
+    validate: null,
+    run(options) {
+        if (!this.isSimulation) {
+            this.unblock();
+
+            let list = [], selector = {};
+            let searchText = options.searchText;
+            let values = options.values;
+            let params = options.params || {};
+
+            if (searchText) {
+                selector = {
+                    $or: [
+                        {code: {$regex: searchText, $options: 'i'}},
+                        {name: {$regex: searchText, $options: 'i'}}
+                    ],
+                };
+            } else if (values.length) {
+                selector = {_id: {$in: values}};
+            }
+            _.assignIn(selector, params);
+
+            let data = Location.aggregate([
+                {
+                    $match: selector
+                },
+                {
+                    $limit: 10
+                },
+                {
+                    $unwind: {path: "$ancestors", preserveNullAndEmptyArrays: true}
+                },
+                {
+                    $lookup: {
+                        from: "simplePos_location",
+                        localField: "ancestors",
+                        foreignField: "_id",
+                        as: "ancestorsDoc"
+                    }
+                },
+                {
+                    $unwind: {path: "$ancestorsDoc", preserveNullAndEmptyArrays: true}
+                },
+                {
+                    $group: {
+                        _id: "$_id",
+                        type: {$first: "$type"},
+                        parent: {$first: "$parent"},
+                        code: {$first: "$code"},
+                        name: {$first: "$name"},
+                        ancestorsDoc: {$push: "$ancestorsDoc.name"}
+                    }
+                }
+            ]);
+
+            data.forEach(function (value) {
+                let label = `${value.code} : `;
+                if (_.compact(value.ancestorsDoc).length > 0) {
+                    _.forEach(value.ancestorsDoc, (o)=> {
+                        label += o + ', ';
+                    })
+                }
+                label += value.name;
+
+                list.push({label: label, value: value._id});
+            });
+
+            return list;
+        }
+    }
+});
+
+// Item
 SelectOptsMethod.parentItem = new ValidatedMethod({
     name: 'simplePos.selectOptsMethod.parentItem',
     validate: null,

@@ -1,9 +1,10 @@
 import {Template} from 'meteor/templating';
 import {TAPi18n} from 'meteor/tap:i18n';
 import 'meteor/255kb:meteor-status';
-import {$} from 'meteor/jquery';
 
 // --------- Tabular Config -------------
+import {$} from 'meteor/jquery';
+
 // Bootstrap Theme
 import dataTablesBootstrap from 'datatables.net-bs';
 import 'datatables.net-bs/css/dataTables.bootstrap.css';

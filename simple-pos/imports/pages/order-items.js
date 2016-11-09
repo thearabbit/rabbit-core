@@ -56,55 +56,57 @@ indexTmpl.helpers({
     tableSettings: function () {
         let i18nPrefix = 'simplePos.order.schema';
 
-        reactiveTableSettings.showFilter = false;
-        reactiveTableSettings.showNavigation = 'never';
-        reactiveTableSettings.showColumnToggles = false;
-        reactiveTableSettings.collection = itemsCollection;
-        reactiveTableSettings.fields = [
-            {key: 'itemId', label: 'ID', hidden: true},
-            {key: 'itemName', label: 'Name'},
-            {
-                key: 'qty',
-                label: 'Qty',
-                fn(value, obj, key){
-                    return Spacebars.SafeString(`<input type="text" value="${value}" class="item-qty">`);
-                }
-            },
-            {
-                key: 'price',
-                label: 'Price',
-                fn(value, obj, key){
-                    return Spacebars.SafeString(`<input type="text" value="${value}" class="item-price">`);
-                }
-            },
-            {
-                key: 'amount',
-                label: 'Amount',
-                fn (value, object, key) {
-                    return numeral(value).format('0,0.00');
-                }
-            },
-            {
-                key: 'memo',
-                label: 'Memo',
-                fn(value, obj, key){
-                    return Spacebars.SafeString(`<input type="text" value="${value}" class="item-memo">`);
-                }
-            },
-            {
-                key: '_id',
-                label(){
-                    return fa('bars', '', true);
+        let reactiveTableData = _.assignIn(_.clone(reactiveTableSettings), {
+            showFilter: false,
+            showNavigation: 'never',
+            showColumnToggles: false,
+            collection: itemsCollection,
+            fields: [
+                {key: 'itemId', label: 'ID', hidden: true},
+                {key: 'itemName', label: 'Name'},
+                {
+                    key: 'qty',
+                    label: 'Qty',
+                    fn(value, obj, key){
+                        return Spacebars.SafeString(`<input type="text" value="${value}" class="item-qty">`);
+                    }
                 },
-                headerClass: function () {
-                    let css = 'text-center col-action-order-item';
-                    return css;
+                {
+                    key: 'price',
+                    label: 'Price',
+                    fn(value, obj, key){
+                        return Spacebars.SafeString(`<input type="text" value="${value}" class="item-price">`);
+                    }
                 },
-                tmpl: actionTmpl, sortable: false
-            }
-        ];
+                {
+                    key: 'amount',
+                    label: 'Amount',
+                    fn (value, object, key) {
+                        return numeral(value).format('0,0.00');
+                    }
+                },
+                {
+                    key: 'memo',
+                    label: 'Memo',
+                    fn(value, obj, key){
+                        return Spacebars.SafeString(`<input type="text" value="${value}" class="item-memo">`);
+                    }
+                },
+                {
+                    key: '_id',
+                    label(){
+                        return fa('bars', '', true);
+                    },
+                    headerClass: function () {
+                        let css = 'text-center col-action-order-item';
+                        return css;
+                    },
+                    tmpl: actionTmpl, sortable: false
+                }
+            ],
+        });
 
-        return reactiveTableSettings;
+        return reactiveTableData;
     },
     total: function () {
         let total = 0;

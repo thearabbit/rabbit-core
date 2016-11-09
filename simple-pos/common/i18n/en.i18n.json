@@ -23,8 +23,14 @@
         "price": {
           "label": "Price"
         },
-        "parentId": {
+        "type": {
+          "label": "Type"
+        },
+        "parent": {
           "label": "Parent"
+        },
+        "ancestors": {
+          "label": "Ancestors"
         },
         "photo": {
           "label": "Photo"
