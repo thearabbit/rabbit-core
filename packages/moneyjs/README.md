@@ -14,6 +14,18 @@ meteor add theara:moneyjs
 ```
 ### Quick Examples
 ```js
+// var fx = require("money");
+import fx from "money";
+
+fx.base = "USD";
+fx.rates = {
+	"EUR" : 0.745101, // eg. 1 USD === 0.745101 EUR
+	"GBP" : 0.647710, // etc...
+	"HKD" : 7.781919,
+	"USD" : 1,        // always include the base rate (1:1)
+	/* etc */
+}
+
 // Simple syntax:
 fx.convert(1000, {from: "GBP", to: "HKD"});
 
