@@ -5,6 +5,7 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "babel-runtime": "^6.18.0",
     "bcrypt": "^0.8.7",
     "bignumber.js": "^2.3.0",
     "bson-ext": "^0.1.13",
