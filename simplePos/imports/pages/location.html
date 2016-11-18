@@ -31,12 +31,13 @@
                         resetOnSuccess=false}}
                 <div class="row">
                     <div class="col-md-12">
-                        {{> afQuickField name='type'}}
+                        {{> afQuickField name="type"}}
                         {{#if showParent}}
-                            {{> afQuickField name='parent'}}
+                            {{> afQuickField name="parent"}}
                         {{/if}}
-                        {{> afQuickField name='code'}}
-                        {{> afQuickField name='name'}}
+                        {{> afQuickField name="code"}}
+                        {{> afQuickField name="khName"}}
+                        {{> afQuickField name="enName"}}
                     </div>
                 </div>
 
@@ -58,8 +59,10 @@
                     <dd>{{type}}</dd>
                     <dt>Code</dt>
                     <dd>{{code}}</dd>
-                    <dt>Name</dt>
-                    <dd>{{name}}</dd>
+                    <dt>Kh Name</dt>
+                    <dd>{{khName}}</dd>
+                    <dt>En Name</dt>
+                    <dd>{{enName}}</dd>
                     <dt>Ancestors</dt>
                     <dd>{{> jsonView json=ancestorsDoc options=jsonViewOpts}}</dd>
                 </dl>

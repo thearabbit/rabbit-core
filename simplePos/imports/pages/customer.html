@@ -35,14 +35,15 @@
             {{#autoForm collection=collection id="SimplePos_customerForm" doc=data.doc type=data.formType}}
                 <div class="row">
                     <div class="col-md-5">
-                        {{> afQuickField name='name'}}
-                        {{> afQuickField name='gender'}}
-                        {{> afQuickField name='dob'}}
-                        {{> afQuickField name='address' rows=3}}
+                        {{> afQuickField name="name"}}
+                        {{> afQuickField name="gender"}}
+                        {{> afQuickField name="dob"}}
+                        {{> afQuickField name="locationId"}}
+                        {{> afQuickField name="address" rows=3}}
                     </div>
                     <div class="col-md-7">
-                        {{> afQuickField name='email'}}
-                        {{> afQuickField type="hidden" name='branchId' value=currentBranch}}
+                        {{> afQuickField name="email"}}
+                        {{> afQuickField type="hidden" name="branchId" value=currentBranch}}
 
                         {{> afArrayField name="contact" id="contact" template="SimplePos_customArrayFieldForContact" subtemplate="SimplePos_customObjectFieldForContact"}}
                     </div>

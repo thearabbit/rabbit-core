@@ -76,7 +76,7 @@ export const lookupOrder = new ValidatedMethod({
                                 qty: "$items.qty",
                                 price: "$items.price",
                                 amount: "$items.amount",
-                                memo: "$itemDoc.memo"
+                                memo: "$items.memo"
                             }
                         }
                     }

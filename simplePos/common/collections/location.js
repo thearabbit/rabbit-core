@@ -72,12 +72,19 @@ Location.schema = new SimpleSchema({
             }
         },
     },
-    name: {
+    khName: {
         type: String,
-        label: 'Name',
-        autoform: {
-            type: "textarea"
-        }
+        label: 'Kh name',
+        // autoform: {
+        //     type: "textarea"
+        // }
+    },
+    enName: {
+        type: String,
+        label: 'En name',
+        // autoform: {
+        //     type: "textarea"
+        // }
     },
     ancestors: {
         type: [String],

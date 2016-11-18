@@ -77,28 +77,24 @@
 <!--Show-->
 <template name="SimplePos_orderShow">
     <div class="box-body">
-        {{#if isLoading}}
-            {{> loading}}
-        {{else}}
-            {{#with data}}
-                <dl class="dl-horizontal">
-                    <dt>ID</dt>
-                    <dd>{{_id}}</dd>
-                    <dt>Order Date</dt>
-                    <dd>{{moFormat orderDate "DD/MM/YYYY"}}</dd>
-                    <dt>Customer</dt>
-                    <dd>{{customerId}} : {{customerDoc.name}}</dd>
-                    <dt>Description</dt>
-                    <dd>{{des}}</dd>
-                    <dt>Total</dt>
-                    <dd>{{numFormat total "0,0.00"}}</dd>
-                    <dt>Items</dt>
-                    <dd>
-                        <!--jsonview-->
-                        {{> jsonView json=items options=jsonViewOpts}}
-                    </dd>
-                </dl>
-            {{/with}}
-        {{/if}}
+        {{#with data}}
+            <dl class="dl-horizontal">
+                <dt>ID</dt>
+                <dd>{{_id}}</dd>
+                <dt>Order Date</dt>
+                <dd>{{moFormat orderDate "DD/MM/YYYY"}}</dd>
+                <dt>Customer</dt>
+                <dd>{{customerId}} : {{customerDoc.name}}</dd>
+                <dt>Description</dt>
+                <dd>{{des}}</dd>
+                <dt>Total</dt>
+                <dd>{{numFormat total "0,0.00"}} $</dd>
+                <dt>Items</dt>
+                <dd>
+                    <!--jsonview-->
+                    {{> jsonView json=items options=jsonViewOpts}}
+                </dd>
+            </dl>
+        {{/with}}
     </div>
 </template>

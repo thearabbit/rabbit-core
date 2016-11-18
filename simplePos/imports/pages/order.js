@@ -92,22 +92,22 @@ formTmpl.onCreated(function () {
     self.isLoading = new ReactiveVar(false);
     self.orderDoc = new ReactiveVar();
 
-    self.autorun(()=> {
+    self.autorun(() => {
         let currentData = Template.currentData();
         if (currentData) {
             self.isLoading.set(true);
 
             lookupOrder.callPromise({
                 orderId: currentData.orderId
-            }).then((result)=> {
+            }).then((result) => {
                 // Add items to local collection
-                _.forEach(result.items, (value)=> {
+                _.forEach(result.items, (value) => {
                     itemsCollection.insert(value);
                 });
 
                 self.orderDoc.set(result);
                 self.isLoading.set(false);
-            }).catch((err)=> {
+            }).catch((err) => {
                 console.log(err);
             });
         }
@@ -155,39 +155,36 @@ formTmpl.onDestroyed(function () {
 
 // Show
 showTmpl.onCreated(function () {
-    // let self = this;
-    this.isLoading = new ReactiveVar(true);
     this.orderDoc = new ReactiveVar();
 
-    this.autorun(()=> {
+    this.autorun(() => {
+        $.blockUI();
+
         let currentData = Template.currentData();
         lookupOrder.callPromise({
             orderId: currentData.orderId
-        }).then((result)=> {
-            console.log('result: ', result);
-
+        }).then((result) => {
             this.orderDoc.set(result);
-            this.isLoading.set(false);
-        }).catch((err)=> {
+
+            $.unblockUI();
+        }).catch((err) => {
             console.log(err);
         });
     });
 });
 
 showTmpl.helpers({
-    isLoading(){
-        return Template.instance().isLoading.get();
-    },
     data () {
         let data = Template.instance().orderDoc.get();
 
-        // Use jsonview
-        if (data) {
+        if (data && data.des) {
             data.des = Spacebars.SafeString(data.des);
-            data.jsonViewOpts = {collapsed: true};
         }
 
         return data;
+    },
+    jsonViewOpts(){
+        return {collapsed: true};
     }
 });
 

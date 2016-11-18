@@ -65,8 +65,9 @@ SelectOptsMethod.location = new ValidatedMethod({
                         type: {$first: "$type"},
                         parent: {$first: "$parent"},
                         code: {$first: "$code"},
-                        name: {$first: "$name"},
-                        ancestorsDoc: {$push: "$ancestorsDoc.name"}
+                        khName: {$first: "$khName"},
+                        enName: {$first: "$enName"},
+                        ancestorsDoc: {$push: "$ancestorsDoc.khName"}
                     }
                 }
             ]);
@@ -74,11 +75,11 @@ SelectOptsMethod.location = new ValidatedMethod({
             data.forEach(function (value) {
                 let label = `${value.code} : `;
                 if (_.compact(value.ancestorsDoc).length > 0) {
-                    _.forEach(value.ancestorsDoc, (o)=> {
+                    _.forEach(value.ancestorsDoc, (o) => {
                         label += o + ', ';
                     })
                 }
-                label += value.name;
+                label += value.khName;
 
                 list.push({label: label, value: value._id});
             });
@@ -117,7 +118,7 @@ SelectOptsMethod.parentItem = new ValidatedMethod({
                 let label = `${value._id} : ${value.name}`;
                 if (value.ancestors) {
                     let getAncestors = Item.find({_id: {$in: value.ancestors}}, {sort: {_id: 1}}).fetch();
-                    label += ' [' + _.map(getAncestors, (o)=> {
+                    label += ' [' + _.map(getAncestors, (o) => {
                             return o.name;
                         }) + ']';
                 }
@@ -193,7 +194,7 @@ SelectOptsMethod.orderItem = new ValidatedMethod({
                 let label = `${value._id} : ${value.name}`;
                 if (value.ancestors) {
                     let getAncestors = Item.find({_id: {$in: value.ancestors}}, {sort: {_id: 1}}).fetch();
-                    label += ' [' + _.map(getAncestors, (o)=> {
+                    label += ' [' + _.map(getAncestors, (o) => {
                             return o.name;
                         }) + ']';
                 }

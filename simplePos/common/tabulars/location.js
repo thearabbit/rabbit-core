@@ -36,7 +36,13 @@ let tabularData = _.assignIn(_.clone(tabularOpts), {
                 return `${level}${val}`;
             }
         },
-        {data: "name", title: "Name"},
+        {
+            data: "khName",
+            title: "Name",
+            render: function (val, type, doc) {
+                return `${val} [${doc.enName}]`;
+            }
+        },
         {
             data: "type",
             title: "Type",
@@ -44,12 +50,13 @@ let tabularData = _.assignIn(_.clone(tabularOpts), {
                 if (val == 'V') {
                     return Spacebars.SafeString(`<span class="label label-success">${val}</span>`);
                 }
+
                 return val;
             }
         },
     ],
     order: [[1, 'asc']],
-    extraFields: ['_id', 'type', 'ancestors'],
+    extraFields: ['_id', 'type', 'enName', 'ancestors'],
 });
 
 export const LocationTabular = new Tabular.Table(tabularData);

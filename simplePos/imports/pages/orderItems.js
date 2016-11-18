@@ -10,6 +10,7 @@ import {_} from 'meteor/erasaur:meteor-lodash';
 import {$} from 'meteor/jquery';
 import {TAPi18n} from 'meteor/tap:i18n';
 import {ReactiveTable} from 'meteor/aslagle:reactive-table';
+import {round2} from 'meteor/theara:round2';
 
 // Lib
 import {createNewAlertify} from '../../../core/client/libs/create-new-alertify.js';
@@ -62,8 +63,8 @@ indexTmpl.helpers({
             showColumnToggles: false,
             collection: itemsCollection,
             fields: [
-                {key: 'itemId', label: 'ID', hidden: true},
-                {key: 'itemName', label: 'Name'},
+                {key: 'itemId', label: 'ID', hidden: false},
+                {key: 'itemName', label: 'Item'},
                 {
                     key: 'qty',
                     label: 'Qty',
@@ -75,6 +76,7 @@ indexTmpl.helpers({
                     key: 'price',
                     label: 'Price',
                     fn(value, obj, key){
+                        // return numeral(value).format('0,0.00');
                         return Spacebars.SafeString(`<input type="text" value="${value}" class="item-price">`);
                     }
                 },
@@ -111,8 +113,8 @@ indexTmpl.helpers({
     total: function () {
         let total = 0;
         let getItems = itemsCollection.find();
-        getItems.forEach((obj)=> {
-            total += obj.amount;
+        getItems.forEach((obj) => {
+            total += round2(obj.amount, 2);
         });
 
         return total;
@@ -130,19 +132,7 @@ indexTmpl.events({
             {title: 'Items', itemTitle: this.itemId}
         );
     },
-    'keyup .item-qty,.item-price'(event, instance){
-        let $parents = $(event.currentTarget).parents('tr');
-
-        let itemId = $parents.find('.itemId').text();
-        let qty = $parents.find('.item-qty').val();
-        let price = $parents.find('.item-price').val();
-        qty = _.isEmpty(qty) ? 0 : parseInt(qty);
-        price = _.isEmpty(price) ? 0 : parseFloat(price);
-        let amount = numeral(qty * price).format("0,0.00");
-
-        $parents.find('.amount').text(amount);
-    },
-    'blur .item-qty,.item-price,.item-memo': function (event, instance) {
+    'change .item-qty,.item-price,.item-memo': function (event, instance) {
         let $parents = $(event.currentTarget).parents('tr');
 
         let itemId = $parents.find('.itemId').text();
@@ -152,15 +142,13 @@ indexTmpl.events({
 
         qty = _.isEmpty(qty) ? 0 : parseInt(qty);
         price = _.isEmpty(price) ? 0 : parseFloat(price);
-        amount = math.round(qty * price, 2);
+        let amount = round2(qty * price, 2);
 
-        // Update
-        $parents.find('.amount').text('null');
         itemsCollection.update(
             {_id: itemId},
             {$set: {qty: qty, price: price, amount: amount, memo: memo}}
         );
-    }
+    },
 });
 
 // New
@@ -204,14 +192,14 @@ newTmpl.events({
             $.blockUI();
             lookupItem.callPromise({
                 itemId: itemId
-            }).then((result)=> {
+            }).then((result) => {
                 instance.price.set(result.price);
 
-                Meteor.setTimeout(()=> {
+                Meteor.setTimeout(() => {
                     $.unblockUI();
                 }, 100);
 
-            }).catch((err)=> {
+            }).catch((err) => {
                 console.log(err.message);
             });
         } else {
@@ -237,15 +225,15 @@ newTmpl.events({
         itemName = _.trim(_.split(itemName, " : ")[1]);
 
         let qty = parseInt(instance.$('[name="qty"]').val());
-        let price = math.round(parseFloat(instance.$('[name="price"]').val()), 2);
+        let price = round2(parseFloat(instance.$('[name="price"]').val()), 2);
         let memo = instance.$('[name="memo"]').val();
-        let amount = math.round(qty * price, 2);
+        let amount = round2(qty * price, 2);
 
         // Check exist
         let exist = itemsCollection.findOne({itemId: itemId});
         if (exist) {
             qty += parseInt(exist.qty);
-            amount = math.round(qty * price, 2);
+            amount = round2(qty * price, 2);
 
             itemsCollection.update(
                 {_id: itemId},
@@ -270,7 +258,7 @@ editTmpl.onCreated(function () {
     this.qty = new ReactiveVar(0);
     this.price = new ReactiveVar(0);
 
-    this.autorun(()=> {
+    this.autorun(() => {
         let data = Template.currentData();
         this.qty.set(data.qty);
         this.price.set(data.price);
@@ -304,14 +292,14 @@ editTmpl.events({
             $.blockUI();
             lookupItem.callPromise({
                 itemId: itemId
-            }).then((result)=> {
+            }).then((result) => {
                 instance.price.set(result.price);
 
-                Meteor.setTimeout(()=> {
+                Meteor.setTimeout(() => {
                     $.unblockUI();
                 }, 100);
 
-            }).catch((err)=> {
+            }).catch((err) => {
                 console.log(err.message);
             });
         } else {
@@ -347,7 +335,7 @@ let hooksObject = {
             if (exist) {
                 let newQty = exist.qty + insertDoc.qty;
                 let newPrice = insertDoc.price;
-                let newAmount = math.round(newQty * newPrice, 2);
+                let newAmount = round2(newQty * newPrice, 2);
 
                 itemsCollection.update(
                     {_id: insertDoc.itemId},

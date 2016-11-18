@@ -40,6 +40,22 @@ Customer.generalSchema = new SimpleSchema({
             }
         }
     },
+    locationId: {
+        type: String,
+        label: 'Location',
+        autoform: {
+            type: 'universe-select',
+            afFieldInput: {
+                uniPlaceholder: 'Select One',
+                optionsMethod: 'simplePos.selectOptsMethod.location',
+                optionsMethodParams: function () {
+                    if (Meteor.isClient) {
+                        return {type: 'V'};
+                    }
+                }
+            }
+        },
+    },
     address: {
         type: String,
         label: 'Address'

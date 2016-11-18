@@ -19,6 +19,7 @@
     "datatables.net-buttons-bs": "^1.2.2",
     "datatables.net-jqui": "^1.10.12",
     "faker": "^3.1.0",
+    "gasparesganga-jquery-loading-overlay": "^1.5.1",
     "highcharts": "^4.2.7",
     "jquery": "^2.2.3",
     "mathjs": "^3.6.0",

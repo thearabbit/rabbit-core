@@ -1,6 +1,6 @@
 <!--Index-->
 <template name="SimplePos_lookupValue">
-    {{#if isInRole 'super' 'Core'}}
+    {{#if isInRole "super" "Core"}}
         <div class="box-header with-border">
             <h3 class="box-title">
                 {{> addNewButton}}
@@ -36,10 +36,10 @@
             {{#autoForm collection=collection id="SimplePos_lookupValueForm" doc=data.doc type=data.formType}}
                 <div class="row">
                     <div class="col-md-3">
-                        {{> afQuickField name='private'}}
+                        {{> afQuickField name="private"}}
                     </div>
                     <div class="col-md-9">
-                        {{> afQuickField name='name'}}
+                        {{> afQuickField name="name"}}
                     </div>
                 </div>
 

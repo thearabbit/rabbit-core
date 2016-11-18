@@ -43,8 +43,15 @@ export const lookupLocation = new ValidatedMethod({
                         type: {$first: "$type"},
                         parent: {$first: "$parent"},
                         code: {$first: "$code"},
-                        name: {$first: "$name"},
-                        ancestorsDoc: {$push: {code: "$ancestorsDoc.code", name: "$ancestorsDoc.name"}}
+                        khName: {$first: "$khName"},
+                        enName: {$first: "$enName"},
+                        ancestorsDoc: {
+                            $push: {
+                                code: "$ancestorsDoc.code",
+                                khName: "$ancestorsDoc.khName",
+                                enName: "$ancestorsDoc.enName"
+                            }
+                        }
                     }
                 }
             ]);

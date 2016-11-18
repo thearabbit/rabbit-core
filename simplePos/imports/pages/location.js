@@ -78,7 +78,7 @@ indexTmpl.events({
 formTmpl.onCreated(function () {
     this.typeState = new ReactiveVar('P');
 
-    this.autorun(()=> {
+    this.autorun(() => {
         // Lookup value
         this.subscribe('simplePos.lookupValue', ['Unit', 'Location Type']);
 
@@ -123,20 +123,19 @@ formTmpl.events({
 showTmpl.onCreated(function () {
     this.state = new ReactiveVar();
 
-    this.autorun(()=> {
-        let currentData = Template.currentData();
-
+    this.autorun(() => {
         $.blockUI();
 
+        let currentData = Template.currentData();
         lookupLocation.callPromise({
             locationId: currentData.locationId
-        }).then((result)=> {
+        }).then((result) => {
             console.log(result);
 
             this.state.set(result);
 
             $.unblockUI();
-        }).catch((err)=> {
+        }).catch((err) => {
             console.log(err);
         });
     });
@@ -195,6 +194,7 @@ function clearForm() {
     let increaseCode = _.padStart(parseFloat($('[name="code"]').val()) + 1, 2, '0');
 
     $('[name="code"]').val(increaseCode);
-    $('[name="name"]').val('');
-    $('[name="name"]').focus();
+    $('[name="khName"]').val('');
+    $('[name="khName"]').focus();
+    $('[name="enName"]').val('');
 }

@@ -3,15 +3,16 @@ import {_} from 'meteor/erasaur:meteor-lodash';
 import casual from 'casual';
 import faker from 'faker';
 
-import {Customer} from '../../common/collections/customer.js';
+import {Customer} from '../../common/collections/customer';
 
 Meteor.startup(function () {
     if (Customer.find().count() == 0) {
-        _.times(100, ()=> {
+        _.times(5, () => {
             const data = {
                 name: faker.name.findName(),
                 gender: faker.random.arrayElement(['M', 'F']),
                 dob: faker.date.past(),
+                locationId: '00000004',
                 address: faker.address.city(),
                 email: faker.internet.email(),
                 contact: faker.random.arrayElement([
