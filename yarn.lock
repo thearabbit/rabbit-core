@@ -137,7 +137,11 @@ bson-ext@^0.1.13:
     bindings "^1.2.1"
     nan "~2.0.9"
 
-bson@~0.5.6, bson@0.5.6:
+bson@~0.5.6:
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/bson/-/bson-0.5.7.tgz#0d11fe0936c1fee029e11f7063f5d0ab2422ea3e"
+
+bson@0.5.6:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/bson/-/bson-0.5.6.tgz#e03de80a692c28fca4396f0d14c97069bd2b73a6"
 
@@ -387,7 +391,7 @@ faker@^3.1.0:
 
 fraction.js@3.3.1:
   version "3.3.1"
-  resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-3.3.1.tgz#5d6a31ff07707294f204ccbb6b53791607771083"
+  resolved "http://registry.npmjs.org/fraction.js/-/fraction.js-3.3.1.tgz#5d6a31ff07707294f204ccbb6b53791607771083"
 
 fs.realpath@^1.0.0:
   version "1.0.0"
@@ -498,14 +502,14 @@ logger-request@3.7.2:
     winston-daily-rotate-file "1.3.1"
 
 mathjs@^3.6.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-3.7.0.tgz#95ec21abcac27e7c644c915a9290525669445b9f"
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-3.8.0.tgz#232af4871e4e8249f5b46a98ede7deae92026634"
   dependencies:
     complex.js "2.0.1"
     decimal.js "5.0.8"
     fraction.js "3.3.1"
     tiny-emitter "1.0.2"
-    typed-function "0.10.4"
+    typed-function "0.10.5"
 
 mersenne-twister@^1.0.1:
   version "1.1.0"
@@ -821,9 +825,9 @@ tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
 
-typed-function@0.10.4:
-  version "0.10.4"
-  resolved "https://registry.yarnpkg.com/typed-function/-/typed-function-0.10.4.tgz#1a015498d38eaf9c402fcce1022a0bd87b7418b2"
+typed-function@0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/typed-function/-/typed-function-0.10.5.tgz#2e0f18abd065219fab694a446a65c6d1981832c0"
 
 url@^0.11.0:
   version "0.11.0"
