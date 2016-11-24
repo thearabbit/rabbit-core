@@ -7,7 +7,7 @@
   "dependencies": {
     "babel-runtime": "^6.18.0",
     "bcrypt": "^0.8.7",
-    "bignumber.js": "^2.3.0",
+    "bignumber.js": "^3.0.1",
     "bson-ext": "^0.1.13",
     "busboy": "^0.2.13",
     "buzz": "^1.2.0",
@@ -20,7 +20,7 @@
     "datatables.net-jqui": "^1.10.12",
     "faker": "^3.1.0",
     "gasparesganga-jquery-loading-overlay": "^1.5.1",
-    "highcharts": "^4.2.7",
+    "highcharts": "^v5.0.4",
     "jquery": "^2.2.3",
     "mathjs": "^3.6.0",
     "meteor-node-stubs": "~0.2.0",
