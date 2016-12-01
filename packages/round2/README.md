@@ -15,7 +15,7 @@ $ meteor add theara:round2
 ```js
 import {round2} from 'meteor/theara:round2';
 
-round2(value, precision, type = [null, up, down]);
+round2(value, precision = 2, type = [null, up, down]);
 ```
 
 ## Example

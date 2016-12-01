@@ -1,6 +1,6 @@
 Package.describe({
     name: 'theara:round2',
-    version: '0.0.6',
+    version: '0.0.7',
     // Brief, one-line summary of the package.
     summary: 'Round a number to a specific number of decimal places: 1.234 → 1.2',
     // URL to the Git repository containing the source code for this package.
