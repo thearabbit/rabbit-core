@@ -59,8 +59,9 @@ kadira:blaze-layout
 cottz:flow-router-auth
 cottz:flow-router-query
 arillo:flow-router-helpers
-zimme:active-route
 ostrio:flow-router-title
+#zimme:active-route
+#greenmoose:active-route-basic
 #tomwasd:flow-router-autoscroll
 #meteorhacks:fast-render
 #philippspo:momentum-flow-router

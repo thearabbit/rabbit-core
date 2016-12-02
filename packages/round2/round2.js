@@ -1,7 +1,7 @@
 import {check, Match} from 'meteor/check';
 import roundTo from 'round-to';
 
-export const round2 = function (value, precision = 2, type = null) {
+export const round2 = function (value, precision = 0, type = null) {
     // Check
     check(value, Number);
     check(precision, Match.Integer);

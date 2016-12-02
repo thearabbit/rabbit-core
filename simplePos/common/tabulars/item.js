@@ -24,51 +24,51 @@ let tabularData = _.assignIn(_.clone(tabularOpts), {
         {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.SimplePos_itemAction},
         {
             data: "_id",
-            // title: "ID",
-            titleFn: function () {
-                return TAPi18n.__('simplePos.item.schema._id.label');
-            }
+            title: "ID",
+            // titleFn: function () {
+            //     return TAPi18n.__('simplePos.item.schema._id.label');
+            // }
         },
         {
             data: "name",
-            // title: "Name",
-            titleFn: function () {
-                return TAPi18n.__('simplePos.item.schema.name.label');
-            }
+            title: "Name",
+            // titleFn: function () {
+            //     return TAPi18n.__('simplePos.item.schema.name.label');
+            // }
         },
         {
             data: "price",
-            // title: "Price",
-            titleFn: function () {
-                return TAPi18n.__('simplePos.item.schema.price.label');
-            },
+            title: "Price",
+            // titleFn: function () {
+            //     return TAPi18n.__('simplePos.item.schema.price.label');
+            // },
             render: function (val, type, doc) {
                 return numeral(val).format('$ 0,0.00');
             }
         },
         {
             data: "ancestors",
-            // title: "Parent",
-            titleFn: function () {
-                return TAPi18n.__('simplePos.item.schema.ancestors.label');
-            },
+            title: "Parent",
+            // titleFn: function () {
+            //     return TAPi18n.__('simplePos.item.schema.ancestors.label');
+            // },
             render: function (val, type, doc) {
                 return val;
             }
         },
         {
             data: "type",
-            // title: "Type",
-            titleFn: function () {
-                return TAPi18n.__('simplePos.item.schema.type.label');
-            }
+            title: "Type",
+            // titleFn: function () {
+            //     return TAPi18n.__('simplePos.item.schema.type.label');
+            // }
         },
         {
             data: "photo",
-            // title: "Photo",
-            titleFn: function () {
-                return TAPi18n.__('simplePos.item.schema.photo.label');
-            },
+            title: "Photo",
+            // titleFn: function () {
+            //     return TAPi18n.__('simplePos.item.schema.photo.label');
+            // },
             // visible: false, // Disable column
             render: function (val, type, doc) {
                 if (val) {

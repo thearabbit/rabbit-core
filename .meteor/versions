@@ -81,7 +81,7 @@ es5-shim@4.6.15
 fastclick@1.0.13
 fortawesome:fontawesome@4.7.0
 forwarder:autoform-wizard@0.9.1
-fourseven:scss@3.10.1
+fourseven:scss@3.13.0
 frozeman:template-var@1.3.0
 geojson-utils@1.0.10
 gwendall:autoform-i18n@0.1.9_1
@@ -193,7 +193,7 @@ templating@1.2.15
 templating-compiler@1.2.15
 templating-runtime@1.2.15
 templating-tools@1.0.5
-theara:admin-lte@2.3.5_6
+theara:admin-lte@2.3.5_8
 theara:autoform-bootstrap-switch@0.0.1
 theara:autoform-bs-daterangepicker@0.2.5
 theara:autoform-bs-datetimepicker@1.0.7
