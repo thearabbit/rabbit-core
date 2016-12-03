@@ -211,6 +211,7 @@ theara:flow-router-breadcrumb@0.3.4
 theara:id-generator@0.0.8
 theara:inputmask@3.2.6_7
 theara:jsonview@1.2.3
+theara:jspanel@3.4.1
 theara:lightbox-helpers@0.0.7
 theara:numeral-helpers@0.0.4
 theara:reactive-list@0.2.9

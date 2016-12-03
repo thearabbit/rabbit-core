@@ -12,6 +12,8 @@ require('highcharts/modules/exporting')(Highcharts);
 // Method
 import {orderChartReport} from '../../common/methods/reports/order-chart';
 
+import {renderTemplateNoBox} from '../../../core/client/libs/render-template.js';
+
 // Page
 import './home.html';
 
@@ -23,9 +25,9 @@ indexTmpl.onCreated(function () {
 });
 
 indexTmpl.onRendered(function () {
-    this.autorun(()=> {
+    this.autorun(() => {
         orderChartReport.callPromise()
-            .then((result)=> {
+            .then((result) => {
                 // this.order =[
                 //     {name: 'Mon', y: 1900},
                 //     {name: 'Tue', y: 1500},
@@ -89,7 +91,7 @@ indexTmpl.onRendered(function () {
                 // Stop loading
                 this.isLoading.set(false);
 
-            }).catch((err)=> {
+            }).catch((err) => {
                 console.log(err.message);
             }
         );
@@ -147,7 +149,7 @@ indexTmpl.events({
         // UIBlock.block('Wait...');
         $.blockUI();
 
-        Meteor.setTimeout(()=> {
+        Meteor.setTimeout(() => {
             // UIBlock.unblock();
             $.unblockUI();
         }, 500);
@@ -177,6 +179,19 @@ indexTmpl.events({
                 title: 'Ajax request finished!',
                 html: 'Submitted email: ' + email
             });
+        });
+    },
+    'click .jspanel'(event, instance){
+        $.jsPanel({
+            position: {my: "center-top", at: "center-top", offsetY: 15},
+            theme: "bootstrap-default",
+            contentSize: {width: 600, height: 350},
+            headerTitle: "Example jsPanel",
+            contentOverflow: 'scroll',
+            content: instance.$('.jspanel-contain'),
+            callback: function () {
+                this.content.css("padding", "15px");
+            }
         });
     }
 });
