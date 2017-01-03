@@ -13,7 +13,7 @@ import {moment} from 'meteor/momentjs:moment';
 // Lib
 import {createNewAlertify} from '../../../core/client/libs/create-new-alertify.js';
 import {reactiveTableSettings} from '../../../core/client/libs/reactive-table-settings.js';
-import {renderTemplate} from '../../../core/client/libs/render-template.js';
+import {renderTemplate, renderTemplate2} from '../../../core/client/libs/render-template.js';
 import {destroyAction} from '../../../core/client/libs/destroy-action.js';
 import {displaySuccess, displayError} from '../../../core/client/libs/display-alert.js';
 import {__} from '../../../core/common/libs/tapi18n-callback-helper.js';
@@ -57,7 +57,25 @@ indexTmpl.helpers({
 
 indexTmpl.events({
     'click .js-create' (event, instance) {
-        alertify.customer(fa('plus', 'Customer'), renderTemplate(formTmpl));
+        // alertify.customer(fa('plus', 'Customer'), renderTemplate(formTmpl));
+        $.jsPanel({
+            position: {my: "center-top", at: "center-top", offsetY: 15},
+            theme: "default",
+            contentSize: {
+                width: function () {
+                    return $(window).width();
+                },
+                height: 350
+            },
+            setstatus: "maximize",
+            headerTitle: "Customer",
+            contentOverflow: 'scroll',
+            content: renderTemplate2(formTmpl),
+            callback: function () {
+                this.content.css("padding", "15px");
+            }
+        });
+
     },
     'click .js-update' (event, instance) {
         alertify.customer(fa('pencil', 'Customer'), renderTemplate(formTmpl, {customerId: this._id}));
@@ -83,7 +101,7 @@ contactTmpl.helpers({
 
 // Form
 formTmpl.onCreated(function () {
-    this.autorun(()=> {
+    this.autorun(() => {
         // Lookup value
         this.subscribe('simplePos.lookupValue', ['Gender', 'Contact Type']);
 
@@ -116,7 +134,7 @@ formTmpl.helpers({
 
 // Show
 showTmpl.onCreated(function () {
-    this.autorun(()=> {
+    this.autorun(() => {
         let currentData = Template.currentData();
         this.subscribe('simplePos.customerById', currentData.customerId);
     });

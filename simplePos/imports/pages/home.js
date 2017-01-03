@@ -1,5 +1,6 @@
 import {Template} from  'meteor/templating';
 import {TAPi18n} from 'meteor/tap:i18n';
+import 'meteor/theara:treegrid';
 
 // Chart js
 import Chart from 'chart.js';
@@ -12,7 +13,7 @@ require('highcharts/modules/exporting')(Highcharts);
 // Method
 import {orderChartReport} from '../../common/methods/reports/order-chart';
 
-import {renderTemplateNoBox} from '../../../core/client/libs/render-template.js';
+import {renderTemplate2} from '../../../core/client/libs/render-template.js';
 
 // Page
 import './home.html';
@@ -136,11 +137,17 @@ indexTmpl.onRendered(function () {
     //         }
     //     }
     // });
+
+    // Tree grid
+    $('.my-tree-testing').treegrid();
 });
 
 indexTmpl.helpers({
     isLoading(){
         return Template.instance().isLoading.get();
+    },
+    treeData(){
+        return [];
     }
 });
 
@@ -184,14 +191,18 @@ indexTmpl.events({
     'click .jspanel'(event, instance){
         $.jsPanel({
             position: {my: "center-top", at: "center-top", offsetY: 15},
-            theme: "bootstrap-default",
-            contentSize: {width: 600, height: 350},
+            theme: "default",
+            // contentSize: {width: 600, height: 350},
             headerTitle: "Example jsPanel",
             contentOverflow: 'scroll',
-            content: instance.$('.jspanel-contain'),
+            content: renderTemplate2(indexTmpl),
             callback: function () {
                 this.content.css("padding", "15px");
             }
         });
     }
+});
+
+indexTmpl.onDestroyed(function () {
+    console.log('home is destroyed');
 });

@@ -1,6 +1,6 @@
 Package.describe({
     name: 'theara:jspanel',
-    version: '3.4.1_2',
+    version: '3.4.1_4',
     // Brief, one-line summary of the package.
     summary: 'A jQuery plugin to create highly configurable multifunctional floating panels',
     // URL to the Git repository containing the source code for this package.

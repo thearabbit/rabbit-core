@@ -211,7 +211,7 @@ theara:flow-router-breadcrumb@0.3.4
 theara:id-generator@0.0.8
 theara:inputmask@3.2.6_7
 theara:jsonview@1.2.3
-theara:jspanel@3.4.1
+theara:jspanel@3.4.1_4
 theara:lightbox-helpers@0.0.7
 theara:numeral-helpers@0.0.4
 theara:reactive-list@0.2.9
@@ -219,6 +219,7 @@ theara:relation-exist@0.0.2
 theara:round-khr@0.0.3
 theara:round2@0.0.7
 theara:template-states@0.0.1
+theara:treegrid@0.0.4
 themeteorchef:bert@2.1.1
 tmeasday:publish-counts@0.8.0
 tracker@1.1.1
