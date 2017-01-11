@@ -12,13 +12,14 @@ import {tabularOpts} from '../../../core/common/libs/tabular-opts.js';
 
 // Collection
 import {Order} from '../collections/order.js';
+import {OrderView} from '../collections/orderView';
 
 // Page
 Meteor.isClient && require('../../imports/pages/order.html');
 
 let tabularData = _.assignIn(_.clone(tabularOpts), {
     name : 'simplePos.order',
-collection : Order,
+collection : OrderView,
 columns : [
     {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.SimplePos_orderAction},
     {data: "_id", title: "ID"},
@@ -31,7 +32,7 @@ columns : [
     },
     {data: "total", title: "Total"},
     {data: "des", title: "Description"},
-    {data: "customerId", title: "Customer"},
+    {data: "customerDoc.name", title: "Customer"},
 ],
 });
 

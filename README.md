@@ -1,4 +1,4 @@
-# Rabbit Core (Meteor 1.3.x)
+# Rabbit Core (Meteor 1.4.x)
 
 #### Meteor Packages
 ```js
@@ -16,6 +16,3 @@
 ```
 
 ### Changelog
-- v 2.0.1 (2016-08-15)
-    - Add `phone option` to `autoform-inputmask` 
-

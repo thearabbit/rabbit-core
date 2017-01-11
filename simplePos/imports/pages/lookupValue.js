@@ -33,7 +33,6 @@ import './lookupValue.html';
 
 // Declare template
 let indexTmpl = Template.SimplePos_lookupValue,
-    optionsTmpl = Template.SimplePos_lookupValueOptions,
     formTmpl = Template.SimplePos_lookupValueForm;
 
 
@@ -75,13 +74,6 @@ indexTmpl.events({
             displayError('You can not delete [Private = true]!');
         }
     },
-});
-
-// Contact tabular
-optionsTmpl.helpers({
-    jsonViewOpts () {
-        return {collapsed: true};
-    }
 });
 
 // Form

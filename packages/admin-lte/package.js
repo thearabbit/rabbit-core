@@ -1,6 +1,6 @@
 Package.describe({
     name: 'theara:admin-lte',
-    version: '2.3.5_8',
+    version: '2.3.8_1',
     // Brief, one-line summary of the package.
     summary: 'AdmintLTE Layout',
     // URL to the Git repository containing the source code for this package.
@@ -46,17 +46,6 @@ Package.onUse(function (api) {
     // Theme Skins
     api.addFiles([
         'lib/css/skins/_all-skins.css',
-        // 'lib/css/skins/skin-black.css',
-        // 'lib/css/skins/skin-black-light.css',
-        // 'lib/css/skins/skin-blue.css',
-        // 'lib/css/skins/skin-blue-light.css',
-        // 'lib/css/skins/skin-green.css',
-        // 'lib/css/skins/skin-green-light.css',
-        // 'lib/css/skins/skin-purple.css',
-        // 'lib/css/skins/skin-red.css',
-        // 'lib/css/skins/skin-red-light.css',
-        // 'lib/css/skins/skin-yellow.css',
-        // 'lib/css/skins/skin-yellow-light.css'
     ], 'client');
 
     // Image

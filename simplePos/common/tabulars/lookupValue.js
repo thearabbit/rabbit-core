@@ -26,8 +26,17 @@ let tabularData = _.assignIn(_.clone(tabularOpts), {
         {data: "private", title: "Private"},
         {
             data: "options",
-            title: "Options",
-            tmpl: Meteor.isClient && Template.SimplePos_lookupValueOptions
+            title: "Options (Value : Label)",
+            render: function (val, type, doc) {
+                let list = `<ul>`;
+
+                _.forEach(val, (o) => {
+                    list += `<li>${o.value} : ${o.label}</li>`;
+                });
+                list += `</ul>`;
+
+                return list;
+            }
         },
     ],
     extraFields: ['_id'],
