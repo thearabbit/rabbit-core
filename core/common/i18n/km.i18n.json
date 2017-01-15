@@ -23,6 +23,7 @@
   "alert": {
     "success": "ប្រតិបត្តិការគឺជោគជ័យ!",
     "error": "ប្រតិបត្តិការគឺបរាជ័យ!",
+    "duplicate": "លេខកូដស្ទួន!",
     "deleteConfirm": "តើលោកអ្នកពិតជាចង់លុប <span class='text-red text-bold'>[__itemTitle__]</span>?"
   },
   "action": {

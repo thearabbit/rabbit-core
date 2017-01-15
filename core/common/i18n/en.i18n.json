@@ -23,6 +23,7 @@
   "alert": {
     "success": "Your transaction is successful!",
     "error": "Your transaction is not successful!",
+    "duplicate": "Duplicate key!",
     "deleteConfirm": "Are you sure to delete <span class='text-red text-bold'>[__itemTitle__]</span>?"
   },
   "action": {

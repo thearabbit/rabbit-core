@@ -33,7 +33,12 @@ export const displayError = (msg = null, i18n = false) => {
     if (msg) {
         msg = i18n == true ? TAPi18n.__(msg) : msg;
     } else {
-        msg = TAPi18n.__('alert.error');
+        // Check duplicate key
+        if (_.includes(msg, 'duplicate key')) {
+            msg = TAPi18n.__('alert.duplicate');
+        } else {
+            msg = TAPi18n.__('alert.error');
+        }
     }
 
     // sAlert.error(msg);
