@@ -1,4 +1,4 @@
-# Rabbit Core (Meteor 1.3.x)
+# Core Sys for Rabbit Developer
 
 #### Meteor Packages
 ```js
