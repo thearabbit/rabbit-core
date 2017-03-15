@@ -67,6 +67,7 @@ export const UserSchema = new SimpleSchema({
 });
 
 // Custom validation
-SimpleSchema.messages({
-    // "passwordMismatch": "[label] don't match"
-});
+// SimpleSchema.messages({
+//     "invalidUsername": "[label] is invalid",
+//     "invalidPassword": "[label] is invalid",
+// });
