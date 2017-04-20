@@ -8,7 +8,7 @@
     "babel-runtime": "^6.20.0",
     "bcrypt": "^0.8.7",
     "bignumber.js": "^2.3.0",
-    "bson-ext": "^0.1.13",
+    "bson-ext": "^1.0.5",
     "busboy": "^0.2.13",
     "buzz": "^1.2.0",
     "casual": "^1.5.6",
